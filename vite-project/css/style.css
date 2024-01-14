@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+:root {
+  --gradientGray1: #5a5a5c;
+  --gradientGray2: #313238;
+  --gradientGray3: #27282e;
+  --gradientGray4: #17171c;
+  --redTransp: rgba(255, 87, 87, 0.192);
+  --green: rgb(126, 255, 87);
+  --greenTransp: rgba(126, 255, 87, 0.192);
+  --yellowTransp: rgba(255, 238, 87, 0.192);
+  --yellow: #ffe15c;
+  --yellow2: #ffe72e;
+  --yellow3: #fff200;
+  --content: rgba(0, 0, 0, 0.15);
+  --content2: rgba(255, 255, 255, 0.15);
+
+  --h1: 3.375rem;
+  --h2: 2.25rem;
+  --h3: 1.5rem;
+  --h4: 1.17rem;
+  --h5: 0.5rem;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to bottom right, var(--gradientGray1), var(--gradientGray2), var(--gradientGray3), var(--gradientGray4));
+  color: white;
+  height: 100vh;
+}
+
+.blue {
+  color: cyan;
+}
