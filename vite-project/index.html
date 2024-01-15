@@ -1,32 +1,86 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/radiant1-removebg-preview.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gravity Assist App</title>
-  </head>
-  <body>
 
-    <div class="app">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/radiant1-removebg-preview.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gravity Assist</title>
+</head>
 
-      <h1>Gravity Assist App</h1>
+<body class="dark">
+
+  <header>
+    <button class="button" id="themeButton"><img src="/settings.png" alt="Settings button"></button>
+    <h1>Gravity Assist</h1>
+  </header>
+
+  <div class="app">
+    <div class="title">
       <h2>Color Generator</h2>
-      <p>Create colored text for Infinite Lagrange!</p>
-      <p>Works in ingame chats, mails, etc.</p>
-
-      <h3>Output:</h3>
-      <p id="output">a</p>
-
-      <form name="inputform">
-        <textarea name="inputtext" cols="20" rows="5"></textarea>
-      </form>
-
-      <input type="button" value="Get Selection" id="getButton">
-
+      <p>Highlight your text in the input box and click one of the buttons to add a color.</p>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+    <div class="buttonsArray">
+      <button class="button" id="redButton">0</button>
+      <button class="button" id="orangeButton">1</button>
+      <button class="button" id="goldButton">2</button>
+      <button class="button" id="yellowButton">3</button>
+      <button class="button" id="greenButton">4</button>
+      <button class="button" id="blueButton">5</button>
+      <button class="button" id="hotPinkButton">6</button>
+      <button class="button" id="lightPinkButton">7</button>
+      <button class="button" id="whiteButton">8</button>
+      <button class="button" id="blackButton">9</button>
+      <button class="button" id="underlineButton">10</button>
+      <button class="button" id="pastelRedButton">11</button>
+      <button class="button" id="pastelOrangeButton">12</button>
+      <button class="button" id="deepOrangeButton">13</button>
+      <button class="button" id="pastelYellowButton">14</button>
+      <button class="button" id="deepYellowButton">15</button>
+      <button class="button" id="pastelGreenButton">16</button>
+      <button class="button" id="deepGreenButton">17</button>
+      <button class="button" id="aquaButton">18</button>
+      <button class="button" id="turquoiseButton">19</button>
+      <button class="button" id="lightBlueButton">20</button>
+      <button class="button" id="cyanButton">21</button>
+      <button class="button" id="pastelBlueButton">22</button>
+      <button class="button" id="pastelPinkButton">23</button>
+      <button class="button" id="deepPinkButton">24</button>
+      <button class="button" id="normalTextButton">25</button>
+      <button class="button" id="darkGrayButton">26</button>
+      <button class="button" id="invisibleButton">27</button>
+    </div>
 
-  </body>
+    <div class="cardTitles">
+      <h2>Input</h2>
+      <h2>Output</h2>
+    </div>
+
+    <div class="cards">
+      <div id="textBox" contenteditable="true">Click <span class="gold">here</span> to start typing!</div>
+      <div id="outputBox">Click #Dhere #Wto start typing!</div>
+    </div>
+
+    <p id="characterCounter">27/1000 characters</p>
+    <p>The colors displayed in the input box may not 100% represent what it looks like ingame. Test the output before
+      sending a mail with it.</p>
+    <button id="resetButton">Reset</button>
+
+  </div>
+
+  <footer>
+    <p id="version">v1.0.0 by DubNubz</p>
+    <div class="links">
+      <a href="https://discord.com/invite/9mJ9b2Bbzx" target="_blank"><img src="/discord_icon.png"
+          alt="Link to the Radiant Gravity Discord server" id="discord_link"></a>
+      <a href="https://github.com/DubNubz/gravity-assist-app" target="_blank"><img src="/github_icon.png"
+          alt="Link to the Gravity Assist GitHub repo" id="github_link"></a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+
+</body>
+
 </html>

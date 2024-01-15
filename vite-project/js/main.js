@@ -1,54 +1,101 @@
 import '../css/style.css';
+import { DOMSelectors } from './domselectors';
 import { insertHome } from './pages';
 
-var realText;
+const colors = ["red", "orange", "gold", "yellow", "green", "blue", "hotPink", "lightPink", "white", "black", "underline", "pastelRed", "pastelOrange", "deepOrange", "pastelYellow", "deepYellow", "pastelGreen", "deepGreen", "aqua", "turquoise", "lightBlue", "cyan", "pastelBlue", "pastelPink", "deepPink", "normalText", "darkGray", "invisible"];
+const colorCodes = ["R", "O", "D", "Y", "G", "B", "U", "P", "W", "K", "E", "cffaaaa", "cffddaa", "cff9756", "cfbffaa", "cffe561", "caaffaa", "c56ff93", "c5bffd2", "c1abc9c", "c6af1fd", "c56ddff", "caac8ff", "cffaafe", "cf467cb", "cccc9c6", "c878787", "c222222"];
 
-function getSelectedText() {
-  let selectedText = '';
-  selectedText = document.getSelection();
-  return selectedText;
+function getColor(num) {
+  let color;
+
+  switch (Number(num)) {
+    case 0:
+      return color = "red";
+    case 1:
+      return color = "orange";
+    case 2:
+      return color = "gold";
+    case 3:
+      return color = "yellow";
+    case 4:
+      return color = "green";
+    case 5:
+      return color = "blue";
+    case 6:
+      return color = "hotPink";
+    case 7:
+      return color = "lightPink";
+    case 8:
+      return color = "white";
+    case 9:
+      return color = "black";
+    case 10:
+      return color = "underline";
+    case 11:
+    default:
+      return color = "white";
+  }
 };
 
-function changeColors() {
-  const selectedtext = getSelectedText().toString();
-  const selectedChars = selectedtext.split("");
-  let alltext = document.inputform.inputtext.value;
+function addMarker(num) {
+  const selection = window.getSelection();
+  const range = selection.getRangeAt(0);
+  const marker = document.createElement("span");
+  marker.classList.add(colors[num]);
+  marker.textContent = selection;
 
-  /*if (realText == null) {
-    alltext = document.inputform.inputtext.value;
-  } else {
-    alltext = realText;
-  }*/
+  range.deleteContents();
+  range.insertNode(marker);
 
-  const allChars = alltext.split("");
-  const allCharList = [];
-  let x = 0;
-  let modifiedCharList = [];
+  range.setStartAfter(marker);
+  range.setEndAfter(marker);
+  selection.removeAllRanges();
+  selection.addRange(range);
 
-  for (let i = 0; i < allChars.length; i++) {
-    if (allChars[i] === selectedChars[i - x]) {
-      modifiedCharList.push(allChars[i]);
+  DOMSelectors.outputBox.innerHTML = `<div id="textBox">${compileText()}</div>`;
+  DOMSelectors.charCounter.innerHTML = `<p id="characterCounter">${compileText().length}/1000 characters</p>`;
+};
 
-      if (selectedChars[i - x + 1] == undefined) {
-        allCharList.push(`<span class="blue">${modifiedCharList.join("")}</span>`);
-
-      }
-
-    } else {
-      x++;
-      allCharList.push(allChars[i]);
-
+function compileText() {
+  const text = DOMSelectors.textBox.innerHTML;
+  let finalText = [text];
+  for (let i = 0; i < colors.length; i++) {
+    while (finalText[finalText.length - 1].includes(`<span class="${colors[i]}">`) == true) {
+      finalText.push(finalText[finalText.length - 1].replace(`<span class="${colors[i]}">`, `#${colorCodes[i]}`));
+      finalText.push(finalText[finalText.length - 1].replace(`</span>`, "#W"));
+    }
+    while (finalText[finalText.length - 1].includes("<div>") == true) {
+      finalText.push(finalText[finalText.length - 1].replace("<div>", "#r"));
+      finalText.push(finalText[finalText.length - 1].replace("</div>", ""));
     }
   }
+  
+  return finalText[finalText.length - 1];
+};
 
-  const finalOutput = allCharList.join("").replace(/\n/g, `<br>`);
+const buttons = document.querySelectorAll(".button");
+buttons.forEach((button) => button.addEventListener("click", function () {
+  addMarker(button.textContent);
+}));
 
-  document.querySelector("#output").innerHTML = finalOutput;
-  realText = finalOutput;
-  console.log(realText);
-}
-
-document.querySelector("#getButton").addEventListener("click", function () {
-  changeColors();
+DOMSelectors.reset.addEventListener("click", function () {
+  DOMSelectors.textBox.innerHTML = "";
+  DOMSelectors.outputBox.innerHTML = "";
+  DOMSelectors.charCounter.innerHTML = `<p id="characterCounter">0/1000 characters</p>`;
 });
 
+DOMSelectors.textBox.addEventListener("input", function () {
+  DOMSelectors.outputBox.innerHTML = compileText();
+  DOMSelectors.charCounter.innerHTML = `${compileText().length}/1000 characters`;
+});
+
+DOMSelectors.themeButton.addEventListener("click", function () {
+  if (document.body.classList.contains("light")) {
+    document.body.classList.add("dark");
+    document.body.classList.remove("light");
+  }
+  else {
+    document.body.classList.add("light");
+    document.body.classList.remove("dark");
+  }
+});
