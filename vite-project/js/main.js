@@ -86,7 +86,8 @@ DOMSelectors.reset.addEventListener("click", function () {
 
 DOMSelectors.textBox.addEventListener("input", function () {
   DOMSelectors.outputBox.innerHTML = compileText();
-  DOMSelectors.charCounter.innerHTML = `${compileText().length}/1000 characters`;
+  DOMSelectors.messageCharCounter.innerHTML = `${compileText().length}/280 characters (chat message)`
+  DOMSelectors.mailCharCounter.innerHTML = `${compileText().length}/1000 characters (mail)`;
 });
 
 DOMSelectors.themeButton.addEventListener("click", function () {
