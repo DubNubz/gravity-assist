@@ -99,6 +99,12 @@ header {
   position: absolute;
   top: 1vh;
   right: 1vh;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.5s;
+}
+
+#themeButton:hover {
+  transform: scale(1.25);
 }
 
 img {
