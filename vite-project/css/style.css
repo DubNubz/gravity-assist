@@ -225,6 +225,8 @@ img {
   height: 5vh;
   width: 5vw;
   border-radius: 1vw;
+  border-color: black;
+  color: black;
   background-color: var(--pastelRed);
   transition: all 0.5s;
 }
