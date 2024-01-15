@@ -81,7 +81,8 @@ buttons.forEach((button) => button.addEventListener("click", function () {
 DOMSelectors.reset.addEventListener("click", function () {
   DOMSelectors.textBox.innerHTML = "";
   DOMSelectors.outputBox.innerHTML = "";
-  DOMSelectors.charCounter.innerHTML = `<p id="characterCounter">0/1000 characters</p>`;
+  DOMSelectors.messageCharCounter.innerHTML = `<p id="characterCounter">0/280 characters (chat message)</p>`;
+  DOMSelectors.mailCharCounter.innerHTML = `<p id="characterCounter">0/1000 characters (mail)</p>`;
 });
 
 DOMSelectors.textBox.addEventListener("input", function () {
