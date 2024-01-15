@@ -71,6 +71,7 @@ body {
   align-items: center;
   text-align: center;
   height: 100%;
+  transition: all 1.25s;
 }
 
 footer {
