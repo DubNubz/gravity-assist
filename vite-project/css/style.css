@@ -9,10 +9,13 @@
   --footer: rgba(0, 0, 0, 0.35);
   --transparent: rgba(255, 255, 255, 0.1);
 
-  --lightGradientGray1: #bababe;
-  --lightGradientGray2: #b3b7cf;
-  --lightGradientGray3: #b3b9d8;
-  --lightGradientGray4: #c3c3f1;
+  --lightHeader: rgba(255, 255, 255, 0.5);
+  --darkHeader: rgba(0, 0, 0, 0.5);
+
+  --lightGradientGray1: #c9c9ec;
+  --lightGradientGray2: #c0c6df;
+  --lightGradientGray3: #b9bcce;
+  --lightGradientGray4: #b7b7c0;
   --lightContent: rgba(255, 255, 255, 0.15);
   --lightFooter: rgba(255, 255, 255, 0.35);
   --lightTransparent: rgba(0, 0, 0, 0.1);
@@ -46,11 +49,10 @@
   --darkGray: #878787;
   --invisible: #222222;
 
-  --h1: 3.375rem;
-  --h2: 2.25rem;
-  --h3: 1.5rem;
-  --h4: 1.17rem;
-  --h5: 0.5rem;
+  --h1: 5vh;
+  --h2: 3.5vh;
+  --p: 2vh;
+  --standard: 1.75vh;
 }
 
 .light {
@@ -63,6 +65,38 @@
   color: white;
 }
 
+.lightButton {
+  color: black;
+}
+
+.darkButton {
+  color: white;
+}
+
+.lightHeader {
+  background: linear-gradient(to bottom, var(--lightHeader) 90%, rgba(0, 0, 0, 0));
+}
+
+.darkHeader {
+  background: linear-gradient(to bottom, var(--darkHeader) 90%, rgba(0, 0, 0, 0));
+}
+
+h1 {
+  font-size: var(--h1);
+}
+
+h2 {
+  font-size: var(--h2);
+}
+
+p {
+  font-size: var(--p);
+}
+
+#text {
+  font-size: var(--standard);
+}
+
 body {
   font-family: 'Kanit', sans-serif;
   margin: auto;
@@ -72,6 +106,7 @@ body {
   text-align: center;
   height: 100%;
   transition: all 1.25s;
+  font-size: var(--standard);
 }
 
 footer {
@@ -79,29 +114,35 @@ footer {
   text-align: center;
   position: relative;
   bottom: 0;
-  width: 99vw;
-  height: 13vh;
+  width: 99.165vw;
+  height: 15vh;
   margin-top: 3vh;
 }
 
 header {
-  background: linear-gradient(to bottom, var(--footer), rgba(0, 0, 0, 0));
   text-align: center;
   position: relative;
   top: 0;
-  width: 99vw;
-  height: 13vh;
-  margin-bottom: 3vh;
+  width: 99.165vw;
+  height: 23vh;
+  margin-bottom: 5vh;
+}
+
+button {
+  font-family: 'Kanit', sans-serif;
 }
 
 #themeButton {
-  height: 4vw;
-  width: 4vw;
+  height: 6vh;
+  width: 6vh;
   position: absolute;
-  top: 1vh;
-  right: 1vh;
+  top: 3vh;
+  right: 3vh;
   background-color: rgba(0, 0, 0, 0);
   transition: all 0.5s;
+  border-radius: 3vh;
+  border: 0;
+  margin: 0.15vw;
 }
 
 #themeButton:hover {
@@ -109,12 +150,12 @@ header {
 }
 
 img {
-  height: 3vw;
-  width: 3vw;
+  height: 6vh;
+  width: 6vh;
   margin: 0.2vw;
   margin-bottom: 0;
   background-color: var(--transparent);
-  border-radius: 1.5vw;
+  border-radius: 3vh;
 }
 
 .red {color: var(--red)}
@@ -178,7 +219,7 @@ img {
   background-color: var(--content);
   display: flex;
   flex-wrap: wrap;
-  width: 33%;
+  width: 66vw;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -203,7 +244,7 @@ img {
 .button {
   height: 50px;
   width: 50px;
-  border-radius: 2vw;
+  border-radius: 6vh;
   font-size: 1px;
   border: 0;
   margin: 0.15vw;
@@ -212,7 +253,7 @@ img {
 
 .button:hover {
   transform: scale(1.05);
-  border-radius: 0.5vw;
+  border-radius: 1vh;
 }
 
 .cards {
@@ -229,9 +270,9 @@ img {
 }
 
 #resetButton {
-  height: 5vh;
-  width: 5vw;
-  border-radius: 1vw;
+  height: 7vh;
+  width: 15vh;
+  border-radius: 4vh;
   border-color: black;
   color: black;
   background-color: var(--pastelRed);
@@ -242,4 +283,78 @@ img {
   transform: scale(1.33);
   border-color: red;
   border-width: 0.5vw;
+}
+
+#messageCharacterCounter {
+  margin-top: 10vh;
+}
+
+.RAResults {
+  background-color: var(--content);
+  border-radius: 5vw;
+  width: 60vw;
+  padding: 1vw;
+  display: grid;
+  grid-template-columns: 15vw 15vw 15vw 15vw;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.RAResult {
+  display: flex;
+  flex-direction: column;
+}
+
+#gravityAssistIcon,
+#gravityAssistTitle {
+  background-color: rgba(0, 0, 0, 0);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.RAButton {
+  padding: 0.75vh;
+  margin: 0.5vh;
+  border-radius: 3vh;
+  border-width: 0.1vh;
+  transition: all 0.5s, border-width 0.1s, border-color 0.1s;
+}
+
+.RAButton:hover {
+  transform: scale(1.1);
+}
+
+.RAButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70vw;
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+}
+
+.manufacturers,
+.directions,
+.scopes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10vw;
+  background-color: var(--content);
+  border-radius: 7vh;
+  padding: 3vh;
+}
+
+.active {
+  background-color: var(--deepGreen);
+  border-width: 0.5vh;
+  border-color: var(--deepGreen);
+  transform: scale(1.2);
+}
+
+.navButton {
+  background-color: var(--content);
+  border: 0;
+  height: 5vh;
 }
