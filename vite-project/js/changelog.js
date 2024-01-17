@@ -19,6 +19,10 @@ const changelog = [{
         release: "January 16, 2024",
         notes: ["Changed the information displayed in Research Agreement Helper", "Version number in footer is now dynamic", 
         "Optimized how information is displayed in Research Agreement Helper for mobile users", "Added images to Research Agreement Helper"]
+    }, {
+        version: "0.3.2",
+        release: "January 16, 2024",
+        notes: ["Optimized Research Agreement Helper for mobile users further"]
     }
 ];
 

@@ -450,6 +450,13 @@ img {
 }
 
 @media screen and (max-width: 1300px) {
+  .RAResultsHolder {
+    width: 70vw;
+  }
+
+  .RAResults {
+    width: 40vw;
+  }
   .RAData {
     font-size: var(--standard2);
   }
@@ -461,6 +468,24 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+  .RAButtons {
+    width: 95vw;
+  }
+
+  .manufacturers,
+  .directions,
+  .scopes {
+    width: 15vw;
+  }
+
+  .RAResultsHolder {
+    width: 70vw;
+  }
+
+  .RAResults {
+    width: 60vw;
+  }
+
   .RADataImg {
     width: var(--standardImgWidth);
     height: var(--standardImgHeight);
@@ -468,6 +493,7 @@ img {
 
   .RAButton {
     font-size: var(--standard);
+    width: 17vw;
   }
 
   h1 {
