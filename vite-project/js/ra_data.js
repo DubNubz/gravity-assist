@@ -15,7 +15,7 @@ const difficulty = {
 const data = [{
         name: "AT021",
         title: "Pulse Attacker",
-        img: "",
+        img: "/ships/at021_a.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Pulse Cannon Type",
@@ -26,7 +26,7 @@ const data = [{
     }, {
         name: "AT021",
         title: "Tactical Attacker",
-        img: "",
+        img: "/ships/at021_b.png",
         type: "Fighter",
         variant: "B",
         variant_name: "Interference Type",
@@ -37,7 +37,7 @@ const data = [{
     }, {
         name: "AT021",
         title: "Heavy Attacker",
-        img: "",
+        img: "/ships/at021_c.png",
         type: "Fighter",
         variant: "C",
         variant_name: "Multi-Role Type",
@@ -48,7 +48,7 @@ const data = [{
     }, {
         name: "B192 Newland",
         title: "Heavy Attacker",
-        img: "",
+        img: "/ships/b192newland.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Multi-Role Type",
@@ -59,7 +59,7 @@ const data = [{
     }, {
         name: "BR050",
         title: "Standard Bomber",
-        img: "",
+        img: "/ships/br050_a.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -70,7 +70,7 @@ const data = [{
     }, {
         name: "BR050",
         title: "Multi-Role Bomber",
-        img: "",
+        img: "/ships/br050_b.png",
         type: "Fighter",
         variant: "B",
         variant_name: "Defense Type",
@@ -81,7 +81,7 @@ const data = [{
     }, {
         name: "BR050",
         title: "Torpedo Bomber",
-        img: "",
+        img: "/ships/br050_c.png",
         type: "Fighter",
         variant: "C",
         variant_name: "Torpedo Type",
@@ -92,7 +92,7 @@ const data = [{
     }, {
         name: "Balancer Anderson SC020",
         title: "Scout",
-        img: "",
+        img: "/ships/sc020.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Interference Type",
@@ -103,7 +103,7 @@ const data = [{
     }, {
         name: "Bullfrog",
         title: "Dual-Purpose Bomber",
-        img: "",
+        img: "/ships/bullfrog.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Siege Type",
@@ -114,7 +114,7 @@ const data = [{
     }, {
         name: "Hayreddin's Loyal",
         title: "Pulsar Fighter",
-        img: "",
+        img: "/ships/hayreddinsLoyal.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Special Type",
@@ -125,7 +125,7 @@ const data = [{
     }, {
         name: "Janbiya Aer410",
         title: "Assault Attacker",
-        img: "",
+        img: "/ships/janbiyaAer410.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -136,7 +136,7 @@ const data = [{
     }, {
         name: "Mistral",
         title: "Combat Attacker",
-        img: "",
+        img: "/ships/mistral.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Aircraft Type",
@@ -147,7 +147,7 @@ const data = [{
     }, {
         name: "SC002",
         title: "Quantum Scout",
-        img: "",
+        img: "/ships/sc020.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Generic Type",
@@ -158,7 +158,7 @@ const data = [{
     }, {
         name: "Sandrake",
         title: "Atmospheric Interceptor",
-        img: "",
+        img: "/ships/sandrake.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Dual-Purpose Type",
@@ -169,7 +169,7 @@ const data = [{
     }, {
         name: "Spore A404",
         title: "Light Fighter",
-        img: "",
+        img: "/ships/sporeA404.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Aircraft Type",
@@ -180,7 +180,7 @@ const data = [{
     }, {
         name: "Stingray",
         title: "Torpedo Bomber",
-        img: "",
+        img: "/ships/stingray.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Stealth Type",
@@ -191,7 +191,7 @@ const data = [{
     }, {
         name: "Strix A100",
         title: "Joint Attacker",
-        img: "",
+        img: "/ships/strixA100.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -202,7 +202,7 @@ const data = [{
     }, {
         name: "Vitas A021",
         title: "Heavy Attacker",
-        img: "",
+        img: "/ships/vitasA021.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -213,7 +213,7 @@ const data = [{
     }, {
         name: "Vitas-B010",
         title: "Bomber",
-        img: "",
+        img: "/ships/vitasB010.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -224,7 +224,7 @@ const data = [{
     }, {
         name: "CV-II003",
         title: "Light Corvette",
-        img: "",
+        img: "/ships/cvii003.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Multi-Role Type",
@@ -235,7 +235,7 @@ const data = [{
     }, {
         name: "CV-M011",
         title: "Heavy Missile Corvette",
-        img: "",
+        img: "/ships/cvm011_a.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Missile Type",
@@ -246,7 +246,7 @@ const data = [{
     }, {
         name: "CV-M011",
         title: "Heavy Cannon Corvette",
-        img: "",
+        img: "/ships/cvm011_b.png",
         type: "Corvette",
         variant: "B",
         variant_name: "Cannon Type",
@@ -257,7 +257,7 @@ const data = [{
     }, {
         name: "CV-M011",
         title: "High-Speed Missile Corvette",
-        img: "",
+        img: "/ships/cvm011_c.png",
         type: "Corvette",
         variant: "C",
         variant_name: "High-Speed Type",
@@ -268,7 +268,7 @@ const data = [{
     }, {
         name: "CV-T800",
         title: "Pulsar Corvette",
-        img: "",
+        img: "/ships/cvt800.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Anti-Aircraft Type",
@@ -279,7 +279,7 @@ const data = [{
     }, {
         name: "Cellular Defender",
         title: "Heavy Torpedo Corvette",
-        img: "",
+        img: "/ships/cellularDefender.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Multi-Role Type",
@@ -290,7 +290,7 @@ const data = [{
     }, {
         name: "Nebula Chaser",
         title: "Heavy Corvette",
-        img: "",
+        img: "/ships/nebulaChaser_a.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Ballistic Type",
@@ -301,7 +301,7 @@ const data = [{
     }, {
         name: "Nebula Chaser",
         title: "Pulsar Corvette",
-        img: "",
+        img: "/ships/nebulaChaser_b.png",
         type: "Corvette",
         variant: "B",
         variant_name: "Pulse Cannon Type",
@@ -312,7 +312,7 @@ const data = [{
     }, {
         name: "RedBeast 7-13",
         title: "Missile Corvette",
-        img: "",
+        img: "/ships/redbeast713.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Offensive Type",
@@ -323,7 +323,7 @@ const data = [{
     }, {
         name: "S-Levy 9",
         title: "Heavy Torpedo Escort Corvette",
-        img: "",
+        img: "/ships/slevy9.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -334,7 +334,7 @@ const data = [{
     }, {
         name: "Silent Assassin",
         title: "Armored Corvette",
-        img: "",
+        img: "/ships/silentAssassin.png",
         type: "Corvette",
         variant: "A",
         variant_name: "High-Speed Type",
@@ -345,7 +345,7 @@ const data = [{
     }, {
         name: "Void Elfin",
         title: "Stealth Missile Corvette",
-        img: "",
+        img: "/ships/voidElfin.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Offensive Type",
@@ -356,7 +356,7 @@ const data = [{
     }, {
         name: "Carilion",
         title: "Recon Frigate",
-        img: "",
+        img: "/ships/carilion_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Recon Type",
@@ -367,7 +367,7 @@ const data = [{
     }, {
         name: "Carilion",
         title: "Heavy Cannon Frigate",
-        img: "",
+        img: "/ships/carilion_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Heavy Cannon Type",
@@ -378,7 +378,7 @@ const data = [{
     }, {
         name: "Carilion",
         title: "Special Frigate",
-        img: "",
+        img: "/ships/carilion_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Special Type",
@@ -389,7 +389,7 @@ const data = [{
     }, {
         name: "FG300",
         title: "Multi-Role Frigate",
-        img: "",
+        img: "/ships/fg300_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Multi-Role Type",
@@ -400,7 +400,7 @@ const data = [{
     }, {
         name: "FG300",
         title: "Armored Frigate",
-        img: "",
+        img: "/ships/fg300_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Armored Type",
@@ -411,7 +411,7 @@ const data = [{
     }, {
         name: "FG300",
         title: "Recon Frigate",
-        img: "",
+        img: "/ships/fg300_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Recon Type",
@@ -422,7 +422,7 @@ const data = [{
     }, {
         name: "Mare Imbrium",
         title: "Assault Frigate",
-        img: "",
+        img: "/ships/mareImbrium_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Railgun Type",
@@ -433,7 +433,7 @@ const data = [{
     }, {
         name: "Mare Imbrium",
         title: "Experimental Pulse Cannon Frigate",
-        img: "",
+        img: "/ships/mareImbrium_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Pulse Cannon Type",
@@ -444,7 +444,7 @@ const data = [{
     }, {
         name: "Mare Nubium",
         title: "Light Landing Ship",
-        img: "",
+        img: "/ships/mareNubium_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Assault Type",
@@ -455,7 +455,7 @@ const data = [{
     }, {
         name: "Mare Nubium",
         title: "Anti-Aircraft Frigate",
-        img: "",
+        img: "/ships/mareNubium_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Anti-Aircraft Type",
@@ -466,7 +466,7 @@ const data = [{
     }, {
         name: "Mare Serenitatis",
         title: "Heavy Frigate",
-        img: "",
+        img: "/ships/mareSerenitatis_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -477,7 +477,7 @@ const data = [{
     }, {
         name: "Mare Serenitatis",
         title: "Missile Frigate",
-        img: "",
+        img: "/ships/mareSerenitatis_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Missile Type",
@@ -488,7 +488,7 @@ const data = [{
     }, {
         name: "Mare Serenitatis",
         title: "Anti-Aircraft Frigate",
-        img: "",
+        img: "/ships/mareSerenitatis_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Anti-Aircraft Type",
@@ -499,7 +499,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Missile Frigate",
-        img: "",
+        img: "/ships/mareTranquilitatis_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Integrated Type",
@@ -510,7 +510,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Pulse Cannon Frigate",
-        img: "",
+        img: "/ships/mareTranquilitatis_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Pulse Cannon Type",
@@ -521,7 +521,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Interceptor Frigate",
-        img: "",
+        img: "/ships/mareTranquilitatis_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Anti-Aircraft Type",
@@ -532,7 +532,7 @@ const data = [{
     }, {
         name: "NOMA M470",
         title: "Heavy Landing Ship",
-        img: "",
+        img: "/ships/nomaM470_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Siege Type",
@@ -543,7 +543,7 @@ const data = [{
     }, {
         name: "NOMA M470",
         title: "Support Frigate",
-        img: "",
+        img: "/ships/nomaM470_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Support Type",
@@ -554,7 +554,7 @@ const data = [{
     }, {
         name: "NOMA M470",
         title: "Anti-Aircraft Frigate",
-        img: "",
+        img: "/ships/nomaM470_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Anti-Aircraft Type",
@@ -565,7 +565,7 @@ const data = [{
     }, {
         name: "Reliat",
         title: "Rapid Torpedo Frigate",
-        img: "",
+        img: "/ships/reliat_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -576,7 +576,7 @@ const data = [{
     }, {
         name: "Reliat",
         title: "Tactical Torpedo Frigate",
-        img: "",
+        img: "/ships/reliat_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Torpedo Type",
@@ -587,7 +587,7 @@ const data = [{
     }, {
         name: "Reliat",
         title: "Stealth Frigate",
-        img: "",
+        img: "/ships/reliat_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Stealth Type",
@@ -598,7 +598,7 @@ const data = [{
     }, {
         name: "Ruby",
         title: "Heavy Railgun Frigate",
-        img: "",
+        img: "/ships/ruby_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Railgun Type",
@@ -609,7 +609,7 @@ const data = [{
     }, {
         name: "Ruby",
         title: "Experimental Ion Cannon Frigate",
-        img: "",
+        img: "/ships/ruby_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Ion Cannon Type",
@@ -620,7 +620,7 @@ const data = [{
     }, {
         name: "Ruby",
         title: "Defensive Frigate",
-        img: "",
+        img: "/ships/ruby_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Defensive Type",
@@ -631,7 +631,7 @@ const data = [{
     }, {
         name: "XenoStinger",
         title: "Tactical Frigate",
-        img: "",
+        img: "/ships/xenostinger_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Special Type",
@@ -642,7 +642,7 @@ const data = [{
     }, {
         name: "XenoStinger",
         title: "Defensive Frigate",
-        img: "",
+        img: "/ships/xenostinger_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Anti-Aircraft Type",
@@ -653,7 +653,7 @@ const data = [{
     }, {
         name: "AC721",
         title: "Heavy Logistics Destroyer",
-        img: "",
+        img: "/ships/ac721_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Generic Type",
@@ -664,7 +664,7 @@ const data = [{
     }, {
         name: "AC721",
         title: "Heavy Missile Destroyer",
-        img: "",
+        img: "/ships/ac721_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Missile Type",
@@ -675,7 +675,7 @@ const data = [{
     }, {
         name: "AC721",
         title: "Heavy Dual-Purpose Assault Ship",
-        img: "",
+        img: "/ships/ac721_d.png",
         type: "Destroyer",
         variant: "D",
         variant_name: "Aircraft Type",
@@ -686,7 +686,7 @@ const data = [{
     }, {
         name: "Aldabra",
         title: "Heavy Cannon Destroyer",
-        img: "",
+        img: "/ships/aldabra_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Generic Type",
@@ -697,7 +697,7 @@ const data = [{
     }, {
         name: "Aldabra",
         title: "Heavy Assault Destroyer",
-        img: "",
+        img: "/ships/aldabra_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Armored Type",
@@ -708,7 +708,7 @@ const data = [{
     }, {
         name: "Ceres",
         title: "Aircraft Destroyer",
-        img: "",
+        img: "/ships/ceres_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Aircraft Type",
@@ -719,7 +719,7 @@ const data = [{
     }, {
         name: "Ceres",
         title: "Support Destroyer",
-        img: "",
+        img: "/ships/ceres_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Support Type",
@@ -730,7 +730,7 @@ const data = [{
     }, {
         name: "Ceres",
         title: "Tactical Destroyer",
-        img: "",
+        img: "/ships/ceres_c.png",
         type: "Destroyer",
         variant: "C",
         variant_name: "Tactical Type",
@@ -741,7 +741,7 @@ const data = [{
     }, {
         name: "Eris I",
         title: "Maneuver Assault Destroyer",
-        img: "",
+        img: "/ships/eris_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Cannon Type",
@@ -752,7 +752,7 @@ const data = [{
     }, {
         name: "Eris I",
         title: "Heavy Cannon Destroyer",
-        img: "",
+        img: "/ships/eris_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Heavy Cannon Type",
@@ -763,7 +763,7 @@ const data = [{
     }, {
         name: "Eris I",
         title: "Armored Destroyer",
-        img: "",
+        img: "/ships/eris_c.png",
         type: "Destroyer",
         variant: "C",
         variant_name: "Armored Type",
@@ -774,7 +774,7 @@ const data = [{
     }, {
         name: "Guardian",
         title: "Support Destroyer",
-        img: "",
+        img: "/ships/guardian_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Support Type",
@@ -785,7 +785,7 @@ const data = [{
     }, {
         name: "Guardian",
         title: "Dual-Purpose Assault Ship",
-        img: "",
+        img: "/ships/guardian_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Dual-Purpose Type",
@@ -796,7 +796,7 @@ const data = [{
     }, {
         name: "Guardian",
         title: "Experimental Pulse Assault Ship",
-        img: "",
+        img: "/ships/guardian_c.png",
         type: "Destroyer",
         variant: "C",
         variant_name: "Pulse Cannon Type",
@@ -807,7 +807,7 @@ const data = [{
     }, {
         name: "Quaoar",
         title: "Railgun Destroyer",
-        img: "",
+        img: "/ships/quaoar_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Railgun Type",
@@ -818,7 +818,7 @@ const data = [{
     }, {
         name: "Quaoar",
         title: "Torpedo Destroyer",
-        img: "",
+        img: "/ships/quaoar_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Torpedo Type",
@@ -829,7 +829,7 @@ const data = [{
     }, {
         name: "Taurus",
         title: "Pulse Cannon Destroyer",
-        img: "",
+        img: "/ships/taurus_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Offensive Type",
@@ -840,7 +840,7 @@ const data = [{
     }, {
         name: "Taurus",
         title: "Assault Destroyer",
-        img: "",
+        img: "/ships/taurus_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Assault Type",
@@ -851,7 +851,7 @@ const data = [{
     }, {
         name: "Taurus",
         title: "Defensive Destroyer",
-        img: "",
+        img: "/ships/taurus_c.png",
         type: "Destroyer",
         variant: "C",
         variant_name: "Defensive Type",
@@ -862,7 +862,7 @@ const data = [{
     }, {
         name: "Tundra",
         title: "Tactical Destroyer",
-        img: "",
+        img: "/ships/tundra_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Support Type",
@@ -873,7 +873,7 @@ const data = [{
     }, {
         name: "Tundra",
         title: "Aircraft Destroyer",
-        img: "",
+        img: "/ships/tundra_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Aircraft Type",
@@ -884,7 +884,7 @@ const data = [{
     }, {
         name: "Winged Hussar",
         title: "Light Missile Destroyer",
-        img: "",
+        img: "/ships/wingedHussar_a.png",
         type: "Destroyer",
         variant: "A",
         variant_name: "Anti-Ship Type",
@@ -895,7 +895,7 @@ const data = [{
     }, {
         name: "Winged Hussar",
         title: "Integrated Missile Destroyer",
-        img: "",
+        img: "/ships/wingedHussar_b.png",
         type: "Destroyer",
         variant: "B",
         variant_name: "Integrated Type",
@@ -906,7 +906,7 @@ const data = [{
     }, {
         name: "Winged Hussar",
         title: "Area-Denial Anti-Aircraft Destroyer",
-        img: "",
+        img: "/ships/wingedHussar_c.png",
         type: "Destroyer",
         variant: "C",
         variant_name: "Anti-Aircraft Type",
@@ -917,7 +917,7 @@ const data = [{
     }, {
         name: "CAS066",
         title: "Generic Cruiser",
-        img: "",
+        img: "/ships/cas066_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Integrated Type",
@@ -928,7 +928,7 @@ const data = [{
     }, {
         name: "CAS066",
         title: "Artillery Cruiser",
-        img: "",
+        img: "/ships/cas066_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Artillery Type",
@@ -939,7 +939,7 @@ const data = [{
     }, {
         name: "CAS066",
         title: "Aircraft Cruiser",
-        img: "",
+        img: "/ships/cas066_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Aircraft Type",
@@ -950,7 +950,7 @@ const data = [{
     }, {
         name: "CAS066",
         title: "Auxiliary Cruiser",
-        img: "",
+        img: "/ships/cas066_d.png",
         type: "Cruiser",
         variant: "D",
         variant_name: "Support Type",
@@ -961,7 +961,7 @@ const data = [{
     }, {
         name: "Callisto",
         title: "Cluster Torpedo Raid Ship",
-        img: "",
+        img: "/ships/callisto_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Torpedo Type",
@@ -972,7 +972,7 @@ const data = [{
     }, {
         name: "Callisto",
         title: "Heavy Torpedo Raid Ship",
-        img: "",
+        img: "/ships/callisto_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Anti-Ship Type",
@@ -983,7 +983,7 @@ const data = [{
     }, {
         name: "Callisto",
         title: "Heavy UAV Cruiser",
-        img: "",
+        img: "/ships/callisto_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Support Type",
@@ -994,7 +994,7 @@ const data = [{
     }, {
         name: "Chimera",
         title: "Heavy Cruiser",
-        img: "",
+        img: "/ships/chimera_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Ballistic Type",
@@ -1005,7 +1005,7 @@ const data = [{
     }, {
         name: "Chimera",
         title: "Cannon Cruiser",
-        img: "",
+        img: "/ships/chimera_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Heavy Cannon Type",
@@ -1016,7 +1016,7 @@ const data = [{
     }, {
         name: "Chimera",
         title: "Defensive Cruiser",
-        img: "",
+        img: "/ships/chimera_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Defensive Type",
@@ -1027,7 +1027,7 @@ const data = [{
     }, {
         name: "Conamara Chaos",
         title: "Railgun Cruiser",
-        img: "",
+        img: "/ships/conamaraChaos_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Railgun Type",
@@ -1038,7 +1038,7 @@ const data = [{
     }, {
         name: "Conamara Chaos",
         title: "High-Speed Plasma Cruiser",
-        img: "",
+        img: "/ships/conamaraChaos_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Plasma Type",
@@ -1049,7 +1049,7 @@ const data = [{
     }, {
         name: "Io",
         title: "Assault Ion Cannon Cruiser",
-        img: "",
+        img: "/ships/io_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Ion Cannon Type",
@@ -1060,7 +1060,7 @@ const data = [{
     }, {
         name: "Io",
         title: "High-Speed Ion Cannon Cruiser",
-        img: "",
+        img: "/ships/io_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Anti-Ship Type",
@@ -1071,7 +1071,7 @@ const data = [{
     }, {
         name: "Io",
         title: "Siege Ion Cannon Cruiser",
-        img: "",
+        img: "/ships/io_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Siege Type",
@@ -1082,7 +1082,7 @@ const data = [{
     }, {
         name: "Jaeger",
         title: "Heavy Aircraft Cruiser",
-        img: "",
+        img: "/ships/jaeger_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Support Type",
@@ -1093,7 +1093,7 @@ const data = [{
     }, {
         name: "Jaeger",
         title: "Heavy Cannon Cruiser",
-        img: "",
+        img: "/ships/jaeger_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Anti-Ship Type",
@@ -1104,7 +1104,7 @@ const data = [{
     }, {
         name: "KCCPV2.0",
         title: "Light Attack Cruiser",
-        img: "",
+        img: "/ships/kccpv_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Integrated Type",
@@ -1115,7 +1115,7 @@ const data = [{
     }, {
         name: "KCCPV2.0",
         title: "Light Pulse Attack Cruiser",
-        img: "",
+        img: "/ships/kccpv_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Pulse Cannon Type",
@@ -1126,7 +1126,7 @@ const data = [{
     }, {
         name: "KCCPV2.0",
         title: "Light Railgun Cruiser",
-        img: "",
+        img: "/ships/kccpv_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Railgun Type",
@@ -1137,7 +1137,7 @@ const data = [{
     }, {
         name: "KCCPV2.0",
         title: "Light Aircraft Cruiser",
-        img: "",
+        img: "/ships/kccpv_d.png",
         type: "Cruiser",
         variant: "D",
         variant_name: "Aircraft Type",
@@ -1148,7 +1148,7 @@ const data = [{
     }, {
         name: "Light Cone",
         title: "Multi-Role Missile Cruiser Cruiser",
-        img: "",
+        img: "/ships/lightCone_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Generic Type",
@@ -1159,7 +1159,7 @@ const data = [{
     }, {
         name: "Light Cone",
         title: "Area-Denial Anti-Aircraft Cruiser",
-        img: "",
+        img: "/ships/lightCone_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Anti-Aircraft Type",
@@ -1170,7 +1170,7 @@ const data = [{
     }, {
         name: "Light Cone",
         title: "Offensive Missile Cruiser",
-        img: "",
+        img: "/ships/lightCone_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Assault Type",
@@ -1181,7 +1181,7 @@ const data = [{
     }, {
         name: "Predator",
         title: "Aircraft Cruiser",
-        img: "",
+        img: "/ships/predator_a.png",
         type: "Cruiser",
         variant: "A",
         variant_name: "Generic Type",
@@ -1192,7 +1192,7 @@ const data = [{
     }, {
         name: "Predator",
         title: "Tactical Aircraft Cruiser",
-        img: "",
+        img: "/ships/predator_b.png",
         type: "Cruiser",
         variant: "B",
         variant_name: "Tactical Type",
@@ -1203,7 +1203,7 @@ const data = [{
     }, {
         name: "Predator",
         title: "Anti-Aircraft Cruiser",
-        img: "",
+        img: "/ships/predator_c.png",
         type: "Cruiser",
         variant: "C",
         variant_name: "Anti-Aircraft Type",
@@ -1214,7 +1214,7 @@ const data = [{
     }, {
         name: "Constantine the Great",
         title: "Multi-Role Battlecruiser",
-        img: "",
+        img: "/ships/constantineTheGreat.png",
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
@@ -1225,7 +1225,7 @@ const data = [{
     }, {
         name: "Eternal Storm",
         title: "Attack Battlecruiser",
-        img: "",
+        img: "/ships/eternalStorm.png",
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
@@ -1236,7 +1236,7 @@ const data = [{
     }, {
         name: "ST59",
         title: "Defensive Battlecruiser",
-        img: "",
+        img: "/ships/st59.png",
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
@@ -1247,7 +1247,7 @@ const data = [{
     }, {
         name: "Spear of Uranus",
         title: "Heavy Battlecruiser",
-        img: "",
+        img: "/ships/spearOfUranus.png",
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
@@ -1258,7 +1258,7 @@ const data = [{
     }, {
         name: "Thunderbolt Star",
         title: "Multi-Role Arsenal Ship",
-        img: "",
+        img: "/ships/thunderboltStar.png",
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
@@ -1269,7 +1269,7 @@ const data = [{
     }, {
         name: "Ediacaran",
         title: "Heavy Firepower Auxiliary Ship",
-        img: "",
+        img: "/ships/ediacaran.png",
         type: "Auxiliary Ship",
         variant: "A",
         variant_name: "Super Type",
@@ -1280,7 +1280,7 @@ const data = [{
     }, {
         name: "FSV830",
         title: "Fast Tactical Auxiliary Ship",
-        img: "",
+        img: "/ships/fsv830.png",
         type: "Auxiliary Ship",
         variant: "A",
         variant_name: "Super Type",
@@ -1291,7 +1291,7 @@ const data = [{
     }, {
         name: "CV3000",
         title: "High-Speed Carrier",
-        img: "",
+        img: "/ships/cv3000.png",
         type: "Carrier",
         variant: "A",
         variant_name: "Super Type",
@@ -1302,7 +1302,7 @@ const data = [{
     }, {
         name: "Marshal Crux",
         title: "Carrier",
-        img: "",
+        img: "/ships/marshalCrux.png",
         type: "Carrier",
         variant: "A",
         variant_name: "Super Type",
@@ -1313,7 +1313,7 @@ const data = [{
     }, {
         name: "Solar Whale",
         title: "Armed Tactical Carrier",
-        img: "",
+        img: "/ships/solarWhale.png",
         type: "Carrier",
         variant: "A",
         variant_name: "Super Type",

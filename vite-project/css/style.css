@@ -6,6 +6,9 @@
   --gradientGray3: #27282e;
   --gradientGray4: #17171c;
   --content: rgba(0, 0, 0, 0.15);
+  --greenContent: rgba(68, 255, 114, 0.15);
+  --redContent: rgba(255, 124, 124, 0.15);
+  --content2: rgba(255, 255, 255, 0.05);
   --footer: rgba(0, 0, 0, 0.35);
   --transparent: rgba(255, 255, 255, 0.1);
 
@@ -51,8 +54,17 @@
 
   --h1: 5vh;
   --h2: 3.5vh;
+  --h3: 2.5vh;
   --p: 2vh;
-  --standard: 1.75vh;
+  --standard2: 1.5vh;
+  --standard: 1vh;
+
+  --pImgWidth: 9.4078vh; /* 1.44736842vh width : 1vh height*/
+  --pImgHeight: 6.5vh;
+  --standard2ImgWidth: 6.5132vh;
+  --standard2ImgHeight: 4.5vh;
+  --standardImgWidth: 4.3421vh;
+  --standardImgHeight: 3vh;
 }
 
 .light {
@@ -89,6 +101,10 @@ h2 {
   font-size: var(--h2);
 }
 
+h3 {
+  font-size: var(--h3);
+}
+
 p {
   font-size: var(--p);
 }
@@ -115,7 +131,7 @@ footer {
   position: relative;
   bottom: 0;
   width: 99.165vw;
-  height: 15vh;
+  height: 18vh;
   margin-top: 3vh;
 }
 
@@ -125,28 +141,11 @@ header {
   top: 0;
   width: 99.165vw;
   height: 23vh;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 }
 
 button {
   font-family: 'Kanit', sans-serif;
-}
-
-#themeButton {
-  height: 6vh;
-  width: 6vh;
-  position: absolute;
-  top: 3vh;
-  right: 3vh;
-  background-color: rgba(0, 0, 0, 0);
-  transition: all 0.5s;
-  border-radius: 3vh;
-  border: 0;
-  margin: 0.15vw;
-}
-
-#themeButton:hover {
-  transform: scale(1.25);
 }
 
 img {
@@ -234,7 +233,7 @@ img {
   width: 40vw;
   border-radius: 3vw;
   margin: auto;
-  font-size: var(--h4);
+  font-size: var(--p);
 }
 
 #textBox:focus {
@@ -289,20 +288,47 @@ img {
   margin-top: 10vh;
 }
 
-.RAResults {
+.RAResultsHolder {
   background-color: var(--content);
   border-radius: 5vw;
   width: 60vw;
   padding: 1vw;
-  display: grid;
-  grid-template-columns: 15vw 15vw 15vw 15vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.RAResults {
+  border-radius: 5vw;
+  width: 30vw;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
   margin: auto;
   margin-top: 5vh;
 }
 
 .RAResult {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RAData {
+  display: flex;
+  align-items: center;
+}
+
+.RADataPercent {
+  display: flex;
+}
+
+.RADataImg {
+  display: flex;
+  width: var(--pImgWidth);
+  height: var(--pImgHeight);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #gravityAssistIcon,
@@ -353,8 +379,114 @@ img {
   transform: scale(1.2);
 }
 
+.navButtons {
+  width: 99vw;
+  margin: auto;
+}
+
 .navButton {
   background-color: var(--content);
   border: 0;
   height: 5vh;
+  transition: all 0.5s;
+}
+
+.navButton:hover {
+  transform: scale(1.05);
+  background-color: var(--content2);
+}
+
+.activeHeaderButton {
+  background-color: var(--lightContent);
+  border: var(--deepGreen);
+  border-width: 0.5vh;
+  transform: scale(1.05);
+}
+
+.latestChange,
+.allChange {
+  padding: 2vh;
+  border-radius: 3vh;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
+  width: 66vw;
+}
+
+.latestChange {
+  background-color: var(--greenContent);
+}
+
+.allChange {
+  background-color: var(--redContent);
+}
+
+#loadAllChanges,
+#hideAllChanges {
+  margin-bottom: 3vh;
+  border-radius: 2vh;
+  padding: 2vh;
+  border-width: 0.1vh;
+  transition: all 0.5s;
+  width: 20vh;
+}
+
+#loadAllChanges:hover,
+#hideAllChanges:hover {
+  transform: scale(1.05);
+}
+
+#loadAllChanges {
+  background-color: var(--deepGreen);
+  border-color: var(--deepGreen);
+}
+
+#hideAllChanges {
+  background-color: var(--pastelRed);
+  border-color: var(--pastelRed);
+}
+
+.links {
+  margin-bottom: 1vh;
+}
+
+@media screen and (max-width: 1300px) {
+  .RAData {
+    font-size: var(--standard2);
+  }
+
+  .RADataImg {
+    width: var(--standard2ImgWidth);
+    height: var(--standard2ImgHeight);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .RADataImg {
+    width: var(--standardImgWidth);
+    height: var(--standardImgHeight);
+  }
+
+  .RAButton {
+    font-size: var(--standard);
+  }
+
+  h1 {
+    font-size: var(--h2);
+  }
+
+  h2 {
+    font-size: var(--h3);
+  }
+
+  h3 {
+    font-size: var(--p);
+  }
+
+  p {
+    font-size: var(--standard2);
+  }
+
+  #text {
+    font-size: var(--standard);
+  }
 }

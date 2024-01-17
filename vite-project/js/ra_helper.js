@@ -103,17 +103,11 @@ function insertData (manufacturer, direction, scope) {
     let percentages = weightCalculator(getData(manufacturer, direction, scope, 7));
 
     for (let i = 0; i < names.length; i++) {
-        document.querySelector("#RAName").insertAdjacentHTML("beforeend", 
-        `<p>${names[i]}</p>`);
-        
-        document.querySelector("#RAVariant").insertAdjacentHTML("beforeend",
-        `<p>${variants[i]}-${variant_names[i]}</p>`);
-        
-        document.querySelector("#RAType").insertAdjacentHTML("beforeend",
-        `<p>${types[i]}</p>`);
-
-        document.querySelector("#RAChance").insertAdjacentHTML("beforeend",
-        `<p>${percentages[i]}%</p>`);
+        document.querySelector(".RAResults").insertAdjacentHTML("beforeend", 
+        `<div class="RAResult">
+            <p class="RAData"><img src="${imgs[i]}" alt="Image of ${names[i]}" class="RADataImg">${names[i]}-${variants[i]}</p>
+            <p class="RADataPercent">${percentages[i]}%</p>
+        </div>`);
     };
 };
 
@@ -126,7 +120,7 @@ function insertRAHelper () {
     
     <div class="RAButtons">
         <div class="manufacturers">
-            <h3>Manufacturers</h3>
+            <h3>Companies</h3>
             <button class="RAButton active" id="jupiterIndustries">Jupiter Industry</button>
             <button class="RAButton" id="nomaShipping">NOMA Shipping</button>
             <button class="RAButton" id="antonios">Antonios</button>
@@ -151,17 +145,8 @@ function insertRAHelper () {
 
     <button id="resetButton">Reset</button>
 
-    <div class="RAResults">
-        <div class="RAResult" id="RAName">
-        </div>
-
-        <div class="RAResult" id="RAVariant">
-        </div>
-
-        <div class="RAResult" id="RAType">
-        </div>
-
-        <div class="RAResult" id="RAChance">
+    <div class="RAResultsHolder">
+        <div class="RAResults">
         </div>
     </div>
     `;
@@ -177,7 +162,7 @@ function insertRAHelper () {
         document.querySelector(`#outstandingFirepower`).classList.add("active");
         document.querySelector(`#projectile`).classList.add("active");
 
-        document.querySelector(".RAList").innerHTML = "";
+        document.querySelector(".RAResults").innerHTML = "";
         manufacturer = "Jupiter Industry";
         direction = "Outstanding Firepower";
         scope = "Projectile Weapon";
@@ -187,10 +172,7 @@ function insertRAHelper () {
     const buttons = document.querySelectorAll(".RAButton");
     buttons.forEach((button) => button.addEventListener("click", function () {
         let buttonType;
-        document.querySelector("#RAName").innerHTML = "";
-        document.querySelector("#RAVariant").innerHTML = "";
-        document.querySelector("#RAType").innerHTML = "";
-        document.querySelector("#RAChance").innerHTML = "";
+        document.querySelector(".RAResults").innerHTML = "";
 
         if (button == buttons[0] || button == buttons[1] || button == buttons[2] || button == buttons[3]) {
             manufacturer = button.textContent;
