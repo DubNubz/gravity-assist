@@ -11,10 +11,10 @@ Infinite Lagrange is a space-themed multiplayer RTS where players can build flee
 - Tech Point Allocation Planner (planned)
 
 ## Changelog
-### v3.1.0
-- Changed information displayed in Research Agreement Helper
+### v0.3.1 | January 16, 2024
+- Changed the information displayed in Research Agreement Helper
 - Version number in footer is now dynamic
-- Optimized information displated in Research Agreement Helper for mobile users
+- Optimized how information is displayed in Research Agreement Helper for mobile users
 - Added images to Research Agreement Helper
 
 All changes can be found in the full [changelog](https://gravity-assist.netlify.app/).
