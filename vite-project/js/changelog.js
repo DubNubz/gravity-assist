@@ -23,6 +23,12 @@ const changelog = [{
         version: "0.3.2",
         release: "January 16, 2024",
         notes: ["Optimized Research Agreement Helper for mobile users further"]
+    }, {
+        version: "0.3.3",
+        release: "January 17, 2024",
+        notes: ["Changed how Color Generator operates", "Color Generator is now based on text-based markers rather than highlighting text",
+        "Removed the Underline option in Color Generator", "Changed tutorial text of Color Generator to match the other changes",
+        "Fixed the character counters in Color Generator"]
     }
 ];
 
