@@ -29,6 +29,10 @@ const changelog = [{
         notes: ["Changed how Color Generator operates", "Color Generator is now based on text-based markers rather than highlighting text",
         "Removed the Underline option in Color Generator", "Changed tutorial text of Color Generator to match the other changes",
         "Fixed the character counters in Color Generator"]
+    }, {
+        version: "0.3.4",
+        release: "January 20, 2024",
+        notes: ["Fixed a bug where Color Generator output not updating when a color marker was placed in the input"]
     }
 ];
 

@@ -22,6 +22,7 @@ function addMarker(num) {
   selection.removeAllRanges();
   selection.addRange(range);
 
+  document.querySelector("#outputBox").innerHTML = compileText(0);
   document.querySelector("#messageCharacterCounter").innerHTML = `${compileText(1).length}/280 characters (chat message)`;
   document.querySelector("#mailCharacterCounter").innerHTML = `${compileText(1).length}/1000 characters (mail)`;
 };
@@ -104,8 +105,8 @@ function insertColorGenerator() {
     </div>
     
     <div class="cards">
-    <div id="textBox" contenteditable="true">Click <span class="gold">★here </span><span class="white">★to start typing!</span><br><br><span class="cyan">★Click anywhere </span><span class="white">in your text and </span><span class="pastelPink">★click one of the buttons above </span><span class="white">★to add a marker to change colors!</span></div>
-    <div id="outputBox">Click <span class="gold">#Dhere </span><span class="white">#Wto start typing!</span>#r#r<br><br><span class="cyan">#c56deffClick anywhere </span><span class="white">#Win your text and </span><span class="pastelPink">#cffaafeclick one of the buttons above </span><span class="white">#Wto add a marker to change colors!</span></div>
+    <div id="textBox" contenteditable="true">Click <span class="gold">★here </span><span class="white">★to start typing!</span><div><br></div><div><span class="cyan">★Click anywhere </span><span class="white">★in your text and </span><span class="pastelPink">★click one of the buttons above </span><span class="white">★to add a marker to change colors!</span></div></div>
+    <div id="outputBox">Click <span class="gold">#Dhere </span><span class="white">#Wto start typing!#r</span><br>#r<span class="cyan">#c56deffClick anywhere </span><span class="white">#Win your text and </span><span class="pastelPink">#cffaafeclick one of the buttons above </span><span class="white">#Wto add a marker to change colors!</span></div>
     </div>
     
     <p id="messageCharacterCounter">151/280 characters (chat message)</p>
