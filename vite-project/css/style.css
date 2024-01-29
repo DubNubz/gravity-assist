@@ -374,9 +374,8 @@ img {
 
 .active {
   background-color: var(--deepGreen);
-  border-width: 0.5vh;
   border-color: var(--deepGreen);
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .navButtons {
@@ -449,6 +448,50 @@ img {
   margin-bottom: 1vh;
 }
 
+.shipOverall {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--content);
+  padding: 3vh;
+  border-radius: 3vh;
+  margin-bottom: 5vh;
+  width: 70vw;
+  align-items: center;
+}
+
+.shipModShowcase {
+  background-color: var(--content);
+  padding: 3vh;
+  border-radius: 3vh;
+  width: 70vw;
+}
+
+#modShipImg {
+  width: 36.1842vh;
+  height: 25vh;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.shipMods {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50vw;
+}
+
+.modButton {
+  height: 5vh;
+  transition: all 0.5s;
+  width: 3vw;
+  height: 3vh;
+  border-radius: 1vh;
+  border-width: 0.1vh;
+}
+
+.modButton:hover {
+  transform: scale(1.05);
+}
+
 @media screen and (max-width: 1300px) {
   .RAResultsHolder {
     width: 70vw;
@@ -514,5 +557,14 @@ img {
 
   #text {
     font-size: var(--standard);
+  }
+
+  #modShipImg {
+    width: 21.7105vh;
+    height: 15vh;
+  }
+
+  .modButton {
+    width: 3vh;
   }
 }

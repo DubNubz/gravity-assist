@@ -1,5 +1,5 @@
 
-import { DOMSelectors } from "./domselectors";
+import { DOMSelectors } from "../domselectors";
 import { difficulty, data } from "./ra_data";
 
 let manufacturer = "Jupiter Industry";

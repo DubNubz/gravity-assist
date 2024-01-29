@@ -33,6 +33,11 @@ const changelog = [{
         version: "0.3.4",
         release: "January 20, 2024",
         notes: ["Fixed a bug where Color Generator output not updating when a color marker was placed in the input"]
+    }, {
+        version: "0.4.0",
+        release: "January 28, 2024",
+        notes: ["Added Module Library", "Fixed ST59 and Spear of Uranus being misplaced in the Research Agreement Helper ship order",
+        "Changed the size of active buttons to better fit mobile devices"]
     }
 ];
 

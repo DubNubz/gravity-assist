@@ -1234,17 +1234,6 @@ const data = [{
         scope: "Direct-Fire Weapon",
         weight: 2
     }, {
-        name: "ST59",
-        title: "Defensive Battlecruiser",
-        img: "/ships/st59.png",
-        type: "Battlecruiser",
-        variant: "A",
-        variant_name: "Super Type",
-        manufacturer: "Dawn Accord",
-        direction: ["Sustained Combat", "Strategy & Support"],
-        scope: "Direct-Fire Weapon",
-        weight: 5
-    }, {
         name: "Spear of Uranus",
         title: "Heavy Battlecruiser",
         img: "/ships/spearOfUranus.png",
@@ -1255,6 +1244,17 @@ const data = [{
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
         weight: 2
+    }, {
+        name: "ST59",
+        title: "Defensive Battlecruiser",
+        img: "/ships/st59.png",
+        type: "Battlecruiser",
+        variant: "A",
+        variant_name: "Super Type",
+        manufacturer: "Dawn Accord",
+        direction: ["Sustained Combat", "Strategy & Support"],
+        scope: "Direct-Fire Weapon",
+        weight: 5
     }, {
         name: "Thunderbolt Star",
         title: "Multi-Role Arsenal Ship",

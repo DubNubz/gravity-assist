@@ -1,6 +1,6 @@
 
 import { changelog } from "./changelog";
-import { DOMSelectors } from "./domselectors";
+import { DOMSelectors } from "../domselectors";
 
 const changelogAll = changelog.slice(0, -1);
 
