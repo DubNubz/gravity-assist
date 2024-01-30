@@ -121,7 +121,7 @@ function insertRAHelper () {
     <div class="RAButtons">
         <div class="manufacturers">
             <h3>Companies</h3>
-            <button class="RAButton active" id="jupiterIndustries">Jupiter Industry</button>
+            <button class="RAButton" id="jupiterIndustries">Jupiter Industry</button>
             <button class="RAButton" id="nomaShipping">NOMA Shipping</button>
             <button class="RAButton" id="antonios">Antonios</button>
             <button class="RAButton" id="dawnAccord">Dawn Accord</button>
@@ -129,7 +129,7 @@ function insertRAHelper () {
         </div>
         <div class="directions">
             <h3>Directions</h3>
-            <button class="RAButton active" id="outstandingFirepower">Outstanding Firepower</button>
+            <button class="RAButton" id="outstandingFirepower">Outstanding Firepower</button>
             <button class="RAButton" id="sustainedCombat">Sustained Combat</button>
             <button class="RAButton" id="strategySupport">Strategy & Support</button>
             <button class="RAButton" id="fighterCorvette">Fighter & Corvette</button>
@@ -137,7 +137,7 @@ function insertRAHelper () {
         </div>
         <div class="scopes">
             <h3>Scopes</h3>
-            <button class="RAButton active" id="projectile">Projectile Weapon</button>
+            <button class="RAButton" id="projectile">Projectile Weapon</button>
             <button class="RAButton" id="directfire">Direct-Fire Weapon</button>
             <button class="RAButton" id="emptyScope">Empty</button>
         </div>
@@ -151,7 +151,13 @@ function insertRAHelper () {
     </div>
     `;
 
-    insertData("Jupiter Industry", "Outstanding Firepower", "Projectile Weapon");
+    insertData(manufacturer, direction, scope);
+    const RAButtons = document.querySelectorAll(".RAButton");
+    RAButtons.forEach((button) => {
+        if (button.textContent == manufacturer || button.textContent == direction || button.textContent == scope) {
+            button.classList.add("active");
+        }
+    })
 
     document.querySelector("#resetButton").addEventListener("click", function () {
         const buttons = document.querySelectorAll(".RAButton");

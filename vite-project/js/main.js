@@ -41,7 +41,7 @@ DOMSelectors.themeButton.addEventListener("click", function () {
   }
 });
 
-insertColorGenerator();
+insertChangelog();
 
 DOMSelectors.version.innerHTML = `Gravity Assist v${changelog[changelog.length - 1].version} by DubNubz`;
 

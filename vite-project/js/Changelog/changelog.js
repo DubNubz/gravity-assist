@@ -38,6 +38,12 @@ const changelog = [{
         release: "January 28, 2024",
         notes: ["Added Module Library", "Fixed ST59 and Spear of Uranus being misplaced in the Research Agreement Helper ship order",
         "Changed the size of active buttons to better fit mobile devices"]
+    }, {
+        version: "0.4.1",
+        release: "January 29, 2024",
+        notes: ["Renamed Changelog to Home", "Changed Research Agreement Helper and Module Library to save progress if you switch Gravity Assist tools",
+        "Significantly changed the display of data in Module Library", "Changed Gravity Assist to default to displaying Home on load",
+        "Added alternative Navigation Bar buttons to the Home Page", "Fixed some module data"]
     }
 ];
 

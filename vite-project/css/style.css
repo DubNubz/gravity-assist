@@ -466,6 +466,19 @@ img {
   width: 70vw;
 }
 
+.modWeaponHolder {
+  width: 70vw;
+  margin-top: 3vh;
+}
+
+.modWeapon {
+  background-color: var(--content);
+  padding: 3vh;
+  border-radius: 3vh;
+  width: 70vw;
+  margin-top: 3vh;
+}
+
 #modShipImg {
   width: 36.1842vh;
   height: 25vh;
@@ -474,9 +487,12 @@ img {
 
 .shipMods {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 50vw;
+  flex-direction: column;
+  width: 20vh;
+}
+
+.shipModHolder {
+  margin-top: 0.5vh;
 }
 
 .modButton {
@@ -490,6 +506,118 @@ img {
 
 .modButton:hover {
   transform: scale(1.05);
+}
+
+#modStats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#modHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#antishipBar,
+#antiairBar,
+#siegeBar,
+#hpBar,
+#armorBar,
+#shieldBar {
+  width: 22vw;
+  height: 3vh;
+  background-color: var(--footer);
+  border-radius: 3vh;
+}
+
+.fillerBar {
+  height: 100%;
+  background-color: var(--pastelOrange);
+  border-radius: 3vh;
+}
+
+.fillerBarArmor {
+  height: 100%;
+  background-color: var(--pastelBlue);
+  border-radius: 3vh;
+}
+
+.weaponImg {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+  width: 6vh;
+  height: 6vh;
+}
+
+.modWeaponStats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#damageType,
+#dph,
+#prioritizedTarget,
+#modWeaponLockon {
+  width: 30vw;
+}
+
+.appButtonDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--content);
+  padding: 3vh;
+  border-radius: 5vh;
+  width: 30vh;
+}
+
+.appButton {
+  width: 25vh;
+  margin-bottom: 1vh;
+  padding: 1vh;
+  border-radius: 5vh;
+  border-width: 0.1vh;
+  transition: all 0.5s;
+}
+
+#colorGeneratorAppButton {background-color: var(--pastelRed)}
+#researchAgreementAppButton {background-color: var(--pastelOrange)}
+#modLibraryAppButton {background-color: var(--pastelYellow)}
+
+.appButton:hover {
+  transform: scale(1.2);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.moveShipsButton {
+  display: flex;
+  width: 35vw;
+  justify-content: space-between;
+}
+
+#previousShipButton,
+#nextShipButton {
+  width: 15vw;
+  height: 5vh;
+  border-radius: 2vh;
+  border-width: 0.1vh;
+  transition: all 0.5s;
+}
+
+#previousShipButton {background-color: var(--pastelRed)}
+#nextShipButton {background-color: var(--pastelGreen)}
+
+#previousShipButton:hover,
+#nextShipButton:hover {
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 1300px) {
@@ -566,5 +694,10 @@ img {
 
   .modButton {
     width: 3vh;
+  }
+  
+  .weaponImg {
+    width: 3vh;
+    height: 3vh;
   }
 }
