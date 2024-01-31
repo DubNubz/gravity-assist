@@ -6,7 +6,7 @@ import { insertChangelog } from './Changelog/changelogPage';
 import { changelog } from './Changelog/changelog';
 import { insertModLibrary } from './Module Library/mod_library';
 
-DOMSelectors.themeButton.addEventListener("click", function () {
+/* DOMSelectors.themeButton.addEventListener("click", function () {
   if (document.body.classList.contains("light")) {
     document.body.classList.add("dark");
     document.querySelector("#header").classList.add("darkHeader");
@@ -39,7 +39,7 @@ DOMSelectors.themeButton.addEventListener("click", function () {
     document.querySelector("#changelog").classList.remove("darkButton");
     document.querySelector("#themeButton").classList.remove("darkButton");
   }
-});
+}); */
 
 insertChangelog();
 

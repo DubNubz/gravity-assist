@@ -8,7 +8,7 @@ Infinite Lagrange is a space-themed multiplayer RTS where players can build flee
 
 - Color Generator
 - Research Agreement Helper
-- Research Agreement Finder (planned)
+- Research Agreement Finder
 - Super Capital Ship Module Encyclopedia
 - Tech Point Allocation Planner (planned)
 

@@ -44,6 +44,11 @@ const changelog = [{
         notes: ["Renamed Changelog to Home", "Changed Research Agreement Helper and Module Library to save progress if you switch Gravity Assist tools",
         "Significantly changed the display of data in Module Library", "Changed Gravity Assist to default to displaying Home on load",
         "Added alternative Navigation Bar buttons to the Home Page", "Fixed some module data"]
+    }, {
+        version: "0.4.2",
+        release: "January 30, 2024",
+        notes: ["Added a search by ship feature for Research Agreement Helper", "Optimized Module Library buttons for mobile devices",
+        "Removed the Theme button", "Fixed wrong results for Hayreddin's Loyal and Thunderbolt Star in Research Agreement Helper"]
     }
 ];
 

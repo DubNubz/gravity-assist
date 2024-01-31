@@ -118,7 +118,7 @@ const data = [{
         type: "Fighter",
         variant: "A",
         variant_name: "Special Type",
-        manufacturer: "Hayreddin Clan",
+        manufacturer: "Empty",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
         weight: 5
@@ -1262,7 +1262,7 @@ const data = [{
         type: "Battlecruiser",
         variant: "A",
         variant_name: "Super Type",
-        manufacturer: "Thunderbolt Group",
+        manufacturer: "Empty",
         direction: ["Outstanding Firepower", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
         weight: 2
