@@ -14,9 +14,9 @@
         <ChangelogCard/>
     </div>
 
-    <button @click="changeButton" class="loadAllChanges load">{{ loadFlavorText }} all changes</button>
+    <button @click="changeButton" class="loadAllChanges" :class="{ load: loaded == false, unload: loaded == true }">{{ loadFlavorText }} all changes</button>
     <div class="allChanges" v-if="loaded">
-        <AllChangesCard v-for="change in changeedChangelog"
+        <AllChangesCard v-for="change in changedChangelog"
         :key="change.version"
         :Change="change"
         />
@@ -34,18 +34,14 @@ import { changelog } from '@/stores/changelog';
 const loaded = ref(false);
 const loadFlavorText = ref("View");
 
-const changeedChangelog = ref(changelog.splice(0, changelog.length - 1));
-changeedChangelog.value.reverse();
+const changedChangelog = ref(changelog.slice(0, changelog.length - 1));
+changedChangelog.value.reverse();
 
 function changeButton () {
     loaded.value = !loaded.value;
     if (loaded.value == false) {
-        document.querySelector(".loadAllChanges").classList.add("load");
-        document.querySelector(".loadAllChanges").classList.remove("unload");
         loadFlavorText.value = "View";
     } else {
-        document.querySelector(".loadAllChanges").classList.remove("load");
-        document.querySelector(".loadAllChanges").classList.add("unload");
         loadFlavorText.value = "Hide";
     }
 }

@@ -1,27 +1,15 @@
 <template>
-    <div class="RAResult" v-for="ship in filteredData">
+    <div class="RAResult" v-for="ship in Data">
             <p class="RAData"><img :src="ship.img" :alt="ship.name" class="RADataImg">{{ ship.name }}-{{ ship.variant }}</p>
-            <p class="RADataPercent">{{ ((ship.weight / (Object.values(filteredData).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</p>
+            <p class="RADataPercent">{{ ((ship.weight / (Object.values(Data).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</p>
         </div>
 </template>
 
 <script setup>
 
-import { ref } from 'vue';
-import { data } from '@/stores/ra_data';
-import { globalVariables } from '@/stores/global';
-
-const filteredData = ref([]);
-
-for (let ship in data) {
-    if (data[ship].manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "No Company") {
-        if (data[ship].direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "No Direction") {
-            if (data[ship].scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "No Scope") {
-                filteredData.value.push(data[ship]);
-            }
-        }
-    }
-}
+const props = defineProps({
+  Data: Array,
+})
 
 </script>
 

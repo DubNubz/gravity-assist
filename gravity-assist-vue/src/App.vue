@@ -5,10 +5,30 @@
       <h1 id="gravityAssistTitle">Gravity Assist</h1>
     </div>
     <div class="navButtons">
-      <RouterLink :to="{ path: '/'}" class="navButton activeHeaderButton">Home</RouterLink>
-      <RouterLink :to="{ path: '/modules/color-generator'}" class="navButton">Color Generator</RouterLink>
-      <RouterLink :to="{ path: '/modules/research-agreement-helper'}" class="navButton">Research Agreement Helper</RouterLink>
-      <RouterLink :to="{ path: '/modules/module-library'}" class="navButton">Module Library</RouterLink>
+      <RouterLink :to="{ path: '/'}"
+      class="navButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Home' }"
+      @click="changeModule('Home')">
+      Home</RouterLink>
+
+      <RouterLink :to="{ path: '/modules/color-generator'}"
+      class="navButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Color Generator' }"
+      @click="changeModule('Color Generator')">
+      Color Generator</RouterLink>
+
+      <RouterLink :to="{ path: '/modules/research-agreement-helper'}"
+      class="navButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Research Agreement Helper' }"
+      @click="changeModule('Research Agreement Helper')">
+      Research Agreement Helper</RouterLink>
+
+      <RouterLink :to="{ path: '/modules/module-library'}"
+      class="navButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Module Library' }"
+      @click="changeModule('Module Library')">
+      Module Library</RouterLink>
+      
     </div>
   </header>
 
@@ -32,6 +52,11 @@
 <script setup>
 
 import { changelog } from './stores/changelog';
+import { globalVariables } from './stores/global';
+
+function changeModule (button) {
+  globalVariables.activeModule.value = button;
+}
 
 </script>
 

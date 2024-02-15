@@ -10,9 +10,6 @@
 
 <script setup>
 
-import { ref } from 'vue';
-import { changelog } from '@/stores/changelog';
-
 const props = defineProps({
     Change: Object,
 })
