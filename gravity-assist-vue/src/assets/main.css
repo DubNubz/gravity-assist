@@ -1,0 +1,103 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+:root {
+  --gradientGray1: #5a5a5c;
+  --gradientGray2: #313238;
+  --gradientGray3: #27282e;
+  --gradientGray4: #17171c;
+  --content: rgba(0, 0, 0, 0.15);
+  --greenContent: rgba(68, 255, 114, 0.15);
+  --redContent: rgba(255, 124, 124, 0.15);
+  --content2: rgba(255, 255, 255, 0.05);
+  --footer: rgba(0, 0, 0, 0.35);
+  --transparent: rgba(255, 255, 255, 0.1);
+
+  --lightHeader: rgba(255, 255, 255, 0.5);
+  --darkHeader: rgba(0, 0, 0, 0.5);
+
+  --lightGradientGray1: #c9c9ec;
+  --lightGradientGray2: #c0c6df;
+  --lightGradientGray3: #b9bcce;
+  --lightGradientGray4: #b7b7c0;
+  --lightContent: rgba(255, 255, 255, 0.15);
+  --lightFooter: rgba(255, 255, 255, 0.35);
+  --lightTransparent: rgba(0, 0, 0, 0.1);
+
+  --red: rgb(255, 0, 0);
+  --orange: rgb(255, 165, 0);
+  --gold: rgb(255, 215, 0);
+  --yellow: rgb(255, 255, 0);
+  --green: rgb(0, 255, 0);
+  --blue: rgb(0, 0, 255);
+  --hotPink: rgb(255, 0, 255);
+  --lightPink: rgb(255, 192, 203);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+
+  --pastelRed: #ffaaaa;
+  --pastelOrange: #ffddaa;
+  --deepOrange: #ff9756;
+  --pastelYellow: #fbffaa;
+  --deepYellow: #ffe561;
+  --pastelGreen: #aaffaa;
+  --deepGreen: #56ff93;
+  --aqua: #5bffd2;
+  --turquoise: #1abc9c;
+  --lightBlue: #6af1fd;
+  --cyan: #56ddff;
+  --pastelBlue: #aac8ff;
+  --pastelPink: #ffaafe;
+  --deepPink: #f467cb;
+  --normalText: #ccc9c6;
+  --darkGray: #878787;
+  --invisible: #222222;
+
+  --h1: 5vh;
+  --h2: 3.5vh;
+  --h3: 2.5vh;
+  --p: 2vh;
+  --standard2: 1.5vh;
+  --standard: 1vh;
+
+  --pImgWidth: 9.4078vh; /* 1.44736842vh width : 1vh height*/
+  --pImgHeight: 6.5vh;
+  --standard2ImgWidth: 6.5132vh;
+  --standard2ImgHeight: 4.5vh;
+  --standardImgWidth: 4.3421vh;
+  --standardImgHeight: 3vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  transition: all 1.25s;
+  font-size: var(--standard);
+  color: white;
+  background: linear-gradient(to bottom right, var(--gradientGray1), var(--gradientGray2), var(--gradientGray3), var(--gradientGray4));
+}
+
+h1 {font-size: var(--h1)}
+h2 {font-size: var(--h2)}
+h3 {font-size: var(--h3)}
+p {font-size: var(--p)}
+#text {font-size: var(--standard)}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+button {
+  font-family: 'Kanit', sans-serif;
+}

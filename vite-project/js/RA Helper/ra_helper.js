@@ -1,6 +1,6 @@
 
 import { DOMSelectors } from "../domselectors";
-import { difficulty, data } from "./ra_data";
+import { difficulty, data } from "../../../gravity-assist-vue/src/stores/ra_data";
 
 let manufacturer = "Jupiter Industry";
 let direction = "Outstanding Firepower";
