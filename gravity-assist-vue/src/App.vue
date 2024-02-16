@@ -41,8 +41,7 @@
     <div class="links">
       <a href="https://discord.com/invite/9mJ9b2Bbzx" target="_blank"><img src="/discord_icon.png"
           alt="Link to the Radiant Gravity Discord server" id="discord_link"></a>
-      <a href="https://github.com/DubNubz/gravity-assist-app" target="_blank"><img src="/github_icon.png"
-          alt="Link to the Gravity Assist GitHub repo" id="github_link"></a>
+      <!-- github link -->
     </div>
     This site is not affiliated to, associated with, or authorized by NetEase or Infinite Lagrange. 
     The use of any trademark is for reference purposes only and all rights belong to their respective owners.
@@ -58,9 +57,17 @@ function changeModule (button) {
   globalVariables.activeModule.value = button;
 }
 
+/* github link
+<a href="https://github.com/DubNubz/gravity-assist-app" target="_blank"><img src="/github_icon.png" alt="Link to the Gravity Assist GitHub repo" id="github_link"></a>
+*/
+
 </script>
 
 <style scoped>
+
+.links {
+  margin-bottom: 1vh;
+}
 
 .view {
   display: flex;

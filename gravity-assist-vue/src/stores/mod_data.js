@@ -2091,6 +2091,103 @@ const data = [{
         }]
     }]
 }, {
+    name: "Eternal Heavens",
+    title: "UAV Carrier",
+    img: "/ships/eternalHeavens.png",
+    type: "Carrier",
+    cost: 40,
+    row: "Back",
+    manufacturer: "Jupiter Industry",
+    modules: [{
+        img: "/weapons/aircraft.png",
+        type: "misc",
+        identity: "M1",
+        name: "Collaborative Hanger I",
+        default: true,
+        stats: {
+            hp: 24500
+        },
+        weapons: [{
+            type: "hanger",
+            count: 1,
+            title: `CBF-280`,
+            name: "Medium Fighter Hanger",
+            hanger: "Medium Fighter",
+            capacity: 3
+        }, {
+            type: "hanger",
+            count: 3,
+            title: `"Decomposer"`,
+            name: "Cooperative Offensive UAV Platform",
+            hanger: "Cooperative Offensive UAV",
+            capacity: 3,
+            attributes: ["UAV Cooperation: Each set of aircrafts in the same system comes with a UAV to perform cooperative combat. If any aircraft survives, the UAV and the aircraft(s) will attack the same target together first."]
+        }]
+    }, {
+        type: "unknown",
+        identity: "M2"
+    }, {
+        type: "unknown",
+        identity: "M3"
+    }, {
+        img: "/weapons/cannon.png",
+        type: "weapon",
+        identity: "A1",
+        name: `Integrated Battery System`,
+        default: true,
+        stats: {
+            antiship: 10250,
+            antiair: 472,
+            siege: 3815,
+            hp: 26000
+        },
+        weapons: [{
+            type: "weapon",
+            count: 2,
+            title: `AG-3400A`,
+            name: `Triple-Fire Heavy Turret`,
+            damageType: "Projectile",
+            target: "Large Ship",
+            lockonEfficiency: null,
+            alpha: 320,
+            attributes: null
+        }, {
+            type: "weapon",
+            count: 3,
+            title: `AG-2208A`,
+            name: `Dual-Cannon Anti-Ship Battery`,
+            damageType: "Projectile",
+            target: "Small Ship",
+            lockonEfficiency: 10,
+            alpha: 100,
+            attributes: null
+        }]
+    }, {
+        type: "unknown",
+        identity: "A2"
+    }, {
+        type: "unknown",
+        identity: "A3"
+    }, {
+        type: "unknown",
+        identity: "B1"
+    }, {
+        type: "unknown",
+        identity: "B2"
+    }, {
+        type: "unknown",
+        identity: "B3"
+    }, {
+        type: "unknown",
+        identity: "C1"
+    }, {
+        type: "unknown",
+        identity: "C2"
+    }, {
+        type: "unknown",
+        identity: "C3"
+    }]
+}, {
     name: "Marshal Crux",
     title: "Carrier",
     img: "/ships/marshalCrux.png",

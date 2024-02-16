@@ -20,7 +20,7 @@
             <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'NOMA Shipping' }" id="nomaShipping" @click="changeView(1, 'NOMA Shipping')">NOMA Shipping</button>
             <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Antonios' }" id="antonios" @click="changeView(2, 'Antonios')">Antonios</button>
             <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Dawn Accord' }" id="dawnAccord" @click="changeView(3, 'Dawn Accord')">Dawn Accord</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'No Company' }" id="emptyManufacturer" @click="changeView(4, 'No Company')">No Company</button>
+            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Empty' }" id="emptyManufacturer" @click="changeView(4, 'Empty')">No Company</button>
         </div>
         <div class="directions">
             <h3>Directions</h3>
@@ -28,17 +28,17 @@
             <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Sustained Combat' }" id="sustainedCombat" @click="changeView(11, 'Sustained Combat')">Sustained Combat</button>
             <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Strategy & Support' }" id="strategySupport" @click="changeView(12, 'Strategy & Support')">Strategy & Support</button>
             <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Fighter & Corvette' }" id="fighterCorvette" @click="changeView(13, 'Fighter & Corvette')">Fighter & Corvette</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'No Direction' }" id="emptyDirection" @click="changeView(14, 'No Direction')">No Direction</button>
+            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Empty' }" id="emptyDirection" @click="changeView(14, 'Empty')">No Direction</button>
         </div>
         <div class="scopes">
             <h3>Scopes</h3>
             <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Projectile Weapon' }" id="projectile" @click="changeView(20, 'Projectile Weapon')">Projectile Weapon</button>
             <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Direct-Fire Weapon' }" id="directfire" @click="changeView(21, 'Direct-Fire Weapon')">Direct-Fire Weapon</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'No Scope' }" id="emptyScope" @click="changeView(22, 'No Scope')">No Scope</button>
+            <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Empty' }" id="emptyScope" @click="changeView(22, 'Empty')">No Scope</button>
         </div>
     </div>
 
-    <button id="resetButton">Reset</button>
+    <button id="resetButton" @click="reset">Reset</button>
 
     <div class="RAResultsHolder">
         <div class="RAResults">
@@ -56,13 +56,19 @@ import { globalVariables } from '@/stores/global';
 import ResearchSearch from '@/components/ResearchSearch.vue';
 
 globalVariables.activeModule.value = 'Research Agreement Helper';
-const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "No Company") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "No Direction") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "No Scope"))]);
+const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]);
+
+function reset () {
+  globalVariables.activeManufacturer.value = "Jupiter Industry";
+  globalVariables.activeDirection.value = "Outstanding Firepower";
+  globalVariables.activeScope.value = "Projectile Weapon";
+}
 
 function searchChangeView (manufacturer, direction, scope) {
   globalVariables.activeManufacturer.value = manufacturer;
   globalVariables.activeDirection.value = direction[0];
   globalVariables.activeScope.value = scope;
-  filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "No Company") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "No Direction") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "No Scope"))]
+  filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
 function changeView (type, name) {
@@ -73,7 +79,8 @@ function changeView (type, name) {
     } else {
       globalVariables.activeScope.value = name;
     }
-    filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "No Company") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "No Direction") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "No Scope"))]
+    globalVariables.currentSearchShip.value = "Not selected";
+    filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
 </script>

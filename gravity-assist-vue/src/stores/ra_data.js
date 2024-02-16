@@ -1300,6 +1300,17 @@ const data = [{
         scope: "Empty",
         weight: 2
     }, {
+        name: "Eternal Heavens",
+        title: "UAV Carrier",
+        img: "/ships/eternalHeavens.png",
+        type: "Carrier",
+        variant: "A",
+        variant_name: "Super Type",
+        manufacturer: "Jupiter Industry",
+        direction: ["Outstanding Firepower"],
+        scope: "Empty",
+        weight: 2
+    }, {
         name: "Marshal Crux",
         title: "Carrier",
         img: "/ships/marshalCrux.png",

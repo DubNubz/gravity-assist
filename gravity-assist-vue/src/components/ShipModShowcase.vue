@@ -6,7 +6,7 @@
     <div id="modInfo" v-if="Mod.type == 'weapon'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
-            <h2>{{ Mod.identity }} | {{ Mod.name }}</h2>
+            <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
         </div>
         <div id="modStats">
             <div id="antiship">
@@ -37,7 +37,7 @@
     <div id="modInfo" v-if="Mod.type == 'misc'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
-            <h2>{{ Mod.identity }} | {{ Mod.name }}</h2>
+            <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
         </div>
         <div id="modStats">
             <p>System HP: {{ Mod.stats.hp }}</p>
@@ -47,7 +47,7 @@
     <div id="modInfo" v-if="Mod.type == 'armor'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
-            <h2>{{ Mod.identity }} | {{ Mod.name }}</h2>
+            <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
         </div>
         <div id="modStats">
             <div id="hp">
@@ -64,7 +64,7 @@
                     <div class="fillerBarArmor" :style="{ width: (Math.min(1, Math.max(0, (Mod.stats.armor / getMaxArmor(Mod.stats.armor)))) * 100) + '%' }"></div>
                 </div>
             </div>
-            <div id="siege">
+            <div id="shield">
             <img src="/weapons/shieldStat-removebg-preview.png" alt="Value of this module's energy shield statistic" class="weaponImg">
                 <p>{{ Mod.stats.energyShield }}%</p>
                 <div id="shieldBar">
@@ -80,7 +80,7 @@
 
 const props = defineProps({
     Mod: Object,
-})
+});
 
 function getMax (stat) {
     if (stat <= 2500) {
@@ -132,6 +132,10 @@ function getMaxArmor (stat) {
 
 <style scoped>
 
+#modName {
+    margin-left: 1vw;
+}
+
 .shipModShowcase {
   background-color: var(--content);
   padding: 3vh;
@@ -163,6 +167,18 @@ function getMaxArmor (stat) {
   border-radius: 3vh;
 }
 
+#antiship,
+#antiair,
+#siege,
+#hp,
+#armor,
+#shield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+
 .fillerBar {
   height: 100%;
   background-color: var(--pastelOrange);
@@ -180,6 +196,22 @@ function getMaxArmor (stat) {
   border-radius: 0;
   width: 6vh;
   height: 6vh;
+}
+
+@media screen and (max-width: 1000px) {
+  #antishipBar,
+  #antiairBar,
+  #siegeBar,
+  #hpBar,
+  #armorBar,
+  #shieldBar {
+    width: 60vw;
+    height: 2.5vh;
+  }
+
+  #modStats {
+    flex-direction: column;
+  }
 }
 
 </style>

@@ -6,8 +6,8 @@
 
     <div class="shipOverall">
         <div class="moveShipsButton">
-            <button id="previousShipButton" @click="changeShip(0)">&lt;&lt; {{ data[globalVariables.previousShip.value].name }}</button>
-            <button id="nextShipButton" @click="changeShip(1)">{{ data[globalVariables.nextShip.value].name }} >></button>
+            <button id="previousShipButton" @click="changeShip(0)">{{ data[globalVariables.previousShip.value].name }}</button>
+            <button id="nextShipButton" @click="changeShip(1)">{{ data[globalVariables.nextShip.value].name }}</button>
         </div>
         <div class="shipPreview">
             <img :src="data[globalVariables.currentShip.value].img" :alt="data[globalVariables.currentShip.value].name" id="modShipImg">
@@ -72,7 +72,7 @@
     </div>
 
     <div class="modWeaponHolder">
-      <ModWeaponHolder/>
+      <ModWeaponHolder :Mod="data[globalVariables.currentShip.value].modules.find((mod) => mod.identity == globalVariables.currentMod.value[data[globalVariables.currentShip.value].name])"/>
     </div>
 </template>
 
@@ -127,12 +127,6 @@ function changeShip (type) {
   width: 75%;
 }
 
-.active {
-  background-color: var(--deepGreen);
-  border-color: var(--deepGreen);
-  transform: scale(1.1);
-}
-
 .shipOverall {
   display: flex;
   flex-direction: column;
@@ -154,6 +148,9 @@ function changeShip (type) {
 .modWeaponHolder {
   width: 70vw;
   margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modWeapon {
@@ -173,7 +170,7 @@ function changeShip (type) {
 .shipMods {
   display: flex;
   flex-direction: column;
-  width: 20vh;
+  width: 60vw;
 }
 
 .shipModHolder {
@@ -183,10 +180,13 @@ function changeShip (type) {
 .modButton {
   height: 5vh;
   transition: all 0.5s;
-  width: 3vw;
-  height: 3vh;
-  border-radius: 1vh;
+  width: 7.5vw;
+  margin-left: 1vw;
+  margin-bottom: 0.5vh;
+  height: 4vh;
   border-width: 0.1vh;
+  font-size: var(--p);
+  background-color: var(--normalText);
 }
 
 .modButton:hover {
@@ -251,25 +251,58 @@ function changeShip (type) {
 
 .moveShipsButton {
   display: flex;
-  width: 35vw;
+  width: 50%;
   justify-content: space-between;
+  margin-bottom: 3vh;
+  background-color: var(--content);
+  padding: 2vw;
+  border-radius: 3vh;
 }
 
 #previousShipButton,
 #nextShipButton {
-  width: 15vw;
+  width: 50%;
   height: 5vh;
   border-radius: 2vh;
   border-width: 0.1vh;
   transition: all 0.5s;
+  background-color: var(--deepYellow);
+  filter: grayscale(100%);
+  font-size: var(--p);
 }
-
-#previousShipButton {background-color: var(--pastelRed)}
-#nextShipButton {background-color: var(--pastelGreen)}
 
 #previousShipButton:hover,
 #nextShipButton:hover {
+  filter: grayscale(0%);
+}
+
+.active {
+  background-color: var(--deepGreen);
+  border-color: var(--deepGreen);
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 1000px) {
+  .modButton {
+    width: 15vw;
+    height: 4vh;
+    margin-right: 1vw;
+  }
+
+  .shipMods {
+    width: 70vw;
+  }
+
+  .moveShipsButton {
+    width: 100%;
+    padding: 5%;
+  }
+
+#previousShipButton,
+#nextShipButton {
+  height: 7.5vh;
+    font-size: var(--p);
+  }
 }
 
 </style>
