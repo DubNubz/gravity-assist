@@ -98,8 +98,9 @@ p {font-size: var(--p)}
   width: 0;
 }
 
-button {
+button, a {
   font-family: 'Kanit', sans-serif;
   color: black;
   border-color: black;
+  touch-action: manipulation;
 }
