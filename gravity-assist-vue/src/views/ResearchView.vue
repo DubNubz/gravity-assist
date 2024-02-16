@@ -183,7 +183,6 @@ function changeView (type, name) {
   background-color: var(--deepGreen);
   border-color: var(--deepGreen);
   transform: scale(1.1);
-  z-index: 1;
 }
 
 #RASearchButton {

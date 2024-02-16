@@ -100,4 +100,6 @@ p {font-size: var(--p)}
 
 button {
   font-family: 'Kanit', sans-serif;
+  color: black;
+  border-color: black;
 }
