@@ -1,6 +1,6 @@
 <template>
     <div class="RAResult" v-for="ship in Data">
-            <p class="RAData"><img :src="ship.img" :alt="ship.name" class="RADataImg">{{ ship.name }}-{{ ship.variant }}</p>
+            <p class="RAData"><img :src="ship.img" :alt="ship.name" class="RADataImg"><span>{{ ship.name }}-{{ ship.variant }}</span></p>
             <p class="RADataPercent">{{ ((ship.weight / (Object.values(Data).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</p>
         </div>
 </template>
@@ -14,6 +14,10 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
+span {
+  margin-left: 2vw;
+}
 
 .RAResult {
   display: flex;
@@ -38,6 +42,11 @@ const props = defineProps({
 }
 
 @media screen and (max-width: 1300px) {
+
+  span {
+    margin-left: 4vw;
+  }
+
   .RAResultsHolder {
     width: 70vw;
   }
@@ -56,10 +65,11 @@ const props = defineProps({
 }
 
 @media screen and (max-width: 800px) {
-  .RADataImg {
-    width: var(--standardImgWidth);
-    height: var(--standardImgHeight);
+
+  span {
+    margin-left: 5vw;
   }
+
 }
 
 </style>

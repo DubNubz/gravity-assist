@@ -30,7 +30,9 @@ import AllChangesCard from '@/components/AllChangesCard.vue';
 import ChangelogCard from '@/components/ChangelogCard.vue';
 import { ref } from 'vue';
 import { changelog } from '@/stores/changelog';
+import { globalVariables } from '@/stores/global';
 
+globalVariables.activeModule.value === 'Home';
 const loaded = ref(false);
 const loadFlavorText = ref("View");
 
@@ -58,6 +60,7 @@ function changeButton () {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 75vw;
 }
 
 .appButtonDisplay {

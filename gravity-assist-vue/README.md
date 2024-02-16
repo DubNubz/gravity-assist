@@ -1,29 +1,17 @@
-# gravity-assist-vue
+# Gravity Assist
 
-This template should help get you started developing with Vue 3 in Vite.
+Gravity Assist is a tool for NetEase's Infinite Lagrange.
 
-## Recommended IDE Setup
+Infinite Lagrange is a space-themed multiplayer RTS game where players can build fleets and attack other players.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Customize configuration
+- Color Generator
+- Research Agreement Helper
+- Research Agreement Finder
+- Super Capital Ship Module Encyclopedia
+- Tech Point Allocation Planner (planned)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Changelog
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+All changes can be found in the full [changelog](https://gravity-assist.netlify.app/).

@@ -138,6 +138,10 @@ const buttons = document.querySelectorAll(".button");
 
 <style scoped>
 
+.title {
+  width: 75vw;
+}
+
 .red {color: var(--red)}
 .orange {color: var(--orange)}
 .gold {color: var(--gold)}

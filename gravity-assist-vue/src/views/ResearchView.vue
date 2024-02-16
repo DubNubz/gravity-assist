@@ -55,6 +55,7 @@ import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
 import ResearchSearch from '@/components/ResearchSearch.vue';
 
+globalVariables.activeModule.value = 'Research Agreement Helper';
 const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "No Company") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "No Direction") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "No Scope"))]);
 
 function searchChangeView (manufacturer, direction, scope) {
@@ -79,6 +80,10 @@ function changeView (type, name) {
 
 <style scoped>
 
+.title {
+  width: 75vw;
+}
+
 .cyan {color: var(--cyan)}
 
 #resetButton {
@@ -100,7 +105,7 @@ function changeView (type, name) {
 .RAResultsHolder {
   background-color: var(--content);
   border-radius: 5vw;
-  width: 60vw;
+  width: 40vw;
   padding: 1vw;
   display: flex;
   flex-direction: column;
@@ -194,7 +199,25 @@ function changeView (type, name) {
 }
 
 #RASearchMenuBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   z-index: 99999999;
+}
+
+@media screen and (max-width: 1000px) {
+  .RAResultsHolder {
+    width: 75vw;
+  }
+
+  .RAResults {
+    width: 60vw;
+  }
+
 }
 
 </style>

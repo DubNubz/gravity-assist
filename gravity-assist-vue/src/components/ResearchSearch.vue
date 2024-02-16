@@ -17,7 +17,7 @@ import { ref } from 'vue';
 import { data } from '@/stores/ra_data';
 import { globalVariables } from '@/stores/global';
 
-const filteredChoices = ref();
+const filteredChoices = ref([...data]);
 const emit = defineEmits(['response']);
 
 function updateChoice (name, variant, manufacturer, direction, scope) {
@@ -34,16 +34,6 @@ function autocomplete (event) {
 </script>
 
 <style scoped>
-
-#RASearchMenuBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-}
 
 #RASearchMenu {
   width: 70vw;
