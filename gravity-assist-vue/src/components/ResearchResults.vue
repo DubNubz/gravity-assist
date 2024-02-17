@@ -23,15 +23,18 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 85%;
 }
 
 .RAData {
   display: flex;
   align-items: center;
+  font-size: var(--h3);
 }
 
 .RADataPercent {
   display: flex;
+  font-size: var(--h3);
 }
 
 .RADataImg {
@@ -41,35 +44,36 @@ span {
   background-color: rgba(0, 0, 0, 0);
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1000px) {
 
   span {
     margin-left: 4vw;
   }
 
   .RAResultsHolder {
-    width: 70vw;
+    width: 80vw;
   }
 
   .RAResults {
     width: 40vw;
   }
+
+  .RAResult {
+    width: 100%;
+  }
+
   .RAData {
-    font-size: var(--standard2);
+    font-size: var(--p);
+  }
+
+  .RADataPercent {
+    font-size: var(--p);
   }
 
   .RADataImg {
     width: var(--standard2ImgWidth);
     height: var(--standard2ImgHeight);
   }
-}
-
-@media screen and (max-width: 800px) {
-
-  span {
-    margin-left: 5vw;
-  }
-
 }
 
 </style>

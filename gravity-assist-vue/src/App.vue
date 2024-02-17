@@ -24,7 +24,7 @@
       Research Agreement Helper</RouterLink>
 
       <RouterLink :to="{ path: '/modules/module-library'}"
-      class="navButton"
+      class="navButton" id="lastNavButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Module Library' }"
       @click="changeModule('Module Library')">
       Module Library</RouterLink>
@@ -65,6 +65,19 @@ function changeModule (button) {
 
 <style scoped>
 
+.title {
+  background: linear-gradient(to right, rgba(26, 4, 37, 0.2), rgba(0, 0, 0, 0.2));
+  border-radius: 5vh;
+  padding: 2vh;
+  margin-bottom: 3vh;
+  margin-top: 3vh;
+}
+
+#gravityAssistTitle {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 .links {
   margin-bottom: 1vh;
 }
@@ -97,6 +110,8 @@ function changeModule (button) {
   justify-content: center;
   align-items: center;
 }
+
+#lastNavButton {margin-bottom: 5vh}
 
 .navButton:hover {
   transform: scale(1.05);
@@ -142,7 +157,7 @@ header {
   position: relative;
   top: 0;
   width: 100vw;
-  height: 23vh;
+  height: fit-content;
   margin-bottom: 2vh;
   background: linear-gradient(to bottom, var(--darkHeader) 90%, rgba(0, 0, 0, 0));
   align-items: center;
@@ -157,18 +172,6 @@ header {
   margin-bottom: 0;
   background-color: var(--transparent);
   border-radius: 3vh;
-}
-
-@media screen and (max-width: 1520px) {
-  header {
-    height: 30vh;
-  }
-}
-
-@media screen and (max-width: 816px) {
-  header {
-    height: 40vh;
-  }
 }
 
 </style>

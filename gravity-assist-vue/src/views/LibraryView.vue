@@ -160,19 +160,12 @@ function changeShip (type) {
 }
 
 .modWeaponHolder {
-  width: 70vw;
+  width: 90vw;
   margin-top: 3vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.modWeapon {
-  background-color: var(--content);
-  padding: 3vh;
-  border-radius: 3vh;
-  width: 70vw;
-  margin-top: 3vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 #modShipImg {
@@ -312,10 +305,18 @@ function changeShip (type) {
     padding: 5%;
   }
 
-#previousShipButton,
-#nextShipButton {
-  height: 7.5vh;
+  #previousShipButton,
+  #nextShipButton {
+    height: 7.5vh;
     font-size: var(--p);
+  }
+
+  .modWeaponHolder {
+    width: 80vw;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

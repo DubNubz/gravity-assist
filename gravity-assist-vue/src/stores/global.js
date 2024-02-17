@@ -18,6 +18,12 @@ const globalVariables = {
     activeManufacturer: ref("Jupiter Industry"),
     activeDirection: ref("Outstanding Firepower"),
     activeScope: ref("Projectile Weapon"),
+    currentManufacturer: ref(0),
+    currentDirection: ref(0),
+    currentScope: ref(0),
+    allManufacturers: ref(["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"]),
+    allDirections: ref(["Outstanding Firepower", "Sustained Combat", "Strategy & Support", "Fighter & Corvette", "Empty"]),
+    allScopes: ref(["Projectile Weapon", "Direct-Fire Weapon", "Empty"]),
 
     // Mod Library
     currentShip: ref(0),

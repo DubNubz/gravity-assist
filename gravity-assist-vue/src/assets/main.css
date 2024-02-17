@@ -53,17 +53,18 @@
   --darkGray: #878787;
   --invisible: #222222;
 
-  --h1: 5vh;
+  --h1: 5.5vh;
   --h2: 3.5vh;
   --h3: 2.5vh;
   --p: 2vh;
+  --standard3: 1.75vh;
   --standard2: 1.5vh;
   --standard: 1vh;
 
-  --pImgWidth: 9.4078vh; /* 1.44736842vh width : 1vh height*/
-  --pImgHeight: 6.5vh;
-  --standard2ImgWidth: 6.5132vh;
-  --standard2ImgHeight: 4.5vh;
+  --pImgWidth: 14.4736842vh; /* 1.44736842vh width : 1vh height*/
+  --pImgHeight: 10vh;
+  --standard2ImgWidth: 7.2368421vh;
+  --standard2ImgHeight: 5vh;
   --standardImgWidth: 4.3421vh;
   --standardImgHeight: 3vh;
 }

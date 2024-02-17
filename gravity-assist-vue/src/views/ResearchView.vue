@@ -7,41 +7,45 @@
       <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
     </div>
 
-    <div class="RASearch">
-        <p>Currently displaying results of: <span class="cyan" id="RASearchCurrent">{{ globalVariables.currentSearchShip.value }}</span></p>
-        <button id="RASearchButton" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">SELECT A SHIP</button>
-    </div>
-
     <div id="RASearchMenuBackground" v-if="globalVariables.searchActive.value">
         <ResearchSearch @response="searchChangeView"/>
     </div>
     
     <div class="RAButtons">
+
+      <div class="RASearch">
+        <p>Currently displaying results of:</p>
+        <div class="searchDisplay">
+          <button id="RASearchButton" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value"><img src="/arrow-circle.png" alt="Reverse all color options"></button>
+          <p class="cyan" id="RASearchCurrent" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">{{ globalVariables.currentSearchShip.value }}</p>
+        </div>
+      </div>
+
         <div class="manufacturers">
             <h3>Companies</h3>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Jupiter Industry' }" id="jupiterIndustries" @click="changeView(0, 'Jupiter Industry')">Jupiter Industry</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'NOMA Shipping' }" id="nomaShipping" @click="changeView(1, 'NOMA Shipping')">NOMA Shipping</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Antonios' }" id="antonios" @click="changeView(2, 'Antonios')">Antonios</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Dawn Accord' }" id="dawnAccord" @click="changeView(3, 'Dawn Accord')">Dawn Accord</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeManufacturer.value === 'Empty' }" id="emptyManufacturer" @click="changeView(4, 'Empty')">No Company</button>
+            <div class="buttonArray">
+              <button class="infoChangeButton previousChange" @click="previousButton('manufacturer')">&lt;&lt;</button>
+              <p class="infoDisplay">{{ globalVariables.activeManufacturer.value }}</p>
+              <button class="infoChangeButton nextChange" @click="nextButton('manufacturer')">>></button>
+            </div>
         </div>
         <div class="directions">
             <h3>Directions</h3>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Outstanding Firepower' }" id="outstandingFirepower" @click="changeView(10, 'Outstanding Firepower')">Outstanding Firepower</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Sustained Combat' }" id="sustainedCombat" @click="changeView(11, 'Sustained Combat')">Sustained Combat</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Strategy & Support' }" id="strategySupport" @click="changeView(12, 'Strategy & Support')">Strategy & Support</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Fighter & Corvette' }" id="fighterCorvette" @click="changeView(13, 'Fighter & Corvette')">Fighter & Corvette</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeDirection.value === 'Empty' }" id="emptyDirection" @click="changeView(14, 'Empty')">No Direction</button>
-        </div>
+            <div class="buttonArray">
+              <button class="infoChangeButton previousChange" @click="previousButton('direction')">&lt;&lt;</button>
+              <p class="infoDisplay">{{ globalVariables.activeDirection.value }}</p>
+              <button class="infoChangeButton nextChange" @click="nextButton('direction')">>></button>
+            </div>
+          </div>
         <div class="scopes">
             <h3>Scopes</h3>
-            <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Projectile Weapon' }" id="projectile" @click="changeView(20, 'Projectile Weapon')">Projectile Weapon</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Direct-Fire Weapon' }" id="directfire" @click="changeView(21, 'Direct-Fire Weapon')">Direct-Fire Weapon</button>
-            <button class="RAButton" :class="{ active: globalVariables.activeScope.value === 'Empty' }" id="emptyScope" @click="changeView(22, 'Empty')">No Scope</button>
-        </div>
+            <div class="buttonArray">
+              <button class="infoChangeButton previousChange" @click="previousButton('scope')">&lt;&lt;</button>
+              <p class="infoDisplay">{{ globalVariables.activeScope.value }}</p>
+              <button class="infoChangeButton nextChange" @click="nextButton('scope')">>></button>
+            </div>
+          </div>
     </div>
-
-    <button id="resetButton" @click="reset">Reset</button>
 
     <div class="RAResultsHolder">
         <div class="RAResults">
@@ -61,24 +65,75 @@ import ResearchSearch from '@/components/ResearchSearch.vue';
 globalVariables.activeModule.value = 'Research Agreement Helper';
 const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]);
 
-function reset () {
-  globalVariables.activeManufacturer.value = "Jupiter Industry";
-  globalVariables.activeDirection.value = "Outstanding Firepower";
-  globalVariables.activeScope.value = "Projectile Weapon";
-  filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
+function previousButton (type) {
+  if (type == "manufacturer") {
+    globalVariables.currentManufacturer.value--;
+    if (globalVariables.currentManufacturer.value < 0) {
+      globalVariables.currentManufacturer.value = globalVariables.allManufacturers.value.length - 1;
+    }
+
+    changeView(0, globalVariables.allManufacturers.value[globalVariables.currentManufacturer.value]);
+    
+
+  } else if (type == "direction") {
+    globalVariables.currentDirection.value--;
+    if (globalVariables.currentDirection.value < 0) {
+      globalVariables.currentDirection.value = globalVariables.allDirections.value.length - 1;
+    }
+
+    changeView(1, globalVariables.allDirections.value[globalVariables.currentDirection.value]);
+
+  } else if (type == "scope") {
+    globalVariables.currentScope.value--;
+    if (globalVariables.currentScope.value < 0) {
+      globalVariables.currentScope.value = globalVariables.allScopes.value.length - 1;
+    }
+
+    changeView(2, globalVariables.allScopes.value[globalVariables.currentScope.value]);
+  }
+}
+
+function nextButton (type) {
+  if (type == "manufacturer") {
+    globalVariables.currentManufacturer.value++;
+    if (globalVariables.currentManufacturer.value > globalVariables.allManufacturers.value.length - 1) {
+      globalVariables.currentManufacturer.value = 0;
+    }
+
+    changeView(0, globalVariables.allManufacturers.value[globalVariables.currentManufacturer.value]);
+
+  } else if (type == "direction") {
+    globalVariables.currentDirection.value++;
+    if (globalVariables.currentDirection.value > globalVariables.allDirections.value.length - 1) {
+      globalVariables.currentDirection.value = 0;
+    }
+
+    changeView(1, globalVariables.allDirections.value[globalVariables.currentDirection.value]);
+
+  } else if (type == "scope") {
+    globalVariables.currentScope.value++;
+    if (globalVariables.currentScope.value > globalVariables.allScopes.value.length - 1) {
+      globalVariables.currentScope.value = 0;
+    }
+
+    changeView(2, globalVariables.allScopes.value[globalVariables.currentScope.value]);
+  }
 }
 
 function searchChangeView (manufacturer, direction, scope) {
   globalVariables.activeManufacturer.value = manufacturer;
   globalVariables.activeDirection.value = direction[0];
   globalVariables.activeScope.value = scope;
+  globalVariables.currentManufacturer.value = globalVariables.allManufacturers.value.indexOf(manufacturer);
+  globalVariables.currentDirection.value = globalVariables.allDirections.value.indexOf(direction);
+  globalVariables.currentScope.value = globalVariables.allScopes.value.indexOf(scope);
   filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
 function changeView (type, name) {
-    if (type <= 4) {
+    if (type == 0) {
       globalVariables.activeManufacturer.value = name;
-    } else if (type >= 10 && type <= 14) {
+    } else if (type == 1) {
       globalVariables.activeDirection.value = name;
     } else {
       globalVariables.activeScope.value = name;
@@ -90,6 +145,69 @@ function changeView (type, name) {
 </script>
 
 <style scoped>
+
+.searchDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#RASearchCurrent {
+  font-size: var(--h3);
+  margin-left: 1vw;
+}
+
+img {
+  width: 5vh;
+  height: 5vh;
+}
+
+.RASearch {
+  margin-bottom: 3vh;
+}
+
+.buttonArray {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: fit-content;
+}
+
+h3 {
+  margin-bottom: 1vh;
+}
+
+.infoDisplay {
+  background-color: var(--darkHeader);
+  padding: 2vh;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 50%;
+  border-radius: 2vh;
+  font-size: var(--h3);
+}
+
+.previousChange {background-color: var(--pastelRed)}
+.nextChange {background-color: var(--pastelGreen)}
+
+.infoChangeButton {
+  width: 15%;
+  border-radius: 1vh;
+  border: 0;
+  font-size: var(--h2);
+  transition: all 0.5s;
+  filter: grayscale(0.75);
+}
+
+.previousChange:hover {
+  filter: grayscale(0);
+  transform: translate(-0.5vw);
+}
+
+.nextChange:hover {
+  filter: grayscale(0);
+  transform: translate(0.5vw);
+}
 
 .title-description {
   width: 85vw;
@@ -128,7 +246,7 @@ function changeView (type, name) {
 .RAResultsHolder {
   background-color: var(--content);
   border-radius: 5vw;
-  width: 40vw;
+  width: 60vw;
   padding: 1vw;
   display: flex;
   flex-direction: column;
@@ -138,17 +256,12 @@ function changeView (type, name) {
 
 .RAResults {
   border-radius: 5vw;
-  width: 30vw;
+  width: 90%;
   padding: 1vw;
   display: flex;
   flex-direction: column;
   margin: auto;
   margin-top: 5vh;
-}
-
-.RAResult {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -173,7 +286,9 @@ function changeView (type, name) {
   margin: 0.5vh;
   border-radius: 3vh;
   border-width: 0.1vh;
-  transition: all 0.5s, border-width 0.1s, border-color 0.1s;
+  transition: all 0.5s;
+  border-width: 0.1s;
+  border-color: 0.1s;
 }
 
 .RAButton:hover {
@@ -182,9 +297,9 @@ function changeView (type, name) {
 
 .RAButtons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 75vw;
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
   margin: auto;
   margin-top: 3vh;
   margin-bottom: 2vh;
@@ -199,7 +314,7 @@ function changeView (type, name) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 22.5vw;
+  width: 100%;
 }
 
 .active {
@@ -210,14 +325,19 @@ function changeView (type, name) {
 
 #RASearchButton {
   background-color: var(--cyan);
-  border-radius: 1vh;
-  padding: 1vh;
-  border-width: 0.1vh;
-  transition: all 0.5s;
+  border-radius: 3vh;
+  width: 6vh;
+  height: 6vh;
+  transition: all 0.65s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #RASearchButton:hover {
-  transform: scale(1.2);
+  background-color: var(--deepGreen);
+  transform: rotate(540deg);
 }
 
 #RASearchMenuBackground {
@@ -233,11 +353,20 @@ function changeView (type, name) {
 
 @media screen and (max-width: 1000px) {
   .RAResultsHolder {
-    width: 75vw;
+    width: 90vw;
   }
 
   .RAResults {
-    width: 60vw;
+    width: 80vw;
+  }
+
+  .RAButtons {
+    width: 80vw;
+    border-radius: 3vh;
+  }
+
+  .infoDisplay {
+    font-size: var(--p);
   }
 
 }

@@ -2121,7 +2121,7 @@ const data = [{
             name: "Cooperative Offensive UAV Platform",
             hanger: "Cooperative Offensive UAV",
             capacity: 3,
-            attributes: ["UAV Cooperation: Each set of aircrafts in the same system comes with a UAV to perform cooperative combat. If any aircraft survives, the UAV and the aircraft(s) will attack the same target together first."]
+            attributes: ["Damage Type: Energy", "Prioritized Target: Aircraft", "Damage per Hit: 140", "Anti-Aircraft Lightweight Ammo", "UAV Cooperation: Each set of aircrafts in the same system comes with a UAV to perform cooperative combat. If any aircraft survives, the UAV and the aircraft(s) will attack the same target together first."]
         }]
     }, {
         type: "unknown",

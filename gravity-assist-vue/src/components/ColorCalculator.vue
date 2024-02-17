@@ -1,5 +1,5 @@
 <template>
-    <p>{{ resetEverything() }}<span v-for="char in globalVariables.inputText.value">{{ convertInput(char) }}</span>{{ emitStuff() }}</p>
+    <p>{{ resetEverything() }}<span v-for="char in globalVariables.inputText.value" :style="{ color: convertInput(0, char) }">{{ convertInput(1, char) }}</span>{{ emitStuff() }}</p>
 </template>
 
 <script setup>
@@ -24,7 +24,7 @@ function resetEverything () {
     }
 }
 
-function convertInput (input) {
+function convertInput (type, input) {
     let color;
 
     if (reverse) {
@@ -33,20 +33,38 @@ function convertInput (input) {
         color = props.Color.colorPalette[startIndex];
     }
 
-    if (input == "\n") {
-        input = "#r";
-        output.push(input);
-        return input;
-
-    } else {
-        startIndex++;
-        if (startIndex >= props.Color.colorPalette.length) {
-            startIndex = 0;
-            reverse = !reverse;
+    if (type == 0) {
+        if (input == "\n") {
+            return "#ffffff";
+        } else if (input == " ") {
+            return "#ffffff";
+        } else {
+            return color.slice(0, 1) + color.slice(2);
         }
+    } else {
+        if (input == "\n") {
+            input = "#r";
+            output.push(input);
+            console.log(output);
+            return input;
 
-        output.push(color + input);
-        return color + input;
+        } else if (input == " ") {
+            input = " ";
+            output.push(input);
+            console.log(output);
+            return input;
+
+        } else {
+            startIndex++;
+            if (startIndex >= props.Color.colorPalette.length) {
+                startIndex = 0;
+                reverse = !reverse;
+            }
+
+            output.push(color + input);
+            console.log(output);
+            return color + input;
+        }
     }
     
 }

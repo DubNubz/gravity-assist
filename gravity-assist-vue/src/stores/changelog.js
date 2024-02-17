@@ -55,8 +55,8 @@ const changelog = [{
     notes: ["Reworked all of Color Generator", "Added Color Generator gradients", "Color Generator now allows for copy to clipboard", 
     "Changed display of information in Research Agreement Helper", "Changed display of information in Module Library", 
     "Changed display of information in Changelog", "Changed display of header buttons", "Optimized every display for mobile users", 
-    "Gravity Assist tool links are now routed", "Added Eternal Heavens to Research Agreement Helper and Module Library", 
-    "Disabled double-click to zoom on buttons for mobile users"]
+    "Changed display of information in Module Library for desktop users", "Gravity Assist tool links are now routed",
+    "Added Eternal Heavens to Research Agreement Helper and Module Library", "Disabled double-click to zoom on buttons for mobile users"]
 }
 ];
 

@@ -206,7 +206,7 @@ function getMaxArmor (stat) {
   #armorBar,
   #shieldBar {
     width: 60vw;
-    height: 2.5vh;
+    height: 4vh;
   }
 
   #modStats {

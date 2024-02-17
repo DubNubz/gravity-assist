@@ -107,7 +107,7 @@ const props = defineProps({
   background-color: var(--content);
   padding: 3vh;
   border-radius: 3vh;
-  width: 70vw;
+  width: 35vw;
   margin-top: 3vh;
 }
 
@@ -169,7 +169,24 @@ const props = defineProps({
 #dph,
 #prioritizedTarget,
 #modWeaponLockon {
-  width: 30vw;
+  width: 15vw;
+}
+
+@media screen and (max-width: 1000px) {
+  #damageType,
+  #dph,
+  #prioritizedTarget,
+  #modWeaponLockon {
+    width: 30vw;
+  }
+
+  .modWeapon {
+    background-color: var(--content);
+    padding: 3vh;
+    border-radius: 3vh;
+    width: 70vw;
+    margin-top: 3vh;
+  }
 }
 
 </style>
