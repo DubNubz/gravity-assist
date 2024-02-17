@@ -197,7 +197,9 @@ function changeShip (type) {
 }
 
 .modButton:hover {
-  transform: scale(1.05);
+  background-color: var(--deepGreen);
+  border-color: var(--deepGreen);
+  transform: scale(1.1);
 }
 
 #modStats {
