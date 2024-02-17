@@ -1,8 +1,9 @@
 <template>
     <div class="title">
-        <h2>Research Agreement Finder</h2>
-        <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
+        <h2>Research Agreement Helper</h2>
     </div>
+    
+    <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
 
     <div class="RASearch">
         <p>Currently displaying results of: <span class="cyan" id="RASearchCurrent">{{ globalVariables.currentSearchShip.value }}</span></p>
@@ -88,7 +89,15 @@ function changeView (type, name) {
 <style scoped>
 
 .title {
-  width: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding-left: 4vh;
+    padding-right: 4vh;
+    border-radius: 10vh;
+    background: linear-gradient(to bottom, transparent 5%, var(--darkHeader), var(--darkHeader))
 }
 
 .cyan {color: var(--cyan)}

@@ -1,276 +1,376 @@
 <template>
     <div class="title">
     <h2>Color Generator</h2>
-    <p>Click anywhere in the input box and click one of the buttons to add a marker, which will generate a color.</p>
-    <p>Copy the text in the output box and paste it in to Infinite Lagrange.</p>
     </div>
-    
-    <div class="buttonsArray">
-    <button class="button" id="redButton">0</button>
-    <button class="button" id="orangeButton">1</button>
-    <button class="button" id="goldButton">2</button>
-    <button class="button" id="yellowButton">3</button>
-    <button class="button" id="greenButton">4</button>
-    <button class="button" id="blueButton">5</button>
-    <button class="button" id="hotPinkButton">6</button>
-    <button class="button" id="lightPinkButton">7</button>
-    <button class="button" id="whiteButton">8</button>
-    <button class="button" id="blackButton">9</button>
-    <button class="button" id="pastelRedButton">10</button>
-    <button class="button" id="pastelOrangeButton">11</button>
-    <button class="button" id="deepOrangeButton">12</button>
-    <button class="button" id="pastelYellowButton">13</button>
-    <button class="button" id="deepYellowButton">14</button>
-    <button class="button" id="pastelGreenButton">15</button>
-    <button class="button" id="deepGreenButton">16</button>
-    <button class="button" id="aquaButton">17</button>
-    <button class="button" id="turquoiseButton">18</button>
-    <button class="button" id="lightBlueButton">19</button>
-    <button class="button" id="cyanButton">20</button>
-    <button class="button" id="pastelBlueButton">21</button>
-    <button class="button" id="pastelPinkButton">22</button>
-    <button class="button" id="deepPinkButton">23</button>
-    <button class="button" id="normalTextButton">24</button>
-    <button class="button" id="darkGrayButton">25</button>
-    <button class="button" id="invisibleButton">26</button>
-    </div>
-    
-    <div class="cardTitles">
-    <h2>Input</h2>
-    <h2>Output</h2>
+    <p>Click on the text below to begin editing your message.</p>
+    <p>Choose your output color, copy your text, and you're good to go!</p>
+
+    <div class="colorOptionMenuBackground" v-if="colorMenu">
+      <div class="colorOptionMenu">
+
+        <h2>Click on a button to change the output color</h2>
+
+        <button class="reverse" @click="globalVariables.reversed.value = !globalVariables.reversed.value">
+          <img src="/arrow-circle.png" alt="Reverse all color options">
+          <p class="reverseText">Reverse</p>
+        </button>
+
+        <div class="buttons">
+          <button class="colorButton"
+            :class="getClass(color.color1, color.color2)"
+            v-for="color in colors"
+            @click="buttonEvent(color.name, getClass(color.color1, color.color2))">
+            {{ getButtonName(color.color1, color.color2) }}
+          </button>
+        </div>
+
+      </div>
     </div>
     
     <div class="cards">
-    <div id="textBox" contenteditable="true" @input="editTextBox">Click <span class="gold">★here </span><span class="white">★to start typing!</span><div><br></div><div><span class="cyan">★Click anywhere </span><span class="white">★in your text and </span><span class="pastelPink">★click one of the buttons above </span><span class="white">★to add a marker to change colors!</span></div></div>
-    <div id="outputBox">Click <span class="gold">#Dhere </span><span class="white">#Wto start typing!#r</span><br>#r<span class="cyan">#c56deffClick anywhere </span><span class="white">#Win your text and </span><span class="pastelPink">#cffaafeclick one of the buttons above </span><span class="white">#Wto add a marker to change colors!</span></div>
+      
+      <textarea id="textBox"
+      v-model="globalVariables.inputText.value"
+      @keydown.enter.prevent="addNewLine"
+      @input="globalVariables.outputText.value.push('')">
+      </textarea>
+
+      <div class="colorChange">
+        <button class="colorButton" id="colorButton2" @click="colorMenu = !colorMenu" :class="globalVariables.currentColorClass.value">Change color output</button>
+      </div>
+
+      <div id="outputBox">
+        <button class="copyToClipboard" @click="copyToClipboard">Copy to clipboard</button>
+        <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"
+        @response="changeOutput"/>
+      </div>
+
     </div>
     
-    <p id="messageCharacterCounter">151/280 characters (chat message)</p>
-    <p id="mailCharacterCounter">151/1000 characters (mail)</p>
-    <p>The colors displayed in the input box may not 100% represent what it looks like ingame. Test the output before
-    sending a mail with it.</p>
-    <button id="resetButton" @click="reset">Reset</button>
-</template>
+    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() < 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'message')">
+        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
+      </span>
+    / 280 characters (chat message)
+    </p>
 
+    <p id="mailCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() > 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'mail')">
+        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
+      </span>
+    / 1,000 characters (mail)</p>
+    
+    <p class="cyan" id="warning">If your text is flagged as inappropriate, just choose a different color</p>
+</template>
 <script setup>
 
-const colors = ["red", "orange", "gold", "yellow", "green", "blue", "hotPink", "lightPink", "white", 
-"black", "pastelRed", "pastelOrange", "deepOrange", "pastelYellow", "deepYellow", "pastelGreen", 
-"deepGreen", "aqua", "turquoise", "lightBlue", "cyan", "pastelBlue", "pastelPink", "deepPink", "normalText", 
-"darkGray", "invisible"];
-const colorCodes = ["R", "O", "D", "Y", "G", "B", "U", "P", "W", "K", "cffaaaa", "cffddaa", "cff9756", 
-"cfbffaa", "cffe561", "caaffaa", "c56ff93", "c5bffd2", "c1abc9c", "c6af1fd", "c56ddff", "caac8ff", "cffaafe", 
-"cf467cb", "cccc9c6", "c878787", "c222222"];
+import { ref } from 'vue';
+import ColorCalculator from '@/components/ColorCalculator.vue';
+import { globalVariables } from '@/stores/global';
+import { colors } from '@/stores/colors';
 
-function addMarker(num) {
-  const selection = window.getSelection();
-  const range = selection.getRangeAt(0);
-  const marker = document.createElement("span");
-  marker.classList.add(colors[num]);
-  marker.textContent = "★";
+globalVariables.activeModule.value = "Color Generator";
+const colorMenu = ref(false);
 
-  range.deleteContents();
-  range.insertNode(marker);
-
-  range.setStartAfter(marker);
-  range.setEndAfter(marker);
-  selection.removeAllRanges();
-  selection.addRange(range);
-
-  document.querySelector("#outputBox").innerHTML = compileText(0);
-  document.querySelector("#messageCharacterCounter").innerHTML = `${compileText(1).length}/280 characters (chat message)`;
-  document.querySelector("#mailCharacterCounter").innerHTML = `${compileText(1).length}/1000 characters (mail)`;
+function copyToClipboard () {
+  navigator.clipboard.writeText(globalVariables.outputText.value.join("")).then(() => {
+    alert("Text copied to clipboard!");
+  }, () => {
+    alert("Text failed to copy to clipbard");
+  })
 }
 
-function compileText(retrieve) {
-  const text = document.querySelector("#textBox").innerHTML;
-  let finalText = [text];
-  let charCounterText = [text];
-  
-  for (let i in colors) {
-    while (finalText[finalText.length - 1].includes(`<span class="${colors[i]}">★`) == true) {
-      finalText.push(finalText[finalText.length - 1].replace(`<span class="${colors[i]}">★`, `</span><span class="${colors[i]}">#${colorCodes[i]}`));
-      charCounterText.push(charCounterText[charCounterText.length - 1].replace(`<span class="${colors[i]}">★`, `#${colorCodes[i]}`).replace("</span>", ""));
+function characterLimit (num, type) {
+  if (type == "message") {
+    if (num >= 250) {
+      return "red";
+    } else if (num >= 200) {
+      return "orange";
+    } else if (num >= 100) {
+      return "yellow";
+    } else {
+      return "green";
     }
-    while (finalText[finalText.length - 1].includes("<div>") == true) {
-      finalText.push(finalText[finalText.length - 1].replace("<div>", "#r").replace("</div>", ""));
-      charCounterText.push(charCounterText[charCounterText.length - 1].replace("<div>", "#r").replace("</div>", ""));
+  } else if (type == "mail") {
+    if (num >= 900) {
+      return "red";
+    } else if (num >= 700) {
+      return "orange"
+    } else if (num >= 450) {
+      return "yellow"
+    } else if (num >= 280) {
+      return "green"
     }
-    while (charCounterText[charCounterText.length - 1].includes("<br>") == true) {
-      charCounterText.push(charCounterText[charCounterText.length - 1].replace("<br>", ""));
-    }
-    while (charCounterText[charCounterText.length - 1].includes("&nbsp;") == true) {
-      charCounterText.push(charCounterText[charCounterText.length - 1].replace("&nbsp;", ""));
-    }
-    while (charCounterText[charCounterText.length - 1].includes(`<span class="${colors[i]}">`) == true) {
-      charCounterText.push(charCounterText[charCounterText.length - 1].replace(`<span class="${colors[i]}">`, "").replace("</span>", ""));
-    }
-  }
-  console.log(charCounterText);
-  
-  switch (Number(retrieve)) {
-    case 0:
-      return finalText[finalText.length - 1];
-    case 1:
-      return charCounterText[charCounterText.length - 1];
   }
 }
 
-function editTextBox () {
-    document.querySelector("#outputBox").innerHTML = compileText(0);
-    document.querySelector("#messageCharacterCounter").innerHTML = `${compileText(1).length}/280 characters (chat message)`
-    document.querySelector("#mailCharacterCounter").innerHTML = `${compileText(1).length}/1000 characters (mail)`;
+function getButtonName (param1, param2) {
+  if (globalVariables.reversed.value) {
+    return `${uppercase(param2)} >> ${uppercase(param1)}`
+  } else {
+    return `${uppercase(param1)} >> ${uppercase(param2)}`
+  }
 }
 
-function reset () {
-    document.querySelector("#textBox").innerHTML = "";
-    document.querySelector("#outputBox").innerHTML = "";
-    document.querySelector("#messageCharacterCounter").innerHTML = `<p id="characterCounter">0/280 characters (chat message)</p>`;
-    document.querySelector("#mailCharacterCounter").innerHTML = `<p id="characterCounter">0/1000 characters (mail)</p>`;
+function buttonEvent (param1, param2) {
+  globalVariables.currentColor.value = param1;
+  globalVariables.currentColorClass.value = param2;
+  colorMenu.value = false;
 }
 
-const buttons = document.querySelectorAll(".button");
-    buttons.forEach((button) => button.addEventListener("click", function () {
-        addMarker(button.textContent);
-    }));
+function getClass (name1, name2) {
+  if (globalVariables.reversed.value) {
+    return `${uppercase(name2)}To${name1}`;
+  } else {
+    return `${name1}To${uppercase(name2)}`;
+  }
+}
+
+function changeOutput (output) {
+  globalVariables.outputText.value = output;
+}
+
+function uppercase (word) {
+  return word[0].toUpperCase() + word.slice(1);
+}
+
+function addNewLine (event) {
+  if (event.key == "Enter") {
+    globalVariables.inputText.value += "\n";
+  }
+}
 
 </script>
 
 <style scoped>
 
-.title {
-  width: 75vw;
-}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
-.red {color: var(--red)}
-.orange {color: var(--orange)}
-.gold {color: var(--gold)}
-.yellow {color: var(--yellow)}
-.green {color: var(--green)}
-.blue {color: var(--blue)}
-.hotPink {color: var(--hotPink)}
-.lightPink {color: var(--lightPink)}
-.white {color: var(--white)}
-.black {color: var(--black)}
-.underline {text-decoration: underline}
-.pastelRed {color: var(--pastelRed)}
-.pastelOrange {color: var(--pastelOrange)}
-.deepOrange {color: var(--deepOrange)}
-.pastelYellow {color: var(--pastelYellow)}
-.deepYellow {color: var(--deepYellow)}
-.pastelGreen {color: var(--pastelGreen)}
-.deepGreen {color: var(--deepGreen)}
-.aqua {color: var(--aqua)}
-.turquoise {color: var(--turquoise)}
-.lightBlue {color: var(--lightBlue)}
-.cyan {color: var(--cyan)}
-.pastelBlue {color: var(--pastelBlue)}
-.pastelPink {color: var(--pastelPink)}
-.deepPink {color: var(--deepPink)}
-.normalText {color: var(--normalText)}
-.darkGray {color: var(--darkGray)}
-.invisible {color: var(--invisible)}
-
-#redButton {background-color: var(--red); color: var(--red)}
-#orangeButton {background-color: var(--orange); color: var(--orange)}
-#goldButton {background-color: var(--gold); color: var(--gold)}
-#yellowButton {background-color: var(--yellow); color: var(--yellow)}
-#greenButton {background-color: var(--green); color: var(--green)}
-#blueButton {background-color: var(--blue); color: var(--blue)}
-#hotPinkButton {background-color: var(--hotPink); color: var(--hotPink)}
-#lightPinkButton {background-color: var(--lightPink); color: var(--lightPink)}
-#whiteButton {background-color: var(--white); color: var(--white)}
-#blackButton {background-color: var(--black); color: var(--black)}
-#pastelRedButton {background-color: var(--pastelRed); color: var(--pastelRed)}
-#pastelOrangeButton {background-color: var(--pastelOrange); color:var(--pastelOrange)}
-#deepOrangeButton {background-color: var(--deepOrange); color: var(--deepOrange)}
-#pastelYellowButton {background-color: var(--pastelYellow); color: var(--pastelYellow)}
-#deepYellowButton {background-color: var(--deepYellow); color: var(--deepYellow)}
-#pastelGreenButton {background-color: var(--pastelGreen); color: var(--pastelGreen)}
-#deepGreenButton {background-color: var(--deepGreen); color: var(--deepGreen)}
-#aquaButton {background-color: var(--aqua); color: var(--aqua)}
-#turquoiseButton {background-color: var(--turquoise); color: var(--turquoise)}
-#lightBlueButton {background-color: var(--lightBlue); color: var(--lightBlue)}
-#cyanButton {background-color: var(--cyan); color: var(--cyan)}
-#pastelBlueButton {background-color: var(--pastelBlue); color: var(--pastelBlue)}
-#pastelPinkButton {background-color: var(--pastelPink); color: var(--pastelPink)}
-#deepPinkButton {background-color: var(--deepPink); color: var(--deepPink)}
-#normalTextButton {background-color: var(--normalText); color: var(--normalText)}
-#darkGrayButton {background-color: var(--darkGray); color: var(--darkGray)}
-#invisibleButton {background-color: var(--invisible); color: var(--invisible)}
-
-.buttonsArray {
-  background-color: var(--content);
-  display: flex;
-  flex-wrap: wrap;
-  width: 66vw;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 2vw;
-  padding: 0.5vw;
-}
-
-#textBox,
-#outputBox {
-  background-color: var(--content);
-  height: 40vh;
-  width: 40vw;
-  border-radius: 3vw;
-  margin: auto;
+.copyToClipboard {
+  background-color: var(--normalText);
+  width: 70%;
   font-size: var(--p);
+  height: 5vh;
+  border-radius: 5vh;
+  transition: all 0.25s;
 }
 
-#textBox:focus {
-  outline-color: var(--pastelBlue);
+.copyToClipboard:hover {
+  background-color: var(--deepGreen);
 }
 
-.button {
-  height: 50px;
-  width: 50px;
-  border-radius: 6vh;
-  font-size: 1px;
-  border: 0;
-  margin: 0.15vw;
-  transition: all 0.5s;
+.red {color: #ff0000}
+.orange {color: #ffa600}
+.yellow {color: #ffff00}
+.green {color: #00ff00}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.button:hover {
-  transform: scale(1.05);
-  border-radius: 1vh;
+.colorChange {
+  margin-top: 3vh;
+  margin-bottom: 2vh;
 }
+
+.cyan {color: var(--cyan)}
 
 .cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 99vw;
+  flex-direction: column;
+  align-items: center;
 }
 
-.cardTitles {
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding-left: 4vh;
+    padding-right: 4vh;
+    border-radius: 10vh;
+    background: linear-gradient(to bottom, transparent 5%, var(--darkHeader), var(--darkHeader))
+}
+
+textarea,
+#outputBox {
+  background-color: var(--content);
+  min-height: 30vh;
+  height: fit-content;
+  width: 40vw;
+  margin: auto;
+  font-size: var(--p);
+  color: white;
+  resize: none;
+  border-color: var(--darkHeader);
+  border-radius: 5vh;
+  padding: 3vh;
+  outline-color: var(--cyan);
+  font-family: 'Kanit', sans-serif;
+}
+
+textarea {
+  margin-top: 4vh;
+}
+
+.colorOptionMenuBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 99999999;
+}
+
+.colorOptionMenu {
+  width: 70vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 3vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-height: 80%;
+  min-height: 80%;
+  overflow: auto;
   display: flex;
-  justify-content: space-around;
-  width: 99vw;
+  flex-direction: column;
+  align-items: center;
 }
 
-#resetButton {
-  height: 7vh;
-  width: 15vh;
-  border-radius: 4vh;
-  border-color: black;
-  color: black;
-  background-color: var(--pastelRed);
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.colorButton {
+  width: 20vw;
+  height: 7.5vh;
+  padding: 1vh;
+  border-radius: 3vh;
+  margin-bottom: 1vh;
+  font-size: var(--p);
   transition: all 0.5s;
 }
 
-#resetButton:hover {
-  transform: scale(1.33);
-  border-color: red;
-  border-width: 0.5vw;
+#colorButton2 {
+  width: 20vw;
+  font-size: var(--h3);
+  filter: grayscale(0.05);
+  transition: all 0.5;
 }
 
-#messageCharacterCounter {
-  margin-top: 10vh;
+#colorButton2:hover {
+  filter: grayscale(0);
+}
+
+.colorButton:hover {
+  transform: scale(1.05);
+}
+
+.reverse {
+  background-color: var(--lightContent);
+  border: 0;
+  margin-bottom: 4vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  transition: all 0.5s;
+  width: 17.5vw;
+}
+
+.reverse:hover {
+  background-color: var(--deepGreen);
+  transform: scale(1.05);
+  color: black;
+  img {
+    transform: rotate(540deg);
+  }
+}
+
+.reverseText {
+  font-size: var(--h3);
+}
+
+img {
+  width: 10vh;
+  height: 10vh;
+  margin-right: 1vw;
+  transition: all 0.65s;
+}
+
+#warning {
+  width: 70vw;
+}
+
+/* non-reversed */
+.pinkToYellow {background: linear-gradient(to bottom right, #f957ff, #ffc94d, #f957ff);}
+.redToYellow {background: linear-gradient(to bottom right, #ff0f00, #fff000, #ff0f00);}
+.blueToPurple {background: linear-gradient(to bottom right, #6ea3ff, #d16eff, #6ea3ff);}
+.pinkToPink {background: linear-gradient(to bottom right, #dc6bff, #ff6bd3, #dc6bff);}
+.goldToGold {background: linear-gradient(to bottom right, #ffff00, #ffc400, #ffff00);}
+.blueToBlue {background: linear-gradient(to bottom right, #6bffff, #6babff, #6bffff);}
+.redToWhite {background: linear-gradient(to bottom right, #ff0000, #ffffff);}
+.yellowToWhite {background: linear-gradient(to bottom right, #ffff00, #ffffff);}
+.greenToWhite {background: linear-gradient(to bottom right, #00ff00, #ffffff);}
+.blueToWhite {background: linear-gradient(to bottom right, #00d7ff, #ffffff);}
+.purpleToWhite {background: linear-gradient(to bottom right, #e100ff, #ffffff);}
+
+/* reversed */
+.YellowTopink {background: linear-gradient(to bottom right, #ffc94d, #f957ff, #ffc94d);}
+.YellowTored {background: linear-gradient(to bottom right, #fff000, #ff0f00, #fff000);}
+.PurpleToblue {background: linear-gradient(to bottom right, #d16eff, #6ea3ff, #d16eff);}
+.PinkTopink {background: linear-gradient(to bottom right, #ff6bd3, #dc6bff, #ff6bd3);}
+.GoldTogold {background: linear-gradient(to bottom right, #ffc400, #ffff00, #ffc400);}
+.BlueToblue {background: linear-gradient(to bottom right, #6babff, #6bffff, #6babff);}
+.WhiteTored {background: linear-gradient(to bottom right, #ffffff, #ff0000);}
+.WhiteToyellow {background: linear-gradient(to bottom right, #ffffff, #ffff00);}
+.WhiteTogreen {background: linear-gradient(to bottom right, #ffffff, #00ff00);}
+.WhiteToblue {background: linear-gradient(to bottom right, #ffffff, #00d7ff);}
+.WhiteTopurple {background: linear-gradient(to bottom right, #ffffff, #e100ff);}
+
+@media screen and (max-width: 1000px) {
+  textarea,
+  #outputBox {
+    width: 70vw;
+  }
+
+  .colorButton {
+    width: 30vw;
+    height: 6vh;
+    font-size: var(--p);
+  }
+
+  #colorButton2 {
+    width: 70vw;
+  }
+
+  .reverse {
+    border-radius: 5vh;
+    width: 50vw;
+  }
+
+  .reverseText {
+    font-size: var(--h3);
+  }
+
+  img {
+    width: 5vh;
+    height: 5vh;
+  }
 }
 
 </style>

@@ -2,12 +2,24 @@
 import { ref } from "vue";
 
 const globalVariables = {
+    // Home
     activeModule: ref("Home"),
+
+    // Color Generator
+    inputText: ref("Click here to start typing!"),
+    outputText: ref([""]),
+    currentColor: ref("pinkToYellow"),
+    currentColorClass: ref("pinkToYellow"),
+    reversed: ref(false),
+
+    // RA Helper
     searchActive: ref(false),
     currentSearchShip: ref("Not selected"),
     activeManufacturer: ref("Jupiter Industry"),
     activeDirection: ref("Outstanding Firepower"),
     activeScope: ref("Projectile Weapon"),
+
+    // Mod Library
     currentShip: ref(0),
     previousShip: ref(9),
     nextShip: ref(1),

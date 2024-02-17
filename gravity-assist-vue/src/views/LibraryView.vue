@@ -1,13 +1,14 @@
 <template>
     <div class="title">
         <h2>Module Library</h2>
-        <p>Choose a ship, then choose a module to inspect.</p>
     </div>
+
+    <p>Choose a ship, then choose a module to inspect.</p>
 
     <div class="shipOverall">
         <div class="moveShipsButton">
-            <button id="previousShipButton" @click="changeShip(0)">{{ data[globalVariables.previousShip.value].name }}</button>
-            <button id="nextShipButton" @click="changeShip(1)">{{ data[globalVariables.nextShip.value].name }}</button>
+            <button id="previousShipButton" @click="changeShip(0)">&lt;&lt; {{ data[globalVariables.previousShip.value].name }}</button>
+            <button id="nextShipButton" @click="changeShip(1)">{{ data[globalVariables.nextShip.value].name }} >></button>
         </div>
         <div class="shipPreview">
             <img :src="data[globalVariables.currentShip.value].img" :alt="data[globalVariables.currentShip.value].name" id="modShipImg">
@@ -124,7 +125,15 @@ function changeShip (type) {
 <style scoped>
 
 .title {
-  width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding-left: 4vh;
+    padding-right: 4vh;
+    border-radius: 10vh;
+    background: linear-gradient(to bottom, transparent 5%, var(--darkHeader), var(--darkHeader))
 }
 
 .shipOverall {

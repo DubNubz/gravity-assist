@@ -1,14 +1,10 @@
 <template>
     <div class="title">
-        <h2>Gravity Assist</h2>
-        <p>Access any Gravity Assist tool here, or at the top in the header</p>
-
-        <div class="appButtonDisplay">
-            <RouterLink :to="{ path: '/modules/color-generator'}" class="appButton" id="colorGeneratorAppButton">Color Generator</RouterLink>
-            <RouterLink :to="{ path: '/modules/research-agreement-helper'}" class="appButton" id="researchAgreementAppButton">Research Agreement Helper</RouterLink>
-            <RouterLink :to="{ path: '/modules/module-library'}" class="appButton" id="modLibraryAppButton">Module Library</RouterLink>
-        </div>
+        <img src="/radiant1-removebg-preview.png" alt="Gravity Assist Icon" id="gravityAssistIcon">
+        <h2 id="gravityAssistTitle">Gravity Assist</h2>
     </div>
+
+    <p>fuck javascript</p>
 
     <div class="latestChange">
         <ChangelogCard/>
@@ -52,15 +48,31 @@ function changeButton () {
 
 <style scoped>
 
-#colorGeneratorAppButton {background-color: var(--pastelRed)}
-#researchAgreementAppButton {background-color: var(--pastelOrange)}
-#modLibraryAppButton {background-color: var(--pastelYellow)}
+#gravityAssistIcon,
+#gravityAssistTitle {
+  background-color: rgba(0, 0, 0, 0);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+img {
+  height: 6vh;
+  width: 6vh;
+  margin: 0.2vw;
+  margin-bottom: 0;
+  background-color: var(--transparent);
+  border-radius: 3vh;
+}
 
 .title {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 75vw;
+    width: fit-content;
+    padding-left: 4vh;
+    padding-right: 4vh;
+    border-radius: 10vh;
+    background: linear-gradient(to bottom, transparent 5%, var(--darkHeader), var(--darkHeader))
 }
 
 .appButtonDisplay {
@@ -105,13 +117,21 @@ function changeButton () {
     transform: scale(1.2);
 }
 
-.latestChange,
-.allChange {
+.latestChange {
   padding: 2vh;
   border-radius: 3vh;
   margin-bottom: 10vh;
   margin-top: 5vh;
-  width: 66vw;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.allChanges {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .latestChange {

@@ -50,9 +50,13 @@ const changelog = [{
     notes: ["Added a search by ship feature for Research Agreement Helper", "Optimized Module Library buttons for mobile devices",
     "Removed the Theme button", "Fixed wrong results for Hayreddin's Loyal and Thunderbolt Star in Research Agreement Helper"]
 }, {
-    version: "0.5.0",
-    release: "February 14, 2024",
-    notes: ["Migrated to VueJS"]
+    version: "1.0.0",
+    release: "February 17, 2024",
+    notes: ["Reworked all of Color Generator", "Added Color Generator gradients", "Color Generator now allows for copy to clipboard", 
+    "Changed display of information in Research Agreement Helper", "Changed display of information in Module Library", 
+    "Changed display of information in Changelog", "Changed display of header buttons", "Optimized every display for mobile users", 
+    "Gravity Assist tool links are now routed", "Added Eternal Heavens to Research Agreement Helper and Module Library", 
+    "Disabled double-click to zoom on buttons for mobile users"]
 }
 ];
 
