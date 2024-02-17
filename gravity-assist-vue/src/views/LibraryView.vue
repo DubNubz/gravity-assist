@@ -2,8 +2,9 @@
     <div class="title">
         <h2>Module Library</h2>
     </div>
-
-    <p>Choose a ship, then choose a module to inspect.</p>
+    <div class="title-description">
+      <p>Choose a ship, then choose a module to inspect.</p>
+    </div>
 
     <div class="shipOverall">
         <div class="moveShipsButton">
@@ -123,6 +124,10 @@ function changeShip (type) {
 </script>
 
 <style scoped>
+
+.title-description {
+  width: 85vw;
+}
 
 .title {
     display: flex;

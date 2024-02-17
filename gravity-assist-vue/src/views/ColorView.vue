@@ -2,8 +2,10 @@
     <div class="title">
     <h2>Color Generator</h2>
     </div>
-    <p>Click on the text below to begin editing your message.</p>
-    <p>Choose your output color, copy your text, and you're good to go!</p>
+    <div class="title-description">
+      <p>Click on the text below to begin editing your message.</p>
+      <p>Choose your output color, copy your text, and you're good to go!</p>
+    </div>
 
     <div class="colorOptionMenuBackground" v-if="colorMenu">
       <div class="colorOptionMenu">
@@ -26,6 +28,20 @@
 
       </div>
     </div>
+
+    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() < 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'message')">
+        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
+      </span>
+    / 280 characters (chat message)
+    </p>
+
+    <p id="mailCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() > 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'mail')">
+        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
+      </span>
+    / 1,000 characters (mail)
+    </p>
     
     <div class="cards">
       
@@ -46,19 +62,6 @@
       </div>
 
     </div>
-    
-    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() < 280">
-      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'message')">
-        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
-      </span>
-    / 280 characters (chat message)
-    </p>
-
-    <p id="mailCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() > 280">
-      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'mail')">
-        {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
-      </span>
-    / 1,000 characters (mail)</p>
     
     <p class="cyan" id="warning">If your text is flagged as inappropriate, just choose a different color</p>
 </template>
@@ -146,6 +149,11 @@ function addNewLine (event) {
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
+#messageCharacterCounter,
+#mailCharacterCounter {
+  margin-top: 5vh;
+}
+
 .copyToClipboard {
   background-color: var(--normalText);
   width: 70%;
@@ -210,10 +218,6 @@ textarea,
   padding: 3vh;
   outline-color: var(--cyan);
   font-family: 'Kanit', sans-serif;
-}
-
-textarea {
-  margin-top: 4vh;
 }
 
 .colorOptionMenuBackground {
@@ -341,6 +345,10 @@ img {
 .WhiteTogreen {background: linear-gradient(to bottom right, #ffffff, #00ff00);}
 .WhiteToblue {background: linear-gradient(to bottom right, #ffffff, #00d7ff);}
 .WhiteTopurple {background: linear-gradient(to bottom right, #ffffff, #e100ff);}
+
+.title-description {
+  width: 85vw;
+}
 
 @media screen and (max-width: 1000px) {
   textarea,

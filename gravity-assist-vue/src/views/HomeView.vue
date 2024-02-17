@@ -4,7 +4,9 @@
         <h2 id="gravityAssistTitle">Gravity Assist</h2>
     </div>
 
-    <p>fuck javascript</p>
+    <div class="title-description">
+      <p><span class="normalText">by DubNubz</span></p>
+    </div>
 
     <div class="latestChange">
         <ChangelogCard/>
@@ -47,6 +49,12 @@ function changeButton () {
 </script>
 
 <style scoped>
+
+.normalText {color: var(--normalText)}
+
+.title-description {
+  width: 85vw;
+}
 
 #gravityAssistIcon,
 #gravityAssistTitle {

@@ -3,7 +3,9 @@
         <h2>Research Agreement Helper</h2>
     </div>
     
-    <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
+    <div class="title-description">
+      <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
+    </div>
 
     <div class="RASearch">
         <p>Currently displaying results of: <span class="cyan" id="RASearchCurrent">{{ globalVariables.currentSearchShip.value }}</span></p>
@@ -63,6 +65,7 @@ function reset () {
   globalVariables.activeManufacturer.value = "Jupiter Industry";
   globalVariables.activeDirection.value = "Outstanding Firepower";
   globalVariables.activeScope.value = "Projectile Weapon";
+  filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
 function searchChangeView (manufacturer, direction, scope) {
@@ -87,6 +90,10 @@ function changeView (type, name) {
 </script>
 
 <style scoped>
+
+.title-description {
+  width: 85vw;
+}
 
 .title {
     display: flex;

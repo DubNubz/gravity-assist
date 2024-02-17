@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/home',
+      name: 'home2',
+      component: () => import('../views/HomeView.vue')
+    },
+    {
       path: '/modules/color-generator',
       name: 'color-generator',
       component: () => import('../views/ColorView.vue')

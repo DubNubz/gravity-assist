@@ -5,7 +5,7 @@
       <h1 id="gravityAssistTitle">Gravity Assist</h1>
     </div>
     <div class="navButtons">
-      <RouterLink :to="{ path: '/'}"
+      <RouterLink :to="{ path: '/home'}"
       class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Home' }"
       @click="changeModule('Home')">
