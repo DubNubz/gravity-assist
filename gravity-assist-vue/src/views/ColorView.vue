@@ -29,15 +29,15 @@
       </div>
     </div>
 
-    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() < 280">
-      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'message')">
+    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length < 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length, 'message')">
         {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
       </span>
     / 280 characters (chat message)
     </p>
 
-    <p id="mailCharacterCounter" v-if="globalVariables.outputText.value.join('').length.toLocaleString() > 280">
-      <span :class="characterLimit(globalVariables.outputText.value.join('').length.toLocaleString(), 'mail')">
+    <p id="mailCharacterCounter" v-if="globalVariables.outputText.value.join('').length > 280">
+      <span :class="characterLimit(globalVariables.outputText.value.join('').length, 'mail')">
         {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
       </span>
     / 1,000 characters (mail)
@@ -96,7 +96,9 @@ function characterLimit (num, type) {
       return "green";
     }
   } else if (type == "mail") {
-    if (num >= 900) {
+    if (num > 1000) {
+      return "black";
+    } else if (num >= 900) {
       return "red";
     } else if (num >= 700) {
       return "orange"
@@ -168,6 +170,13 @@ function addNewLine (event) {
   background-color: var(--deepGreen);
 }
 
+.black {
+  color: #ff0000;
+  background-color: black;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  border-radius: 1vw;
+}
 .red {color: #ff0000}
 .orange {color: #ffa600}
 .yellow {color: #ffff00}
