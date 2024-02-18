@@ -24,25 +24,25 @@
         <div class="manufacturers">
             <h3>Companies</h3>
             <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('manufacturer')">&lt;&lt;</button>
+              <button class="infoChangeButton previousChange" @click="previousButton('manufacturer')">&lt;</button>
               <p class="infoDisplay">{{ globalVariables.activeManufacturer.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('manufacturer')">>></button>
+              <button class="infoChangeButton nextChange" @click="nextButton('manufacturer')">></button>
             </div>
         </div>
         <div class="directions">
             <h3>Directions</h3>
             <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('direction')">&lt;&lt;</button>
+              <button class="infoChangeButton previousChange" @click="previousButton('direction')">&lt;</button>
               <p class="infoDisplay">{{ globalVariables.activeDirection.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('direction')">>></button>
+              <button class="infoChangeButton nextChange" @click="nextButton('direction')">></button>
             </div>
           </div>
         <div class="scopes">
             <h3>Scopes</h3>
             <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('scope')">&lt;&lt;</button>
+              <button class="infoChangeButton previousChange" @click="previousButton('scope')">&lt;</button>
               <p class="infoDisplay">{{ globalVariables.activeScope.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('scope')">>></button>
+              <button class="infoChangeButton nextChange" @click="nextButton('scope')">></button>
             </div>
           </div>
     </div>
