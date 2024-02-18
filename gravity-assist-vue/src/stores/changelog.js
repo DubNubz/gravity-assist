@@ -58,6 +58,12 @@ const changelog = [{
     "Optimized every display for mobile users", "Changed display of information in Module Library for desktop users",
     "Gravity Assist tool links are now routed", "Added Eternal Heavens to Research Agreement Helper and Module Library",
     "Disabled double-click to zoom on buttons for mobile users"]
+}, {
+    version: "1.0.1",
+    release: "February 18, 2024",
+    notes: ["Added an animation for copying text in Color Generator", "Fixed the Color Generator character counter not working above 1,000 characters",
+    "Fixed a bug where the Color Generator reverse button wouldn't work on Chrome for iOS", "Fixed a bug where RA Finder algorithm wouldn't work",
+    "Optimized display of information for mobile users in Mod Library"]
 }
 ];
 
