@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length < 280">
+    <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length <= 280">
       <span :class="characterLimit(globalVariables.outputText.value.join('').length, 'message')">
         {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
       </span>
@@ -87,10 +87,12 @@ function copyToClipboard () {
 function characterLimit (num, type) {
   if (type == "message") {
     if (num >= 250) {
+      return "black";
+    } else if (num >= 175) {
       return "red";
-    } else if (num >= 200) {
+    } else if (num >= 125) {
       return "orange";
-    } else if (num >= 100) {
+    } else if (num >= 75) {
       return "yellow";
     } else {
       return "green";
