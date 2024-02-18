@@ -6,7 +6,7 @@ const globalVariables = {
     activeModule: ref("Home"),
 
     // Color Generator
-    inputText: ref("Click here to start typing!"),
+    inputText: ref(""),
     outputText: ref([""]),
     currentColor: ref("pinkToYellow"),
     currentColorClass: ref("pinkToYellow"),

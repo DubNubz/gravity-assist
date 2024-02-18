@@ -17,7 +17,7 @@
         <p>Currently displaying results of:</p>
         <div class="searchDisplay">
           <button id="RASearchButton" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value"><img src="/arrow-circle.png" alt="Reverse all color options"></button>
-          <p class="cyan" id="RASearchCurrent" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">{{ globalVariables.currentSearchShip.value }}</p>
+          <p class="gold" id="RASearchCurrent" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">{{ globalVariables.currentSearchShip.value }}</p>
         </div>
       </div>
 
@@ -122,11 +122,34 @@ function nextButton (type) {
 
 function searchChangeView (manufacturer, direction, scope) {
   globalVariables.activeManufacturer.value = manufacturer;
-  globalVariables.activeDirection.value = direction[0];
   globalVariables.activeScope.value = scope;
   globalVariables.currentManufacturer.value = globalVariables.allManufacturers.value.indexOf(manufacturer);
-  globalVariables.currentDirection.value = globalVariables.allDirections.value.indexOf(direction);
   globalVariables.currentScope.value = globalVariables.allScopes.value.indexOf(scope);
+
+  let trueDirection;
+  const allPaths = [];
+  const allChances = [];
+
+  for (let i in direction) {
+    const path = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(direction[i]) || direction[i] == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
+    allPaths.push(path);
+    for (let ship in path) {
+      if ((path[ship].name + "-" + path[ship].variant) == globalVariables.currentSearchShip.value) {
+        const chance = Number(((path[ship].weight / (Object.values(path).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2));
+        allChances.push(chance);
+      }
+    }
+  }
+
+  let array = allPaths[allChances.indexOf(Math.max(...allChances))]
+  for (let i in array) {
+    if ((array[i].name + "-" + array[i].variant) == globalVariables.currentSearchShip.value) {
+      trueDirection = array[i].direction[allChances.indexOf(Math.max(...allChances))];
+    }
+  }
+
+  globalVariables.activeDirection.value = trueDirection;
+  globalVariables.currentDirection.value = globalVariables.allDirections.value.indexOf(trueDirection);
   filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
@@ -146,6 +169,8 @@ function changeView (type, name) {
 
 <style scoped>
 
+.gold {color: var(--gold)}
+
 .searchDisplay {
   display: flex;
   justify-content: center;
@@ -155,6 +180,11 @@ function changeView (type, name) {
 #RASearchCurrent {
   font-size: var(--h3);
   margin-left: 1vw;
+  transition: all 0.5s;
+}
+
+#RASearchCurrent:hover {
+  color: var(--deepGreen);
 }
 
 img {
@@ -324,7 +354,7 @@ h3 {
 }
 
 #RASearchButton {
-  background-color: var(--cyan);
+  background-color: var(--gold);
   border-radius: 3vh;
   width: 6vh;
   height: 6vh;
@@ -333,6 +363,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 0;
 }
 
 #RASearchButton:hover {
@@ -367,6 +398,10 @@ h3 {
 
   .infoDisplay {
     font-size: var(--p);
+  }
+
+  .infoChangeButton {
+    font-size: var(--h3);
   }
 
 }

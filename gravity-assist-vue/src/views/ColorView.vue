@@ -48,7 +48,8 @@
       <textarea id="textBox"
       v-model="globalVariables.inputText.value"
       @keydown.enter.prevent="addNewLine"
-      @input="globalVariables.outputText.value.push('')">
+      @input="globalVariables.outputText.value.push('')"
+      placeholder="Click here to start typing!">
       </textarea>
 
       <div class="colorChange">
