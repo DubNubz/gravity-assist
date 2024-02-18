@@ -7,6 +7,17 @@
       <p>Choose your output color, copy your text, and you're good to go!</p>
     </div>
 
+    <Transition name="copy">
+      <div class="copyBackground" v-if="copyActive">
+        <div class="copyOverall">
+          <div class="copyActual">
+            <img src="/check-removebg-preview (1).png" alt="Copied to clipboard successfully" id="copySuccess">
+          </div>
+          <h3 id="copySuccessText">Text copied to clipboard!</h3>
+        </div>
+      </div>
+    </Transition>
+
     <div class="colorOptionMenuBackground" v-if="colorMenu">
       <div class="colorOptionMenu">
 
@@ -75,10 +86,15 @@ import { colors } from '@/stores/colors';
 
 globalVariables.activeModule.value = "Color Generator";
 const colorMenu = ref(false);
+const copyActive = ref(false);
 
 function copyToClipboard () {
   navigator.clipboard.writeText(globalVariables.outputText.value.join("")).then(() => {
-    alert("Text copied to clipboard!");
+    copyActive.value = true;
+    setTimeout(() => {
+      console.log(copyActive.value);
+      copyActive.value = false;
+    }, 2000);
   }, () => {
     alert("Text failed to copy to clipbard");
   })
@@ -238,7 +254,7 @@ textarea,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   overflow: hidden;
   z-index: 99999999;
 }
@@ -259,6 +275,65 @@ textarea,
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.copyBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  z-index: 999999999;
+}
+
+.copyOverall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 5vh;
+  padding: 3vh;
+}
+
+.copyActual {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  margin-bottom: 2vh;
+}
+
+#copySuccess {
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+}
+
+.copy-enter-active, .copy-leave-active {
+  transition: all 0.75s ease-in-out;
+}
+
+.copy-enter-from,
+.copy-leave-to {
+  opacity: 0;
+}
+
+.copy-enter-active .copyActual,
+.copy-leave-active .copyActual { 
+  transition: all 0.75s ease-in-out;
+}
+
+.copy-enter-from .copyActual,
+.copy-leave-to .copyActual {
+  transform: rotate(720deg);
+  opacity: 0.001;
 }
 
 .buttons {
