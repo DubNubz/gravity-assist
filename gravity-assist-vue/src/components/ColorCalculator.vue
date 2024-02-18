@@ -28,7 +28,7 @@ function convertInput (type, input) {
     let color;
 
     if (reverse) {
-        color = props.Color.colorPalette.toReversed()[startIndex];
+        color = props.Color.colorPalette.slice().reverse()[startIndex];
     } else {
         color = props.Color.colorPalette[startIndex];
     }
