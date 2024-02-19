@@ -24,6 +24,7 @@ const globalVariables = {
     allManufacturers: ref(["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"]),
     allDirections: ref(["Outstanding Firepower", "Sustained Combat", "Strategy & Support", "Fighter & Corvette", "Empty"]),
     allScopes: ref(["Projectile Weapon", "Direct-Fire Weapon", "Empty"]),
+    projectedTime: ref(0),
 
     // Mod Library
     currentShip: ref(0),

@@ -31,8 +31,8 @@ const data = [{
         variant: "B",
         variant_name: "Interference Type",
         manufacturer: "Dawn Accord",
-        direction: ["Outstanding Firepower", "Fighter & Corvette"],
-        scope: "Projectile Weapon",
+        direction: ["Sustained Combat", "Strategy & Support", "Fighter & Corvette"],
+        scope: "Direct-Fire Weapon",
         weight: 10
     }, {
         name: "AT021",
@@ -42,7 +42,7 @@ const data = [{
         variant: "C",
         variant_name: "Multi-Role Type",
         manufacturer: "Dawn Accord",
-        direction: ["Strategy & Support", "Fighter & Corvette"],
+        direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
         weight: 10
     }, {
@@ -499,7 +499,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Missile Frigate",
-        img: "/ships/mareTranquilitatis_a.png",
+        img: "/ships/mareTranquillitatis_a.png",
         type: "Frigate",
         variant: "A",
         variant_name: "Integrated Type",
@@ -510,7 +510,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Pulse Cannon Frigate",
-        img: "/ships/mareTranquilitatis_b.png",
+        img: "/ships/mareTranquillitatis_b.png",
         type: "Frigate",
         variant: "B",
         variant_name: "Pulse Cannon Type",
@@ -521,7 +521,7 @@ const data = [{
     }, {
         name: "Mare Tranquillitatis",
         title: "Interceptor Frigate",
-        img: "/ships/mareTranquilitatis_c.png",
+        img: "/ships/mareTranquillitatis_c.png",
         type: "Frigate",
         variant: "C",
         variant_name: "Anti-Aircraft Type",

@@ -8,7 +8,6 @@
 <script setup>
 import { globalVariables } from '@/stores/global';
 
-
 const props = defineProps({
   Data: Array,
 })

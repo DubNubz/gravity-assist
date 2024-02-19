@@ -169,7 +169,7 @@ function changeShip (type) {
 }
 
 #modShipImg {
-  width: 36.1842vh;
+  width: 42.0212766vh;
   height: 25vh;
   background-color: rgba(0, 0, 0, 0);
 }

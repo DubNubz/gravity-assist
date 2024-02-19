@@ -18,27 +18,29 @@
       </div>
     </Transition>
 
-    <div class="colorOptionMenuBackground" v-if="colorMenu">
-      <div class="colorOptionMenu">
+    <Transition name="chooseColor">
+      <div class="colorOptionMenuBackground" v-if="colorMenu">
+        <div class="colorOptionMenu">
 
-        <h2>Click on a button to change the output color</h2>
+          <h2>Click on a button to change the output color</h2>
 
-        <button class="reverse" @click="globalVariables.reversed.value = !globalVariables.reversed.value">
-          <img src="/arrow-circle.png" alt="Reverse all color options">
-          <p class="reverseText">Reverse</p>
-        </button>
-
-        <div class="buttons">
-          <button class="colorButton"
-            :class="getClass(color.color1, color.color2)"
-            v-for="color in colors"
-            @click="buttonEvent(color.name, getClass(color.color1, color.color2))">
-            {{ getButtonName(color.color1, color.color2) }}
+          <button class="reverse" @click="globalVariables.reversed.value = !globalVariables.reversed.value">
+            <img src="/arrow-circle.png" alt="Reverse all color options">
+            <p class="reverseText">Reverse</p>
           </button>
-        </div>
 
-      </div>
+          <div class="buttons">
+            <button class="colorButton"
+              :class="getClass(color.color1, color.color2)"
+              v-for="color in colors"
+              @click="buttonEvent(color.name, getClass(color.color1, color.color2))">
+              {{ getButtonName(color.color1, color.color2) }}
+            </button>
+          </div>
+
+        </div>
     </div>
+    </Transition>
 
     <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length <= 280">
       <span :class="characterLimit(globalVariables.outputText.value.join('').length, 'message')">
@@ -94,7 +96,7 @@ function copyToClipboard () {
     setTimeout(() => {
       console.log(copyActive.value);
       copyActive.value = false;
-    }, 2000);
+    }, 1500);
   }, () => {
     alert("Text failed to copy to clipbard");
   })
@@ -254,17 +256,17 @@ textarea,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 99999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .colorOptionMenu {
   width: 70vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 3vh;
@@ -277,6 +279,34 @@ textarea,
   align-items: center;
 }
 
+.chooseColor-enter-active, .chooseColor-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.chooseColor-leave-active {
+  transition-delay: 0.15s;
+}
+
+.chooseColor-enter-from,
+.chooseColor-leave-to {
+  opacity: 0;
+}
+
+.chooseColor-enter-active .colorOptionMenu,
+.chooseColor-leave-active .colorOptionMenu { 
+  transition: all 0.25s ease-in-out;
+}
+
+.chooseColor-enter-active .colorOptionMenu {
+  transition-delay: 0.15s;
+}
+
+.chooseColor-enter-from .colorOptionMenu,
+.chooseColor-leave-to .colorOptionMenu {
+  transform: translateY(30px);
+  opacity: 0.001;
+}
+
 .copyBackground {
   position: fixed;
   display: flex;
@@ -286,7 +316,7 @@ textarea,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 999999999;
 }
@@ -327,7 +357,7 @@ textarea,
 
 .copy-enter-active .copyActual,
 .copy-leave-active .copyActual { 
-  transition: all 0.75s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .copy-enter-from .copyActual,

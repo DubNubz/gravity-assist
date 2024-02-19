@@ -7,9 +7,11 @@
       <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
     </div>
 
-    <div id="RASearchMenuBackground" v-if="globalVariables.searchActive.value">
+    <Transition name="search">
+      <div id="RASearchMenuBackground" v-if="globalVariables.searchActive.value">
         <ResearchSearch @response="searchChangeView"/>
-    </div>
+      </div>
+    </Transition>
     
     <div class="RAButtons">
 
@@ -21,30 +23,33 @@
         </div>
       </div>
 
-        <div class="manufacturers">
-            <h3>Companies</h3>
-            <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('manufacturer')">&lt;</button>
-              <p class="infoDisplay">{{ globalVariables.activeManufacturer.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('manufacturer')">></button>
-            </div>
+      <div class="manufacturers">
+        <h3>Companies</h3>
+        <div class="buttonArray">
+          <button class="infoChangeButton previousChange" @click="previousButton('manufacturer')">&lt;</button>
+          <p class="infoDisplay">{{ globalVariables.activeManufacturer.value }}</p>
+          <button class="infoChangeButton nextChange" @click="nextButton('manufacturer')">></button>
         </div>
-        <div class="directions">
-            <h3>Directions</h3>
-            <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('direction')">&lt;</button>
-              <p class="infoDisplay">{{ globalVariables.activeDirection.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('direction')">></button>
-            </div>
-          </div>
-        <div class="scopes">
-            <h3>Scopes</h3>
-            <div class="buttonArray">
-              <button class="infoChangeButton previousChange" @click="previousButton('scope')">&lt;</button>
-              <p class="infoDisplay">{{ globalVariables.activeScope.value }}</p>
-              <button class="infoChangeButton nextChange" @click="nextButton('scope')">></button>
-            </div>
-          </div>
+      </div>
+      <div class="directions">
+        <h3>Directions</h3>
+        <div class="buttonArray">
+          <button class="infoChangeButton previousChange" @click="previousButton('direction')">&lt;</button>
+          <p class="infoDisplay">{{ globalVariables.activeDirection.value }}</p>
+          <button class="infoChangeButton nextChange" @click="nextButton('direction')">></button>
+        </div>
+      </div>
+      <div class="scopes">
+        <h3>Scopes</h3>
+        <div class="buttonArray">
+          <button class="infoChangeButton previousChange" @click="previousButton('scope')">&lt;</button>
+          <p class="infoDisplay">{{ globalVariables.activeScope.value }}</p>
+          <button class="infoChangeButton nextChange" @click="nextButton('scope')">></button>
+        </div>
+      </div>
+
+      <h3>Time required: <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24) }}</span> days<span v-if="Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) != 0">, <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) }}</span> hours</span></h3>
+
     </div>
 
     <div class="RAResultsHolder">
@@ -56,7 +61,7 @@
 
 <script setup>
 
-import { data } from '@/stores/ra_data';
+import { difficulty, data } from '@/stores/ra_data';
 import { ref } from 'vue';
 import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
@@ -64,6 +69,46 @@ import ResearchSearch from '@/components/ResearchSearch.vue';
 
 globalVariables.activeModule.value = 'Research Agreement Helper';
 const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]);
+
+function getColor (input) {
+  if (input > 20) {
+    return "red";
+  } else if (input >= 14.5) {
+    return "orange";
+  } else if (input >= 5.5) {
+    return "yellow";
+  } else {
+    return "green";
+  }
+}
+
+function getTime (manufacturer, direction, scope) {
+  const allPointers = [];
+  // [2.5, 3.5]
+
+  if (manufacturer != "Empty") {
+    allPointers.push(difficulty[manufacturer]);
+  }
+  if (scope != "Empty") {
+    allPointers.push(difficulty[scope]);
+  }
+  if (direction != "Empty") {
+    allPointers.push(difficulty[direction]);
+  }
+
+  if (allPointers.length == 1) {
+    globalVariables.projectedTime.value = allPointers[0] * 10;
+    return globalVariables.projectedTime.value;
+  } else if (allPointers.length == 2) {
+    globalVariables.projectedTime.value = (allPointers[0] * 10) + ((allPointers[0] + allPointers[1]) * 10);
+    return globalVariables.projectedTime.value;
+  } else if (allPointers.length == 3) {
+    globalVariables.projectedTime.value = (allPointers[0] * 10) + ((allPointers[0] + allPointers[1]) * 10) + (allPointers[0] * allPointers[1] * allPointers[2] * 0.4 * 10);
+    return globalVariables.projectedTime.value;
+  } else {
+    return 0;
+  }
+}
 
 function previousButton (type) {
   if (type == "manufacturer") {
@@ -168,6 +213,18 @@ function changeView (type, name) {
 </script>
 
 <style scoped>
+
+.black {
+  color: #ff0000;
+  background-color: black;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  border-radius: 1vw;
+}
+.red {color: #ff0000}
+.orange {color: #ffa600}
+.yellow {color: #ffff00}
+.green {color: #00ff00}
 
 .gold {color: var(--gold)}
 
@@ -380,6 +437,38 @@ h3 {
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 99999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-enter-active, .search-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.search-leave-active {
+  transition-delay: 0.15s;
+}
+
+.search-enter-from,
+.search-leave-to {
+  opacity: 0;
+}
+
+.search-enter-active #RASearchMenu,
+.search-leave-active #RASearchMenu { 
+  transition: all 0.25s ease-in-out;
+}
+
+.search-enter-active #RASearchMenu {
+  transition-delay: 0.15s;
+}
+
+.search-enter-from #RASearchMenu,
+.search-leave-to #RASearchMenu {
+  transform: translateY(30px);
+  opacity: 0.001;
 }
 
 @media screen and (max-width: 1000px) {

@@ -61,9 +61,9 @@
   --standard2: 1.5vh;
   --standard: 1vh;
 
-  --pImgWidth: 14.4736842vh; /* 1.44736842vh width : 1vh height*/
+  --pImgWidth: 16.80851064vh; /* 1.44736842vh width : 1vh height  //  new- 1.680851064vh width : 1vh height*/ 
   --pImgHeight: 10vh;
-  --standard2ImgWidth: 7.2368421vh;
+  --standard2ImgWidth: 8.40425532vh;
   --standard2ImgHeight: 5vh;
   --standardImgWidth: 4.3421vh;
   --standardImgHeight: 3vh;

@@ -64,6 +64,11 @@ const changelog = [{
     notes: ["Added an animation for copying text in Color Generator", "Fixed the Color Generator character counter not working above 1,000 characters",
     "Fixed a bug where the Color Generator reverse button wouldn't work on Chrome for iOS", "Fixed a bug where RA Finder algorithm wouldn't work",
     "Optimized display of information for mobile users in Mod Library"]
+}, {
+    version: "1.0.2",
+    release: "February 19, 2024",
+    notes: ["Added a time estimate for research agreement paths in RA Helper", "Added animations to popup windows in Color Generator and RA Helper",
+    "Replaced Mod Library and RA Helper ship images with higher quality ones", "Fixed AT021-B and AT021-C appearing under the wrong filters in RA Helper"]
 }
 ];
 

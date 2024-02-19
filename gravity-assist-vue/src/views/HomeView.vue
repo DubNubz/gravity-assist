@@ -119,6 +119,7 @@ img {
     border-width: 0.1vh;
     transition: all 0.5s;
     width: 20vh;
+    font-size: var(--p);
 }
 
 .loadAllChanges:hover {

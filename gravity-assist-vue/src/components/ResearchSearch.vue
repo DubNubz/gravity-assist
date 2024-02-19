@@ -41,10 +41,6 @@ function autocomplete (event) {
 
 #RASearchMenu {
   width: 70vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 3vh;
