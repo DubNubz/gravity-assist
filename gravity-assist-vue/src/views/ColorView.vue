@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-    <h2>Color Generator</h2>
+      <h2>Color Generator</h2>
     </div>
     <div class="title-description">
       <p>Click on the text below to begin editing your message.</p>
