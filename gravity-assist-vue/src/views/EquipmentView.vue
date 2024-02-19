@@ -3,7 +3,8 @@
       <h2>Equipment Encyclopedia</h2>
     </div>
     <div class="title-description">
-      <p>title description placeholder.</p>
+      <p>This page is currently being worked on</p>
+      <p>Come back at a later time :D</p>
     </div>
 </template>
 

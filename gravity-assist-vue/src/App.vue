@@ -92,6 +92,7 @@ function changeModule (button) {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 50vh;
 }
 
 .navButtons {

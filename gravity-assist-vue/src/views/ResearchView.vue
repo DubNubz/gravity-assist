@@ -89,11 +89,11 @@ function getTime (manufacturer, direction, scope) {
   if (manufacturer != "Empty") {
     allPointers.push(difficulty[manufacturer]);
   }
-  if (scope != "Empty") {
-    allPointers.push(difficulty[scope]);
-  }
   if (direction != "Empty") {
     allPointers.push(difficulty[direction]);
+  }
+  if (scope != "Empty") {
+    allPointers.push(difficulty[scope]);
   }
 
   if (allPointers.length == 1) {
