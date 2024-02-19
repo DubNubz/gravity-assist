@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/modules/module-library',
       name: 'module-library',
       component: () => import('../views/LibraryView.vue')
+    },
+    {
+      path: '/modules/equipment-encyclopedia',
+      name: 'equipment-encyclopedia',
+      component: () => import('../views/EquipmentView.vue')
     }
   ]
 })

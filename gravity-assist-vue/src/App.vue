@@ -24,10 +24,16 @@
       Research Agreement Helper</RouterLink>
 
       <RouterLink :to="{ path: '/modules/module-library'}"
-      class="navButton" id="lastNavButton"
+      class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Module Library' }"
       @click="changeModule('Module Library')">
       Module Library</RouterLink>
+
+      <RouterLink :to="{ path: '/modules/equipment-encyclopedia'}"
+      class="navButton" id="lastNavButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Equipment Encyclopedia' }"
+      @click="changeModule('Equipment Encyclopedia')">
+      Equipment Encyclopedia</RouterLink>
       
     </div>
   </header>
@@ -91,7 +97,7 @@ function changeModule (button) {
 .navButtons {
   display: flex;
   flex-wrap: wrap;
-  width: 70vw;
+  width: 90vw;
   justify-content: space-evenly;
 }
 
