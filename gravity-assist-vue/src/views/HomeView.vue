@@ -6,7 +6,7 @@
 
     <div class="title-description">
       <p>by DubNubz</p>
-      <p><span class="normalText">Any and all feedback is appreciated!</span></p>
+      <p><span class="normalText">Any and all bug reports/feedback are appreciated!</span></p>
       <p><span class="normalText">You can find me as micromidget on Discord, or join my server <a href="https://discord.com/invite/9mJ9b2Bbzx">here!</a></span></p>
     </div>
 
@@ -300,7 +300,7 @@ img {
 
 #allChangesButton {
   position: fixed;
-  bottom: 2vh;
+  bottom: 10vh;
 }
 
 .changes-enter-active, .changes-leave-active {
