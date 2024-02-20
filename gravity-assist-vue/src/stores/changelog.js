@@ -69,6 +69,10 @@ const changelog = [{
     release: "February 19, 2024",
     notes: ["Added a time estimate for research agreement paths in RA Helper", "Added animations to popup windows in Color Generator and RA Helper",
     "Replaced Mod Library and RA Helper ship images with higher quality ones", "Fixed AT021-B and AT021-C appearing under the wrong filters in RA Helper"]
+}, {
+    version: "1.1.0",
+    release: "February 20, 2024",
+    notes: ["Added Equipment Encyclopedia", "Added a color compression option in Color Generator to create longer text", "Edited home tab text"]
 }
 ];
 

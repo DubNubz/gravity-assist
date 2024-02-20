@@ -42,6 +42,39 @@
     </div>
     </Transition>
 
+    <Transition name="chooseStep">
+      <div class="colorStepMenuBackground" v-if="stepMenu">
+        <div class="colorStepMenu">
+
+          <h2 class="colorStepMenuTitle">How compressed would you like your output to be?</h2>
+          <h3 class="colorStepMenuDescription">Less compressed = less characters, fluid gradient</h3>
+          <h3 class="colorStepMenuDescription">More compressed = more characters, blocky gradient</h3>
+
+          <div class="stepButtons">
+            <button class="stepMenuButton" id="uncompressedStep"
+            @click="changeColorStep('uncompressed')">
+              <h2 class=stepMenuButtonTitle>Uncompressed</h2>
+              <p class="stepMenuButtonDescription">Very fluid gradient</p>
+              <p class="stepMenuButtonDescription">Very limited character output</p>
+            </button>
+            <button class="stepMenuButton" id="compressed"
+            @click="changeColorStep('compressed')">
+              <h2 class=stepMenuButtonTitle>Compressed</h2>
+              <p class="stepMenuButtonDescription">Fair gradient</p>
+              <p class="stepMenuButtonDescription">Fair character output</p>
+            </button>
+            <button class="stepMenuButton" id="veryCompressed"
+            @click="changeColorStep('veryCompressed')">
+              <h2 class=stepMenuButtonTitle>Very compressed</h2>
+              <p class="stepMenuButtonDescription">Very blocky gradient</p>
+              <p class="stepMenuButtonDescription">Large character output</p>
+            </button>
+          </div>
+
+        </div>
+    </div>
+    </Transition>
+
     <p id="messageCharacterCounter" v-if="globalVariables.outputText.value.join('').length <= 280">
       <span :class="characterLimit(globalVariables.outputText.value.join('').length, 'message')">
         {{ globalVariables.outputText.value.join("").length.toLocaleString() }}
@@ -65,14 +98,17 @@
       placeholder="Click here to start typing!">
       </textarea>
 
+      <div class="stepChange">
+        <button class="stepButton" @click="stepMenu = !stepMenu" :id="globalVariables.currentColorStep.value">Change color compression</button>
+      </div>
+
       <div class="colorChange">
         <button class="colorButton" id="colorButton2" @click="colorMenu = !colorMenu" :class="globalVariables.currentColorClass.value">Change color output</button>
       </div>
 
       <div id="outputBox">
         <button class="copyToClipboard" @click="copyToClipboard">Copy to clipboard</button>
-        <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"
-        @response="changeOutput"/>
+        <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"/>
       </div>
 
     </div>
@@ -89,6 +125,12 @@ import { colors } from '@/stores/colors';
 globalVariables.activeModule.value = "Color Generator";
 const colorMenu = ref(false);
 const copyActive = ref(false);
+const stepMenu = ref(false);
+
+function changeColorStep (button) {
+  globalVariables.currentColorStep.value = button;
+  stepMenu.value = !stepMenu.value;
+}
 
 function copyToClipboard () {
   navigator.clipboard.writeText(globalVariables.outputText.value.join("")).then(() => {
@@ -152,10 +194,6 @@ function getClass (name1, name2) {
   }
 }
 
-function changeOutput (output) {
-  globalVariables.outputText.value = output;
-}
-
 function uppercase (word) {
   return word[0].toUpperCase() + word.slice(1);
 }
@@ -209,6 +247,10 @@ function addNewLine (event) {
 }
 
 .colorChange {
+  margin-bottom: 2vh;
+}
+
+.stepChange {
   margin-top: 3vh;
   margin-bottom: 2vh;
 }
@@ -383,8 +425,22 @@ textarea,
   transition: all 0.5s;
 }
 
+.stepButton {
+  width: 25vw;
+  height: 7.5vh;
+  padding: 1vh;
+  border-radius: 3vh;
+  margin-bottom: 1vh;
+  font-size: var(--h3);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.stepButton:hover {
+  transform: scale(1.05);
+}
+
 #colorButton2 {
-  width: 20vw;
+  width: 25vw;
   font-size: var(--h3);
   filter: grayscale(0.05);
   transition: all 0.5;
@@ -467,6 +523,114 @@ img {
   width: 85vw;
 }
 
+.colorStepMenuBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 99999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorStepMenu {
+  width: 70vw;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 3vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-height: 80%;
+  min-height: 80%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colorStepMenuDescription {
+  margin-top: 0;
+  margin-bottom: 1vh;
+}
+
+.stepButtons {
+  margin-top: 4vh;
+  width: 65vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.stepMenuButton {
+  width: 20vw;
+  height: 50vh;
+  border-radius: 5vh;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.stepMenuButton:hover {
+  transform: scale(1.05);
+}
+
+#uncompressedStep {
+  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+}
+#uncompressedStep::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  width: 100%;
+  height: 300%;
+  top: 0;
+  background: linear-gradient(90deg, transparent, #defffd, transparent);
+  transition: left 0.35s ease;
+}
+#uncompressedStep:hover::after {
+  left: 100%;
+}
+
+#uncompressed {
+  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+}
+#compressed {
+  background: linear-gradient(to bottom right, #ff0000, #bbff00, #00ffff, #ff00ff);
+}
+#veryCompressed {
+  background: linear-gradient(to bottom right, #ff0000, #00fff2, #ff00ff);
+}
+
+.chooseStep-enter-active, .chooseStep-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.chooseStep-leave-active {
+  transition-delay: 0.15s;
+}
+
+.chooseStep-enter-from,
+.chooseStep-leave-to {
+  opacity: 0;
+}
+
+.chooseStep-enter-active .colorStepMenu,
+.chooseStep-leave-active .colorStepMenu { 
+  transition: all 0.25s ease-in-out;
+}
+
+.chooseStep-enter-active .colorStepMenu {
+  transition-delay: 0.15s;
+}
+
+.chooseStep-enter-from .colorStepMenu,
+.chooseStep-leave-to .colorStepMenu {
+  transform: translateY(30px);
+  opacity: 0.001;
+}
+
 @media screen and (max-width: 1000px) {
   textarea,
   #outputBox {
@@ -475,6 +639,12 @@ img {
 
   .colorButton {
     width: 30vw;
+    height: 6vh;
+    font-size: var(--p);
+  }
+
+  .stepButton {
+    width: 70vw;
     height: 6vh;
     font-size: var(--p);
   }
@@ -495,6 +665,37 @@ img {
   img {
     width: 5vh;
     height: 5vh;
+  }
+
+  .stepButtons {
+    margin-top: 2vh;
+    width: 65vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stepMenuButton {
+    width: 65vw;
+    height: 17.5vh;
+    margin-bottom: 2vh;
+  }
+
+  .colorStepMenuTitle {
+    font-size: var(--p);
+  }
+
+  .colorStepMenuDescription {
+    font-size: var(--standard3);
+  }
+
+  .stepMenuButtonTitle {
+    font-size: var(--h3);
+  }
+
+  .stepMenuButtonDescription {
+    font-size: var(--p);
+    margin-top: 0;
   }
 }
 

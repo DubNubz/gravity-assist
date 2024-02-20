@@ -4,7 +4,7 @@
       <img src="/radiant1-removebg-preview.png" alt="Gravity Assist Icon" id="gravityAssistIcon">
       <h1 id="gravityAssistTitle">Gravity Assist</h1>
     </div>
-    <div class="navButtons">
+    <nav class="navButtons">
       <RouterLink :to="{ path: '/home'}"
       class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Home' }"
@@ -35,7 +35,7 @@
       @click="changeModule('Equipment Encyclopedia')">
       Equipment Encyclopedia</RouterLink>
       
-    </div>
+    </nav>
   </header>
 
   <div class="view">

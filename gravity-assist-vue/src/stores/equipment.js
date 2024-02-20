@@ -6,191 +6,311 @@ cruiser exclusive shipyard
 */
 
 const data = [{
+    displayImg: "",
     type: "Equipment",
     displayName: "Advanced Military Operation Center",
-    nameVariants: null,
     effectName: "Operation Quantity Expansion",
-    effectDescription: ["Increases the number of usable operations by ", "."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["Increases the number of usable operations by ", "X", "."],
     loadWeight: 6,
     class: "Information"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Advanced Trade Communication Relay Station",
-    nameVariants: null,
     effectName: "Commissioned Production",
-    effectDescription: ["Allows commissioned galactic factions to produce ", " with a production time reduction of ", " and a production interval of ", "."],
-    effectDescriptionVariants: ["[Fighters/Frigates/Cruisers]", "X%", "X hours"],
+    effectDescription: ["Allows commissioned galactic factions to produce ", "[Fighters/Frigates/Cruisers]", 
+    " with a production time reduction of ", "X%", " and a production interval of ", "X hours", "."],
     loadWeight: 6,
     class: "Information"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Arbiter Planning Center",
-    nameVariants: null,
     effectName: "Strategic Reserves",
-    effectDescription: ["Increases the storage limit of Action Points by ", "."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["Increases the storage limit of Action Points by ", "X", "."],
     loadWeight: 7,
     class: "Information"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Armed Outpost Control Core",
-    nameVariants: null,
     effectName: "Outpost Weaponization Plan",
-    effectDescription: ["Unlocks the construction of Armed Outposts. Number of outposts that can be built: ", "."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["Unlocks the construction of Armed Outposts. Number of outposts that can be built: ", "X", "."],
     loadWeight: 6,
     class: "Engineering"
 }, {
+    displayImg: "/equipment/autoRepairingArmor.png",
     type: "Equipment",
     displayName: "Auto-repairing Armor",
-    nameVariants: null,
     effectName: "Base Maintenance and Upgrades",
-    effectDescription: ["Increases the HP Recovery speed of the Base by ", "."],
-    effectDescriptionVariants: ["X%"],
+    effectDescription: ["Increases the HP Recovery speed of the Base by ", "X%", "."],
     loadWeight: 5,
     class: "Engage"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "BVR Aircraft Guidance Device",
-    nameVariants: null,
     effectName: "Base Strategic Strike",
-    effectDescription: ["The Base can execute Strategic Strike ", " to command the Aircraft Defense Fleet in the base to launch a strategic strike on the targets within a ", " fan-shaped area with a ", " radius."],
-    effectDescriptionVariants: ["I or II", "X°", "X Gm"],
+    effectDescription: ["The Base can execute Strategic Strike ", "I or II", 
+    " to command the Aircraft Defense Fleet in the base to launch a strategic strike on the targets within a ", "X°", 
+    " fan-shaped area with a ", "X Gm", " radius."],
     loadWeight: 7,
     class: "Engage"
 }, {
+    displayImg: "/equipment/baseDefenseAndTrackingSystem.png",
     type: "Equipment",
     displayName: "Base Defense & Tracking System",
-    nameVariants: null,
     effectName: "Base Defense: Multi-Target Counterattack",
-    effectDescription: ["When defending the Base, all deployed Flagships in the Defense Fleet gain the flagship skill: Multi-Target Counterattack - When multiple fleets attack the fleet simultaneously, it launches a counterattack against ", " sub-target fleet(s) with a counterattack efficiency of ", "."],
-    effectDescriptionVariants: ["X", "X%"],
+    effectDescription: ["When defending the Base, all deployed Flagships in the Defense Fleet gain the flagship skill: Multi-Target Counterattack - When multiple fleets attack the fleet simultaneously, it launches a counterattack against ", 
+    "X", " sub-target fleet(s) with a counterattack efficiency of ", "X%", "."],
     loadWeight: 6,
     class: "Engage"
 }, {
+    displayImg: "/equipment/basePlatformFireControlRadar.png",
     type: "Equipment",
     displayName: "Base Platform Fire Control Radar",
-    nameVariants: null,
     effectName: "Base Defense: Aggressive Loss",
-    effectDescription: ["When defending the base, all Flagships in the Defense Fleet gain the flagship skill: Agressive Loss - All fleet launch a focused and coordinated strike that prioritizes attacking ", " target(s) within range of the selectable target."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["When defending the base, all Flagships in the Defense Fleet gain the flagship skill: Agressive Loss - All fleet launch a focused and coordinated strike that prioritizes attacking ", 
+    "X", " target(s) within range of the selectable target."],
     loadWeight: 6,
     class: "Engage"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Battlecruiser Assembly Workshop",
-    nameVariants: null,
     effectName: "Battlecruiser Special Assembly Process",
-    effectDescription: ["Reduces the building time by ", " when building Battlecruisers in the Base."],
-    effectDescriptionVariants: ["X%"],
+    effectDescription: ["Reduces the building time by ", "X%", " when building Battlecruisers in the Base."],
     loadWeight: 6,
     class: "Efficiency"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Combat Microchip Center",
-    nameVariants: null,
     effectName: "Combat Microchip Output",
-    effectDescription: ["Produces 1 Combat Microchip ", " at the Base every ", ", up to ", "."],
-    effectDescriptionVariants: ["(S/M/L)", "X hours", "X"],
+    effectDescription: ["Produces 1 Combat Microchip ", "(S/M/L)", " at the Base every ", "X hours", ", up to ", "X", "."],
     loadWeight: 6,
     class: "Information"
 }, {
+    displayImg: "/equipment/centralDistrictComponentIntegrationPlatform.png",
     type: "Equipment",
-    displayName: "Component Integration Platform",
-    nameVariants: ["Central District", "Port District", "Industrial District"],
+    displayName: "Central District Component Integration Platform",
     effectName: "Modular Integration",
-    effectDescription: ["Increases the construction speed of ", " facilities by ", "."],
-    effectDescriptionVariants: ["nameVariants", "X%"],
+    effectDescription: ["Increases the construction speed of Central District facilities by ", "X%", "."],
     loadWeight: 6,
     class: "Efficiency"
 }, {
+    displayImg: "/equipment/portaDistrictComponentIntegrationPlatform.png",
     type: "Equipment",
-    displayName: "Core Module",
-    nameVariants: ["Central District", "Port District", "Industrial District"],
+    displayName: "Port District Component Integration Platform",
+    effectName: "Modular Integration",
+    effectDescription: ["Increases the construction speed of Port District facilities by ", "X%", "."],
+    loadWeight: 6,
+    class: "Efficiency"
+}, {
+    displayImg: "",
+    type: "Equipment",
+    displayName: "Industrial District Component Integration Platform",
+    effectName: "Modular Integration",
+    effectDescription: ["Increases the construction speed of Industrial District facilities by ", "X%", "."],
+    loadWeight: 6,
+    class: "Efficiency"
+}, {
+    displayImg: "/equipment/centralDistrictCoreModule.png",
+    type: "Equipment",
+    displayName: "Central District Core Module",
     effectName: "Facility Protection Construction Engineering",
-    effectDescription: ["Reduces resource consumption by ", " when building and upgrading facilities in the Base ", "."],
-    effectDescriptionVariants: ["X%", "nameVariants"],
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building and upgrading facilities in the Base Central District."],
     loadWeight: 6,
     class: "Logistics"
 }, {
+    displayImg: "/equipment/portDistrictCoreModule.png",
+    type: "Equipment",
+    displayName: "Port District Core Module",
+    effectName: "Facility Protection Construction Engineering",
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building and upgrading facilities in the Base Port District."],
+    loadWeight: 6,
+    class: "Logistics"
+}, {
+    displayImg: "/equipment/industrialDistrictCoreModule.png",
+    type: "Equipment",
+    displayName: "Industrial District Core Module",
+    effectName: "Facility Protection Construction Engineering",
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building and upgrading facilities in the Base Industrial District."],
+    loadWeight: 6,
+    class: "Logistics"
+}, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Cruiser Exclusive Shipyard",
-    nameVariants: null,
     effectName: "Cruiser Special Assembly Process",
-    effectDescription: ["Installs a dedicated shipyard that produces dedicated Company Cruisers with a production speed of ", "."],
-    effectDescriptionVariants: ["X%"],
+    effectDescription: ["Installs a dedicated shipyard that produces dedicated Company Cruisers with a production speed of ", "X%", "."],
     loadWeight: 6,
     class: "Efficiency"
 }, {
+    displayImg: "/equipment/largeOutpostControlCore.png",
     type: "Equipment",
     displayName: "Large Outpost Control Core",
-    nameVariants: null,
     effectName: "Outpost Region Control Plan",
-    effectDescription: ["Unlocks the construction of ", " Large Outpost(s) (Operation Area 2x2)."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["Unlocks the construction of ", "X", " Large Outpost(s) (Operation Area 2x2)."],
     loadWeight: 6,
     class: "Engineering"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Quick Outpost Control Core",
-    nameVariants: null,
     effectName: "Outpost Coordinating Production Engineering",
-    effectDescription: ["Unlock the construction of Quick Outposts. Number of outposts of this type that can be built: ", "."],
-    effectDescriptionVariants: ["X"],
+    effectDescription: ["Unlock the construction of Quick Outposts. Number of outposts of this type that can be built: ", "X", "."],
     loadWeight: 6,
     class: "Engineering"
 }, {
+    displayImg: "",
     type: "Equipment",
     displayName: "Resource Mining UAV Squadron",
-    nameVariants: null,
     effectName: "Interstellar Space Dust Fixation Technology",
-    effectDescription: ["Increases the ", " yield by ", " when the Base is in a Scattered Asteroid Belt."],
-    effectDescriptionVariants: ["[Metal/Crytal/Deuterium]", "X%"],
+    effectDescription: ["Increases the ", "[Metal/Crytal/Deuterium]", " yield by ", "X%", " when the Base is in a Scattered Asteroid Belt."],
     loadWeight: 6,
     class: "Engineering"
 }, {
+    displayImg: "/equipment/productionCoordinationCenter.png",
     type: "Equipment",
     displayName: "Ship Production Coordination Controller",
-    nameVariants: null,
     effectName: "Shipyard Queue Coordination Technology",
-    effectDescription: ["Increases the production queue limit of the Base shipyard by ", ", which can be allocated to build ships of ", "."],
-    effectDescriptionVariants: ["X", "[either Jupiter Industries, NOMA Shipping, Antonios, or Dawn Accord]"],
+    effectDescription: ["Increases the production queue limit of the Base shipyard by ", "X", 
+    ", which can be allocated to build ships of ", "[a Manufacturing Company]", "."],
     loadWeight: 5,
     class: "Efficiency"
 }, {
+    displayImg: "/equipment/jupiterStandardPartsAssemblyFacility.png",
     type: "Equipment",
-    displayName: "Standard Parts Assembly Facility",
-    nameVariants: ["Jupiter Industries", "NOMA Shipping", "Antonios", "Dawn Accord"],
+    displayName: "Jupiter Industries Standard Parts Assembly Facility",
     effectName: "Ship Production Process Optimization",
-    effectDescription: ["Reduces resource consumption by ", " when building ", " ships in the Base."],
-    effectDescriptionVariants: ["X%", "nameVariants"],
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building Jupiter Industries ships in the Base."],
     loadWeight: 6,
     class: "Logistics"
 }, {
-    type: "Technical Blueprint",
-    displayName: "Hector Remote-Control Mining UAV",
-    effectName: "Remote Mining",
-    effectDescription: ["Makes a delivery to any of your operations and mines a resource node inside the operation once, collecting ", " resources."],
-    effectDescriptionVariants: ["X"],
-    deliveryTarget: "Range",
-    itemMass: "Heavy",
-    activeService: 5,
-    productionInterval: 2,
-    class: "Supply"
+    displayImg: "/equipment/nomaStandardPartsAssemblyFacility.png",
+    type: "Equipment",
+    displayName: "NOMA Standard Parts Assembly Facility",
+    effectName: "Ship Production Process Optimization",
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building NOMA Shipping Group ships in the Base."],
+    loadWeight: 6,
+    class: "Logistics"
 }, {
+    displayImg: "/equipment/antoniosStandardPartsAssemblyFacility.png",
+    type: "Equipment",
+    displayName: "Antonios Standard Parts Assembly Facility",
+    effectName: "Ship Production Process Optimization",
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building Antonios Consortium ships in the Base."],
+    effectDescriptionVariants: [],
+    loadWeight: 6,
+    class: "Logistics"
+}, {
+    displayImg: "/equipment/dawnStandardPartsAssemblyFacility.png",
+    type: "Equipment",
+    displayName: "SPL Dawn Standardized Module Assembly Facility",
+    effectName: "Ship Production Process Optimization",
+    effectDescription: ["Reduces resource consumption by ", "X%", " when building Dawn Accord Organization ships in the Base."],
+    loadWeight: 6,
+    class: "Logistics"
+}, {
+    displayImg: "",
     type: "Technical Blueprint",
     displayName: "202 - Resource Request Beacon",
     effectName: "Resource Supply",
-    effectDescription: "Requests a rather small amount of random resource packs from a Neutral or Ally-controlled Space Station.",
-    effectDescriptionVariants: null,
+    effectDescription: ["Requests a rather small amount of random resource packs from a Neutral or Ally-controlled Space Station."],
     deliveryTarget: "",
     itemMass: "",
-    activeService: 0,
-    productionInterval: 0,
-    class: ""
+    activeService: 5,
+    productionInterval: "2 days",
+    class: "Supply"
 }, {
-    
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "Aircraft Logistics Device",
+    effectName: "Reinforcement Aircraft",
+    effectDescription: ["Makes a delivery to your own fleets, reinforcing up to ", "X", " Aircraft squadron(s)."],
+    deliveryTarget: "",
+    itemMass: "",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Command"
+}, {
+    displayImg: "/techBlueprints/festivePlasmaUAVSquadron.png",
+    type: "Technical Blueprint",
+    displayName: "Festive Plasma UAV Squadron",
+    effectName: "Festival Fireworks",
+    effectDescription: ["Performs plasma UAV shows in the airspace around your buildings this is launched to for ", "X hours", "."],
+    deliveryTarget: "Single",
+    itemMass: "Light",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Communicate"
+}, {
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "Hector Remote-Control Mining UAV",
+    effectName: "Remote Mining",
+    effectDescription: ["Makes a delivery to any of your operations and mines a resource node inside the operation once, collecting ", "X", " resources."],
+    deliveryTarget: "Range",
+    itemMass: "Heavy",
+    activeService: 5,
+    productionInterval: "2 days",
+    class: "Supply"
+}, {
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "High-Intensity Warp Stabilizer",
+    effectName: "",
+    effectDescription: ["This can be launched anywhere within your activated Operation Area to generate a temporary Warping Stability Zone in the operation the target belong to. Friendly ships can warp drive to this operation at the speed of ","X%", ". The warp stabilizing effect lasts for ", "X hours", "."],
+    deliveryTarget: "",
+    itemMass: "",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Strategy"
+}, {
+    displayImg: "/techBlueprints/highPowerBroadcastBeacon.png",
+    type: "Technical Blueprint",
+    displayName: "High Power Broadcast Beacon",
+    effectName: "Star System Broadcast",
+    effectDescription: ["Allows information to be broadcast in the airspace within, ", "X Gm", " for ", "X hours", " after this is launched to an activated Operation."],
+    deliveryTarget: "Range",
+    itemMass: "Light",
+    activeService: 5,
+    productionInterval: "2 days",
+    class: "Communicate"
+}, {
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "Privateer Info Recognition Jammer",
+    effectName: "Fleet Recognition Jammer",
+    effectDescription: ["Can be used on a friendly fleet to change its Expanse Livery to the Privateer fleet version for ", "X hours", "."],
+    deliveryTarget: "Single",
+    itemMass: "Light",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Command"
+}, {
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "Operation Coordination Satellite",
+    effectName: "",
+    effectDescription: ["Expands the scope of your activated Fleet Operation Area by ", "X%", " for ", "X hours", "."],
+    deliveryTarget: "",
+    itemMass: "",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Strategy"
+}, {
+    displayImg: "",
+    type: "Technical Blueprint",
+    displayName: "Space Operation Planning Coordinator",
+    effectName: "Strategic Planning",
+    effectDescription: ["Reduces the Action Points consumed by the next ", "X", " delivery operation(s) of fleets by ", "X", " for ", "X hours", "."],
+    deliveryTarget: "Range",
+    itemMass: "Light",
+    activeService: 2,
+    productionInterval: "2 days",
+    class: "Command"
 }];
 
 export { data }
