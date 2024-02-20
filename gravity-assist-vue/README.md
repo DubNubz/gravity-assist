@@ -14,4 +14,4 @@ Infinite Lagrange is a space-themed multiplayer RTS game where players can build
 
 ## Changelog
 
-All changes can be found in the full [changelog](https://gravity-assist.netlify.app/).
+All changes can be found in the full [changelog](https://gravityassist.xyz/home).

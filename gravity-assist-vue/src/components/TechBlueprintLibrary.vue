@@ -256,19 +256,21 @@ img {
     }
     
     .detailCard {
-        width: 80vw;
+        width: 85vw;
+        max-width: 85%;
     }
 
     #detailCardheader {
-        width: 67.5vw;
+        width: 72.5vw;
+        font-size: var(--h3);
     }
 
     .detailCarddescription {
-        width: 70vw;
+        width: 80vw;
     }
 
     .detailCardStat {
-        width: 32.5vw;
+        width: 40vw;
     }
 
     .button {
