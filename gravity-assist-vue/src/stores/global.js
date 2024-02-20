@@ -11,6 +11,7 @@ const globalVariables = {
     currentColor: ref("pinkToYellow"),
     currentColorClass: ref("pinkToYellow"),
     reversed: ref(false),
+    currentColorStep: ref("uncompressed"),
 
     // RA Helper
     searchActive: ref(false),
@@ -42,7 +43,10 @@ const globalVariables = {
         "Eternal Heavens": "M1",
         "Marshal Crux": "M1",
         "Solar Whale": "M1"
-    })
+    }),
+
+    // Equipment Encyclopedia
+    currentEquipmentView: ref("Equipment"),
 };
 
 export { globalVariables }

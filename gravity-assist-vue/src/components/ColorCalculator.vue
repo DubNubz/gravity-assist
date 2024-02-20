@@ -11,8 +11,10 @@ const props = defineProps({
 });
 
 let startIndex = 0;
+let stepCounter = 0;
 const output = [];
 let reverse = false;
+let stepType = 0;
 
 function resetEverything () {
     startIndex = 0;
@@ -21,6 +23,16 @@ function resetEverything () {
         reverse = true;
     } else {
         reverse = false;
+    }
+    if (globalVariables.currentColorStep.value == "uncompressed") {
+        stepType = 1;
+        stepCounter = 1;
+    } else if (globalVariables.currentColorStep.value == "compressed") {
+        stepType = 2;
+        stepCounter = 2;
+    } else {
+        stepType = 3;
+        stepCounter = 3;
     }
 }
 
@@ -55,15 +67,36 @@ function convertInput (type, input) {
             return input;
 
         } else {
-            startIndex++;
-            if (startIndex >= props.Color.colorPalette.length) {
-                startIndex = 0;
-                reverse = !reverse;
-            }
+            if (stepType == 2 || stepType == 3) {
+                stepCounter++;
 
-            output.push(color + input);
-            console.log(output);
-            return color + input;
+                if (stepCounter >= stepType) {
+                    startIndex++;
+                    stepCounter = 0;
+
+                    if (startIndex >= props.Color.colorPalette.length) {
+                        startIndex = 0;
+                        reverse = !reverse;
+                    }
+
+                    output.push(color + input);
+                    return color + input;
+                } else {
+                    output.push(input);
+                    return input;
+                }
+
+            } else {
+                startIndex++;
+
+                if (startIndex >= props.Color.colorPalette.length) {
+                    startIndex = 0;
+                    reverse = !reverse;
+                }
+    
+                output.push(color + input);
+                return color + input;
+            }
         }
     }
     
@@ -72,7 +105,7 @@ function convertInput (type, input) {
 const emit = defineEmits(['response']);
 
 function emitStuff () {
-    emit('response', output);
+    globalVariables.outputText.value = output;
 }
 
 </script>

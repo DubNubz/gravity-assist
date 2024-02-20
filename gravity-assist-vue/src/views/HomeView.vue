@@ -5,7 +5,9 @@
     </div>
 
     <div class="title-description">
-      <p><span class="normalText">by DubNubz</span></p>
+      <p>by DubNubz</p>
+      <p><span class="normalText">Any and all feedback is appreciated!</span></p>
+      <p><span class="normalText">You can find me as micromidget on Discord, or join my server <a href="https://discord.com/invite/9mJ9b2Bbzx">here!</a></span></p>
     </div>
 
     <div class="latestChange">
@@ -49,6 +51,10 @@ function changeButton () {
 </script>
 
 <style scoped>
+
+a {
+  color: var(--deepGreen);
+}
 
 .normalText {color: var(--normalText)}
 
