@@ -3,7 +3,7 @@
       <label for="RASearchInput"><h2>Click on a ship to select it</h2></label>
       <div class="RASearchDiv">
         <input type="text" id="RASearchInput" placeholder="Click to start typing..." @input="autocomplete">
-        <button class="RASearchConfirmButton" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">CANCEL</button>
+        <button class="RASearchConfirmButton" @click="globalVariables.searchActive.value = !globalVariables.searchActive.value">Close</button>
       </div>
         <div id="RASearchMenuResults">
             <div id="RASearchResults" v-for="option in filteredChoices">
@@ -55,21 +55,37 @@ function autocomplete (event) {
   overflow-y: auto;
 }
 
+/*            */
+
 .RASearchConfirmButton {
-  background-color: var(--pastelRed);
+  background-color: #ff5050;
   border-radius: 1vh;
   padding: 1vh;
   height: 6vh;
+  width: 10vw;
   font-size: var(--h3);
   padding-left: 4vh;
   padding-right: 4vh;
   transition: all 0.5s;
   margin-bottom: 1vh;
+  overflow: hidden;
+  text-align: center;
 }
-
 .RASearchConfirmButton:hover {
-  background-color: #ff4a4a;
   transform: scale(1.1);
+}
+.RASearchConfirmButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #ff8a8a, transparent);
+  transition: left 0.5s ease;
+}
+.RASearchConfirmButton:hover::after {
+  left: 100%;
 }
 
 #RASearchInput {
@@ -115,7 +131,7 @@ function autocomplete (event) {
   }
 
   .RASearchConfirmButton {
-    font-size: var(--p);
+    width: 40vw;
   }
 
   .RASearchDiv {

@@ -496,6 +496,8 @@ img {
 /* non-reversed */
 .pinkToYellow {background: linear-gradient(to bottom right, #f957ff, #ffc94d, #f957ff);}
 .redToYellow {background: linear-gradient(to bottom right, #ff0f00, #fff000, #ff0f00);}
+.yellowToBlue {background: linear-gradient(to bottom right, #fff47a, #bfffc7, #85abff, #bfffc7, #fff47a);}
+.greenToBlue {background: linear-gradient(to bottom right, #00fe90, #00a1ff, #00fe90);}
 .blueToPurple {background: linear-gradient(to bottom right, #6ea3ff, #d16eff, #6ea3ff);}
 .pinkToPink {background: linear-gradient(to bottom right, #dc6bff, #ff6bd3, #dc6bff);}
 .goldToGold {background: linear-gradient(to bottom right, #ffff00, #ffc400, #ffff00);}
@@ -509,6 +511,8 @@ img {
 /* reversed */
 .YellowTopink {background: linear-gradient(to bottom right, #ffc94d, #f957ff, #ffc94d);}
 .YellowTored {background: linear-gradient(to bottom right, #fff000, #ff0f00, #fff000);}
+.BlueToyellow {background: linear-gradient(to bottom right, #85abff, #bfffc7, #fff47a, #bfffc7, #85abff);}
+.BlueTogreen {background: linear-gradient(to bottom right, #00a1ff, #00fe90, #00a1ff);}
 .PurpleToblue {background: linear-gradient(to bottom right, #d16eff, #6ea3ff, #d16eff);}
 .PinkTopink {background: linear-gradient(to bottom right, #ff6bd3, #dc6bff, #ff6bd3);}
 .GoldTogold {background: linear-gradient(to bottom right, #ffc400, #ffff00, #ffc400);}
@@ -577,7 +581,7 @@ img {
 }
 
 #uncompressedStep {
-  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00ffff, #00c3ff, #ff00ff);
 }
 #uncompressedStep::after {
   content: "";
@@ -594,10 +598,10 @@ img {
 }
 
 #uncompressed {
-  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+  background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff95, #00ffff, #ff00ff);
 }
 #compressed {
-  background: linear-gradient(to bottom right, #ff0000, #bbff00, #00ffff, #ff00ff);
+  background: linear-gradient(to bottom right, #ff0000, #bbff00, #00c3ff, #ff00ff);
 }
 #veryCompressed {
   background: linear-gradient(to bottom right, #ff0000, #00fff2, #ff00ff);

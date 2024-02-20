@@ -61,7 +61,7 @@
 
 <script setup>
 
-import { difficulty, data } from '@/stores/ra_data';
+import { data, difficulty } from '@/stores/ra_data';
 import { ref } from 'vue';
 import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
@@ -274,9 +274,6 @@ h3 {
   font-size: var(--h3);
 }
 
-.previousChange {background-color: var(--pastelRed)}
-.nextChange {background-color: var(--pastelGreen)}
-
 .infoChangeButton {
   width: 15%;
   border-radius: 1vh;
@@ -284,7 +281,16 @@ h3 {
   font-size: var(--h2);
   transition: all 0.5s;
   filter: grayscale(0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.previousChange {
+  background-color: #ff5050;
+  filter: grayscale(0.25);
+}
+.nextChange {background-color: var(--deepGreen)}
 
 .previousChange:hover {
   filter: grayscale(0);

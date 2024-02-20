@@ -4,6 +4,7 @@
     </div>
     <div class="title-description">
       <p>Choose a ship, then choose a module to inspect.</p>
+      <p style="color: var(--normalText)">If you have a module that is missing here, please contact me :D</p>
     </div>
 
     <div class="shipOverall">

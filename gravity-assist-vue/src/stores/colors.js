@@ -12,6 +12,18 @@ const colors = [{
     colorPalette: ["#cff0f00", "#cff1d00", "#cff2b00", "#cff3900", "#cff4600", "#cff5300", "#cff6000", "#cff7000", "#cff8000", "#cff9000", "#cffa000",
     "#cffb000", "#cffc000", "#cffd000", "#cffe000", "#cfff000"]
 }, {
+    name: "yellowToBlue",
+    color1: "yellow",
+    color2: "blue",
+    colorPalette: ["#cfff47a", "#cfffb8a", "#cf2ffa1", "#cdeffad", "#cceffbf", "#cbfffc7", "#cb5ffda", "#ca6ffef", "#c94f8ff", "#c96f6ff", "#c96ecff",
+    "#c91deff", "#c8fceff", "#c8ac0ff", "#c85b8ff", "#c85abff"]
+}, {
+    name: "greenToBlue",
+    color1: "green",
+    color2: "blue",
+    colorPalette: ["#c00fe90", "#c00f899", "#c00f1a1", "#c00eba5", "#c00e5ae", "#c00ddb8", "#c00d6c0", "#c00d0c6", "#c00c8cf", "#c00c4d6", "#c00bcdd",
+    "#c00b6e4", "#c00b1ec", "#c00adf2", "#c00a8f8", "#c00a1ff"]
+}, {
     name: "blueToPurple",
     color1: "blue",
     color2: "purple",

@@ -1,17 +1,4 @@
 
-const difficulty = {
-    "Jupiter Industry": 3.5,
-    "NOMA Shipping": 3.5,
-    "Antonios": 4,
-    "Dawn Accord": 2.5,
-    "Outstanding Firepower": 5.5,
-    "Sustained Combat": 5,
-    "Strategy & Support": 5.5,
-    "Fighter & Corvette": 6,
-    "Projectile Weapon": 4.5,
-    "Direct-Fire Weapon": 4
-};
-
 const data = [{
         name: "AT021",
         title: "Pulse Attacker",
@@ -1335,4 +1322,17 @@ const data = [{
     }
 ];
 
-export { difficulty, data };
+const difficulty = {
+    "Jupiter Industry": 3.5,
+    "NOMA Shipping": 3.5,
+    "Antonios": 4,
+    "Dawn Accord": 2.5,
+    "Outstanding Firepower": 5.5,
+    "Sustained Combat": 5,
+    "Strategy & Support": 5.5,
+    "Fighter & Corvette": 6,
+    "Projectile Weapon": 4.5,
+    "Direct-Fire Weapon": 4
+};
+
+export { data, difficulty };

@@ -4,7 +4,6 @@
     </div>
     <div class="title-description">
       <p>Click on a card to view more details about the item.</p>
-      <p>Currently trying to get images of the equipment, bare with me :'D</p>
     </div>
 
     <div class="buttons">
@@ -25,9 +24,7 @@
 
 <script setup>
 
-import { ref } from 'vue';
 import { globalVariables } from '@/stores/global';
-import { data } from '@/stores/equipment';
 import EquipmentLibrary from '@/components/EquipmentLibrary.vue';
 import TechBlueprintLibrary from '@/components/TechBlueprintLibrary.vue';
 

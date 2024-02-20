@@ -21,6 +21,10 @@
                     <h3><span class="Mlogo">M</span> <span class="darkGray"> || </span> {{ detailResult.effectName }}</h3>
                     <p id="detailCardp"><span v-for="string in detailResult.effectDescription"
                         :class="getDescriptionColor(string)">{{ string }}</span></p>
+                    <div class="detailCardStats">
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Class:</span> {{ detailResult.class }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Weight:</span> {{ detailResult.loadWeight }} storage</p>
+                    </div>
                 </div>
                 <button @click="showCard = !showCard" class="button">Close</button>
             </div>
@@ -118,13 +122,16 @@ function getDescriptionColor (string) {
 }
 
 .detailCard {
-  width: 50vw;
-  background-color: rgb(10, 10, 10);
+  width: fit-content;
+  min-width: 30%;
+  max-width: 70%;
+  background-color: rgb(15, 15, 15);
   padding: 20px;
   border-radius: 3vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-height: 80%;
-  min-height: 80%;
+  height: fit-content;
+  min-height: 30%;
+  max-height: 85%;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -155,6 +162,9 @@ img {
     border: 0;
     font-size: var(--h2);
     width: 15vw;
+    height: fit-content;
+    min-height: 5vh;
+    max-height: 5vh;
     overflow: hidden;
     transition: all 0.5s;
     border-radius: 2vh;
@@ -182,8 +192,9 @@ img {
     padding-left: 2vh;
     padding-right: 2vh;
     border-radius: 3vh;
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
     width: 40vw;
+    font-size: var(--h2);
 }
 
 .detailCarddescription {
@@ -195,6 +206,16 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.detailCardStats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.detailCardStat {
+    width: 20vw;
 }
 
 .detail-enter-active, .detail-leave-active {
@@ -236,15 +257,21 @@ img {
     }
     
     .detailCard {
-        width: 80vw;
+        width: 85vw;
+        max-width: 85%;
     }
 
     #detailCardheader {
-        width: 67.5vw;
+        width: 72.5vw;
+        font-size: var(--h3);
     }
 
     .detailCarddescription {
-        width: 70vw;
+        width: 80vw;
+    }
+
+    .detailCardStat {
+        width: 40vw;
     }
 
     .button {

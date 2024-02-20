@@ -73,6 +73,13 @@ const changelog = [{
     version: "1.1.0",
     release: "February 20, 2024",
     notes: ["Added Equipment Encyclopedia", "Added a color compression option in Color Generator to create longer text", "Edited home tab text"]
+}, {
+    version: "1.1.1",
+    release: "February 21, 2024",
+    notes: ["Color Generator character counters now update automatically after switching compression",
+    "Added more images to Equipment Encyclopedia", "Added 2 new colors to Color Generator", "Made red buttons more vibrant",
+    "Added a credits button to Home page", "Optimized the detail cards in Equipment Encyclopedia for mobile users",
+    "Fixed some data in Equipment Encylcopedia", "Added missing technical blueprints to Equipment Encyclopedia", "Full changelog is now a window"]
 }
 ];
 

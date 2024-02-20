@@ -124,13 +124,16 @@ function getDescriptionColor (string) {
 }
 
 .detailCard {
-  width: 50vw;
-  background-color: rgb(10, 10, 10);
+  width: fit-content;
+  min-width: 30%;
+  max-width: 70%;
+  background-color: rgb(15, 15, 15);
   padding: 20px;
   border-radius: 3vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-height: 80%;
-  min-height: 80%;
+  height: fit-content;
+  min-height: 30%;
+  max-height: 85%;
   overflow: auto;
   display: flex;
   flex-direction: column;

@@ -106,6 +106,7 @@ const emit = defineEmits(['response']);
 
 function emitStuff () {
     globalVariables.outputText.value = output;
+    globalVariables.outputText.value.push("");
 }
 
 </script>
