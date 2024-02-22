@@ -1,55 +1,66 @@
 
 const changelog = [{
+    type: "release",
     version: "0.1.0",
     release: "January 13, 2024",
     notes: ["Initial release"]
 }, {
+    type: "release",
     version: "0.2.0",
     release: "January 14, 2024",
     notes: ["Added header and footer", "Added fade when changing theme", "Added light mode colors", 
     "Optimized font sizes for mobile users", "Made theme button bigger", 
     "Fixed character counter in Color Generator", "Added Research Agreement Helper"]
 }, {
+    type: "release",
     version: "0.3.0",
     release: "January 15, 2024",
     notes: ["Added Changelog", "Removed theme button image", "Moved theme button to header buttons", 
     "Added active and hover effects to header buttons"]
 }, {
+    type: "release",
     version: "0.3.1",
     release: "January 16, 2024",
     notes: ["Changed the information displayed in Research Agreement Helper", "Version number in footer is now dynamic", 
     "Optimized how information is displayed in Research Agreement Helper for mobile users", "Added images to Research Agreement Helper"]
 }, {
+    type: "bugfix",
     version: "0.3.2",
     release: "January 16, 2024",
     notes: ["Optimized Research Agreement Helper for mobile users further"]
 }, {
+    type: "release",
     version: "0.3.3",
     release: "January 17, 2024",
     notes: ["Changed how Color Generator operates", "Color Generator is now based on text-based markers rather than highlighting text",
     "Removed the Underline option in Color Generator", "Changed tutorial text of Color Generator to match the other changes",
     "Fixed the character counters in Color Generator"]
 }, {
+    type: "bugfix",
     version: "0.3.4",
     release: "January 20, 2024",
     notes: ["Fixed a bug where Color Generator output not updating when a color marker was placed in the input"]
 }, {
+    type: "release",
     version: "0.4.0",
     release: "January 28, 2024",
     notes: ["Added Module Library", "Fixed ST59 and Spear of Uranus being misplaced in the Research Agreement Helper ship order",
     "Changed the size of active buttons to better fit mobile devices"]
 }, {
+    type: "release",
     version: "0.4.1",
     release: "January 29, 2024",
     notes: ["Renamed Changelog to Home", "Changed Research Agreement Helper and Module Library to save progress if you switch Gravity Assist tools",
     "Significantly changed the display of data in Module Library", "Changed Gravity Assist to default to displaying Home on load",
     "Added alternative Navigation Bar buttons to the Home Page", "Fixed some module data"]
 }, {
+    type: "release",
     version: "0.4.2",
     release: "January 30, 2024",
     notes: ["Added a search by ship feature for Research Agreement Helper", "Optimized Module Library buttons for mobile devices",
     "Removed the Theme button", "Fixed wrong results for Hayreddin's Loyal and Thunderbolt Star in Research Agreement Helper"]
 }, {
+    type: "release",
     version: "1.0.0",
     release: "February 17, 2024",
     notes: ["Reworked all of Color Generator", "Reworked display of Research Agreement Helper", "Added Color Generator gradients",
@@ -59,27 +70,36 @@ const changelog = [{
     "Gravity Assist tool links are now routed", "Added Eternal Heavens to Research Agreement Helper and Module Library",
     "Disabled double-click to zoom on buttons for mobile users"]
 }, {
+    type: "bugfix",
     version: "1.0.1",
     release: "February 18, 2024",
     notes: ["Added an animation for copying text in Color Generator", "Fixed the Color Generator character counter not working above 1,000 characters",
     "Fixed a bug where the Color Generator reverse button wouldn't work on Chrome for iOS", "Fixed a bug where RA Finder algorithm wouldn't work",
     "Optimized display of information for mobile users in Mod Library"]
 }, {
+    type: "release",
     version: "1.0.2",
     release: "February 19, 2024",
     notes: ["Added a time estimate for research agreement paths in RA Helper", "Added animations to popup windows in Color Generator and RA Helper",
     "Replaced Mod Library and RA Helper ship images with higher quality ones", "Fixed AT021-B and AT021-C appearing under the wrong filters in RA Helper"]
 }, {
+    type: "release",
     version: "1.1.0",
     release: "February 20, 2024",
     notes: ["Added Equipment Encyclopedia", "Added a color compression option in Color Generator to create longer text", "Edited home tab text"]
 }, {
+    type: "release",
     version: "1.1.1",
     release: "February 21, 2024",
     notes: ["Color Generator character counters now update automatically after switching compression",
     "Added more images to Equipment Encyclopedia", "Added 2 new colors to Color Generator", "Made red buttons more vibrant",
     "Added a credits button to Home page", "Optimized the detail cards in Equipment Encyclopedia for mobile users",
     "Fixed some data in Equipment Encylcopedia", "Added missing technical blueprints to Equipment Encyclopedia", "Full changelog is now a window"]
+}, {
+    type: "bugfix",
+    version: "1.1.2",
+    release: "February 22, 2024",
+    notes: ["Finished adding all images to Eqquipment Encyclopedia", "Changed the display of information in the changelog"]
 }
 ];
 

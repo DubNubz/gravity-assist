@@ -12,7 +12,7 @@
 
     <div class="buttonArray">
       <button class="loadAllChanges creditsButton" @click="creditsActive = !creditsActive">View credits</button>
-      <button @click="changeButton" class="loadAllChanges loadButton">{{ loadFlavorText }} all changes</button>
+      <button @click="loaded = !loaded" class="loadAllChanges loadButton">View all changes</button>
     </div>
 
     <div class="latestChange">
@@ -59,20 +59,10 @@ import { credits } from '@/stores/credits';
 
 globalVariables.activeModule.value === 'Home';
 const loaded = ref(false);
-const loadFlavorText = ref("View");
 const creditsActive = ref(false);
 
 const changedChangelog = ref([...changelog]);
 changedChangelog.value.reverse();
-
-function changeButton () {
-    loaded.value = !loaded.value;
-    if (loaded.value == false) {
-        loadFlavorText.value = "View";
-    } else {
-        loadFlavorText.value = "Hide";
-    }
-}
 
 </script>
 

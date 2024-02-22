@@ -3,7 +3,6 @@
 arbiter
 bvr aircraft
 armed outpost
-port district component
 */
 
 const data = [{
@@ -156,7 +155,7 @@ const data = [{
     loadWeight: 6,
     class: "Logistics"
 }, {
-    displayImg: "/equipment/portaDistrictComponentIntegrationPlatform.png",
+    displayImg: "/equipment/portDistrictComponentIntegrationPlatform.png",
     type: "Equipment",
     displayName: "Port District Component Integration Platform",
     effectName: "Modular Integration",

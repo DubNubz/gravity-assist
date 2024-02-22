@@ -1,7 +1,7 @@
 <template>
     <div class="card">
-        <h2>Version {{ Change.version }}</h2>
-        <h3>Release: {{ Change.release }}</h3>
+        <h2>Version {{ Change.version }} ({{ Change.type }})</h2>
+        <h3>Date: {{ Change.release }}</h3>
             <div class="changeNotes">
                 <p v-for="change in Change.notes">► {{ change }}</p>
             </div>
