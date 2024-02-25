@@ -159,15 +159,15 @@ img {
 
 .button {
     margin-top: auto;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     background-color: #ff5050;
     border: 0;
     font-size: var(--h2);
     width: 15vw;
+    height: fit-content;
     overflow: hidden;
     transition: all 0.5s;
     border-radius: 2vh;
-    padding-bottom: 1vh;
 }
 .button:hover {
     transform: scale(1.15);

@@ -100,6 +100,11 @@ const changelog = [{
     version: "1.1.2",
     release: "February 22, 2024",
     notes: ["Finished adding all images to Eqquipment Encyclopedia", "Changed the display of information in the changelog"]
+}, {
+    type: "bugfix",
+    version: "1.1.3",
+    release: "February 25, 2024",
+    notes: ["Optimized display of information in Equipment Encyclopedia further for mobile users"]
 }
 ];
 
