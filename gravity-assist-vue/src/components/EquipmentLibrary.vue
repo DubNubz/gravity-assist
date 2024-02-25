@@ -274,7 +274,9 @@ img {
     }
 
     .button {
-        width: 40vw;
+        width: 60vw;
+        min-height: 5svh;
+        max-height: 7.5svh;
     }
 
     img {
