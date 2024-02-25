@@ -258,6 +258,8 @@ img {
     .detailCard {
         width: 85vw;
         max-width: 85%;
+        min-height: 30svh;
+        max-height: 90svh;
     }
 
     #detailCardheader {
@@ -274,7 +276,9 @@ img {
     }
 
     .button {
-        width: 40vw;
+        width: 60vw;
+        min-height: 5svh;
+        max-height: 10svh;
     }
 
     img {
