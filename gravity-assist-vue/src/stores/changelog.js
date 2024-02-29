@@ -105,6 +105,11 @@ const changelog = [{
     version: "1.1.3",
     release: "February 25, 2024",
     notes: ["Optimized display of information in Equipment Encyclopedia further for mobile users"]
+}, {
+    type: "release",
+    version: "1.1.4",
+    release: "February 29, 2024",
+    notes: ["Added 3 new colors to Color Generator: Rainbow, Blue/Pink, and Red/Dark"]
 }
 ];
 

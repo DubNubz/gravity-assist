@@ -1,5 +1,12 @@
 
 const colors = [{
+    name: "rainbowToRainbow",
+    color1: "rainbow",
+    color2: "rainbow",
+    colorPalette: ["#cf6004e", "#cfa084d", "#cfb1851", "#cfc2950", "#cfd3d53", "#cfe5552", "#cfd5552", "#cff6d50", "#cff844f", "#cff9645", "#cffac3f",
+    "#cffbd38", "#cffcf30", "#cfdd927", "#cf8e622", "#ce5ea22", "#cbfee23", "#c99ec26", "#c6aea33", "#c41e541", "#c26de6d", "#c23d694", "#c25d0b1", "#c31bee1",
+    "#c40abf7", "#c588aff", "#c735efe", "#c8a43fb", "#c932ff7", "#ca619f8", "#cb209f5", "#cbb02f3"]
+}, {
     name: "pinkToYellow",
     color1: "pink",
     color2: "yellow",
@@ -29,6 +36,12 @@ const colors = [{
     color2: "purple",
     colorPalette: ["#c6ea3ff", "#c6e99ff", "#c6e95ff", "#c6e8dff", "#c6e7dff", "#c736eff", "#c736eff", "#c8b6eff", "#c976eff", "#ca66eff", "#cb46eff",
     "#cc06eff", "#cc76eff", "#ccc6eff", "#cd16eff", "#cd16eff"]
+}, {
+    name: "blueToPink",
+    color1: "blue",
+    color2: "pink",
+    colorPalette: ["#c11dee5", "#c0adcdc", "#c5fdbcf", "#c8ddac2", "#cb5d8b3", "#ce6d6a0", "#cfdd39f", "#cffd0b5", "#cfecdc7", "#cffc6d5", "#cfdaed2",
+    "#cfe92cd", "#cff80c8", "#cfc79c8", "#cf870cc", "#cec67cf"]
 }, {
     name: "pinkToPink",
     color1: "pink",
@@ -77,6 +90,14 @@ const colors = [{
     color2: "white",
     colorPalette: ["#ce100ff", "#ce313ff", "#ce735ff", "#ce946ff", "#ceb56ff", "#ced65ff", "#cee72ff", "#cef7eff", "#cf18bff", "#cf299ff", "#cf4a2ff",
     "#cf6b1ff", "#cf8c0ff", "#cfaccff", "#cfde1ff", "#cffffff"]
+}, {
+    name: "redToBlack",
+    color1: "red",
+    color2: "dark",
+    colorPalette: ["#cdc0101", "#cd40101", "#ccc0303", "#cc30303", "#cb90404", "#caf0505", "#ca40707", "#c990707", "#c8f0909", "#c820a0a", "#c770b0b",
+    "#c6c0d0d", "#c620d0d", "#c590f0f", "#c4c1010"]
+    /* ["#cfb4545", "#cf64141", "#cf13d3d", "#cec3939", "#ce73535", "#ce02f2f", "#cda2a2a", "#cda2a2a", "#cce2020", "#cc61a1a", "#cbf1414",
+    "#cb91010", "#cb30b0b", "#cad0606", "#ca70101"] */
 }];
 
 export { colors }

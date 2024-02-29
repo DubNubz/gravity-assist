@@ -494,11 +494,13 @@ img {
 }
 
 /* non-reversed */
+.rainbowToRainbow {background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00ffff, #00c3ff, #ff00ff);}
 .pinkToYellow {background: linear-gradient(to bottom right, #f957ff, #ffc94d, #f957ff);}
 .redToYellow {background: linear-gradient(to bottom right, #ff0f00, #fff000, #ff0f00);}
 .yellowToBlue {background: linear-gradient(to bottom right, #fff47a, #bfffc7, #85abff, #bfffc7, #fff47a);}
 .greenToBlue {background: linear-gradient(to bottom right, #00fe90, #00a1ff, #00fe90);}
 .blueToPurple {background: linear-gradient(to bottom right, #6ea3ff, #d16eff, #6ea3ff);}
+.blueToPink {background: linear-gradient(to bottom right, #11dee5, #ec67cf, #11dee5);}
 .pinkToPink {background: linear-gradient(to bottom right, #dc6bff, #ff6bd3, #dc6bff);}
 .goldToGold {background: linear-gradient(to bottom right, #ffff00, #ffc400, #ffff00);}
 .blueToBlue {background: linear-gradient(to bottom right, #6bffff, #6babff, #6bffff);}
@@ -507,13 +509,16 @@ img {
 .greenToWhite {background: linear-gradient(to bottom right, #00ff00, #ffffff);}
 .blueToWhite {background: linear-gradient(to bottom right, #00d7ff, #ffffff);}
 .purpleToWhite {background: linear-gradient(to bottom right, #e100ff, #ffffff);}
+.redToDark {background: linear-gradient(to bottom right, #dc0101, #4c1010);}
 
 /* reversed */
+.RainbowTorainbow {background: linear-gradient(to bottom right, #ff00ff, #00c3ff, #00ffff, #00ff4c, #bbff00, #ffbb00, #ff0000);}
 .YellowTopink {background: linear-gradient(to bottom right, #ffc94d, #f957ff, #ffc94d);}
 .YellowTored {background: linear-gradient(to bottom right, #fff000, #ff0f00, #fff000);}
 .BlueToyellow {background: linear-gradient(to bottom right, #85abff, #bfffc7, #fff47a, #bfffc7, #85abff);}
 .BlueTogreen {background: linear-gradient(to bottom right, #00a1ff, #00fe90, #00a1ff);}
 .PurpleToblue {background: linear-gradient(to bottom right, #d16eff, #6ea3ff, #d16eff);}
+.PinkToblue {background: linear-gradient(to bottom right, #ec67cf, #11dee5, #ec67cf);}
 .PinkTopink {background: linear-gradient(to bottom right, #ff6bd3, #dc6bff, #ff6bd3);}
 .GoldTogold {background: linear-gradient(to bottom right, #ffc400, #ffff00, #ffc400);}
 .BlueToblue {background: linear-gradient(to bottom right, #6babff, #6bffff, #6babff);}
@@ -522,6 +527,7 @@ img {
 .WhiteTogreen {background: linear-gradient(to bottom right, #ffffff, #00ff00);}
 .WhiteToblue {background: linear-gradient(to bottom right, #ffffff, #00d7ff);}
 .WhiteTopurple {background: linear-gradient(to bottom right, #ffffff, #e100ff);}
+.DarkTored {background: linear-gradient(to bottom right, #4c1010, #dc0101);}
 
 .title-description {
   width: 85vw;
