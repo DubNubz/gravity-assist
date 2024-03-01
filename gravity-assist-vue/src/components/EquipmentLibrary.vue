@@ -13,21 +13,22 @@
 
     <Transition name="detail">
         <div class="detailCardBackground"
-        v-if="showCard">
+        v-if="globalVariables.showCard.value == true">
             <div class="detailCard">
-                <img :src="detailResult.displayImg" :alt="'Image of ' + detailResult.displayName" id="detailImg">
-                <h2 id="detailCardheader">{{ detailResult.displayName }}</h2>
+                <img :src="globalVariables.currentDetailCard.value.displayImg" :alt="'Image of ' + globalVariables.currentDetailCard.value.displayName" id="detailImg">
+                <h2 id="detailCardheader">{{ globalVariables.currentDetailCard.value.displayName }}</h2>
                 <div class="detailCarddescription">
-                    <h3><span class="Mlogo">M</span> <span class="darkGray"> || </span> {{ detailResult.effectName }}</h3>
-                    <p id="detailCardp"><span v-for="string in detailResult.effectDescription"
+                    <h3><span class="Mlogo">M</span> <span class="darkGray"> || </span> {{ globalVariables.currentDetailCard.value.effectName }}</h3>
+                    <p id="detailCardp"><span v-for="string in globalVariables.currentDetailCard.value.effectDescription"
                         :class="getDescriptionColor(string)">{{ string }}</span></p>
                     <div class="detailCardStats">
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Class:</span> {{ detailResult.class }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Weight:</span> {{ detailResult.loadWeight }} storage</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Class:</span> {{ globalVariables.currentDetailCard.value.class }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Weight:</span> {{ globalVariables.currentDetailCard.value.loadWeight }} storage</p>
                     </div>
                 </div>
-                <button @click="showCard = !showCard" class="button">Close</button>
             </div>
+            <button @click="shareEquipment" class="copyToClipboard">Share equipment</button>
+            <button @click="globalVariables.showCard.value = false" class="button">Close</button>
         </div>
     </Transition>
 </template>
@@ -38,25 +39,47 @@ import { ref } from 'vue';
 import { data } from '@/stores/equipment';
 import { globalVariables } from '@/stores/global';
 
-const showCard = ref(false);
-const detailResult = ref();
-
 function showDetailCard (card) {
-    showCard.value = !showCard.value;
-    detailResult.value = card;
+    globalVariables.showCard.value = true;
+    globalVariables.currentDetailCard.value = card;
 }
 
 function getDescriptionColor (string) {
-    if (Number(detailResult.value.effectDescription.indexOf(string)) % 2 == 1) {
+    if (Number(globalVariables.currentDetailCard.value.effectDescription.indexOf(string)) % 2 == 1) {
         return "gold";
     } else {
         return "normalText";
     }
 }
 
+function shareEquipment () {
+    navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia/${globalVariables.currentEquipmentView.value.replaceAll(" ", "%20")}/${globalVariables.currentDetailCard.value.displayName.replaceAll(" ", "%20")}`).then(() => {
+        alert("Link copied to clipboard");
+    }, () => {
+        alert("Link failed to copy to clipboard");
+    })
+}
+
 </script>
 
 <style scoped>
+
+.copyToClipboard {
+  margin-top: 2vh;
+  background-color: var(--normalText);
+  width: 15vw;
+  font-size: var(--p);
+  height: 5vh;
+  border-radius: 1.5vh;
+  transition: all 0.35s;
+  background-color: var(--deepYellow);
+  filter: grayscale(0.75);
+}
+
+.copyToClipboard:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
 
 .gold {
     color: var(--gold);
@@ -156,7 +179,7 @@ img {
 }
 
 .button {
-    margin-top: auto;
+    margin-top: 3vh;
     margin-bottom: 1vh;
     background-color: #ff5050;
     border: 0;

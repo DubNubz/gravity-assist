@@ -15,22 +15,22 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
-      path: '/modules/color-generator',
+      path: '/modules/color-generator/:colorName?/:compression?/:reversed?',
       name: 'color-generator',
       component: () => import('../views/ColorView.vue')
     },
     {
-      path: '/modules/research-agreement-helper',
+      path: '/modules/research-agreement-helper/:ship?/:manufacturer?/:direction?/:scope?',
       name: 'research-agreement-helper',
       component: () => import('../views/ResearchView.vue')
     },
     {
-      path: '/modules/module-library',
+      path: '/modules/module-library/:ship?/:mod?',
       name: 'module-library',
       component: () => import('../views/LibraryView.vue')
     },
     {
-      path: '/modules/equipment-encyclopedia',
+      path: '/modules/equipment-encyclopedia/:type?/:item?',
       name: 'equipment-encyclopedia',
       component: () => import('../views/EquipmentView.vue')
     },

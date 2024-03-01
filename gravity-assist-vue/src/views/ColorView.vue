@@ -112,7 +112,8 @@
       </div>
 
       <div id="outputBox">
-        <button class="copyToClipboard" @click="copyToClipboard">Copy to clipboard</button>
+        <button class="copyToClipboard" @click="copyShareLink">Share color combination</button>
+        <button class="copyToClipboard" @click="copyToClipboard">Copy text to clipboard</button>
         <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"/>
       </div>
 
@@ -126,11 +127,34 @@ import { ref } from 'vue';
 import ColorCalculator from '@/components/ColorCalculator.vue';
 import { globalVariables } from '@/stores/global';
 import { colorTypes, colors } from '@/stores/colors';
+import { useRoute } from 'vue-router';
 
 globalVariables.activeModule.value = "Color Generator";
 const colorMenu = ref(false);
 const copyActive = ref(false);
 const stepMenu = ref(false);
+const route = useRoute();
+
+if (route.params.reversed == "true") {
+  globalVariables.reversed.value = true;
+}
+
+if (route.params.compression) {
+  globalVariables.currentColorStep.value = route.params.compression;
+}
+
+if (route.params.colorName) {
+  globalVariables.currentColor.value = route.params.colorName;
+  globalVariables.currentColorClass.value = getClass(colors.find((color) => color.name == route.params.colorName).color1, colors.find((color) => color.name == route.params.colorName).color2);
+}
+
+function copyShareLink () {
+  navigator.clipboard.writeText(`https://gravityassist.xyz/modules/color-generator/${globalVariables.currentColor.value}/${globalVariables.currentColorStep.value}/${globalVariables.reversed.value}`).then(() => {
+    alert("Link copied to clipboard");
+  }, () => {
+    alert("Link failed to copy to clipboard");
+  })
+}
 
 function changeColorStep (button) {
   globalVariables.currentColorStep.value = button;

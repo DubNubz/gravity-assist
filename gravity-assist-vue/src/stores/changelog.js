@@ -121,6 +121,11 @@ const changelog = [{
     version: "1.1.5.1",
     release: "March 1, 2024",
     notes: ["Revamped a color to Color Generator: Blue/Purple"]
+}, {
+    type: "release",
+    version: "1.1.6",
+    release: "March 2, 2024",
+    notes: ["Added the ability to share links for Gravity Assist page options"]
 }
 ];
 

@@ -46,7 +46,17 @@ const globalVariables = {
     }),
 
     // Equipment Encyclopedia
+    showCard: ref(false),
     currentEquipmentView: ref("Equipment"),
+    currentDetailCard: ref({
+        displayImg: "/equipment/advancedMilitaryOperationCenter.png",
+        type: "Equipment",
+        displayName: "Advanced Military Operation Center",
+        effectName: "Operation Quantity Expansion",
+        effectDescription: ["Increases the number of usable operations by ", "X", "."],
+        loadWeight: 6,
+        class: "Information"
+    }),
 };
 
 export { globalVariables }

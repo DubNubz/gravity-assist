@@ -4,7 +4,10 @@ const credits = [{
     info: "Access to module data for most ships"
 }, {
     name: "Bullet",
-    info: "Color suggestions"
+    info: "Color suggestions/inspiration"
+}, {
+    name: "LunautiCorp",
+    info: "Access to module data"
 }, {
     name: "HOSTILE",
     info: "Bug catching"

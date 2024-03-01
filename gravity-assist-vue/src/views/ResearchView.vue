@@ -48,6 +48,7 @@
         </div>
       </div>
 
+      <button class="copyToClipboard" @click="sharePath">Share RA path</button>
       <h3>Time required: <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24) }}</span> days<span v-if="Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) != 0">, <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) }}</span> hours</span></h3>
 
     </div>
@@ -66,9 +67,47 @@ import { ref } from 'vue';
 import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
 import ResearchSearch from '@/components/ResearchSearch.vue';
+import { useRoute } from 'vue-router';
 
 globalVariables.activeModule.value = 'Research Agreement Helper';
-const filteredData = ref([...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]);
+const route = useRoute();
+const filteredData = ref();
+
+if (route.params.ship == "all") {
+} else if (route.params.ship) {
+  const shipArray = data.find((ship) => ship.name == route.params.ship[0].toUpperCase() + route.params.ship.split("").slice(1, -2).join("") && ship.variant == route.params.ship.split("").slice(-1).join(""));
+  globalVariables.currentSearchShip.value = route.params.ship[0].toUpperCase() + route.params.ship.split("").slice(1).join("");
+  searchChangeView(shipArray.manufacturer, ref(shipArray.direction).value, shipArray.scope);
+}
+if (route.params.manufacturer) {
+  globalVariables.activeManufacturer.value = route.params.manufacturer;
+}
+if (route.params.direction) {
+  globalVariables.activeDirection.value = route.params.direction;
+}
+if (route.params.scope) {
+  globalVariables.activeScope.value = route.params.scope;
+}
+
+filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))];
+
+
+function sharePath () {
+  if (globalVariables.currentSearchShip.value != "Not selected") {
+    navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper/${globalVariables.currentSearchShip.value.replace(" ", "%20")}`).then(() => {
+      alert("Link copied to clipboard");
+    }, () => {
+      alert("Link failed to copy to clipboard");
+    })
+  } else {
+    navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper/all/${String(globalVariables.activeManufacturer.value).replace(" ", "%20")}/${String(globalVariables.activeDirection.value).replace(" ", "%20")}/${String(globalVariables.activeScope.value).replace(" ", "%20")}`).then(() => {
+      alert("Link copied to clipboard");
+    }, () => {
+      alert("Link failed to copy to clipboard");
+    })
+  }
+  
+}
 
 function getColor (input) {
   if (input > 20) {
@@ -186,7 +225,7 @@ function searchChangeView (manufacturer, direction, scope) {
     }
   }
 
-  let array = allPaths[allChances.indexOf(Math.max(...allChances))]
+  let array = allPaths[allChances.indexOf(Math.max(...allChances))];
   for (let i in array) {
     if ((array[i].name + "-" + array[i].variant) == globalVariables.currentSearchShip.value) {
       trueDirection = array[i].direction[allChances.indexOf(Math.max(...allChances))];
@@ -207,12 +246,29 @@ function changeView (type, name) {
       globalVariables.activeScope.value = name;
     }
     globalVariables.currentSearchShip.value = "Not selected";
-    filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
+    filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))];
 }
 
 </script>
 
 <style scoped>
+
+.copyToClipboard {
+  margin-top: 2vh;
+  background-color: var(--normalText);
+  width: 70%;
+  font-size: var(--p);
+  height: 5vh;
+  border-radius: 1.5vh;
+  transition: all 0.25s;
+  background-color: var(--deepYellow);
+  filter: grayscale(0.75);
+}
+
+.copyToClipboard:hover {
+  filter: grayscale(0);
+  transform: translateY(0.5vh);
+}
 
 .black {
   color: #ff0000;

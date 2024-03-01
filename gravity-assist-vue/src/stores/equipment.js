@@ -19,7 +19,6 @@ const data = [{
     displayName: "Antonios Standard Parts Assembly Facility",
     effectName: "Ship Production Process Optimization",
     effectDescription: ["Reduces resource consumption by ", "X%", " when building Antonios Consortium ships in the Base."],
-    effectDescriptionVariants: [],
     loadWeight: 6,
     class: "Logistics"
 }, {

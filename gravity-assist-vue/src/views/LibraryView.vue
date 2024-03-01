@@ -67,6 +67,7 @@
                 {{ mod.identity }}</button>
             </div>
 
+            <button class="copyToClipboard" @click="shareModule">Share module</button>
         </div>
     </div>
 
@@ -86,8 +87,38 @@ import { data } from '@/stores/mod_data';
 import { globalVariables } from '@/stores/global';
 import ShipModShowcase from '@/components/ShipModShowcase.vue';
 import ModWeaponHolder from '@/components/ModWeaponHolder.vue';
+import { useRoute } from 'vue-router';
 
 globalVariables.activeModule.value = 'Module Library';
+const route = useRoute();
+
+if (route.params.ship) {
+  globalVariables.currentShip.value = data.findIndex((ship) => ship.name == route.params.ship);
+  
+  if (Number(data.findIndex((ship) => ship.name == route.params.ship) - 1) < 0) {
+    globalVariables.previousShip.value = data.length - 1;
+  } else {
+    globalVariables.previousShip.value = Number(data.findIndex((ship) => ship.name == route.params.ship) - 1);
+  }
+
+  if (Number(data.findIndex((ship) => ship.name == route.params.ship) + 1) >= data.length) {
+    globalVariables.nextShip.value = 0;
+  } else {
+    globalVariables.nextShip.value = Number(data.findIndex((ship) => ship.name == route.params.ship) + 1);
+  }
+  console.log(globalVariables)
+}
+if (route.params.mod) {
+  globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = route.params.mod;
+}
+
+function shareModule () {
+  navigator.clipboard.writeText(`https://gravityassist.xyz/modules/module-library/${data[globalVariables.currentShip.value].name.replaceAll(" ", "%20")}/${globalVariables.currentMod.value[data[globalVariables.currentShip.value].name]}`).then(() => {
+    alert("Link copied to clipboard");
+  }, () => {
+    alert("Link failed to copy to clipboard");
+  })
+}
 
 function changeMod (mod) {
     globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = mod;
@@ -125,6 +156,23 @@ function changeShip (type) {
 </script>
 
 <style scoped>
+
+.copyToClipboard {
+  margin-top: 2vh;
+  background-color: var(--normalText);
+  width: 50%;
+  font-size: var(--p);
+  height: 5vh;
+  border-radius: 1.5vh;
+  transition: all 0.35s;
+  background-color: var(--deepYellow);
+  filter: grayscale(0.75);
+}
+
+.copyToClipboard:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
 
 .title-description {
   width: 85vw;
@@ -179,6 +227,7 @@ function changeShip (type) {
   display: flex;
   flex-direction: column;
   width: 60vw;
+  align-items: center;
 }
 
 .shipModHolder {

@@ -2163,8 +2163,38 @@ const data = [{
             attributes: null
         }]
     }, {
-        type: "unknown",
-        identity: "A2"
+        img: "/weapons/cannon.png",
+        type: "weapon",
+        identity: "A2",
+        name: `Experimental Ion Cannon System`,
+        default: false,
+        stats: {
+            antiship: 8857,
+            antiair: 252,
+            siege: 828,
+            hp: 26000
+        },
+        weapons: [{
+            type: "weapon",
+            count: 2,
+            title: `AI-450T`,
+            name: `Experimental Ion Turret`,
+            damageType: "Energy",
+            target: "Large Ship",
+            lockonEfficiency: null,
+            alpha: 400,
+            attributes: null
+        }, {
+            type: "weapon",
+            count: 4,
+            title: `AG-290`,
+            name: `Generic Dual-Cannon Battery`,
+            damageType: "Projectile",
+            target: "Aircraft",
+            lockonEfficiency: 45,
+            alpha: 35,
+            attributes: ["Anti-Aircraft Counterattack"]
+        }]
     }, {
         type: "unknown",
         identity: "A3"
