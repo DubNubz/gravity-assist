@@ -11,21 +11,21 @@
         <div id="modStats">
             <div id="antiship">
                 <img src="/weapons/antiship-removebg-preview.png" alt="Value of this module's antiship statistic" class="weaponImg">
-                <p>{{ Mod.stats.antiship }}</p>
+                <p>{{ Mod.stats.antiship.toLocaleString() }}</p>
                 <div id="antishipBar">
                     <div class="fillerBar" :style="{ width: (Math.min(1, Math.max(0, (Mod.stats.antiship / getMax(Mod.stats.antiship)))) * 100) + '%' }"></div>
                 </div>
             </div>
             <div id="antiair">
             <img src="/weapons/antiair-removebg-preview.png" alt="Value of this module's antiair statistic" class="weaponImg">
-                <p>{{ Mod.stats.antiair }}</p>
+                <p>{{ Mod.stats.antiair.toLocaleString() }}</p>
                 <div id="antiairBar">
                     <div class="fillerBar" :style="{ width: (Math.min(1, Math.max(0, (Mod.stats.antiair / getMax(Mod.stats.antiair)))) * 100) + '%' }"></div>
                 </div>
             </div>
             <div id="siege">
             <img src="/weapons/siege-removebg-preview.png" alt="Value of this module's siege statistic" class="weaponImg">
-                <p>{{ Mod.stats.siege }}</p>
+                <p>{{ Mod.stats.siege.toLocaleString() }}</p>
                 <div id="siegeBar">
                     <div class="fillerBar" :style="{ width: (Math.min(1, Math.max(0, (Mod.stats.siege / getMax(Mod.stats.siege)))) * 100) + '%' }"></div>
                 </div>

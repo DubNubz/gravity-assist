@@ -51,6 +51,13 @@ const colors = [{
     colorPalette: ["#c8e2ff7", "#c893ff2", "#c8749ef", "#c8255ec", "#c8161e9", "#c7e6ee6", "#c7b79e2", "#c7884e0", "#c7592dc", "#c729bd9", "#c6ea8d5",
     "#c6bb5d2", "#c69c0cf", "#c66cacc", "#c64d3ca", "#c62debd"]
 }, {
+    type: ["New Color", "Multi-Color Gradient"],
+    name: "purpleToBlue",
+    color1: "purple",
+    color2: "blue",
+    colorPalette: ["#cbd40ff", "#cbd40ff", "#cbd40ff", "#cb043ea", "#ca443eb", "#c9943ed", "#c8d43ee", "#c8043f0", "#c6743f2", "#c4943f4", "#c4254f5",
+    "#c4285f8", "#c42a1f9", "#c42a5fb", "#c49aaeb", "#c519ccf"]
+}, {
     type: ["Single Color Gradient"],
     name: "goldToGold",
     color1: "gold",
@@ -155,10 +162,5 @@ const colors = [{
     colorPalette: ["#cfb8333", "#cf87e3d", "#cf57c48", "#cf27954", "#cef765e", "#ced746b", "#cea7175", "#ce76e81", "#ce36b8d", "#cdf669c", "#cdb63ab",
     "#cd860b8", "#cd45bc8", "#ccf58d8", "#ccd55e2", "#cc74ff7"]
 }];
-
-/* ["#c3378ff", "#c4076ff", "#c4b74ff", "#c5672ff", "#c606fff", "#c6a6dff", "#c736aff", "#c7d67ff", "#c8663ff", "#c8f5fff", "#c975bff",
-    "#ca056ff", "#ca851ff", "#cb14bff", "#cb945ff", "#cc13dff"] */
-    /* ["#c33c2ff", "#c21beff", "#c1ab9ff", "#c2ab3ff", "#c35aeff", "#c3ea8ff", "#c46a2ff", "#c509bff", "#c5c94ff", "#c6b8cff", "#c7a84ff",
-    "#c887aff", "#c966fff", "#ca461ff", "#cb351ff", "#cc13dff"] */
 
 export { colorTypes, colors }

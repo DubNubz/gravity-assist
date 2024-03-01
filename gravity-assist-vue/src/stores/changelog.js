@@ -116,6 +116,11 @@ const changelog = [{
     release: "March 1, 2024",
     notes: ["Reworked the display of colors when choosing a color in Color Generator", "Changed Blue/Purple to Purple/Purple in Color Generator",
     "Added 5 new colors to Color Generator: Red/Orange, Blue/Orange, Purple/Mint, Green/Green, and Sunset", "Colors are now separated into categories"]
+}, {
+    type: "bugfix",
+    version: "1.1.5.1",
+    release: "March 1, 2024",
+    notes: ["Revamped a color to Color Generator: Blue/Purple"]
 }
 ];
 
