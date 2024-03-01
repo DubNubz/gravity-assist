@@ -29,13 +29,18 @@
             <p class="reverseText">Reverse</p>
           </button>
 
-          <div class="buttons">
-            <button class="colorButton"
-              :class="getClass(color.color1, color.color2)"
-              v-for="color in colors"
-              @click="buttonEvent(color.name, getClass(color.color1, color.color2))">
-              {{ getButtonName(color.color1, color.color2) }}
-            </button>
+          <div class="colorButtonArrayArray">
+            <div class="colorButtonArray" v-for="colorType in colorTypes">
+              <h3 class="colorButtonArrayTitle" :class="{ newButtonArrayTitle: colorType == 'New Color' }">{{ colorType + 's' }}</h3>
+              <div class="buttons">
+                <button class="colorButton"
+                  :class="getClass(color.color1, color.color2)"
+                  v-for="color in colors.filter((color) => color.type.includes(colorType))"
+                  @click="buttonEvent(color.name, getClass(color.color1, color.color2))">
+                  {{ getButtonName(color.color1, color.color2, color.displayName) }}
+                </button>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -120,7 +125,7 @@
 import { ref } from 'vue';
 import ColorCalculator from '@/components/ColorCalculator.vue';
 import { globalVariables } from '@/stores/global';
-import { colors } from '@/stores/colors';
+import { colorTypes, colors } from '@/stores/colors';
 
 globalVariables.activeModule.value = "Color Generator";
 const colorMenu = ref(false);
@@ -136,7 +141,6 @@ function copyToClipboard () {
   navigator.clipboard.writeText(globalVariables.outputText.value.join("")).then(() => {
     copyActive.value = true;
     setTimeout(() => {
-      console.log(copyActive.value);
       copyActive.value = false;
     }, 1500);
   }, () => {
@@ -172,7 +176,11 @@ function characterLimit (num, type) {
   }
 }
 
-function getButtonName (param1, param2) {
+function getButtonName (param1, param2, other) {
+  if (other) {
+    return String(other);
+  }
+
   if (globalVariables.reversed.value) {
     return `${uppercase(param2)} >> ${uppercase(param1)}`
   } else {
@@ -209,6 +217,34 @@ function addNewLine (event) {
 <style scoped>
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+.colorButtonArrayArray {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.newButtonArrayTitle {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  border-radius: 2vw;
+  font-size: var(--h2);
+  background-image: linear-gradient(to right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00ffff, #00c3ff, #ff00ff);
+  width: fit-content;
+  background-clip: text;
+  color: transparent;
+}
+
+.colorButtonArray {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  background-color: rgba(255, 255, 255, 0.125);
+  margin-bottom: 3vh;
+  border-radius: 4vh;
+}
 
 #messageCharacterCounter,
 #mailCharacterCounter {
@@ -411,12 +447,12 @@ textarea,
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   justify-content: space-evenly;
 }
 
 .colorButton {
-  width: 20vw;
+  width: 45%;
   height: 7.5vh;
   padding: 1vh;
   border-radius: 3vh;
@@ -496,11 +532,14 @@ img {
 /* non-reversed */
 .rainbowToRainbow {background: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00ffff, #00c3ff, #ff00ff);}
 .pinkToYellow {background: linear-gradient(to bottom right, #f957ff, #ffc94d, #f957ff);}
+.redToOrange {background: linear-gradient(to bottom right, #e32b2b, #ff9b3c, #e32b2b);}
 .redToYellow {background: linear-gradient(to bottom right, #ff0f00, #fff000, #ff0f00);}
-.yellowToBlue {background: linear-gradient(to bottom right, #fff47a, #bfffc7, #85abff, #bfffc7, #fff47a);}
-.greenToBlue {background: linear-gradient(to bottom right, #00fe90, #00a1ff, #00fe90);}
-.blueToPurple {background: linear-gradient(to bottom right, #6ea3ff, #d16eff, #6ea3ff);}
-.blueToPink {background: linear-gradient(to bottom right, #11dee5, #ec67cf, #11dee5);}
+.blueToOrange {background: linear-gradient(to bottom right, #3dcfff, #ffbd2c, #3dcfff);}
+.blueToYellow {background: linear-gradient(to bottom right, #85abff, #bfffc7, #fff47a, #bfffc7, #85abff);}
+.blueToGreen {background: linear-gradient(to bottom right, #00a1ff, #00fe90, #00a1ff);}
+.purpleToPurple {background: linear-gradient(to bottom right, #6ea3ff, #d16eff, #6ea3ff);}
+.purpleToMint {background: linear-gradient(to bottom right, #832ef7, #61dec7, #832ef7);}
+.blueToPink {background: linear-gradient(to bottom right, #11dee5, #b5d8b3, #ffd0b5, #fdaed2);}
 .pinkToPink {background: linear-gradient(to bottom right, #dc6bff, #ff6bd3, #dc6bff);}
 .goldToGold {background: linear-gradient(to bottom right, #ffff00, #ffc400, #ffff00);}
 .blueToBlue {background: linear-gradient(to bottom right, #6bffff, #6babff, #6bffff);}
@@ -509,16 +548,24 @@ img {
 .greenToWhite {background: linear-gradient(to bottom right, #00ff00, #ffffff);}
 .blueToWhite {background: linear-gradient(to bottom right, #00d7ff, #ffffff);}
 .purpleToWhite {background: linear-gradient(to bottom right, #e100ff, #ffffff);}
-.redToDark {background: linear-gradient(to bottom right, #dc0101, #4c1010);}
+.redToDark {
+  background: linear-gradient(to bottom right, #dc0101, #4c1010);
+  color: white;
+}
+.orangeToPink {background: linear-gradient(to bottom right, #fb8333, #d37cf5);}
+.greenToGreen {background: linear-gradient(to bottom right, #a9ff38, #29ffbf, #a9ff38);}
 
 /* reversed */
 .RainbowTorainbow {background: linear-gradient(to bottom right, #ff00ff, #00c3ff, #00ffff, #00ff4c, #bbff00, #ffbb00, #ff0000);}
 .YellowTopink {background: linear-gradient(to bottom right, #ffc94d, #f957ff, #ffc94d);}
+.OrangeTored {background: linear-gradient(to bottom right, #ff9b3c, #e32b2b, #ff9b3c);}
 .YellowTored {background: linear-gradient(to bottom right, #fff000, #ff0f00, #fff000);}
-.BlueToyellow {background: linear-gradient(to bottom right, #85abff, #bfffc7, #fff47a, #bfffc7, #85abff);}
-.BlueTogreen {background: linear-gradient(to bottom right, #00a1ff, #00fe90, #00a1ff);}
-.PurpleToblue {background: linear-gradient(to bottom right, #d16eff, #6ea3ff, #d16eff);}
-.PinkToblue {background: linear-gradient(to bottom right, #ec67cf, #11dee5, #ec67cf);}
+.OrangeToblue {background: linear-gradient(to bottom right, #ffbd2c, #3dcfff, #ffbd2c);}
+.YellowToblue {background: linear-gradient(to bottom right, #fff47a, #bfffc7, #85abff, #bfffc7, #fff47a);}
+.GreenToblue {background: linear-gradient(to bottom right, #00fe90, #00a1ff, #00fe90);}
+.PurpleTopurple {background: linear-gradient(to bottom right, #d16eff, #6ea3ff, #d16eff);}
+.MintTopurple {background: linear-gradient(to bottom right, #61dec7, #832ef7, #61dec7);}
+.PinkToblue {background: linear-gradient(to bottom right, #fdaed2, #ffd0b5, #b5d8b3, #11dee5);}
 .PinkTopink {background: linear-gradient(to bottom right, #ff6bd3, #dc6bff, #ff6bd3);}
 .GoldTogold {background: linear-gradient(to bottom right, #ffc400, #ffff00, #ffc400);}
 .BlueToblue {background: linear-gradient(to bottom right, #6babff, #6bffff, #6babff);}
@@ -527,7 +574,12 @@ img {
 .WhiteTogreen {background: linear-gradient(to bottom right, #ffffff, #00ff00);}
 .WhiteToblue {background: linear-gradient(to bottom right, #ffffff, #00d7ff);}
 .WhiteTopurple {background: linear-gradient(to bottom right, #ffffff, #e100ff);}
-.DarkTored {background: linear-gradient(to bottom right, #4c1010, #dc0101);}
+.DarkTored {
+  background: linear-gradient(to bottom right, #4c1010, #dc0101);
+  color: white;
+}
+.PinkToorange {background: linear-gradient(to bottom right, #d37cf5, #fb8333);}
+.GreenTogreen {background: linear-gradient(to bottom right, #29ffbf, #a9ff38, #29ffbf);}
 
 .title-description {
   width: 85vw;
@@ -650,7 +702,7 @@ img {
   .colorButton {
     width: 30vw;
     height: 6vh;
-    font-size: var(--p);
+    font-size: var(--standard3);
   }
 
   .stepButton {
@@ -706,6 +758,10 @@ img {
   .stepMenuButtonDescription {
     font-size: var(--p);
     margin-top: 0;
+  }
+
+  .colorButtonArray {
+    width: 100%;
   }
 }
 

@@ -3,6 +3,9 @@ const credits = [{
     name: "Windserpent",
     info: "Access to module data for most ships"
 }, {
+    name: "Bullet",
+    info: "Color suggestions"
+}, {
     name: "HOSTILE",
     info: "Bug catching"
 }, {
