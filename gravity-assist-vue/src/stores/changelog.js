@@ -125,7 +125,7 @@ const changelog = [{
     type: "release",
     version: "1.1.6",
     release: "March 2, 2024",
-    notes: ["Added the ability to share links for Gravity Assist page options"]
+    notes: ["Added the ability to share links for Gravity Assist page options", "Added Eternal Heavens A2 to Module Library"]
 }
 ];
 
