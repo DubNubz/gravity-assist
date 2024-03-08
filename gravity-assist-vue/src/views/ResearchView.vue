@@ -7,6 +7,17 @@
       <p>Select a ship to find a research agreement path for it, or freely browse through all reseach agreement paths.</p>
     </div>
 
+    <Transition name="share">
+      <div class="shareBackground" v-if="shareActive">
+        <div class="shareOverall">
+          <div class="shareActual">
+            <img src="/check-removebg-preview (1).png" alt="Copied to clipboard successfully" id="shareSuccess">
+          </div>
+          <h3 id="shareSuccessText">Link copied to clipboard!</h3>
+        </div>
+      </div>
+    </Transition>
+
     <Transition name="search">
       <div id="RASearchMenuBackground" v-if="globalVariables.searchActive.value">
         <ResearchSearch @response="searchChangeView"/>
@@ -48,8 +59,22 @@
         </div>
       </div>
 
-      <button class="copyToClipboard" @click="sharePath">Share RA path</button>
-      <h3>Time required: <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24) }}</span> days<span v-if="Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) != 0">, <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">{{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) }}</span> hours</span></h3>
+      <button class="copyToClipboard" @click="sharePath">Copy sharing link</button>
+      <h3>Time required: 
+        <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">
+          {{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24) }}
+        </span> days
+        <span v-if="Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) != 0">, 
+          <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">
+            {{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) }}
+          </span> hours
+        </span>
+        <span v-if="((Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) % 1) * 60 != 0">, 
+          <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">
+            {{ ((Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) % 24) % 1) * 60 }}
+          </span> minutes
+        </span>
+      </h3>
 
     </div>
 
@@ -72,6 +97,7 @@ import { useRoute } from 'vue-router';
 globalVariables.activeModule.value = 'Research Agreement Helper';
 const route = useRoute();
 const filteredData = ref();
+const shareActive = ref(false);
 
 if (route.params.ship == "all") {
 } else if (route.params.ship) {
@@ -95,13 +121,19 @@ filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globa
 function sharePath () {
   if (globalVariables.currentSearchShip.value != "Not selected") {
     navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper/${globalVariables.currentSearchShip.value.replace(" ", "%20")}`).then(() => {
-      alert("Link copied to clipboard");
+      shareActive.value = true;
+      setTimeout(() => {
+        shareActive.value = false;
+      }, 1500);
     }, () => {
       alert("Link failed to copy to clipboard");
     })
   } else {
     navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper/all/${String(globalVariables.activeManufacturer.value).replace(" ", "%20")}/${String(globalVariables.activeDirection.value).replace(" ", "%20")}/${String(globalVariables.activeScope.value).replace(" ", "%20")}`).then(() => {
-      alert("Link copied to clipboard");
+      shareActive.value = true;
+      setTimeout(() => {
+        shareActive.value = false;
+      }, 1500);
     }, () => {
       alert("Link failed to copy to clipboard");
     })
@@ -268,6 +300,65 @@ function changeView (type, name) {
 .copyToClipboard:hover {
   filter: grayscale(0);
   transform: translateY(0.5vh);
+}
+
+.shareBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 999999999;
+}
+
+.shareOverall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 5vh;
+  padding: 3vh;
+}
+
+.shareActual {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  margin-bottom: 2vh;
+}
+
+#shareSuccess {
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+}
+
+.share-enter-active, .share-leave-active {
+  transition: all 0.75s ease-in-out;
+}
+
+.share-enter-from,
+.share-leave-to {
+  opacity: 0;
+}
+
+.share-enter-active .shareActual,
+.share-leave-active .shareActual { 
+  transition: all 0.5s ease-in-out;
+}
+
+.share-enter-from .shareActual,
+.share-leave-to .shareActual {
+  transform: rotate(720deg);
+  opacity: 0.001;
 }
 
 .black {

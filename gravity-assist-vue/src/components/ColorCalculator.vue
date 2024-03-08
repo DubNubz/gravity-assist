@@ -57,13 +57,11 @@ function convertInput (type, input) {
         if (input == "\n") {
             input = "#r";
             output.push(input);
-            console.log(output);
             return input;
 
         } else if (input == " ") {
             input = " ";
             output.push(input);
-            console.log(output);
             return input;
 
         } else {

@@ -57,6 +57,74 @@ const globalVariables = {
         loadWeight: 6,
         class: "Information"
     }),
+
+    // Fleet Builder
+    fleetBuild: ref([]),
+    aircraftCounter: ref([]),
+    reinforcementCounter: ref([]),
+    modTracker: ref({
+        "Constantine the Great": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1",
+            dModule: "D1"
+        }, "Eternal Storm": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1",
+            dModule: "D1"
+        }, "Spear of Uranus": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1"
+        }, "ST59": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1"
+        }, "Thunderbolt Star": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1",
+            dModule: "D1",
+            eModule: "E1"
+        }, "Ediacaran": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1",
+            dModule: "D1"
+        }, "FSV830": {
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1",
+            dModule: "D1",
+            eModule: "E1"
+        }, "CV3000": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1"
+        }, "Eternal Heavens": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1"
+        }, "Marshal Crux": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: "C1"
+        }, "Solar Whale": {
+            mModule: "M1",
+            aModule: "A1",
+            bModule: "B1",
+            cModule: ""
+        }
+    }),
 };
 
 export { globalVariables }

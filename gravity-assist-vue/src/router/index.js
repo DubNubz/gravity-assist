@@ -35,6 +35,11 @@ const router = createRouter({
       component: () => import('../views/EquipmentView.vue')
     },
     {
+      path: '/modules/fleet-builder',
+      name: 'fleet-bulder',
+      component: () => import('../views/FleetView.vue')
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('../views/PlaygroundView.vue')

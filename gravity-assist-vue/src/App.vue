@@ -1,12 +1,13 @@
 <template>
   <header class="darkHeader" id="header">
     <div class="title">
-      <img src="/radiant1-removebg-preview.png" alt="Gravity Assist Icon" id="gravityAssistIcon">
+      <img src="/radiant.svg" alt="Gravity Assist Icon" id="gravityAssistIcon">
       <h1 id="gravityAssistTitle">Gravity Assist</h1>
     </div>
+
     <nav class="navButtons">
       <RouterLink :to="{ path: '/home'}"
-      class="navButton"
+      class="navButton" id="homeButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Home' }"
       @click="changeModule('Home')">
       Home</RouterLink>
@@ -17,23 +18,29 @@
       @click="changeModule('Color Generator')">
       Color Generator</RouterLink>
 
+      <RouterLink :to="{ path: '/modules/fleet-builder'}"
+      class="navButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Fleet Builder' }"
+      @click="changeModule('Fleet Builder')">
+      Fleet Builder</RouterLink>
+
       <RouterLink :to="{ path: '/modules/research-agreement-helper'}"
       class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Research Agreement Helper' }"
       @click="changeModule('Research Agreement Helper')">
       Research Agreement Helper</RouterLink>
 
-      <RouterLink :to="{ path: '/modules/module-library'}"
-      class="navButton"
-      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Module Library' }"
-      @click="changeModule('Module Library')">
-      Module Library</RouterLink>
-
       <RouterLink :to="{ path: '/modules/equipment-encyclopedia'}"
-      class="navButton" id="lastNavButton"
+      class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Equipment Encyclopedia' }"
       @click="changeModule('Equipment Encyclopedia')">
       Equipment Encyclopedia</RouterLink>
+
+      <RouterLink :to="{ path: '/modules/module-library'}"
+      class="navButton" id="lastNavButton"
+      :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Module Library' }"
+      @click="changeModule('Module Library')">
+      Module Library</RouterLink>
       
     </nav>
   </header>
@@ -116,6 +123,7 @@ function changeModule (button) {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0.5vh;
 }
 
 #lastNavButton {margin-bottom: 5vh}
@@ -179,6 +187,16 @@ header {
   margin-bottom: 0;
   background-color: var(--transparent);
   border-radius: 3vh;
+}
+
+#homeButton {
+  width: 15vh;
+}
+
+@media screen and (max-width: 1000px) {
+  #homeButton {
+    width: 30vh;
+  }
 }
 
 </style>

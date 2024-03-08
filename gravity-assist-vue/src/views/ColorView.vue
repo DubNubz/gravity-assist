@@ -7,6 +7,17 @@
       <p>Choose your output color, copy your text, and you're good to go!</p>
     </div>
 
+    <Transition name="share">
+      <div class="shareBackground" v-if="shareActive">
+        <div class="shareOverall">
+          <div class="shareActual">
+            <img src="/check-removebg-preview (1).png" alt="Copied to clipboard successfully" id="shareSuccess">
+          </div>
+          <h3 id="shareSuccessText">Link copied to clipboard!</h3>
+        </div>
+      </div>
+    </Transition>
+
     <Transition name="copy">
       <div class="copyBackground" v-if="copyActive">
         <div class="copyOverall">
@@ -112,7 +123,7 @@
       </div>
 
       <div id="outputBox">
-        <button class="copyToClipboard" @click="copyShareLink">Share color combination</button>
+        <button class="copyToClipboard" @click="copyShareLink">Copy sharing link</button>
         <button class="copyToClipboard" @click="copyToClipboard">Copy text to clipboard</button>
         <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"/>
       </div>
@@ -132,6 +143,7 @@ import { useRoute } from 'vue-router';
 globalVariables.activeModule.value = "Color Generator";
 const colorMenu = ref(false);
 const copyActive = ref(false);
+const shareActive = ref(false);
 const stepMenu = ref(false);
 const route = useRoute();
 
@@ -150,7 +162,10 @@ if (route.params.colorName) {
 
 function copyShareLink () {
   navigator.clipboard.writeText(`https://gravityassist.xyz/modules/color-generator/${globalVariables.currentColor.value}/${globalVariables.currentColorStep.value}/${globalVariables.reversed.value}`).then(() => {
-    alert("Link copied to clipboard");
+    shareActive.value = true;
+    setTimeout(() => {
+      shareActive.value = false;
+    }, 1500);
   }, () => {
     alert("Link failed to copy to clipboard");
   })
@@ -464,6 +479,65 @@ textarea,
 
 .copy-enter-from .copyActual,
 .copy-leave-to .copyActual {
+  transform: rotate(720deg);
+  opacity: 0.001;
+}
+
+.shareBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 999999999;
+}
+
+.shareOverall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 5vh;
+  padding: 3vh;
+}
+
+.shareActual {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  margin-bottom: 2vh;
+}
+
+#shareSuccess {
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+}
+
+.share-enter-active, .share-leave-active {
+  transition: all 0.75s ease-in-out;
+}
+
+.share-enter-from,
+.share-leave-to {
+  opacity: 0;
+}
+
+.share-enter-active .shareActual,
+.share-leave-active .shareActual { 
+  transition: all 0.5s ease-in-out;
+}
+
+.share-enter-from .shareActual,
+.share-leave-to .shareActual {
   transform: rotate(720deg);
   opacity: 0.001;
 }

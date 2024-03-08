@@ -11,6 +11,17 @@
         <p id="cardFooter">Click for more information</p>
     </div>
 
+    <Transition name="share">
+      <div class="shareBackground" v-if="shareActive">
+        <div class="shareOverall">
+          <div class="shareActual">
+            <img src="/check-removebg-preview (1).png" alt="Copied to clipboard successfully" id="shareSuccess">
+          </div>
+          <h3 id="shareSuccessText">Link copied to clipboard!</h3>
+        </div>
+      </div>
+    </Transition>
+
     <Transition name="detail">
         <div class="detailCardBackground"
         v-if="globalVariables.showCard.value == true">
@@ -27,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <button @click="shareEquipment" class="copyToClipboard">Share equipment</button>
+            <button @click="shareEquipment" class="copyToClipboard">Copy sharing link</button>
             <button @click="globalVariables.showCard.value = false" class="button">Close</button>
         </div>
     </Transition>
@@ -38,6 +49,8 @@
 import { ref } from 'vue';
 import { data } from '@/stores/equipment';
 import { globalVariables } from '@/stores/global';
+
+const shareActive = ref(false);
 
 function showDetailCard (card) {
     globalVariables.showCard.value = true;
@@ -54,7 +67,10 @@ function getDescriptionColor (string) {
 
 function shareEquipment () {
     navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia/${globalVariables.currentEquipmentView.value.replaceAll(" ", "%20")}/${globalVariables.currentDetailCard.value.displayName.replaceAll(" ", "%20")}`).then(() => {
-        alert("Link copied to clipboard");
+        shareActive.value = true;
+        setTimeout(() => {
+            shareActive.value = false;
+        }, 1500);
     }, () => {
         alert("Link failed to copy to clipboard");
     })
@@ -79,6 +95,65 @@ function shareEquipment () {
 .copyToClipboard:hover {
   filter: grayscale(0);
   transform: scale(1.05);
+}
+
+.shareBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 999999999;
+}
+
+.shareOverall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 5vh;
+  padding: 3vh;
+}
+
+.shareActual {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  margin-bottom: 2vh;
+}
+
+#shareSuccess {
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+}
+
+.share-enter-active, .share-leave-active {
+  transition: all 0.75s ease-in-out;
+}
+
+.share-enter-from,
+.share-leave-to {
+  opacity: 0;
+}
+
+.share-enter-active .shareActual,
+.share-leave-active .shareActual { 
+  transition: all 0.5s ease-in-out;
+}
+
+.share-enter-from .shareActual,
+.share-leave-to .shareActual {
+  transform: rotate(720deg);
+  opacity: 0.001;
 }
 
 .gold {

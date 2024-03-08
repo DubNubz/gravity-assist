@@ -25,7 +25,6 @@ const emit = defineEmits(['response']);
 function updateChoice (name, variant, manufacturer, direction, scope) {
   globalVariables.searchActive.value = !globalVariables.searchActive.value;
   globalVariables.currentSearchShip.value = `${name}-${variant}`;
-  console.log(manufacturer, direction, scope)
   emit('response', manufacturer, direction, scope);
 }
 

@@ -1,6 +1,6 @@
 <template>
     <div class="title">
-        <img src="/radiant1-removebg-preview.png" alt="Gravity Assist Icon" id="gravityAssistIcon">
+        <img src="/radiant.svg" alt="Gravity Assist Icon" id="gravityAssistIcon">
         <h2 id="gravityAssistTitle">Gravity Assist</h2>
     </div>
 

@@ -126,7 +126,13 @@ const changelog = [{
     version: "1.1.6",
     release: "March 2, 2024",
     notes: ["Added the ability to share links for Gravity Assist page options", "Added Eternal Heavens A2 to Module Library"]
-}
-];
+}, {
+    type: "release",
+    version: "1.2.0",
+    release: "March 8, 2024",
+    notes: ["Added Fleet Builder", "Damage and armor bar representations in Module Library now animate dynamically",
+    "Some images in Module Library are now high quality SVG files", "Research Agreement Helper now displays minutes if there is a remainder",
+    "Gravity Assist icon is now a high quality SVG", "Clarified the share buttons", "Added onscreen animations when clicking share buttons"]
+}];
 
 export { changelog };

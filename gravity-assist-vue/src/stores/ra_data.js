@@ -134,7 +134,7 @@ const data = [{
     }, {
         name: "SC002",
         title: "Quantum Scout",
-        img: "/ships/sc020.png",
+        img: "/ships/sc002.png",
         type: "Fighter",
         variant: "A",
         variant_name: "Generic Type",

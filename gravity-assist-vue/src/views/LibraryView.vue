@@ -7,6 +7,17 @@
       <p style="color: var(--normalText)">If you have a module that is missing here, please contact me :D</p>
     </div>
 
+    <Transition name="share">
+      <div class="shareBackground" v-if="shareActive">
+        <div class="shareOverall">
+          <div class="shareActual">
+            <img src="/check-removebg-preview (1).png" alt="Copied to clipboard successfully" id="shareSuccess">
+          </div>
+          <h3 id="shareSuccessText">Link copied to clipboard!</h3>
+        </div>
+      </div>
+    </Transition>
+
     <div class="shipOverall">
         <div class="moveShipsButton">
             <button id="previousShipButton" @click="changeShip(0)">&lt;&lt; {{ data[globalVariables.previousShip.value].name }}</button>
@@ -67,7 +78,7 @@
                 {{ mod.identity }}</button>
             </div>
 
-            <button class="copyToClipboard" @click="shareModule">Share module</button>
+            <button class="copyToClipboard" @click="shareModule">Copy sharing link</button>
         </div>
     </div>
 
@@ -91,6 +102,7 @@ import { useRoute } from 'vue-router';
 
 globalVariables.activeModule.value = 'Module Library';
 const route = useRoute();
+const shareActive = ref(false);
 
 if (route.params.ship) {
   globalVariables.currentShip.value = data.findIndex((ship) => ship.name == route.params.ship);
@@ -106,7 +118,6 @@ if (route.params.ship) {
   } else {
     globalVariables.nextShip.value = Number(data.findIndex((ship) => ship.name == route.params.ship) + 1);
   }
-  console.log(globalVariables)
 }
 if (route.params.mod) {
   globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = route.params.mod;
@@ -114,7 +125,10 @@ if (route.params.mod) {
 
 function shareModule () {
   navigator.clipboard.writeText(`https://gravityassist.xyz/modules/module-library/${data[globalVariables.currentShip.value].name.replaceAll(" ", "%20")}/${globalVariables.currentMod.value[data[globalVariables.currentShip.value].name]}`).then(() => {
-    alert("Link copied to clipboard");
+    shareActive.value = true;
+    setTimeout(() => {
+      shareActive.value = false;
+    }, 1500);
   }, () => {
     alert("Link failed to copy to clipboard");
   })
@@ -172,6 +186,65 @@ function changeShip (type) {
 .copyToClipboard:hover {
   filter: grayscale(0);
   transform: scale(1.05);
+}
+
+.shareBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 999999999;
+}
+
+.shareOverall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border-radius: 5vh;
+  padding: 3vh;
+}
+
+.shareActual {
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  margin-bottom: 2vh;
+}
+
+#shareSuccess {
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+}
+
+.share-enter-active, .share-leave-active {
+  transition: all 0.75s ease-in-out;
+}
+
+.share-enter-from,
+.share-leave-to {
+  opacity: 0;
+}
+
+.share-enter-active .shareActual,
+.share-leave-active .shareActual { 
+  transition: all 0.5s ease-in-out;
+}
+
+.share-enter-from .shareActual,
+.share-leave-to .shareActual {
+  transform: rotate(720deg);
+  opacity: 0.001;
 }
 
 .title-description {
