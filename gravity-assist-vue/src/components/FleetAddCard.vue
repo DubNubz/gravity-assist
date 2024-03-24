@@ -752,6 +752,22 @@ function remove (ship) {
         return;
     }
 
+    if (globalVariables.fleetBuild.value.includes((ship))) {
+        if (flagshipShip.value == `${ship.name}-${ship.variant}`) {
+            if (globalVariables.fleetBuild.value.includes(globalVariables.fleetBuild.value.find((item) => item.flagship.includes(flagship.value) && item != ship))) {
+                flagshipShip.value = `${globalVariables.fleetBuild.value.find((item) => item.flagship.includes(flagship.value) && item != ship).name}-${globalVariables.fleetBuild.value.find((item) => item.flagship.includes(flagship.value) && item != ship).variant}`;
+            } else {
+                flagshipShip.value = null;
+                flagship.value = null;
+                for (let flagship of ship.flagship.filter((name) => name != "Focus Fire")) {
+                    allFlagships.value.splice(allFlagships.value.findIndex((name) => name == flagship), 1);
+                }
+            }
+        }
+    }
+
+    console.log(allFlagships.value, flagship.value, flagshipShip.value)
+
     const index = globalVariables.fleetBuild.value.findIndex((item) => item.name == ship.name && item.variant == ship.variant);
     globalVariables.fleetBuild.value.splice(index, 1);
 }

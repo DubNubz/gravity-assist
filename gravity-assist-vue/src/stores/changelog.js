@@ -133,6 +133,12 @@ const changelog = [{
     notes: ["Added Fleet Builder", "Damage and armor bar representations in Module Library now animate dynamically",
     "Some images in Module Library are now high quality SVG files", "Research Agreement Helper now displays minutes if there is a remainder",
     "Gravity Assist icon is now a high quality SVG", "Clarified the share buttons", "Added onscreen animations when clicking share buttons"]
+}, {
+    type: "bugfix",
+    version: "1.2.1",
+    release: "March 24, 2024",
+    notes: ["Added Eternal Heavens B1 module", "Fixed flagship choices not changing after removing a flagship ship in Fleet Builder",
+    "Edited credits"]
 }];
 
 export { changelog };

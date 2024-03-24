@@ -6,8 +6,8 @@ const credits = [{
     name: "Bullet",
     info: "Color suggestions/inspiration"
 }, {
-    name: "LunautiCorp",
-    info: "Access to module data"
+    name: "LunautiCorp & Spy Shark",
+    info: "Eternal Heavens mods"
 }, {
     name: "HOSTILE",
     info: "Bug catching"

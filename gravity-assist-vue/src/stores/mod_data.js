@@ -2199,8 +2199,38 @@ const data = [{
         type: "unknown",
         identity: "A3"
     }, {
-        type: "unknown",
-        identity: "B1"
+        img: "/weapons/cannon.png",
+        type: "weapon",
+        identity: "B1",
+        name: `Anti-Ship Projectile Launching System`,
+        default: false,
+        stats: {
+            antiship: 5640,
+            antiair: 0,
+            siege: 882,
+            hp: 26000
+        },
+        weapons: [{
+            type: "weapon",
+            count: 2,
+            title: `AM-2x450`,
+            name: `Dual-Fire Anti-Ship Missile Launcher`,
+            damageType: "Projectile",
+            target: "Small Ship",
+            lockonEfficiency: null,
+            alpha: 350,
+            attributes: null
+        }, {
+            type: "weapon",
+            count: 4,
+            title: `AM-250`,
+            name: `Light Missile Launcher`,
+            damageType: "Projectile",
+            target: "Small Ship",
+            lockonEfficiency: null,
+            alpha: 140,
+            attributes: null
+        }]
     }, {
         type: "unknown",
         identity: "B2"
