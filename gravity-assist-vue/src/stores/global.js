@@ -15,7 +15,7 @@ const globalVariables = {
 
     // RA Helper
     searchActive: ref(false),
-    currentSearchShip: ref("Not selected"),
+    currentSearchShip: ref("Click to select ship"),
     activeManufacturer: ref("Jupiter Industry"),
     activeDirection: ref("Outstanding Firepower"),
     activeScope: ref("Projectile Weapon"),

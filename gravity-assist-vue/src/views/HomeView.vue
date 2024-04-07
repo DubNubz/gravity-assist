@@ -11,8 +11,14 @@
     </div>
 
     <div class="buttonArray">
-      <button class="loadAllChanges creditsButton" @click="creditsActive = !creditsActive">View credits</button>
-      <button @click="loaded = !loaded" class="loadAllChanges loadButton">View all changes</button>
+      <button class="loadAllChanges creditsButton" @click="creditsActive = !creditsActive">
+        <img src="/credits.svg" alt="View a list of all contributors to this site">
+        <h3>Credits</h3>
+      </button>
+      <button @click="loaded = !loaded" class="loadAllChanges loadButton">
+        <img src="/changes.svg" alt="View a list of all changes made to this site">
+        <h3>Changelog</h3>
+      </button>
     </div>
 
     <div class="latestChange">
@@ -71,8 +77,8 @@ changedChangelog.value.reverse();
 .buttonArray {
   display: flex;
   justify-content: space-evenly;
-  width: 30vw;
-  margin-top: 5vh;
+  width: 50%;
+  margin-top: 2vh;
 }
 
 a {
@@ -138,23 +144,43 @@ img {
     transform: scale(1.2);
 }
 
+.loadAllChanges {
+  width: 50%;
+  font-size: var(--p);
+  height: 7.5vh;
+  border-radius: 1.5vh;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  filter: grayscale(0.33);
+  margin-bottom: 3vh;
+}
+
 .creditsButton {background-color: var(--deepYellow)}
 .loadButton {background-color: #50dcff}
 
-.loadAllChanges {
-    margin-bottom: 3vh;
-    border-radius: 2vh;
-    padding: 2vh;
-    border-width: 0.1vh;
-    transition: all 0.5s;
-    width: 20vh;
-    font-size: var(--p);
-    filter: grayscale(0.75);
+.loadAllChanges h3 {
+  margin: 0;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: var(--h3);
+}
+
+.loadAllChanges img {
+  background-color: transparent;
+}
+
+.loadAllChanges > * {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0;
 }
 
 .loadAllChanges:hover {
-    transform: scale(1.1);
-    filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 .latestChange {
@@ -356,6 +382,14 @@ img {
 
   .buttonArray {
     width: 80vw;
+  }
+
+  .loadAllChanges {
+    width: 10vh;
+  }
+
+  .loadAllChanges h3 {
+    display: none;
   }
 }
 

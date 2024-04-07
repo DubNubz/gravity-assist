@@ -59,7 +59,10 @@
         </div>
       </div>
 
-      <button class="copyToClipboard" @click="sharePath">Copy sharing link</button>
+      <button class="copyToClipboard" @click="sharePath" id="share">
+        <img src="/share.svg" alt="Share this tool">
+        <h3>Share</h3>
+      </button>
       <h3>Time required: 
         <span :class="getColor(Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24))">
           {{ Math.floor(Number(getTime(globalVariables.activeManufacturer.value, globalVariables.activeDirection.value, globalVariables.activeScope.value)) / 24) }}
@@ -119,7 +122,7 @@ filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globa
 
 
 function sharePath () {
-  if (globalVariables.currentSearchShip.value != "Not selected") {
+  if (globalVariables.currentSearchShip.value != "Click to select ship") {
     navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper/${globalVariables.currentSearchShip.value.replace(" ", "%20")}`).then(() => {
       shareActive.value = true;
       setTimeout(() => {
@@ -277,7 +280,7 @@ function changeView (type, name) {
     } else {
       globalVariables.activeScope.value = name;
     }
-    globalVariables.currentSearchShip.value = "Not selected";
+    globalVariables.currentSearchShip.value = "Click to select ship";
     filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))];
 }
 
@@ -286,20 +289,40 @@ function changeView (type, name) {
 <style scoped>
 
 .copyToClipboard {
-  margin-top: 2vh;
   background-color: var(--normalText);
-  width: 70%;
+  width: 50%;
   font-size: var(--p);
-  height: 5vh;
+  height: 7.5vh;
   border-radius: 1.5vh;
   transition: all 0.25s;
-  background-color: var(--deepYellow);
-  filter: grayscale(0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  filter: grayscale(0.33);
+  margin-top: 2vh;
+}
+
+#share {
+  background-color: var(--cyan);
+}
+
+.copyToClipboard h3 {
+  margin: 0;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: var(--h3);
+}
+
+.copyToClipboard > * {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0;
 }
 
 .copyToClipboard:hover {
   filter: grayscale(0);
-  transform: translateY(0.5vh);
 }
 
 .shareBackground {
@@ -644,6 +667,14 @@ h3 {
 
   .infoChangeButton {
     font-size: var(--h3);
+  }
+
+  .copyToClipboard {
+    width: 10vh;
+  }
+
+  .copyToClipboard h3 {
+    display: none;
   }
 
 }

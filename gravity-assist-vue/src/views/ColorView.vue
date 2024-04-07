@@ -123,8 +123,16 @@
       </div>
 
       <div id="outputBox">
-        <button class="copyToClipboard" @click="copyShareLink">Copy sharing link</button>
-        <button class="copyToClipboard" @click="copyToClipboard">Copy text to clipboard</button>
+        <div class="buttonDiv">
+          <button class="copyToClipboard" @click="copyToClipboard" id="copy">
+            <img src="/copy.svg" alt="Copy text to clipboard">
+            <h3>Copy</h3>
+          </button>
+          <button class="copyToClipboard" @click="copyShareLink" id="share">
+            <img src="/share.svg" alt="Share this tool">
+            <h3>Share</h3>
+          </button>
+        </div>
         <ColorCalculator :Color="colors.find((color) => color.name == globalVariables.currentColor.value)"/>
       </div>
 
@@ -290,17 +298,48 @@ function addNewLine (event) {
   margin-top: 5vh;
 }
 
+.buttonDiv {
+  display: flex;
+  width: 75%;
+  justify-content: space-around;
+}
+
 .copyToClipboard {
-  background-color: var(--normalText);
-  width: 70%;
+  width: 50%;
   font-size: var(--p);
-  height: 5vh;
-  border-radius: 5vh;
+  height: 7.5vh;
+  border-radius: 1.5vh;
   transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  filter: grayscale(0.33);
+}
+
+#share {
+  background-color: var(--cyan);
+}
+#copy {
+  background-color: var(--deepGreen);
+}
+
+.copyToClipboard h3 {
+  margin: 0;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: var(--h3);
+}
+
+.copyToClipboard > * {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0;
 }
 
 .copyToClipboard:hover {
-  background-color: var(--deepGreen);
+  filter: grayscale(0);
 }
 
 .black {
@@ -365,6 +404,9 @@ textarea,
   padding: 3vh;
   outline-color: var(--cyan);
   font-family: 'Kanit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .colorOptionMenuBackground {
@@ -642,17 +684,19 @@ img {
 .pinkToPink {background: linear-gradient(to bottom right, #dc6bff, #ff6bd3, #dc6bff);}
 .goldToGold {background: linear-gradient(to bottom right, #ffff00, #ffc400, #ffff00);}
 .blueToBlue {background: linear-gradient(to bottom right, #6bffff, #6babff, #6bffff);}
-.redToWhite {background: linear-gradient(to bottom right, #ff0000, #ffffff);}
-.yellowToWhite {background: linear-gradient(to bottom right, #ffff00, #ffffff);}
-.greenToWhite {background: linear-gradient(to bottom right, #00ff00, #ffffff);}
-.blueToWhite {background: linear-gradient(to bottom right, #00d7ff, #ffffff);}
-.purpleToWhite {background: linear-gradient(to bottom right, #e100ff, #ffffff);}
+.redToWhite {background: linear-gradient(to bottom right, #ff0000, #ffd1d1);}
+.yellowToWhite {background: linear-gradient(to bottom right, #ffff00, #fffad1);}
+.greenToWhite {background: linear-gradient(to bottom right, #00ff00, #d2ffd1);}
+.blueToWhite {background: linear-gradient(to bottom right, #00d7ff, #d1fffc);}
+.purpleToWhite {background: linear-gradient(to bottom right, #e100ff, #fbd1ff);}
 .redToDark {
   background: linear-gradient(to bottom right, #dc0101, #4c1010);
   color: white;
 }
-.orangeToPink {background: linear-gradient(to bottom right, #fb8333, #d37cf5);}
+.orangeToPink {background: linear-gradient(to bottom right, #ffcf24, #7f243f);}
 .greenToGreen {background: linear-gradient(to bottom right, #a9ff38, #29ffbf, #a9ff38);}
+.orangeToOrange {background: linear-gradient(to bottom right, #ff5b0f, #fea881, #ff5b0f);}
+.pinkToGreen {background: linear-gradient(to bottom right, #fd81ff, #4557f1, #00e092, #4557f1, #fd81ff);}
 
 /* reversed */
 .RainbowTorainbow {background: linear-gradient(to bottom right, #ff00ff, #00c3ff, #00ffff, #00ff4c, #bbff00, #ffbb00, #ff0000);}
@@ -680,6 +724,8 @@ img {
 }
 .PinkToorange {background: linear-gradient(to bottom right, #d37cf5, #fb8333);}
 .GreenTogreen {background: linear-gradient(to bottom right, #29ffbf, #a9ff38, #29ffbf);}
+.OrangeToorange {background: linear-gradient(to bottom right, #fea881, #ff5b0f, #fea881);}
+.GreenTopink {background: linear-gradient(to bottom right, #00e092, #4557f1, #fd81ff, #4557f1, #00e092);}
 
 .title-description {
   width: 85vw;
@@ -862,6 +908,14 @@ img {
 
   .colorButtonArray {
     width: 100%;
+  }
+
+  .copyToClipboard {
+    width: 10vh;
+  }
+
+  .copyToClipboard h3 {
+    display: none;
   }
 }
 

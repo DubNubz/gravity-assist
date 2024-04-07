@@ -78,7 +78,10 @@
                 {{ mod.identity }}</button>
             </div>
 
-            <button class="copyToClipboard" @click="shareModule">Copy sharing link</button>
+            <button class="copyToClipboard" @click="shareModule" id="share">
+              <img src="/share.svg" alt="Share this tool">
+              <h3>Share</h3>
+            </button>
         </div>
     </div>
 
@@ -172,20 +175,40 @@ function changeShip (type) {
 <style scoped>
 
 .copyToClipboard {
-  margin-top: 2vh;
   background-color: var(--normalText);
-  width: 50%;
+  width: 37.5%;
   font-size: var(--p);
-  height: 5vh;
+  height: 7.5vh;
   border-radius: 1.5vh;
-  transition: all 0.35s;
-  background-color: var(--deepYellow);
-  filter: grayscale(0.75);
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  filter: grayscale(0.33);
+  margin-top: 2vh;
+}
+
+#share {
+  background-color: var(--cyan);
+}
+
+.copyToClipboard h3 {
+  margin: 0;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: var(--h3);
+}
+
+.copyToClipboard > * {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0;
 }
 
 .copyToClipboard:hover {
   filter: grayscale(0);
-  transform: scale(1.05);
 }
 
 .shareBackground {
@@ -442,6 +465,14 @@ function changeShip (type) {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .copyToClipboard {
+    width: 10vh;
+  }
+
+  .copyToClipboard h3 {
+    display: none;
   }
 }
 

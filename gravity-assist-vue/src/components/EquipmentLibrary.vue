@@ -37,9 +37,17 @@
                         <p class="detailCardStat" id="detailCardp"><span class="darkGray">Weight:</span> {{ globalVariables.currentDetailCard.value.loadWeight }} storage</p>
                     </div>
                 </div>
+                <div class="buttonDiv">
+                  <button @click="shareEquipment" class="copyToClipboard" id="share">
+                    <img src="/share.svg" alt="Share this tool">
+                    <h3>Share</h3>
+                  </button>
+                  <button @click="globalVariables.showCard.value = false" class="copyToClipboard" id="close">
+                    <img src="/cancel.svg" alt="Close this card">
+                    <h3>Close</h3>
+                  </button>
+                </div>
             </div>
-            <button @click="shareEquipment" class="copyToClipboard">Copy sharing link</button>
-            <button @click="globalVariables.showCard.value = false" class="button">Close</button>
         </div>
     </Transition>
 </template>
@@ -80,21 +88,57 @@ function shareEquipment () {
 
 <style scoped>
 
+.buttonDiv {
+  display: flex;
+  width: 75%;
+  justify-content: space-around;
+}
+
 .copyToClipboard {
-  margin-top: 2vh;
   background-color: var(--normalText);
-  width: 15vw;
+  width: 50%;
   font-size: var(--p);
-  height: 5vh;
+  height: 7.5vh;
   border-radius: 1.5vh;
-  transition: all 0.35s;
-  background-color: var(--deepYellow);
-  filter: grayscale(0.75);
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  filter: grayscale(0.33);
+}
+
+#share {
+  background-color: var(--cyan);
+}
+#close {
+  background-color: #ff5050;
+  filter: grayscale(0);
+}
+
+.copyToClipboard h3 {
+  margin: 0;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  font-size: var(--h3);
+}
+
+.copyToClipboard img {
+  border-radius: 0;
+  background-color: transparent;
+  margin: 0;
+}
+
+.copyToClipboard > * {
+  width: 5vh;
+  height: 5vh;
+  margin-right: 0;
 }
 
 .copyToClipboard:hover {
   filter: grayscale(0);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .shareBackground {
@@ -381,6 +425,14 @@ img {
         /* 374 x 178  || 1vw : 0.475935829vw*/
         width: 60vw;
         height: 28.5561497vw;
+    }
+
+    .copyToClipboard {
+      width: 10vh;
+    }
+
+    .copyToClipboard h3 {
+      display: none;
     }
 }
 

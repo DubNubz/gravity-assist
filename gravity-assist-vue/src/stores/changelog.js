@@ -120,7 +120,7 @@ const changelog = [{
     type: "bugfix",
     version: "1.1.5.1",
     release: "March 1, 2024",
-    notes: ["Revamped a color to Color Generator: Blue/Purple"]
+    notes: ["Revamped the color pallete of Blue/Purple in Color Generator"]
 }, {
     type: "release",
     version: "1.1.6",
@@ -139,6 +139,14 @@ const changelog = [{
     release: "March 24, 2024",
     notes: ["Added Eternal Heavens B1 module", "Fixed flagship choices not changing after removing a flagship ship in Fleet Builder",
     "Edited credits"]
+}, {
+    type: "release",
+    version: "1.2.2",
+    release: "April 7, 2024",
+    notes: ["Changed copy text and share link buttons to icons", "Added instructions to RA Helper ship search text when no ship is selected",
+    "Revamped the color palettes of Blue/Purple and Sunset in Color Generator", "Added 2 new colors to Color Generator: Pink/Green and Orange/Orange",
+    "Hopefully? fixed the display of information in Equipment Encyclopedia for mobile users (for the third time now)",
+    "Optimized home menu buttons and added icons"]
 }];
 
 export { changelog };
