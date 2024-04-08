@@ -56,8 +56,6 @@
           alt="Link to the Radiant Gravity Discord server" id="discord_link"></a>
       <!-- github link -->
     </div>
-    This site is not affiliated to, associated with, or authorized by NetEase or Infinite Lagrange. 
-    The use of any trademark is for reference purposes only and all rights belong to their respective owners.
   </footer>
 </template>
 
@@ -162,7 +160,7 @@ footer {
   position: relative;
   bottom: 0;
   width: 100vw;
-  height: 18vh;
+  height: 15vh;
   margin-top: 3vh;
 }
 

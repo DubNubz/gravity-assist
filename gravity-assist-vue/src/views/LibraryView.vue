@@ -4,7 +4,7 @@
     </div>
     <div class="title-description">
       <p>Choose a ship, then choose a module to inspect.</p>
-      <p style="color: var(--normalText)">If you have a module that is missing here, please contact me :D</p>
+      <p style="color: var(--normalText)">If you have a module that is missing here, please <a href="https://discord.com/invite/9mJ9b2Bbzx" style="color: var(--deepGreen)">contact me</a> :D</p>
     </div>
 
     <Transition name="share">

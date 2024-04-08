@@ -1,19 +1,10 @@
 
 const credits = [{
-    name: "Windserpent",
-    info: "Access to module data for most ships"
+    name: "Windserpent, LunatiCorp, & Spy Shark",
+    info: "Super capital ship module crowdsourcing"
 }, {
-    name: "Bullet",
-    info: "Color suggestions/inspiration"
-}, {
-    name: "LunautiCorp & Spy Shark",
-    info: "Eternal Heavens mods"
-}, {
-    name: "HOSTILE",
-    info: "Bug catching"
-}, {
-    name: "Black Rangers, g3t, & others",
-    info: "Helpful feedback"
+    name: "Black Rangers, Bullet, & others",
+    info: "Feature suggestions and feedback"
 }, {
     name: "NullPointer",
     info: "RA data from the original Google Sheet, which is now pretty broken"

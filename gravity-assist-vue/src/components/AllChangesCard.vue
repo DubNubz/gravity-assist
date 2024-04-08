@@ -12,7 +12,7 @@
 
 const props = defineProps({
     Change: Object,
-})
+});
 
 </script>
 

@@ -1,5 +1,7 @@
 <template>
-    <h2 v-if="changelog[changelog.length - 1].type == 'bugfix'">Version {{ getChangelogVersion() }} - {{ changelog[changelog.length - 1].version }}</h2>
+    <h2 v-if="changelog[changelog.length - 1].type == 'bugfix' || changelog[changelog.length - 1].type == 'minor release'">
+        Version {{ getChangelogVersion() }} - {{ changelog[changelog.length - 1].version }}
+    </h2>
     <h2 v-else>Version {{ changelog[changelog.length - 1].version }}</h2>
     <h3>Latest Release: {{ changelog[changelog.length - 1].release }}</h3>
         <div class="changeNotes">
@@ -17,7 +19,7 @@ let latestVersionIndex;
 function getChangelogVersion () {
     let found = false;
     let counter = 1;
-    if (changelog[changelog.length - 1].type == "bugfix") {
+    if (changelog[changelog.length - 1].type == "bugfix" || changelog[changelog.length - 1].type == "minor release") {
         while (found == false) {
             counter++;
             if (changelog[changelog.length - counter].type == "release") {

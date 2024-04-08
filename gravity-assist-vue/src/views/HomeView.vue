@@ -5,15 +5,14 @@
     </div>
 
     <div class="title-description">
-      <p>by DubNubz</p>
-      <p><span class="normalText">Any and all bug reports/feedback are appreciated!</span></p>
-      <p><span class="normalText">You can find me as micromidget on Discord, or join my server <a href="https://discord.com/invite/9mJ9b2Bbzx">here!</a></span></p>
+      <p>by <a href="https://discord.com/invite/9mJ9b2Bbzx" style="text-decoration: none; font-size: var(--h3);">DubNubz</a></p>
+      <p style="font-size: var(--h3); color: white">Did you know: <span style="color: var(--gold); font-size: var(--p)">{{ fact }}</span></p>
     </div>
 
     <div class="buttonArray">
       <button class="loadAllChanges creditsButton" @click="creditsActive = !creditsActive">
         <img src="/credits.svg" alt="View a list of all contributors to this site">
-        <h3>Credits</h3>
+        <h3>Contributors</h3>
       </button>
       <button @click="loaded = !loaded" class="loadAllChanges loadButton">
         <img src="/changes.svg" alt="View a list of all changes made to this site">
@@ -28,7 +27,7 @@
     <Transition name="credits">
       <div class="creditsBackground" v-if="creditsActive">
         <div class="creditsOverall">
-          <h2>Credits</h2>
+          <h2>Contributors</h2>
           <div v-for="credit in credits" class="creditsCredit">
             <div class="creditsHeaderBackground">
               <h3 id="creditsHeader">{{ credit.name }}</h3>
@@ -62,13 +61,21 @@ import { ref } from 'vue';
 import { changelog } from '@/stores/changelog';
 import { globalVariables } from '@/stores/global';
 import { credits } from '@/stores/credits';
+import { facts } from '@/stores/facts';
 
 globalVariables.activeModule.value === 'Home';
 const loaded = ref(false);
 const creditsActive = ref(false);
+const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
 const changedChangelog = ref([...changelog]);
 changedChangelog.value.reverse();
+
+function getRandomIntInclusive(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
 
 </script>
 

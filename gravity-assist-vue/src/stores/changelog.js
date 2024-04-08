@@ -96,7 +96,7 @@ const changelog = [{
     "Added a credits button to Home page", "Optimized the detail cards in Equipment Encyclopedia for mobile users",
     "Fixed some data in Equipment Encylcopedia", "Added missing technical blueprints to Equipment Encyclopedia", "Full changelog is now a window"]
 }, {
-    type: "bugfix",
+    type: "minor release",
     version: "1.1.2",
     release: "February 22, 2024",
     notes: ["Finished adding all images to Eqquipment Encyclopedia", "Changed the display of information in the changelog"]
@@ -117,7 +117,7 @@ const changelog = [{
     notes: ["Reworked the display of colors when choosing a color in Color Generator", "Changed Blue/Purple to Purple/Purple in Color Generator",
     "Added 5 new colors to Color Generator: Red/Orange, Blue/Orange, Purple/Mint, Green/Green, and Sunset", "Colors are now separated into categories"]
 }, {
-    type: "bugfix",
+    type: "minor release",
     version: "1.1.5.1",
     release: "March 1, 2024",
     notes: ["Revamped the color pallete of Blue/Purple in Color Generator"]
@@ -145,8 +145,9 @@ const changelog = [{
     release: "April 7, 2024",
     notes: ["Changed copy text and share link buttons to icons", "Added instructions to RA Helper ship search text when no ship is selected",
     "Revamped the color palettes of Blue/Purple and Sunset in Color Generator", "Added 2 new colors to Color Generator: Pink/Green and Orange/Orange",
-    "Hopefully? fixed the display of information in Equipment Encyclopedia for mobile users (for the third time now)",
-    "Optimized home menu buttons and added icons"]
+    "Fixed the display of information in Equipment Encyclopedia for mobile users (for real this time)", "Optimized home menu buttons and added icons",
+    "Condensed some credits for better readability", "Added random fun facts to the home page", "Optimized display of information in Module Library",
+    "Changed the name of \"Credits\" to \"Contributors\"", "Fixed the close button on the credits screen being too small for mobile users"]
 }];
 
 export { changelog };
