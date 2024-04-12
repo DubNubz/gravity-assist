@@ -1,5 +1,12 @@
 
-const changelog = [{
+type Changelog = {
+    type: "release" | "minor release" | "bugfix";
+    version: string;
+    release: string;
+    notes: string[];
+}
+
+const changelog: Changelog[] = [{
     type: "release",
     version: "0.1.0",
     release: "January 13, 2024",
@@ -148,6 +155,11 @@ const changelog = [{
     "Fixed the display of information in Equipment Encyclopedia for mobile users (for real this time)", "Optimized home menu buttons and added icons",
     "Condensed some credits for better readability", "Added random fun facts to the home page", "Optimized display of information in Module Library",
     "Changed the name of \"Credits\" to \"Contributors\"", "Fixed the close button on the credits screen being too small for mobile users"]
+}, {
+    type: "minor release",
+    version: "1.2.3",
+    release: "April 11, 2024",
+    notes: ["Added some new home screen tips"]
 }];
 
 export { changelog };

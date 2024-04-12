@@ -16,7 +16,7 @@ const facts = [
     "The paid battlepass gives the best value for your buck in the game.",
     "Cities provide slightly more occupancy percentage than they say they do.",
     "Miners assigned to an Advanced Mining Platform will update their Tech Point allocations after depositing at the AMP.",
-    "Fleets will only update their Tech Point allocations when inside the base.",
+    "Fleets will only update their Tech Point allocations when inside the base or outpost/platform if deployed as a subfleet.",
     "Outposts and Basic Mining Platforms take the least amount of time to build.",
     "There is still extra time left in the server after the rating point timer.",
     "Graveyards are square-ish in shape, do not have any level 3 or higher resource nodes, and can be found in any of the starter regions.",
@@ -31,7 +31,16 @@ const facts = [
     "Stop spelling \"Quaoar\" incorrectly. It has feelings too.",
     "Relocating via an outpost will not stop or reset your peace shield timer.",
     "Aircraft in the Aircraft Defense Fleet are invincible and cannot be killed by any means while defending the base.",
-    "Tech Point Restoration Items can only be bought twice per server. Use them wisely."
+    "Tech Point Restoration Items can only be bought twice per server. Use them wisely.",
+    "Solar Whales can hold up to 16 aircraft at a time!",
+    "In trojite servers, destroying a base will give you half of the base's stored trojite.",
+    "In trojite servers, having your base destroyed will reset your base's stored trojite to 0.",
+    "You can let your fleets escape a blockade around your base by deploying them as a subfleet to an outpost/platform somewhere else.",
+    "If you are located in a Scattered Asteroid Belt, you cannot send super capital ships out, but they will still defend your base.",
+    "Docking points inside a city will only give their benefits if the city is owned by your community.",
+    "Learn how to convert UTC to your timezone - it'll help with coordinating with others.",
+    "You can have multiple player identities linked to the same account!",
+    "All module data in Module Library is crowdsourced! If you'd like to contribute, reach out to me. Your help is greatly appreciated!"
 ];
 
 export { facts };
