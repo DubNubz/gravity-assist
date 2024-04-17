@@ -160,6 +160,11 @@ const changelog: Changelog[] = [{
     version: "1.2.3",
     release: "April 11, 2024",
     notes: ["Added some new home screen tips"]
+}, {
+    type: "bugfix",
+    version: "1.2.4",
+    release: "April 16, 2024",
+    notes: ["Edited module names for Spear of Uranus for A1, A2, and A3 to match the new ingame names."]
 }];
 
 export { changelog };

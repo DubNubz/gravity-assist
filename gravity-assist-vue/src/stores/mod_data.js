@@ -683,7 +683,7 @@ const data = [{
         img: "/weapons/cannon.png",
         type: "weapon",
         identity: "A1",
-        name: `"Fortress" Battery System`,
+        name: `"Fortress" Battery System A`,
         default: true,
         stats: {
             antiship: 13120,
@@ -726,7 +726,7 @@ const data = [{
         img: "/weapons/cannon.png",
         type: "weapon",
         identity: "A2",
-        name: `"Fortress" Battery System`,
+        name: `"Fortress" Battery System B`,
         default: false,
         stats: {
             antiship: 15986,
@@ -759,7 +759,7 @@ const data = [{
         img: "/weapons/cannon.png",
         type: "weapon",
         identity: "A3",
-        name: `"Fortress" Battery System`,
+        name: `"Fortress" Battery System F`,
         default: false,
         stats: {
             antiship: 17220,
