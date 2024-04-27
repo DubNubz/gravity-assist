@@ -165,6 +165,11 @@ const changelog: Changelog[] = [{
     version: "1.2.4",
     release: "April 16, 2024",
     notes: ["Edited module names for Spear of Uranus for A1, A2, and A3 to match the new ingame names."]
+}, {
+    type: "minor release",
+    version: "1.2.5",
+    release: "April 27, 2024",
+    notes: ["Added Ranger A and B to Research Agreement Helper", "Added Ediacaran D2 and Marshal Crux C3 to Module Library", "Edited Contributors list"]
 }];
 
 export { changelog };

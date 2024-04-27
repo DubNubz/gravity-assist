@@ -1166,6 +1166,28 @@ const data = [{
         scope: "Projectile Weapon",
         weight: 5
     }, {
+        name: "Ranger",
+        title: "Comprehensive Warfare Cruiser",
+        img: "/ships/ranger_a.png",
+        type: "Cruiser",
+        variant: "A",
+        variant_name: "Integrated Type",
+        manufacturer: "Antonios",
+        direction: ["Outstanding Firepower"],
+        scope: "Direct-Fire Weapon",
+        weight: 10
+    }, {
+        name: "Ranger",
+        title: "Heavy Ion Cannon Cruiser",
+        img: "/ships/ranger_b.png",
+        type: "Cruiser",
+        variant: "B",
+        variant_name: "Ion Cannon Type",
+        manufacturer: "Antonios",
+        direction: ["Outstanding Firepower"],
+        scope: "Direct-Fire Weapon",
+        weight: 2
+    }, {
         name: "Predator",
         title: "Aircraft Cruiser",
         img: "/ships/predator_a.png",

@@ -1,6 +1,6 @@
 
 const credits = [{
-    name: "Windserpent, LunatiCorp, & Spy Shark",
+    name: "Windserpent, LunatiCorp, Spy Shark, & Toir",
     info: "Super capital ship module crowdsourcing"
 }, {
     name: "Black Rangers, Bullet, & others",

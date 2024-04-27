@@ -1661,8 +1661,21 @@ const data = [{
             attributes: ["Armor: 80", "Extra HP: 15%"]
         }]
     }, {
-        type: "unknown",
-        identity: "D2"
+        img: "/weapons/storage.png",
+        type: "misc",
+        identity: "D2",
+        name: `Nano Automated Maintenance System`,
+        default: false,
+        stats: {
+            hp: 18000
+        },
+        weapons: [{
+            type: "buff",
+            count: 1,
+            title: `BST-300`,
+            name: `Nano Repair System`,
+            attributes: ["5169/min HP recovery"]
+        }]
     }]
 }, {
     name: "FSV830",
@@ -2428,8 +2441,23 @@ const data = [{
             attributes: ["Anti-Aircraft Support"]
         }]
     }, {
-        type: "unknown",
-        identity: "C3"
+        img: "/weapons/aircraft.png",
+        type: "misc",
+        identity: "C3",
+        name: `Recon UAV System`,
+        default: false,
+        stats: {
+            hp: 25200
+        },
+        weapons: [{
+            type: "hanger",
+            count: 1,
+            title: "CIT-3",
+            name: `Fire-Control Spotter UAV Hanger`,
+            hanger: "Spotter UAV",
+            capacity: 3,
+            attributes: ["Ship Calibration Support: Increase the Hit Rate of the target ship by 20%"]
+        }]
     }]
 }, {
     name: "Solar Whale",
