@@ -5,7 +5,33 @@ bvr aircraft
 armed outpost
 */
 
-const data = [{
+type EquipmentClass = "Information" | "Logistics" | "Engineering" | "Engage" | "Efficiency";
+type TechnicalBlueprintClass = "Strategy" | "Supply" | "Communicate" | "Command";
+
+type Equipment = {
+    displayImg: string;
+    type: "Equipment",
+    displayName: string;
+    effectName: string;
+    effectDescription: string[];
+    loadWeight: number;
+    class: EquipmentClass;
+}
+
+type TechnicalBlueprint = {
+    displayImg: string;
+    type: "Technical Blueprint";
+    displayName: string;
+    effectName: string;
+    effectDescription: string[];
+    deliveryTarget: "Range" | "Single";
+    itemMass: "Light" | "Heavy";
+    activeService: number;
+    productionInterval: string;
+    class: TechnicalBlueprintClass;
+}
+
+const data: (Equipment | TechnicalBlueprint)[] = [{
     displayImg: "/equipment/advancedMilitaryOperationCenter.png",
     type: "Equipment",
     displayName: "Advanced Military Operation Center",

@@ -1,12 +1,12 @@
 <template>
     <div class="card" 
-    v-for="blueprint in data.filter((item) => item.type == 'Technical Blueprint')"
-    @click="showDetailCard(blueprint)">
-        <img :src="blueprint.displayImg" :alt="'Image of ' + blueprint.displayName">
-        <h3>{{ blueprint.displayName }}</h3>
+    v-for="equipment in data.filter((item) => item.type == 'Equipment')"
+    @click="showDetailCard(equipment)">
+        <img :src="equipment.displayImg" :alt="'Image of ' + equipment.displayName">
+        <h3>{{ equipment.displayName }}</h3>
         <div class="cardStats">
-            <p id="cardInfo">Effect: {{ blueprint.effectName }}</p>
-            <p id="cardInfo">Class: {{ blueprint.class }}</p>
+            <p id="cardInfo">Class: {{ equipment.class }}</p>
+            <p id="cardInfo">Weight: {{ equipment.loadWeight }} storage</p>
         </div>
         <p id="cardFooter">Click for more information</p>
     </div>
@@ -33,10 +33,8 @@
                     <p id="detailCardp"><span v-for="string in globalVariables.currentDetailCard.value.effectDescription"
                         :class="getDescriptionColor(string)">{{ string }}</span></p>
                     <div class="detailCardStats">
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Delivery:</span> {{ globalVariables.currentDetailCard.value.deliveryTarget }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Mass:</span> {{ globalVariables.currentDetailCard.value.itemMass }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Limit:</span> {{ globalVariables.currentDetailCard.value.activeService }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Cooldown:</span> {{ globalVariables.currentDetailCard.value.productionInterval }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Class:</span> {{ globalVariables.currentDetailCard.value.class }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Weight:</span> {{ globalVariables.currentDetailCard.value.loadWeight }} storage</p>
                     </div>
                 </div>
                 <div class="buttonDiv">
@@ -57,17 +55,17 @@
 <script setup lang="ts">
 
 import { ref } from 'vue';
-import { data } from '@/stores/equipment';
+import { data, type Equipment } from '@/stores/equipment';
 import { globalVariables } from '@/stores/global';
 
 const shareActive = ref(false);
 
-function showDetailCard (card) {
+function showDetailCard (card: Equipment) {
     globalVariables.showCard.value = true;
     globalVariables.currentDetailCard.value = card;
 }
 
-function getDescriptionColor (string) {
+function getDescriptionColor (string: string) {
     if (Number(globalVariables.currentDetailCard.value.effectDescription.indexOf(string)) % 2 == 1) {
         return "gold";
     } else {
@@ -333,9 +331,9 @@ img {
     padding-left: 2vh;
     padding-right: 2vh;
     border-radius: 3vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-bottom: 2vh;
     width: 40vw;
+    font-size: var(--h2);
 }
 
 .detailCarddescription {
@@ -343,10 +341,10 @@ img {
     padding: 2vh;
     border-radius: 3vh;
     width: 42.5vw;
+    margin-bottom: 3vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1vh;
 }
 
 .detailCardStats {
@@ -434,7 +432,7 @@ img {
     }
 
     .copyToClipboard h3 {
-      display: none
+      display: none;
     }
 }
 

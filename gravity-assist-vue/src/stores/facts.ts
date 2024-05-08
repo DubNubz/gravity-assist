@@ -1,5 +1,5 @@
 
-const facts = [
+const facts: string[] = [
     "LightSide is very trustworthy!",
     "One Solar Whale is as big as Central Park in NYC.",
     "99% of gamblers quit before winning big. Keep buying boxes!",

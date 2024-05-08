@@ -96,30 +96,32 @@ import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
 import ResearchSearch from '@/components/ResearchSearch.vue';
 import { useRoute } from 'vue-router';
+import type { ShipManufacturer, ShipDirection, ShipScope } from '@/stores/ra_data';
 
 globalVariables.activeModule.value = 'Research Agreement Helper';
 const route = useRoute();
 const filteredData = ref();
 const shareActive = ref(false);
 
-if (route.params.ship == "all") {
-} else if (route.params.ship) {
-  const shipArray = data.find((ship) => ship.name == route.params.ship[0].toUpperCase() + route.params.ship.split("").slice(1, -2).join("") && ship.variant == route.params.ship.split("").slice(-1).join(""));
-  globalVariables.currentSearchShip.value = route.params.ship[0].toUpperCase() + route.params.ship.split("").slice(1).join("");
-  searchChangeView(shipArray.manufacturer, ref(shipArray.direction).value, shipArray.scope);
+if (route.params.ship && route.params.ship != "all") {
+  const shipArray = data.find((ship) => ship.name == route.params.ship[0].toUpperCase() + String(route.params.ship).split("").slice(1, -2).join("") && ship.variant == String(route.params.ship).split("").slice(-1).join(""));
+  globalVariables.currentSearchShip.value = route.params.ship[0].toUpperCase() + String(route.params.ship).split("").slice(1).join("");
+  if (shipArray) searchChangeView(shipArray.manufacturer, ref(shipArray.direction).value, shipArray.scope);
 }
 if (route.params.manufacturer) {
-  globalVariables.activeManufacturer.value = route.params.manufacturer;
+  //@ts-ignore
+  globalVariables.activeManufacturer.value = String(route.params.manufacturer);
 }
 if (route.params.direction) {
-  globalVariables.activeDirection.value = route.params.direction;
+  //@ts-ignore
+  globalVariables.activeDirection.value = String(route.params.direction);
 }
 if (route.params.scope) {
-  globalVariables.activeScope.value = route.params.scope;
+  //@ts-ignore
+  globalVariables.activeScope.value = String(route.params.scope);
 }
 
 filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))];
-
 
 function sharePath () {
   if (globalVariables.currentSearchShip.value != "Click to select ship") {
@@ -144,7 +146,7 @@ function sharePath () {
   
 }
 
-function getColor (input) {
+function getColor (input: number) {
   if (input > 20) {
     return "red";
   } else if (input >= 14.5) {
@@ -156,8 +158,10 @@ function getColor (input) {
   }
 }
 
-function getTime (manufacturer, direction, scope) {
-  const allPointers = [];
+
+
+function getTime (manufacturer: ShipManufacturer, direction: ShipDirection, scope: ShipScope) {
+  const allPointers: number[] = [];
   // [2.5, 3.5]
 
   if (manufacturer != "Empty") {
@@ -184,7 +188,7 @@ function getTime (manufacturer, direction, scope) {
   }
 }
 
-function previousButton (type) {
+function previousButton (type: "manufacturer" | "direction" | "scope") {
   if (type == "manufacturer") {
     globalVariables.currentManufacturer.value--;
     if (globalVariables.currentManufacturer.value < 0) {
@@ -212,7 +216,7 @@ function previousButton (type) {
   }
 }
 
-function nextButton (type) {
+function nextButton (type: "manufacturer" | "direction" | "scope") {
   if (type == "manufacturer") {
     globalVariables.currentManufacturer.value++;
     if (globalVariables.currentManufacturer.value > globalVariables.allManufacturers.value.length - 1) {
@@ -239,13 +243,13 @@ function nextButton (type) {
   }
 }
 
-function searchChangeView (manufacturer, direction, scope) {
+function searchChangeView (manufacturer: ShipManufacturer, direction: ShipDirection[], scope: ShipScope) {
   globalVariables.activeManufacturer.value = manufacturer;
   globalVariables.activeScope.value = scope;
   globalVariables.currentManufacturer.value = globalVariables.allManufacturers.value.indexOf(manufacturer);
   globalVariables.currentScope.value = globalVariables.allScopes.value.indexOf(scope);
 
-  let trueDirection;
+  let trueDirection: ShipDirection = "Empty";
   const allPaths = [];
   const allChances = [];
 
@@ -272,12 +276,15 @@ function searchChangeView (manufacturer, direction, scope) {
   filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))]
 }
 
-function changeView (type, name) {
+function changeView (type: number, name: ShipManufacturer | ShipDirection | ShipScope) {
     if (type == 0) {
+      //@ts-ignore
       globalVariables.activeManufacturer.value = name;
     } else if (type == 1) {
+      //@ts-ignore
       globalVariables.activeDirection.value = name;
     } else {
+      //@ts-ignore
       globalVariables.activeScope.value = name;
     }
     globalVariables.currentSearchShip.value = "Click to select ship";

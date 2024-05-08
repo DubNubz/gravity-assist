@@ -1,5 +1,5 @@
 
-type Changelog = {
+export type Changelog = {
     type: "release" | "minor release" | "bugfix";
     version: string;
     release: string;
@@ -174,7 +174,7 @@ const changelog: Changelog[] = [{
     type: "minor release",
     version: "1.2.6",
     release: "May 7, 2024",
-    notes: ["Added Ediacaran A2, B2, and C1 to Module Library"]
+    notes: ["Added Ediacaran A2, B2, and C1 to Module Library", "Made some major changes behind the scenes"]
 }];
 
 export { changelog };

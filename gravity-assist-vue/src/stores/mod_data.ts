@@ -1,5 +1,96 @@
 
-const data = [{
+type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette" | "Spotter UAV" | "Area-Denial Anti-Aircraft UAV"
+            | "Shield UAV" | "Repair UAV" | "Tactical UAV" | "Info UAV" | "Cooperative Offensive UAV" | "Siege UAV";
+
+type Ship = {
+    name: string;
+    title: string;
+    img: string;
+    type: "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    cost: number;
+    row: "Front" | "Middle" | "Back";
+    manufacturer: "Jupiter Industry" | "NOMA Shipping" | "Antonios" | "Dawn Accord" | "Thunderbolt Group";
+    modules: (WeaponMod | MiscMod | ArmorMod | UnknownMod)[];
+}
+
+type WeaponMod = {
+    img: string;
+    type: "weapon";
+    identity: string;
+    name: string;
+    default: boolean;
+    stats: {
+        antiship: number;
+        antiair: number;
+        siege: number;
+        hp: number;
+    };
+    weapons: (WeaponWeapon | HangerWeapon)[];
+}
+
+type WeaponWeapon = {
+    type: "weapon";
+    count: number;
+    title: string;
+    name: string;
+    damageType: "Projectile" | "Energy";
+    target: "Aircraft" | "Small Ship" | "Large Ship";
+    lockonEfficiency?: number;
+    alpha: number;
+    attributes: string[];
+}
+
+type MiscMod = {
+    img: string;
+    type: "misc";
+    identity: string;
+    name: string;
+    default: boolean;
+    stats: {
+        hp: number;
+    };
+    weapons: (BuffWeapon | HangerWeapon)[];
+}
+
+type BuffWeapon = {
+    type: "buff";
+    count: number;
+    title: string;
+    name: string;
+    attributes: string[];
+}
+
+type HangerWeapon = {
+    type: "hanger";
+    count: number;
+    title: string;
+    name: string;
+    hanger: Aircraft;
+    capacity: number;
+    attributes?: string[];
+}
+
+type ArmorMod = {
+    img: string;
+    type: "armor";
+    identity: string;
+    name: string;
+    default: boolean;
+    stats: {
+        armor: number;
+        extraHP: number;
+        energyShield: number;
+        hp: number;
+    };
+    weapons: BuffWeapon[];
+}
+
+type UnknownMod = {
+    type: "unknown";
+    identity: string;
+}
+
+const data: Ship[] = [{
     name: "Constantine the Great",
     title: "Multi-Role Battlecruiser",
     img: "/ships/constantineTheGreat.png",
@@ -1116,7 +1207,6 @@ const data = [{
             title: `CIT-1`,
             name: `Fire-Control Spotter UAV Hanger`,
             hanger: "Spotter UAV",
-            aircraft: "UAV",
             capacity: 3,
             attributes: ["Ship Calibration Support: Increase the Hit Rate of the target ship by 20%"]
         }]
@@ -1162,7 +1252,6 @@ const data = [{
         img: "/weapons/armor.png",
         type: "armor",
         identity: "C3",
-        name: `C3`,
         name: "Heavy Defensive Armor System",
         default: false,
         stats: {
@@ -1494,7 +1583,7 @@ const data = [{
             hp: 18900
         },
         weapons: [{
-            tpye: "weapon",
+            type: "weapon",
             count: 1,
             title: `"Fortress" MK4-BG-2560`,
             name: `Dual-Cannon Heavy Bow Battery`,
@@ -1543,7 +1632,7 @@ const data = [{
             name: `Anti-Aircraft Missile Launcher Array`,
             damageType: "Projectile",
             target: "Aircraft",
-            localStorage: 45,
+            lockonEfficiency: 45,
             alpha: 25,
             attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
         }]
@@ -1570,8 +1659,27 @@ const data = [{
             attributes: ["Increase Production Speed: Increases Shipbuilding Speed of Auxiliary Ship by 10%"]
         }]
     }, {
-        type: "unknown",
-        identity: "A2"
+        img: "/weapons/jamming.png",
+        type: "misc",
+        identity: "A2",
+        name: "Corvette Production System",
+        default: false,
+        stats: {
+            hp: 19800
+        },
+        weapons: [{
+            type: "buff",
+            count: 1,
+            title: `MC-2500`,
+            name: "Corvette Independent Production Facility",
+            attributes: ["Corvette Production Facility: Can produce corvettes"]
+        }, {
+            type: "buff",
+            count: 1,
+            title: `BMP-60`,
+            name: "Production Line Modification Module",
+            attributes: ["Increase Production Speed: Increases Shipbuilding Speed of Auxiliary Ship by 10%"]
+        }]
     }, {
         img: "/weapons/jamming.png",
         type: "misc",
@@ -1616,8 +1724,22 @@ const data = [{
             attributes: ["Damage Type: Projectile", "Prioritized Target: Aircraft", "Damage per Hit: 15", "Anti-Aircraft Counterattack"]
         }]
     }, {
-        type: "unknown",
-        identity: "B2"
+        img: "/weapons/aircraft.png",
+        type: "misc",
+        identity: "B2",
+        name: `Aircraft Loading System`,
+        default: false,
+        stats: {
+            hp: 19350
+        },
+        weapons: [{
+            type: "hanger",
+            count: 1,
+            title: `CBF-200`,
+            name: "Large Aircraft Hanger",
+            hanger: "Large Fighter",
+            capacity: 2
+        }]
     }, {
         type: "unknown",
         identity: "B3"

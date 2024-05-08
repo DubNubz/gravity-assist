@@ -5,14 +5,17 @@
 <script setup lang="ts">
 
 import { globalVariables } from '@/stores/global';
+import type { Color } from '@/stores/colors';
 
-const props = defineProps({
-    Color: Object,
-});
+type Props = {
+    Color: Color | undefined;
+}
+
+const props = defineProps<Props>();
 
 let startIndex = 0;
 let stepCounter = 0;
-const output = [];
+const output: string[] = [];
 let reverse = false;
 let stepType = 0;
 
@@ -36,13 +39,13 @@ function resetEverything () {
     }
 }
 
-function convertInput (type, input) {
+function convertInput (type: number, input: string) {
     let color;
 
     if (reverse) {
-        color = props.Color.colorPalette.slice().reverse()[startIndex];
+        color = props.Color?.colorPalette.slice().reverse()[startIndex];
     } else {
-        color = props.Color.colorPalette[startIndex];
+        color = props.Color?.colorPalette[startIndex];
     }
 
     if (type == 0) {
@@ -51,7 +54,7 @@ function convertInput (type, input) {
         } else if (input == " ") {
             return "#ffffff";
         } else {
-            return color.slice(0, 1) + color.slice(2);
+            if (color) return color.slice(0, 1) + color.slice(2);
         }
     } else {
         if (input == "\n") {
@@ -72,7 +75,7 @@ function convertInput (type, input) {
                     startIndex++;
                     stepCounter = 0;
 
-                    if (startIndex >= props.Color.colorPalette.length) {
+                    if (props.Color && startIndex >= props.Color.colorPalette.length) {
                         startIndex = 0;
                         reverse = !reverse;
                     }
@@ -87,7 +90,7 @@ function convertInput (type, input) {
             } else {
                 startIndex++;
 
-                if (startIndex >= props.Color.colorPalette.length) {
+                if (props.Color && startIndex >= props.Color.colorPalette.length) {
                     startIndex = 0;
                     reverse = !reverse;
                 }

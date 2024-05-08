@@ -1,5 +1,18 @@
 
-const data = [{
+type Ship = {
+    name: string;
+    title: string;
+    img: string;
+    type: "Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    variant: "A" | "B" | "C" | "D";
+    variant_name: string;
+    manufacturer: "Jupiter Industry" | "NOMA Shipping" | "Antonios" | "Dawn Accord" | "Empty";
+    direction: ("Outstanding Firepower" | "Sustained Combat" | "Strategy & Support" | "Fighter & Corvette" | "Empty")[];
+    scope: "Direct-Fire Weapon" | "Projectile Weapon" | "Empty";
+    weight: number;
+}
+
+const data: Ship[] = [{
         name: "AT021",
         title: "Pulse Attacker",
         img: "/ships/at021_a.png",

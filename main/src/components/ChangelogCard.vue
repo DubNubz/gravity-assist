@@ -13,8 +13,8 @@
 
 import { changelog } from '@/stores/changelog';
 
-let latestVersion;
-let latestVersionIndex;
+let latestVersion: string = "";
+let latestVersionIndex: number = 0;
 
 function getChangelogVersion () {
     let found = false;

@@ -1,5 +1,63 @@
 
-const data = [{
+type RegularShip = {
+    name: string;
+    title: string;
+    img: string;
+    type: "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    variant: "A" | "B" | "C" | "D";
+    variant_name: string;
+    command_points: null | number;
+    aircraft_space: null | number;
+    aircraft_capacity: null | number;
+    aircraft_type?: string[];
+    row: "Front Row" | "Middle Row" | "Back Row";
+    flagship: null | string[];
+    hitpoints: number;
+    antiship: null | number;
+    antiair: null | number;
+    siege: null | number;
+    cruise_speed: null | number;
+    warp_speed: null | number;
+    maxCount: number;
+    storage: null | number;
+}
+
+type SuperCapitalShip = {
+    name: string;
+    title: string;
+    img: string;
+    type: "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    variant: "A" | "B" | "C" | "D";
+    variant_name: string;
+    command_points: number;
+    row: "Front Row" | "Middle Row" | "Back Row";
+    flagship: null | string[];
+    hitpoints: number;
+    cruise_speed: null | number;
+    warp_speed: null | number;
+    maxCount: number;
+    storage: null | number;
+    modules: (MiscMod | WeaponMod | AircraftMod)[];
+}
+
+type MiscMod = {
+    name: string;
+}
+
+type WeaponMod = {
+    name: string;
+    antiship: null | number;
+    antiair: null | number;
+    siege: null | number;
+}
+
+type AircraftMod = {
+    name: string;
+    aircraft_capacity: number;
+    aircraft_type: ("Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette")[];
+}
+
+const data: (RegularShip | SuperCapitalShip)[] = [{
     name: "AT021",
     title: "Pulse Attacker",
     img: "/ships/at021_a.png",
@@ -1186,7 +1244,6 @@ const data = [{
     type: "Destroyer",
     variant: "B",
     variant_name: "Missile Type",
-    manufacturer: "Dawn Accord",
     command_points: 8,
     aircraft_space: null,
     aircraft_capacity: null,
@@ -1210,7 +1267,7 @@ const data = [{
     command_points: 8,
     aircraft_space: null,
     aircraft_capacity: 2,
-    aircraft_type: "Corvette",
+    aircraft_type: ["Corvette"],
     row: "Back Row",
     flagship: ["Focus Fire"],
     hitpoints: 30730,
@@ -1412,7 +1469,7 @@ const data = [{
     command_points: 9,
     aircraft_space: null,
     aircraft_capacity: 2,
-    aircraft_type: "Corvette",
+    aircraft_type: ["Corvette"],
     row: "Back Row",
     flagship: ["Focus Fire"],
     hitpoints: 25650,
@@ -1694,7 +1751,7 @@ const data = [{
     command_points: 18,
     aircraft_space: null,
     aircraft_capacity: 2,
-    aircraft_type: "Corvette",
+    aircraft_type: ["Corvette"],
     row: "Front Row",
     flagship: ["Focus Fire", "Strategic Strike II"],
     hitpoints: 66400,
@@ -1955,7 +2012,7 @@ const data = [{
     command_points: 18,
     aircraft_space: null,
     aircraft_capacity: 4,
-    aircraft_type: "Corvette",
+    aircraft_type: ["Corvette"],
     row: "Back Row",
     flagship: ["Focus Fire", "Strategic Strike II"],
     hitpoints: 76190,
@@ -2691,7 +2748,7 @@ const data = [{
     modules: [{
         name: "M1",
         aircraft_capacity: 3,
-        aircraft_space: ["Small Fighter", "Medium Fighter"]
+        aircraft_type: ["Small Fighter", "Medium Fighter"]
     }, {
         name: "M2"
     }, {

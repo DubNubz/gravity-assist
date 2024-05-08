@@ -42,7 +42,7 @@
                 </div>
                 <div id="RASearchMenuResults">
                     <div id="RASearchResults" v-for="option in allFlagships">
-                        <p id="RASearchResultItem" @click="addShipFlagship(option)">{{ option }}<span style="color: var(--darkGray)" v-if="option != 'Focus Fire'"> ({{ filteredFlagships.find((ship) => ship.flagship.includes(option)).name }}-{{ filteredFlagships.find((ship) => ship.flagship.includes(option)).variant }})</span></p>
+                        <p id="RASearchResultItem" @click="addShipFlagship(option)">{{ option }}<span style="color: var(--darkGray)" v-if="option != 'Focus Fire'"> ({{ filteredFlagships.find((ship) => ship.flagship?.includes(option))?.name }}-{{ filteredFlagships.find((ship) => ship.flagship?.includes(option))?.variant }})</span></p>
                     </div>
                 </div>
             </div>

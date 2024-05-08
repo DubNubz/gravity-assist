@@ -10,9 +10,13 @@
 
 <script setup lang="ts">
 
-const props = defineProps({
-    Change: Object,
-});
+import type { Changelog } from '@/stores/changelog';
+
+type Props = {
+    Change: Changelog
+}
+
+const props = defineProps<Props>();
 
 </script>
 

@@ -34,11 +34,12 @@ globalVariables.activeModule.value = "Equipment Encyclopedia";
 const route = useRoute();
 
 if (route.params.type) {
-  globalVariables.currentEquipmentView.value = route.params.type;
+  globalVariables.currentEquipmentView.value = String(route.params.type);
 }
 
 if (route.params.item) {
-  globalVariables.currentDetailCard.value = data.find((item) => item.displayName == route.params.item);
+  const item = data.find((item) => item.displayName == route.params.item);
+  if (item) globalVariables.currentDetailCard.value = item;
   globalVariables.showCard.value = true;
 }
 

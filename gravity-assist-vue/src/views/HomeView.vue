@@ -53,7 +53,7 @@
 
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import AllChangesCard from '@/components/AllChangesCard.vue';
 import ChangelogCard from '@/components/ChangelogCard.vue';
@@ -71,7 +71,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 const changedChangelog = ref([...changelog]);
 changedChangelog.value.reverse();
 
-function getRandomIntInclusive(min, max) {
+function getRandomIntInclusive(min: number, max: number) {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);

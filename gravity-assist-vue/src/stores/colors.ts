@@ -1,7 +1,21 @@
 
-const colorTypes = ["New Color", "Multi-Color Gradient", "Single Color Gradient", "Fade Gradient", "Other"]
+type AllColors = "New Color" | "Multi-Color Gradient" | "Single Color Gradient" | "Fade Gradient" | "Other";
 
-const colors = [{
+interface Color {
+    type: ("New Color" | "Multi-Color Gradient" | "Single Color Gradient" | "Fade Gradient" | "Other")[];
+    name: string;
+    color1: string;
+    color2: string;
+    colorPalette: string[];
+}
+
+interface OtherColor extends Color {
+    displayName: string;
+}
+
+const colorTypes = ["New Color", "Multi-Color Gradient", "Single Color Gradient", "Fade Gradient", "Other"];
+
+const colors: (Color | OtherColor)[] = [{
     type: ["Multi-Color Gradient"],
     name: "redToOrange",
     color1: "red",

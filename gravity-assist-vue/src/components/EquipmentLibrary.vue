@@ -52,7 +52,7 @@
     </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import { ref } from 'vue';
 import { data } from '@/stores/equipment';

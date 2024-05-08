@@ -142,7 +142,7 @@
 </template>
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import ColorCalculator from '@/components/ColorCalculator.vue';
 import { globalVariables } from '@/stores/global';
 import { colorTypes, colors } from '@/stores/colors';
@@ -155,18 +155,24 @@ const shareActive = ref(false);
 const stepMenu = ref(false);
 const route = useRoute();
 
-if (route.params.reversed == "true") {
-  globalVariables.reversed.value = true;
-}
+onMounted(() => {
+    if (route.params.reversed == "true") {
+      globalVariables.reversed.value = true;
+    }
+    
+    if (route.params.compression) {
+      globalVariables.currentColorStep.value = String(route.params.compression);
+    }
+    
+    if (route.params.colorName) {
+      const colorName = colors.find((color) => color.name == route.params.colorName);
+      if (!colorName) return;
 
-if (route.params.compression) {
-  globalVariables.currentColorStep.value = String(route.params.compression);
-}
+      globalVariables.currentColor.value = String(route.params.colorName);
+      globalVariables.currentColorClass.value = getClass(colorName.color1, colorName.color2);
+    }
+});
 
-if (route.params.colorName) {
-  globalVariables.currentColor.value = String(route.params.colorName);
-  globalVariables.currentColorClass.value = getClass(colors.find((color) => color.name == route.params.colorName).color1, colors.find((color) => color.name == route.params.colorName).color2);
-}
 
 function copyShareLink () {
   navigator.clipboard.writeText(`https://gravityassist.xyz/modules/color-generator/${globalVariables.currentColor.value}/${globalVariables.currentColorStep.value}/${globalVariables.reversed.value}`).then(() => {
@@ -235,13 +241,13 @@ function getButtonName (param1: string, param2: string, other: string | undefine
   }
 }
 
-function buttonEvent (param1, param2) {
+function buttonEvent (param1: string, param2: string) {
   globalVariables.currentColor.value = param1;
   globalVariables.currentColorClass.value = param2;
   colorMenu.value = false;
 }
 
-function getClass (name1, name2) {
+function getClass (name1: string, name2: string) {
   if (globalVariables.reversed.value) {
     return `${uppercase(name2)}To${name1}`;
   } else {
@@ -249,11 +255,11 @@ function getClass (name1, name2) {
   }
 }
 
-function uppercase (word) {
+function uppercase (word: string) {
   return word[0].toUpperCase() + word.slice(1);
 }
 
-function addNewLine (event) {
+function addNewLine (event: KeyboardEvent) {
   if (event.key == "Enter") {
     globalVariables.inputText.value += "\n";
   }

@@ -123,11 +123,11 @@ if (route.params.ship) {
   }
 }
 if (route.params.mod) {
-  globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = route.params.mod;
+  globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = String(route.params.mod);
 }
 
 function shareModule () {
-  navigator.clipboard.writeText(`https://gravityassist.xyz/modules/module-library/${data[globalVariables.currentShip.value].name.replaceAll(" ", "%20")}/${globalVariables.currentMod.value[data[globalVariables.currentShip.value].name]}`).then(() => {
+  navigator.clipboard.writeText(`https://gravityassist.xyz/modules/module-library/${data[globalVariables.currentShip.value].name.replace(" ", "%20")}/${globalVariables.currentMod.value[data[globalVariables.currentShip.value].name]}`).then(() => {
     shareActive.value = true;
     setTimeout(() => {
       shareActive.value = false;
@@ -137,11 +137,11 @@ function shareModule () {
   })
 }
 
-function changeMod (mod) {
+function changeMod (mod: string) {
     globalVariables.currentMod.value[data[globalVariables.currentShip.value].name] = mod;
 }
 
-function changeShip (type) {
+function changeShip (type: 0 | 1) {
     if (type == 0) {
         globalVariables.nextShip.value = globalVariables.currentShip.value;
 
