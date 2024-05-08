@@ -5,7 +5,7 @@
         </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { globalVariables } from '@/stores/global';
 
 const props = defineProps({
