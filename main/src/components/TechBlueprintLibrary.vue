@@ -1,7 +1,7 @@
 <template>
     <div class="card" 
     v-for="blueprint in data.filter((item) => item.type == 'Technical Blueprint')"
-    @click="showDetailCard(blueprint)">
+    @click="showDetailCard(blueprint as TechnicalBlueprint)">
         <img :src="blueprint.displayImg" :alt="'Image of ' + blueprint.displayName">
         <h3>{{ blueprint.displayName }}</h3>
         <div class="cardStats">
@@ -76,7 +76,29 @@ function getDescriptionColor (string: string) {
 }
 
 function shareEquipment () {
-    navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia/${globalVariables.currentEquipmentView.value.replaceAll(" ", "%20")}/${globalVariables.currentDetailCard.value.displayName.replaceAll(" ", "%20")}`).then(() => {
+  let currentEquipment = globalVariables.currentEquipmentView.value;
+    for (let char of currentEquipment) {
+      const final: string[] = [];
+      if (char == " ") {
+        final.push("%20");
+      } else {
+        final.push(char)
+      }
+    currentEquipment = final.join("");
+    }
+
+    let displayName = globalVariables.currentDetailCard.value.displayName;
+    for (let char of displayName) {
+      const final: string[] = [];
+      if (char == " ") {
+        final.push("%20");
+      } else {
+        final.push(char)
+      }
+    displayName = final.join("");
+    }
+
+    navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia/${currentEquipment}/${displayName}`).then(() => {
         shareActive.value = true;
         setTimeout(() => {
             shareActive.value = false;

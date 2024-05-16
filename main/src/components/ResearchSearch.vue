@@ -13,23 +13,23 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import { ref } from 'vue';
-import { data } from '@/stores/ra_data';
+import { data, type ShipDirection, type ShipManufacturer, type ShipScope } from '@/stores/ra_data';
 import { globalVariables } from '@/stores/global';
 
 const filteredChoices = ref([...data]);
 const emit = defineEmits(['response']);
 
-function updateChoice (name, variant, manufacturer, direction, scope) {
+function updateChoice (name: string, variant: "A" | "B" | "C" | "D", manufacturer: ShipManufacturer, direction: ShipDirection[], scope: ShipScope) {
   globalVariables.searchActive.value = !globalVariables.searchActive.value;
   globalVariables.currentSearchShip.value = `${name}-${variant}`;
   emit('response', manufacturer, direction, scope);
 }
 
-function autocomplete (event) {
-    const inputValue = event.target.value;
+function autocomplete (event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value;
     filteredChoices.value = data.filter((item) => item.name.toLowerCase().includes(inputValue.toLowerCase()));
 }
 
