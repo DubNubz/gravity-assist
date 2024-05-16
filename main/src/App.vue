@@ -18,11 +18,11 @@
       @click="changeModule('Color Generator')">
       Color Generator</RouterLink>
 
-      <RouterLink :to="{ path: '/modules/fleet-builder'}"
+      <!--<RouterLink :to="{ path: '/modules/fleet-builder'}"
       class="navButton"
       :class="{ activeHeaderButton: globalVariables.activeModule.value === 'Fleet Builder' }"
       @click="changeModule('Fleet Builder')">
-      Fleet Builder</RouterLink>
+      Fleet Builder</RouterLink>-->
 
       <RouterLink :to="{ path: '/modules/research-agreement-helper'}"
       class="navButton"

@@ -35,7 +35,7 @@ function getChangelogVersion () {
 function getNotes () {
     const allNotes = [];
     allNotes.push(...changelog[changelog.length - 1].notes);
-    if (latestVersion != changelog[changelog.length - 1].version) {
+    if (latestVersion && latestVersion != changelog[changelog.length - 1].version) {
         for (let i = latestVersionIndex; i <= changelog.length - 1; i++) {
             allNotes.push(...changelog[i].notes);
         }
