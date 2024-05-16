@@ -13,10 +13,7 @@
 
 <script setup lang="ts">
 
-import { ref } from 'vue';
-import { data } from '@/stores/fleet';
 import { globalVariables } from '@/stores/global';
-import FleetAddCard from '@/components/FleetAddCard.vue';
 
 globalVariables.activeModule.value = "Fleet Builder";
 

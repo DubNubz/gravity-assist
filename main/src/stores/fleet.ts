@@ -1,5 +1,5 @@
 
-type RegularShip = {
+export type RegularShip = {
     name: string;
     title: string;
     img: string;
@@ -22,7 +22,7 @@ type RegularShip = {
     storage: null | number;
 }
 
-type SuperCapitalShip = {
+export type SuperCapitalShip = {
     name: string;
     title: string;
     img: string;
@@ -40,18 +40,18 @@ type SuperCapitalShip = {
     modules: (MiscMod | WeaponMod | AircraftMod)[];
 }
 
-type MiscMod = {
+export type MiscMod = {
     name: string;
 }
 
-type WeaponMod = {
+export type WeaponMod = {
     name: string;
     antiship: null | number;
     antiair: null | number;
     siege: null | number;
 }
 
-type AircraftMod = {
+export type AircraftMod = {
     name: string;
     aircraft_capacity: number;
     aircraft_type: ("Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette")[];

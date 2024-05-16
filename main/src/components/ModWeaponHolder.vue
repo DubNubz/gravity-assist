@@ -1,5 +1,5 @@
 <template>
-    <div v-for="mod in Mod.weapons">
+    <div v-for="mod in (Mod as ArmorMod | WeaponMod | MiscMod)?.weapons">
         <div class="modWeapon" v-if="mod.type == 'weapon'">
         <h3><span class="gold">x{{ mod.count }}</span> <span class="darkGray">|</span> <span class="normalText">{{ mod.title }}</span></h3>
         <h3>{{ mod.name }}</h3>
@@ -86,11 +86,15 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-const props = defineProps({
-    Mod: Object,
-});
+import type { ArmorMod, WeaponMod, MiscMod, UnknownMod } from '@/stores/mod_data'
+
+type Props = {
+  Mod: ArmorMod | WeaponMod | MiscMod | UnknownMod | undefined
+}
+
+const props = defineProps<Props> ();
 
 </script>
 

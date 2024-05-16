@@ -171,10 +171,10 @@ const changelog: Changelog[] = [{
     release: "April 27, 2024",
     notes: ["Added Ranger A and B to Research Agreement Helper", "Added Ediacaran D2 and Marshal Crux C3 to Module Library", "Edited Contributors list"]
 }, {
-    type: "minor release",
+    type: "release",
     version: "1.2.6",
-    release: "May 7, 2024",
-    notes: ["Added Ediacaran A2, B2, and C1 to Module Library", "Made some major changes behind the scenes"]
+    release: "May 16, 2024",
+    notes: ["Added Ediacaran A2, B2, and C1 to Module Library", "Made some major changes behind the scenes", "Removed Fleet Builder temporarily"]
 }];
 
 export { changelog };

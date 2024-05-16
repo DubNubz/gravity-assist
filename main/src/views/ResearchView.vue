@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
 
-import { data, difficulty } from '@/stores/ra_data';
+import { data, difficulty, type Ship } from '@/stores/ra_data';
 import { ref } from 'vue';
 import ResearchResults from '@/components/ResearchResults.vue';
 import { globalVariables } from '@/stores/global';
@@ -100,7 +100,7 @@ import type { ShipManufacturer, ShipDirection, ShipScope } from '@/stores/ra_dat
 
 globalVariables.activeModule.value = 'Research Agreement Helper';
 const route = useRoute();
-const filteredData = ref();
+const filteredData = ref<Ship[]>();
 const shareActive = ref(false);
 
 if (route.params.ship && route.params.ship != "all") {
@@ -108,17 +108,19 @@ if (route.params.ship && route.params.ship != "all") {
   globalVariables.currentSearchShip.value = route.params.ship[0].toUpperCase() + String(route.params.ship).split("").slice(1).join("");
   if (shipArray) searchChangeView(shipArray.manufacturer, ref(shipArray.direction).value, shipArray.scope);
 }
-if (route.params.manufacturer) {
-  //@ts-ignore
-  globalVariables.activeManufacturer.value = String(route.params.manufacturer);
+
+const routeParamManufacturer = String(route.params.manufacturer);
+const routeParamDirection = String(route.params.direction);
+const routeParamScope = String(route.params.scope);
+
+if (routeParamManufacturer && (routeParamManufacturer == "Jupiter Industry" || routeParamManufacturer == "NOMA Shipping" || routeParamManufacturer == "Antonios" || routeParamManufacturer == "Dawn Accord" || routeParamManufacturer == "Empty")) {
+  globalVariables.activeManufacturer.value = routeParamManufacturer;
 }
-if (route.params.direction) {
-  //@ts-ignore
-  globalVariables.activeDirection.value = String(route.params.direction);
+if (routeParamDirection && (routeParamDirection == "Outstanding Firepower" || routeParamDirection == "Sustained Combat" || routeParamDirection == "Strategy & Support" || routeParamDirection == "Fighter & Corvette" || routeParamDirection == "Empty")) {
+  globalVariables.activeDirection.value = routeParamDirection;
 }
-if (route.params.scope) {
-  //@ts-ignore
-  globalVariables.activeScope.value = String(route.params.scope);
+if (routeParamScope && (routeParamScope == "Projectile Weapon" || routeParamScope == "Direct-Fire Weapon" || routeParamScope == "Empty")) {
+  globalVariables.activeScope.value = routeParamScope;
 }
 
 filteredData.value = [...data.filter((ship) => (ship.manufacturer.includes(globalVariables.activeManufacturer.value) || globalVariables.activeManufacturer.value == "Empty") && (ship.direction.includes(globalVariables.activeDirection.value) || globalVariables.activeDirection.value == "Empty") && (ship.scope.includes(globalVariables.activeScope.value) || globalVariables.activeScope.value == "Empty"))];
@@ -277,14 +279,11 @@ function searchChangeView (manufacturer: ShipManufacturer, direction: ShipDirect
 }
 
 function changeView (type: number, name: ShipManufacturer | ShipDirection | ShipScope) {
-    if (type == 0) {
-      //@ts-ignore
+    if (type == 0 && (name == "Jupiter Industry" || name == "NOMA Shipping" || name == "Antonios" || name == "Dawn Accord" || name == "Empty")) {
       globalVariables.activeManufacturer.value = name;
-    } else if (type == 1) {
-      //@ts-ignore
+    } else if (type == 1 && (name == "Outstanding Firepower" || name == "Sustained Combat" || name == "Strategy & Support" || name == "Fighter & Corvette" || name == "Empty")) {
       globalVariables.activeDirection.value = name;
-    } else {
-      //@ts-ignore
+    } else if (type == 2 && (name == "Projectile Weapon" || name == "Direct-Fire Weapon" || name == "Empty")) {
       globalVariables.activeScope.value = name;
     }
     globalVariables.currentSearchShip.value = "Click to select ship";

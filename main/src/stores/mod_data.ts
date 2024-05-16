@@ -14,7 +14,7 @@ type Ship = {
     modules: (WeaponMod | MiscMod | ArmorMod | UnknownMod)[];
 }
 
-type WeaponMod = {
+export type WeaponMod = {
     img: string;
     type: "weapon";
     identity: string;
@@ -41,7 +41,7 @@ type WeaponWeapon = {
     attributes: null | string[];
 }
 
-type MiscMod = {
+export type MiscMod = {
     img: string;
     type: "misc";
     identity: string;
@@ -71,7 +71,7 @@ type HangerWeapon = {
     attributes?: string[];
 }
 
-type ArmorMod = {
+export type ArmorMod = {
     img: string;
     type: "armor";
     identity: string;
@@ -86,7 +86,7 @@ type ArmorMod = {
     weapons: BuffWeapon[];
 }
 
-type UnknownMod = {
+export type UnknownMod = {
     type: "unknown";
     identity: string;
 }

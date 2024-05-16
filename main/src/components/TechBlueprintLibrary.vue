@@ -33,10 +33,10 @@
                     <p id="detailCardp"><span v-for="string in globalVariables.currentDetailCard.value.effectDescription"
                         :class="getDescriptionColor(string)">{{ string }}</span></p>
                     <div class="detailCardStats">
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Delivery:</span> {{ globalVariables.currentDetailCard.value.deliveryTarget }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Mass:</span> {{ globalVariables.currentDetailCard.value.itemMass }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Limit:</span> {{ globalVariables.currentDetailCard.value.activeService }}</p>
-                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Cooldown:</span> {{ globalVariables.currentDetailCard.value.productionInterval }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Delivery:</span> {{ (globalVariables.currentDetailCard.value as TechnicalBlueprint).deliveryTarget }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Mass:</span> {{ (globalVariables.currentDetailCard.value as TechnicalBlueprint).itemMass }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Limit:</span> {{ (globalVariables.currentDetailCard.value as TechnicalBlueprint).activeService }}</p>
+                        <p class="detailCardStat" id="detailCardp"><span class="darkGray">Cooldown:</span> {{ (globalVariables.currentDetailCard.value as TechnicalBlueprint).productionInterval }}</p>
                     </div>
                 </div>
                 <div class="buttonDiv">
@@ -54,20 +54,20 @@
     </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import { ref } from 'vue';
-import { data } from '@/stores/equipment';
+import { data, type TechnicalBlueprint } from '@/stores/equipment';
 import { globalVariables } from '@/stores/global';
 
 const shareActive = ref(false);
 
-function showDetailCard (card) {
+function showDetailCard (card: TechnicalBlueprint) {
     globalVariables.showCard.value = true;
     globalVariables.currentDetailCard.value = card;
 }
 
-function getDescriptionColor (string) {
+function getDescriptionColor (string: string) {
     if (Number(globalVariables.currentDetailCard.value.effectDescription.indexOf(string)) % 2 == 1) {
         return "gold";
     } else {

@@ -1,9 +1,9 @@
 <template>
-    <div id="modInfo" v-if="Mod.type == 'unknown'">
+    <div id="modInfo" v-if="Mod?.type == 'unknown'">
         <h2>{{ Mod.identity }}: If you have this module, please contact micromidget on discord</h2>
     </div>
 
-    <div id="modInfo" v-if="Mod.type == 'weapon'">
+    <div id="modInfo" v-if="Mod?.type == 'weapon'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
             <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div id="modInfo" v-if="Mod.type == 'misc'">
+    <div id="modInfo" v-if="Mod?.type == 'misc'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
             <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div id="modInfo" v-if="Mod.type == 'armor'">
+    <div id="modInfo" v-if="Mod?.type == 'armor'">
         <div id="modHeader">
             <img :src="Mod.img" alt="Image of the module" class="weaponImg">
             <h2 id="modName">{{ Mod.identity }} | {{ Mod.name }}</h2>
@@ -76,13 +76,17 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-const props = defineProps({
-    Mod: Object,
-});
+import type { ArmorMod, WeaponMod, MiscMod, UnknownMod } from '@/stores/mod_data'
 
-function getMax (stat) {
+type Props = {
+  Mod: ArmorMod | WeaponMod | MiscMod | UnknownMod | undefined
+}
+
+const props = defineProps<Props> ();
+
+function getMax (stat: number) {
     if (stat <= 2500) {
         return 2500;
     } else if (stat <= 5000) {
@@ -97,24 +101,24 @@ function getMax (stat) {
         return 30000;
     } else if (stat <= 50000) {
         return 50000;
-    } else if (stat <= 100000) {
+    } else {
         return 100000;
     }
 };
 
-function getMaxHP (stat) {
+function getMaxHP (stat: number) {
     if (stat <= 50000) {
         return 50000;
     } else if (stat <= 100000) {
         return 100000;
     } else if (stat <= 250000) {
         return 250000;
-    } else if (stat <= 500000) {
+    } else {
         return 500000;
     }
 };
 
-function getMaxArmor (stat) {
+function getMaxArmor (stat: number) {
     if (stat <= 50) {
         return 50;
     } else if (stat <= 100) {
@@ -123,7 +127,7 @@ function getMaxArmor (stat) {
         return 250;
     } else if (stat <= 350) {
         return 350;
-    } else if (stat <= 500) {
+    } else {
         return 500;
     }
 }

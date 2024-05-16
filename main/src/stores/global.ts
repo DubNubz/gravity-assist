@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import type { Equipment, TechnicalBlueprint } from "./equipment";
 import type { ShipScope, ShipDirection, ShipManufacturer } from "./ra_data";
+import type { RegularShip, SuperCapitalShip } from "./fleet";
 
 const globalVariables = {
     // Home
@@ -61,10 +62,10 @@ const globalVariables = {
     }),
 
     // Fleet Builder
-    fleetBuild: ref([]),
+    fleetBuild: ref<(RegularShip | SuperCapitalShip)[]>([]),
     aircraftCounter: ref([]),
     reinforcementCounter: ref([]),
-    modTracker: ref({
+    modTracker: ref<Record<string, object>>({
         "Constantine the Great": {
             mModule: "M1",
             aModule: "A1",

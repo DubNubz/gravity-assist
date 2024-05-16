@@ -1,21 +1,23 @@
 <template>
     <div class="RAResult" v-for="ship in Data">
             <p class="RAData" :class="{ active: globalVariables.currentSearchShip.value == ship.name + '-' + ship.variant }"><img :src="ship.img" :alt="ship.name" class="RADataImg"><span>{{ ship.name }}-{{ ship.variant }}</span></p>
-            <p class="RADataPercent" :class="{ active: globalVariables.currentSearchShip.value == ship.name + '-' + ship.variant }">{{ ((ship.weight / (Object.values(Data).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</p>
+            <p class="RADataPercent" :class="{ active: globalVariables.currentSearchShip.value == ship.name + '-' + ship.variant }">{{ ((ship.weight / (Object.values(Data as Ship[]).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</p>
         </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { globalVariables } from '@/stores/global';
+import type { Ship } from '@/stores/ra_data';
 
-const props = defineProps({
-  Data: Array,
-})
+type Props = {
+  Data: Ship[] | undefined
+}
+
+const props = defineProps<Props>();
 
 </script>
 
 <style scoped>
-
 .active {
   color: var(--gold);
 }
@@ -80,5 +82,4 @@ span {
     height: var(--standard2ImgHeight);
   }
 }
-
 </style>

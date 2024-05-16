@@ -5,7 +5,7 @@ export type ShipDirection = "Outstanding Firepower" | "Sustained Combat" | "Stra
 
 export type ShipScope = "Direct-Fire Weapon" | "Projectile Weapon" | "Empty";
 
-type Ship = {
+export type Ship = {
     name: string;
     title: string;
     img: string;

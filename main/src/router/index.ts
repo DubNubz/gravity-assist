@@ -6,39 +6,28 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
+      redirect: '/home'
+    }, {
       path: '/home',
-      name: 'home2',
+      name: 'home',
       component: () => import('../views/HomeView.vue')
-    },
-    {
+    }, {
       path: '/modules/color-generator/:colorName?/:compression?/:reversed?',
       name: 'color-generator',
       component: () => import('../views/ColorView.vue')
-    },
-    {
+    }, {
       path: '/modules/research-agreement-helper/:ship?/:manufacturer?/:direction?/:scope?',
       name: 'research-agreement-helper',
       component: () => import('../views/ResearchView.vue')
-    },
-    {
+    }, {
       path: '/modules/module-library/:ship?/:mod?',
       name: 'module-library',
       component: () => import('../views/LibraryView.vue')
-    },
-    {
+    }, {
       path: '/modules/equipment-encyclopedia/:type?/:item?',
       name: 'equipment-encyclopedia',
       component: () => import('../views/EquipmentView.vue')
-    },
-    {
-      path: '/modules/fleet-builder',
-      name: 'fleet-bulder',
-      component: () => import('../views/FleetView.vue')
-    },
+    }
   ]
 })
 
