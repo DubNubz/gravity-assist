@@ -75,25 +75,25 @@ function getDescriptionColor (string: string) {
 
 function shareEquipment () {
     let currentEquipment = globalVariables.currentEquipmentView.value;
+    const finalEquipment: string[] = [];
     for (let char of currentEquipment) {
-      const final: string[] = [];
       if (char == " ") {
-        final.push("%20");
+        finalEquipment.push("%20");
       } else {
-        final.push(char)
+        finalEquipment.push(char)
       }
-    currentEquipment = final.join("");
+    currentEquipment = finalEquipment.join("");
     }
 
     let displayName = globalVariables.currentDetailCard.value.displayName;
+    const finalName: string[] = [];
     for (let char of displayName) {
-      const final: string[] = [];
       if (char == " ") {
-        final.push("%20");
+        finalName.push("%20");
       } else {
-        final.push(char)
+        finalName.push(char)
       }
-    displayName = final.join("");
+    displayName = finalName.join("");
     }
 
     navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia/${currentEquipment}/${displayName}`).then(() => {
