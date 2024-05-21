@@ -6,8 +6,8 @@
         <h3>Latest Release: <span>{{ mostRecentVersion.release }}</span></h3>
 
         <div class="changeNotes">
-            <h3 v-for="change in getNotes().slice(0, 3)">► {{ change }}<span v-if="change != getNotes()[getNotes().length - 1]">,</span></h3>
-            <h3 v-if="getNotes().length > 3" style="color: var(--darkGray)">...and more!</h3>
+            <h3 v-for="change in getNotes().slice(0, 5)">► {{ change }}<span v-if="change != getNotes()[getNotes().length - 1]">,</span></h3>
+            <h3 v-if="getNotes().length > 5" style="color: var(--darkGray)">...and more!</h3>
         </div>
     </div>
 </template>
@@ -81,7 +81,7 @@ function getNotes () {
             font-size: 1.85em;
 
             span {
-                color: var(--gold);
+                color: white;
             }
         }
     }
