@@ -1,0 +1,132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --gradientGray1: #5a5a5c;
+  --gradientGray2: #313238;
+  --gradientGray3: #27282e;
+  --gradientGray4: #17171c;
+  --content: rgba(0, 0, 0, 0.15);
+  --greenContent: rgba(68, 255, 114, 0.15);
+  --redContent: rgba(255, 124, 124, 0.15);
+  --content2: rgba(255, 255, 255, 0.05);
+  --footer: rgba(0, 0, 0, 0.35);
+  --transparent: rgba(255, 255, 255, 0.1);
+
+  --lightHeader: rgba(255, 255, 255, 0.5);
+  --darkHeader: rgba(0, 0, 0, 0.5);
+
+  --lightGradientGray1: #c9c9ec;
+  --lightGradientGray2: #c0c6df;
+  --lightGradientGray3: #b9bcce;
+  --lightGradientGray4: #b7b7c0;
+  --lightContent: rgba(255, 255, 255, 0.15);
+  --lightFooter: rgba(255, 255, 255, 0.35);
+  --lightTransparent: rgba(0, 0, 0, 0.1);
+
+  --red: rgb(183, 17, 17);
+  --orange: rgb(255, 165, 0);
+  --gold: rgb(255, 215, 0);
+  --yellow: rgb(255, 255, 0);
+  --green: rgb(0, 255, 0);
+  --blue: rgb(0, 0, 255);
+  --hotPink: rgb(255, 0, 255);
+  --lightPink: rgb(255, 192, 203);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+
+  --pastelRed: #ffaaaa;
+  --pastelOrange: #ffddaa;
+  --deepOrange: #ff9756;
+  --pastelYellow: #fbffaa;
+  --deepYellow: #ffe561;
+  --pastelGreen: #aaffaa;
+  --deepGreen: #56ff93;
+  --aqua: #5bffd2;
+  --turquoise: #1abc9c;
+  --lightBlue: #6af1fd;
+  --cyan: #56ddff;
+  --pastelBlue: #aac8ff;
+  --pastelPink: #ffaafe;
+  --deepPink: #f467cb;
+  --normalText: #ccc9c6;
+  --darkGray: #878787;
+  --invisible: #222222;
+
+  --h1: 5em;
+  --h2: 3.75em;
+  --h3: 2.25em;
+  --h4: 1.5em;
+  --p: 1em;
+  --standard: 0.75em;
+
+  --common: #60d149;
+  --rare: #52b1ff;
+  --epic: #c174ff;
+  --legendary: #f3ff52;
+  --godly: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00c3ff, #ff00ff);
+  --godlyText: linear-gradient(to right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00c3ff, #ff00ff);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  min-height: 100vh;
+  font-size: var(--standard);
+  background-color: rgb(25, 25, 25);
+  margin: 0;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+h1 {font-size: var(--h1)}
+h2 {font-size: var(--h2)}
+h3 {font-size: var(--h3)}
+p {font-size: var(--p)}
+#text {font-size: var(--standard)}
+
+::-webkit-scrollbar {
+  width: 0.75em;
+}
+::-webkit-scrollbar-track {
+  background-color: #17171c;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #48005e;
+  border-radius: 1em;
+}
+
+button, a {
+  font-family: 'Kanit', sans-serif;
+  color: black;
+  border-color: black;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+input {
+  font-family: 'Kanit', sans-serif;
+  color: black;
+}
+
+@media (pointer: coarse) {
+  body {
+    font-family: "Open Sans", sans-serif;
+  }
+  button, a, input {
+    font-family: "Open Sans", sans-serif;
+  }
+}
