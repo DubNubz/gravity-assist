@@ -109,7 +109,7 @@ p {font-size: var(--p)}
   border-radius: 1em;
 }
 
-button, a {
+button, a, input, textarea {
   font-family: 'Kanit', sans-serif;
   color: black;
   border-color: black;
@@ -126,7 +126,7 @@ input {
   body {
     font-family: "Open Sans", sans-serif;
   }
-  button, a, input {
+  button, a, input, textarea {
     font-family: "Open Sans", sans-serif;
   }
 }

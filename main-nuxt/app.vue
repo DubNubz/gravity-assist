@@ -178,7 +178,7 @@ header {
 }
 
 .menuBurger {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   transition: all 0.35s ease-in-out;
@@ -208,7 +208,7 @@ header {
   background-color: rgb(36, 36, 36);
   width: 35em;
   height: calc(100% - 7em);
-  position: absolute;
+  position: fixed;
   top: 7em;
   left: 0;
   display: flex;
