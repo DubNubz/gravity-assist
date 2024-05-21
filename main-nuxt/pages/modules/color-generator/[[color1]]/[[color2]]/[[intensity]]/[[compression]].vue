@@ -41,14 +41,19 @@
                 <input type="color" v-model="colorGeneratorStore().color2">
             </div>
             <div class="presetPick">
-                <h3>Or, pick from my selection of preset gradients</h3>
-                <button>Preset options</button>
+                <h3>Or, pick from my selection of <span>preset gradients</span></h3>
+                <button @click="openPresets = !openPresets" :class="{ close: openPresets }">
+                    <h3 v-if="!openPresets">Open</h3>
+                    <h3 v-else>Close</h3>
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+
+const openPresets = ref(false);
 
 function addNewLine (event: KeyboardEvent) {
     if (event.key == "Enter") {
@@ -164,14 +169,68 @@ function copyShareLink () {
     background-color: rgb(60, 60, 60);
     width: 100em;
     height: 25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 3em;
+    
+    .colorPick {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+        height: 90%;
+    }
+
+    .presetPick {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 45%;
+        height: 90%;
+
+        h3 {
+            font-size: 2.75em;
+            text-align: center;
+            margin: 0;
+            width: 90%;
+
+            span {
+                color: transparent;
+                background: linear-gradient(to right, #ff4646, #ffbb00, #bbff00, #00ff4c, #00ffff, #00c3ff, #ff3eff);
+                background-clip: text;
+                width: fit-content;
+            }
+        }
+
+        button {
+            width: 60%;
+            height: 6em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--deepGreen);
+            filter: grayscale(0.33);
+            transition: all 0.25s;
+            border-radius: 1.5em;
+        }
+
+        .close {
+            background-color: #ff5050;
+            filter: grayscale(0.15);
+        }
+    }
 
     input {
         width: 15em;
         height: 15em;
         padding: 0;
         border: 0;
-        background-color: transparent;
+        background-color: rgb(60, 60, 60);
     }
+    
+
 
     img {
         width: 10em;
@@ -180,6 +239,10 @@ function copyShareLink () {
 
 @media (hover: hover) and (pointer: fine) {
     .boxes .buttonDiv .boxButton:hover {
+        filter: grayscale(0);
+    }
+    
+    .colorPicker .presetPick button:hover {
         filter: grayscale(0);
     }
 }

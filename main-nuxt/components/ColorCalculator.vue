@@ -1,6 +1,6 @@
 <template>
     <div class="holder2">
-        <p v-for="char in output" :style="{ color: getColor(char) }">{{ char }}</p>
+        <p><span v-for="char in output" :style="{ color: getColor(char) }">{{ char }}</span></p>
     </div>
 </template>
 
@@ -99,9 +99,13 @@ function rgbToHex (r: number, g: number, b: number) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    text-align: center;
 
     p {
+        display: flex;
         margin: 0;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
