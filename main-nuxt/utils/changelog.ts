@@ -179,6 +179,6 @@ export const changelog: Changelog[] = [{
     type: "release",
     version: "1.3.0",
     release: "May 20, 2024",
-    notes: ["You can now choose your own gradient colors in Color Generator", "Completely overhauled the visuals", "Loading speeds improved tremendously",
-    "Even more major changes behind the scenes"]
+    notes: ["You can now choose your own colors, intensity, and compression in Color Generator", "Completely overhauled the visuals",
+    "Loading speeds improved tremendously", "Even more major changes behind the scenes"]
 }];
