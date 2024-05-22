@@ -9,12 +9,13 @@
 const output = ref<string[]> ([]);
 const gradientColors = ref<string[]> ([]);
 
+const globalInputText = ref("DubNubz is so awesome and cool and smart!");
+
 onMounted(() => {
-    if (colorGeneratorStore().outputText.length != 0) output.value = colorGeneratorStore().outputText;
     generateGradient();
+    generateText();
 });
 
-watch(() => colorGeneratorStore().inputText, () => generateText());
 watch(() => colorGeneratorStore().compression, (newValue) => {
     if (newValue >= 1 && newValue <= 5) generateText();
 });
@@ -45,7 +46,7 @@ function getColor (char: string) {
 function generateText () {
     output.value.length = 0;
     previousColor = "";
-    const inputText = colorGeneratorStore().inputText;
+    const inputText = globalInputText.value;
     const styledText: string[] = [];
 
     let counter = colorGeneratorStore().compression + 1;
@@ -74,7 +75,6 @@ function generateText () {
     }
 
     output.value = styledText;
-    colorGeneratorStore().outputText = styledText;
 }
 
 function generateGradient () {
@@ -126,7 +126,7 @@ function rgbToHex (r: number, g: number, b: number) {
         margin: 0;
         flex-wrap: wrap;
         justify-content: center;
-        font-size: 0.85em;
+        font-size: 2em;
     }
 }
 

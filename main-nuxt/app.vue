@@ -77,6 +77,9 @@ const showSideMenu = ref(false);
 .holder {
   min-height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 footer {
@@ -182,6 +185,7 @@ header {
   top: 0;
   left: 0;
   transition: all 0.35s ease-in-out;
+  z-index: 51000;
 
   button {
     background-color: transparent;
@@ -201,7 +205,7 @@ header {
   left: 0;
   background-color: rgb(0, 0, 0, 0.5);
   border: 0;
-  z-index: 999999;
+  z-index: 50000;
 }
 
 .sideMenu {
@@ -235,24 +239,20 @@ header {
 }
 
 .sideMenuTransition-enter-active, .sideMenuTransition-leave-active {
-  transition: all 0.5s ease-in-out;
-}
-
-.sideMenuTransition-enter-active, .sideMenuTransition-leave-active {
-  .sideMenu {
-    transition: all 0.25s ease-in-out;
-  }
-}
-
-.sideMenuTransition-enter-from, .sideMenuTransition-leave-to {
-  opacity: 0;
+    transition: all 0.5s ease-in-out;
+    
+    .sideMenu {
+        transition: all 0.25s ease-in-out;
+    }
 }
 
 .sideMenuTransition-enter-from, .sideMenuTransition-leave-to {
-  .sideMenu {
-    transform: translate(-30px);
-    opacity: 0.001;
-  }
+    opacity: 0;
+
+    .sideMenu {
+        transform: translate(-30px);
+        opacity: 0.001;
+    }
 }
 
 @media (hover: hover) and (pointer: fine) {

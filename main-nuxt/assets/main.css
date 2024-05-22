@@ -69,15 +69,6 @@
   --godlyText: linear-gradient(to right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00c3ff, #ff00ff);
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 100vw;
-  max-width: 100vw;
-}
-
 body {
   font-family: 'Kanit', sans-serif;
   min-height: 100vh;
