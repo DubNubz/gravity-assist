@@ -1,18 +1,18 @@
 <template>
   <div class="holder">
     <head>
-      <link rel="icon" href="/radiant.svg">
+      <link rel="icon" href="/ui/radiant.svg">
     </head>
 
     <header>
       <div class="menuBurger">
         <button @click="showSideMenu = !showSideMenu">
-          <img src="/burger.svg" alt="Click to open the navigation menu">
+          <img src="/ui/burger.svg" alt="Click to open the navigation menu">
         </button>
       </div>
   
       <div class="title">
-        <img src="/radiant.svg" alt="Gravity Assist Icon">
+        <img src="/ui/radiant.svg" alt="Gravity Assist Icon">
         <h1>Gravity Assist</h1>
       </div>
     </header>
@@ -21,23 +21,23 @@
       <button v-if="showSideMenu" @click="showSideMenu = false" class="sideMenuBackground">
         <div class="sideMenu">
           <NuxtLink to="/home" class="sideMenuButton" :class="{ active: route.path == '/home' }" style="margin-top: 3em;">
-            <img src="/home.svg" alt="Click to go back to the original landing page">
+            <img src="/ui/home.svg" alt="Click to go back to the original landing page">
             <h3>Home</h3>
           </NuxtLink>
           <NuxtLink to="/modules/color-generator" class="sideMenuButton" :class="{ active: route.path == '/modules/color-generator' }">
-            <img src="/paint.svg" alt="Click to go to the Color Generator page">
+            <img src="/ui/paint.svg" alt="Click to go to the Color Generator page">
             <h3>Color Generator</h3>
           </NuxtLink>
           <NuxtLink to="/modules/ra-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/ra-helper' }">
-            <img src="/atom.svg" alt="Click to go to the Research Agreement Helper page">
+            <img src="/ui/atom.svg" alt="Click to go to the Research Agreement Helper page">
             <h3>RA Helper</h3>
           </NuxtLink>
           <NuxtLink to="/modules/module-library" class="sideMenuButton" :class="{ active: route.path == '/modules/module-library' }">
-            <img src="/openBook.svg" alt="Click to go to the Module Library page">
+            <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
             <h3>Module Library</h3>
           </NuxtLink>
           <NuxtLink to="/modules/equipment" class="sideMenuButton" :class="{ active: route.path == '/modules/equipment' }">
-            <img src="/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
+            <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
             <h3>Equipment Library</h3>
           </NuxtLink>
         </div>
@@ -49,17 +49,17 @@
     <footer>
       <div class="footerButtons">
         <NuxtLink to="/contributors" class="linkButton creditsButton">
-          <img src="/credits.svg" alt="View a list of all contributors to this project">
+          <img src="/ui/credits.svg" alt="View a list of all contributors to this project">
           <h3>Contributors</h3>
         </NuxtLink>
         <NuxtLink to="/changelog" class="linkButton loadButton">
-          <img src="/changes.svg" alt="View a list of all changes made to this project">
+          <img src="/ui/changes.svg" alt="View a list of all changes made to this project">
           <h3>Changelog</h3>
         </NuxtLink>
       </div>
       <h3>Gravity Assist v{{ changelog[changelog.length - 1].version }} by DubNubz</h3>
       <a href="https://discord.com/invite/9mJ9b2Bbzx" target="_blank">
-        <img src="/discord_icon.png" alt="Link to the Radiant Gravity Discord server">
+        <img src="/ui/discord_icon.png" alt="Link to the Radiant Gravity Discord server">
       </a>
     </footer>
   </div>

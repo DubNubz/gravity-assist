@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Gravity Assist",
-      link: [{ rel: "icon", type: "image/svg+xml", href: "/radiant.svg" }]
+      link: [{ rel: "icon", type: "image/svg+xml", href: "/ui/radiant.svg" }]
     }
   }
 })

@@ -13,11 +13,11 @@
                 <div class="textBox">
                     <div class="buttonDiv">
                         <button class="boxButton" @click="copyToClipboard" id="copy" :class="{ disabledButton: colorGeneratorStore().outputText.length == 0 }">
-                            <img src="/copy.svg" alt="Copy text to clipboard">
+                            <img src="/ui/copy.svg" alt="Copy text to clipboard">
                             <h3>Copy</h3>
                         </button>
                         <button class="boxButton" @click="copyShareLink" id="share">
-                            <img src="/share.svg" alt="Share this tool">
+                            <img src="/ui/share.svg" alt="Share this tool">
                             <h3>Share</h3>
                         </button>
                     </div>
@@ -36,7 +36,7 @@
                     <h3>Start</h3>
                     <input type="color" v-model="colorGeneratorStore().color1">
                 </div>
-                <img src="/rightArrow.svg" alt="The color on the left will be the start of the color gradient, and the color on the right will be the end.">
+                <img src="/ui/rightArrow.svg" alt="The color on the left will be the start of the color gradient, and the color on the right will be the end.">
                 <div class="colorPickTitle">
                     <h3>End</h3>
                     <input type="color" v-model="colorGeneratorStore().color2">
