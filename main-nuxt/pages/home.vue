@@ -5,7 +5,17 @@
             <h3>Did you know: <span>{{ fact }}</span></h3>
         </div>
 
-        <LatestChange />
+        <div class="cardHolder">
+            <LatestChange />
+            <div class="card">
+                <h2>Contact Me!</h2>
+                <h3 class="contact"><span>DubNubz</span> (ingame)</h3>
+                <h3 class="contact"><span>@micromidget</span> (Discord)</h3>
+                <h3 class="message">All module information is crowdsourced.</h3>
+                <h3 class="message">If you'd like to contribute, PM/DM me!</h3>
+                <h3 class="message">All contributions, suggestions, and feedback are appreciated!</h3>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -38,6 +48,7 @@ const fact = facts[getRandomIntInclusive(0, facts.length - 1)];
 
         a {
             color: var(--deepGreen);
+            text-decoration: underline;
         }
 
         span {
@@ -73,6 +84,46 @@ const fact = facts[getRandomIntInclusive(0, facts.length - 1)];
       width: 4.5em;
       height: 4.5em;
       background-color: transparent;
+    }
+}
+
+.cardHolder {
+    display: flex;
+    width: 95vw;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5em;
+    gap: 1%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(36, 36, 36);
+    border-radius: 3em;
+    padding: 3em;
+    width: 50em;
+    min-height: 40em;
+
+    h2 {
+        margin-bottom: 0;
+        color: var(--gold);
+    }
+
+    .contact {
+        margin-top: 0.25em;
+        margin-bottom: 0;
+
+        span {
+            color: var(--cyan);
+        }
+    }
+
+    .message {
+        font-size: 1.85em;
+        margin-bottom: 0;
     }
 }
 

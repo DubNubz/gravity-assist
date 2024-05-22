@@ -61,8 +61,8 @@ function getNotes () {
     background-color: rgb(36, 36, 36);
     border-radius: 3em;
     padding: 3em;
-    margin-top: 5em;
     width: 50em;
+    min-height: 40em;
 
     h2 {
         margin-bottom: 0;

@@ -511,6 +511,10 @@ async function copyShareLink () {
                 margin: 0;
             }
 
+            h3 {
+                text-align: center;
+            }
+
             input[type="range"] {
                 width: 90%;
             }
