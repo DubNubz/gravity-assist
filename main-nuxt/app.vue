@@ -102,7 +102,7 @@ footer {
   }
 
   .footerButtons {
-    width: 50vw;
+    width: 75em;
     display: flex;
     align-items: center;
     justify-content: center;

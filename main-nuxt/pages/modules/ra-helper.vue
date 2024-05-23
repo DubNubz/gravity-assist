@@ -16,6 +16,11 @@
             <RaSearch v-else @done="browse = true" />
         </div>
 
+        <button class="boxButton" @click="copyShareLink" id="share">
+            <img src="/ui/alt/whiteShare.svg" alt="Share this tool">
+            <h3>Share</h3>
+        </button>
+
         <div class="resultHolder" v-if="browse">
             <div class="result" v-for="ship in data" :class="{ searched: raHelperStore().ship && ship == raHelperStore().ship }">
                 <h3>{{ship.name}} <span>({{ ship.variant }})</span></h3>
@@ -41,17 +46,19 @@ watch(() => raHelperStore().scope, () => refilterData());
 
 onMounted(() => {
     const manufacturer = route.query.manufacturer as ShipManufacturer;
-    const direction = route.query.direction as ShipDirection;
-    const scope = route.query.direction as ShipScope;
-    const shipName = route.query.search as string;
+    const direction = route.query.direction as string;
+    const scope = route.query.scope as ShipScope;
+    const name = route.query.name as string;
+    const variant = route.query.variant as string;
+    const search = route.query.search as string;
 
     if (manufacturer) raHelperStore().manufacturer = manufacturers.includes(manufacturer) ? manufacturer : "Jupiter Industry";
-    if (direction) raHelperStore().direction = directions.includes(direction) ? direction : "Outstanding Firepower";
+    if (direction) raHelperStore().direction = directions.includes(direction.replaceAll("and", "&") as ShipDirection) ? direction.replaceAll("and", "&") as ShipDirection : "Outstanding Firepower";
     if (scope) raHelperStore().scope = scopes.includes(scope) ? scope : "Projectile Weapon";
-    if (shipName) {
-        raHelperStore().ship = shipData.find((ship) => ship.name == shipName);
+    if (name) {
+        raHelperStore().ship = shipData.find((ship) => ship.name == name && ship.variant == variant);
         browse.value = false;
-        raHelperStore().search = shipName;
+        raHelperStore().search = search;
     }
 });
 
@@ -72,6 +79,27 @@ function highlightSearched (array: Ship[]) {
         return newArray;
     }
     return array;
+}
+
+async function copyShareLink () {
+    const ship = raHelperStore().ship;
+
+    if (ship) {
+        const name = ship.name.replaceAll(" ", "%20");
+        const variant = ship.variant.replaceAll(" ", "%20");
+        const search = raHelperStore().search.replaceAll(" ", "%20");
+
+        await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/ra-helper?name=${name}&variant=${variant}&search=${search}`);
+        alert("Link copied!")
+        return;
+    }
+
+    const manufacturer = raHelperStore().manufacturer.replaceAll(" ", "%20");
+    const direction = raHelperStore().direction.replaceAll(" ", "%20").replaceAll("&", "and");
+    const scope = raHelperStore().scope.replaceAll(" ", "%20");
+
+    await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/ra-helper?manufacturer=${manufacturer}&direction=${direction}&scope=${scope}`);
+    alert("Link copied!");
 }
 
 </script>
@@ -165,9 +193,43 @@ function highlightSearched (array: Ship[]) {
     }
 }
 
+.boxButton {
+    margin-top: 2em;
+    border-radius: 1.5em;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    filter: grayscale(0.33);
+    background-color: rgb(40, 40, 40);
+    color: white;
+    border: 0;
+    padding: 1.5em;
+    padding-left: 8em;
+    padding-right: 8em;
+          
+    h3 {
+        margin: 0;
+        text-align: center;
+        width: fit-content;
+        height: fit-content;
+        font-size: var(--h3);
+    }
+          
+    img {
+        width: 4.5em;
+        height: 4.5em;
+        background-color: transparent;
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .navButtonHolder button:hover {
         background-color: rgb(55, 55, 55);
+    }
+    .boxButton:hover {
+        background-color: rgb(50, 50, 50);
     }
 }
 
