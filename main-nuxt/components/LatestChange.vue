@@ -58,7 +58,7 @@ function getNotes () {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(45, 45, 45);
     border-radius: 3em;
     padding: 3em;
     width: 50em;

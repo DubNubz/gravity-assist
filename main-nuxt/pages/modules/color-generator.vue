@@ -114,10 +114,10 @@ onMounted(() => {
     const intensity = route.query.intensity as string;
     const compression = route.query.compression as string;
     const text = route.query.text as string;
-    if (color1) colorGeneratorStore().color1 = "#" + color1;
-    if (color2) colorGeneratorStore().color2 = "#" + color2;
-    if (intensity) colorGeneratorStore().intensity = Number(intensity);
-    if (compression) colorGeneratorStore().compression = Number(compression);
+    if (color1) colorGeneratorStore().color1 = color1.length == 6 ? "#" + color1 : "#f957ff";
+    if (color2) colorGeneratorStore().color2 = color2.length == 6 ? "#" + color2 : "#ffc94d";
+    if (intensity) colorGeneratorStore().intensity = Number(intensity) >= 1 && Number(intensity) <= 29 ? Number(intensity) : 15;
+    if (compression) colorGeneratorStore().compression = Number(compression) >= 1 && Number(compression) <= 5 ? Number(compression) : 3;
     if (text) colorGeneratorStore().inputText = text;
 });
 
@@ -400,7 +400,7 @@ async function copyShareLink () {
 
 .recentColorsTransition-enter-from, .recentColorsTransition-leave-to {
     opacity: 0.001;
-    transform: translateY(-27em);
+    transform: translateY(-40em) scaleY(0.01);
 }
 
 .recentColors {
