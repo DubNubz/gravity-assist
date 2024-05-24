@@ -5,6 +5,91 @@ export type ShipDirection = "Outstanding Firepower" | "Sustained Combat" | "Stra
 
 export type ShipScope = "Direct-Fire Weapon" | "Projectile Weapon" | "Empty";
 
+export type Attribute = "Interception Capability" | "Crit" | "Anti-Aircraft Counterattack" | "Anti-Aircraft Support" | 
+"Anti-Aircraft Special Ammo" | "Anti-Aircraft Lightweight Ammo" | "Anti-Aircraft Cycle" | "Anti-Aircraft High-Speed Strike" | 
+"Anti-Aircraft Critical Strike" | "Increase Energy Weapon Damage" | "Ship Calibration Support" | "Reduce System Crit Damage Taken" | 
+"Ship Shield Support" | "Energy Damage Reduction" | "Physical Damage Reduction" | "Crit Damage Reduction" | "Increase Hit Rate" | 
+"Additional HP Auto-Repair" | "Reduce Evasion" | "Reduce Hit Rate" | "Oscillatory Excitation" | "Collaborative Calibration" | 
+"Self-holding Capability" | "Increase Production Speed" | "Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | 
+"Increase Back-Row Missile Hit Rate" | "Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | 
+"Increase Aircraft Damage" | "Increase Aircraft Hit Rate" | "Aircraft Recovery";
+
+export type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette";
+
+export type UAV = "Spotter UAV" | "Area-Denial Anti-Aircraft UAV" | "Shield UAV" | "Repair UAV" | "Tactical UAV" | "Info UAV" | 
+"Cooperative Offensive UAV" | "Siege UAV";
+
+export type Module = {
+    img: string;
+    system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2";
+    name: string;
+    stats: WeaponStats | ArmorStats;
+    subsystems: (WeaponSubsystem | AircraftHangerSubsystem | UavHangerSubsystem | MiscSubsystem)[];
+}
+
+export type WeaponStats = {
+    type: "weapon";
+    antiship: null | number;
+    antiair: null | number;
+    siege: null | number;
+    hp: number;
+}
+
+export type ArmorStats = {
+    type: "armor";
+    extraHP: number;
+    armor: number;
+    energyShield: number;
+    hpRecovery?: number;
+    storage?: number;
+    hp: number;
+}
+
+export type WeaponSubsystem = {
+    type: "weapon";
+    count: number;
+    title: string;
+    name: string;
+    damageType: "Projectile" | "Energy";
+    target: "Aircraft" | "Small Ship" | "Large Ship";
+    lockonEfficiency: null | number;
+    alpha: number;
+    attributes: null | Attribute[];
+}
+
+export type AircraftHangerSubsystem = {
+    type: "hanger";
+    count: number;
+    title: string;
+    name: string;
+    hanger: Aircraft;
+    capacity: number;
+    attributes: null | Attribute[];
+}
+
+export type UavHangerSubsystem = {
+    type: "hanger";
+    count: number;
+    title: string;
+    name: string;
+    hanger: UAV;
+    capacity: number;
+    attributes: null | Attribute[];
+    damageType?: "Projectile" | "Energy";
+    target?: "Aircraft" | "Small Ship" | "Large Ship";
+    lockonEfficiency?: null | number;
+    alpha?: number;
+    repair?: number;
+}
+
+export type MiscSubsystem = {
+    type: "misc";
+    count: number;
+    title: string;
+    name: string;
+    attributes: null | Attribute[];
+}
+
 export type Ship = {
     name: string;
     title: string;
@@ -16,6 +101,45 @@ export type Ship = {
     direction: ShipDirection[];
     scope: ShipScope;
     weight: number;
+    row: "Front" | "Middle" | "Back";
+    modules?: Module[];
+}
+
+export const attributes: Record<Attribute, string> = {
+    "Interception Capability": "Has a chance to intercept missiles or torpedoes",
+    "Crit": "Has a chance to deal additional Crit damage to the target",
+    "Anti-Aircraft Counterattack": "Can counterattack enemy aircraft that target this ship",
+    "Anti-Aircraft Support": "Can attack enemy aircraft that target allied ships in this ship's row",
+    "Anti-Aircraft Special Ammo": "Switches to Special Ammo when striking an aircraft target, increasing the Damage Per Hit by an additional amount",
+    "Anti-Aircraft Lightweight Ammo": "Switches to Lightweight Ammo to trade for mobility when striking an aircraft, reducing the Damage Per hit by an additional amount",
+    "Anti-Aircraft Cycle": "The weapon's operating efficiency is increased when striking an aircraft target, reducing the CD by an additional amount",
+    "Anti-Aircraft High-Speed Strike": "Utilizes the High-Speed Strike mode when striking an aircraft target, reducing the duration of the strikes by an additional amount",
+    "Ship Calibration Support": "Increase the Hit Rate of the target ship by 20%",
+    
+    "Anti-Aircraft Critical Strike": "Has a 25% chance to deal an additional 100% Crit Damage to aircraft",
+    "Increase Energy Weapon Damage": "Increases the damage of the ship's energy weapon by 10%",
+    "Reduce System Crit Damage Taken": "Reduces Crit Damage taken by all systems by 15%",
+    "Ship Shield Support": "Initiate Shielding Support to the target and increase the Evasion of the target ship to energy weapons by 15%",
+    "Energy Damage Reduction": "Reduces the Damage taken from energy weapon attacks by 15%",
+    "Physical Damage Reduction": "Reduces the Damage taken from projectile weapon attacks by 15%",
+    "Crit Damage Reduction": "Reduces Crit Damage received by 30%",
+    "Increase Hit Rate": "Increases the Hit Rate of all weapons on the ship by 5%",
+    "Additional HP Auto-Repair": "Automatically repairs the damaged portion of additional HP after each battle",
+    "Reduce Evasion": "Reduce ship evasion by 10%",
+    "Reduce Hit Rate": "Reduces the Hit Rate of the primary weapon by 5%",
+    "Oscillatory Excitation": "Triggers one of the onboard weapons to initiate an extra shot every 6 seconds",
+    "Collaborative Calibration": "Calibrates the fire control of an onboard weapon once every 15s, increasing the Hit Rate by 30% for 15s",
+    "Self-holding Capability": "Provides self-held command points for the auxiliary ship",
+    "Increase Production Speed": "Increases Shipbuilding speed of the auxiliary ship",
+    "Back-Row Torpedo Hit Evasion": "+8% torpedo evasion to back-row ships in the fleet",
+    "Back-Row Missile Hit Evasion": "+8% missile evasion to back-row ships in the fleet",
+    "Increase Back-Row Torpedo Hit Rate": "Raise torpedo weapon Hit Rate of back-row ships in the fleet by 12%",
+    "Increase Back-Row Missile Hit Rate": "Raise missile weapon Hit Rate of back-row ships in the fleet by 12%",
+    "Ship Disguise": "When itself is selected as an attack target, it will be mislabeled as a carrier by the enemy",
+    "Increase Repair Speed": "When using the auxiliary ship to conduct repairs, increases the repair speed by 20%",
+    "Increase Aircraft Damage": "Increases primary weapon Damage of carried Antonios aircraft by 15%",
+    "Increase Aircraft Hit Rate": "Increases primary weapon Hit Rate of carried Antonios aircraft by 15%",
+    "Aircraft Recovery": "Aircraft returning to all hangers recover 10% HP"
 }
 
 export const manufacturers: ShipManufacturer[] = ["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"];
@@ -32,7 +156,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "AT021",
         title: "Tactical Attacker",
@@ -43,7 +168,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat", "Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "AT021",
         title: "Heavy Attacker",
@@ -54,7 +180,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "B192 Newland",
         title: "Heavy Attacker",
@@ -65,7 +192,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "BR050",
         title: "Standard Bomber",
@@ -76,7 +204,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "BR050",
         title: "Multi-Role Bomber",
@@ -87,7 +216,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "BR050",
         title: "Torpedo Bomber",
@@ -98,7 +228,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Balancer Anderson SC020",
         title: "Scout",
@@ -109,7 +240,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Sustained Combat", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Bullfrog",
         title: "Dual-Purpose Bomber",
@@ -120,7 +252,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Hayreddin's Loyal",
         title: "Pulsar Fighter",
@@ -131,7 +264,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Empty",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Janbiya Aer410",
         title: "Assault Attacker",
@@ -142,7 +276,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Mistral",
         title: "Combat Attacker",
@@ -153,7 +288,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "SC002",
         title: "Quantum Scout",
@@ -164,7 +300,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat", "Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Sandrake",
         title: "Atmospheric Interceptor",
@@ -175,7 +312,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Spore A404",
         title: "Light Fighter",
@@ -186,7 +324,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Stingray",
         title: "Torpedo Bomber",
@@ -197,7 +336,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Strix A100",
         title: "Joint Attacker",
@@ -208,7 +348,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Vitas A021",
         title: "Heavy Attacker",
@@ -219,7 +360,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Vitas-B010",
         title: "Bomber",
@@ -230,7 +372,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "CV-II003",
         title: "Light Corvette",
@@ -241,7 +384,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "CV-M011",
         title: "Heavy Missile Corvette",
@@ -252,7 +396,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Sustained Combat", "Strategy & Support", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "CV-M011",
         title: "Heavy Cannon Corvette",
@@ -263,7 +408,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "CV-M011",
         title: "High-Speed Missile Corvette",
@@ -274,7 +420,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "CV-T800",
         title: "Pulsar Corvette",
@@ -285,7 +432,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Strategy & Support", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Cellular Defender",
         title: "Heavy Torpedo Corvette",
@@ -296,7 +444,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Nebula Chaser",
         title: "Heavy Corvette",
@@ -307,7 +456,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Nebula Chaser",
         title: "Pulsar Corvette",
@@ -318,7 +468,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "RedBeast 7-13",
         title: "Missile Corvette",
@@ -329,7 +480,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Sustained Combat", "Strategy & Support", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "S-Levy 9",
         title: "Heavy Torpedo Escort Corvette",
@@ -340,7 +492,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Silent Assassin",
         title: "Armored Corvette",
@@ -351,7 +504,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Fighter & Corvette"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Void Elfin",
         title: "Stealth Missile Corvette",
@@ -362,7 +516,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Sustained Combat", "Fighter & Corvette"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Carilion",
         title: "Recon Frigate",
@@ -373,7 +528,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Sustained Combat", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Carilion",
         title: "Heavy Cannon Frigate",
@@ -384,7 +540,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Carilion",
         title: "Special Frigate",
@@ -395,7 +552,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "FG300",
         title: "Multi-Role Frigate",
@@ -406,7 +564,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "FG300",
         title: "Armored Frigate",
@@ -417,7 +576,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "FG300",
         title: "Recon Frigate",
@@ -428,7 +588,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Mare Imbrium",
         title: "Assault Frigate",
@@ -439,7 +600,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Mare Imbrium",
         title: "Experimental Pulse Cannon Frigate",
@@ -450,7 +612,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Mare Nubium",
         title: "Light Landing Ship",
@@ -461,7 +624,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Mare Nubium",
         title: "Anti-Aircraft Frigate",
@@ -472,7 +636,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Empty"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Mare Serenitatis",
         title: "Heavy Frigate",
@@ -483,7 +648,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Mare Serenitatis",
         title: "Missile Frigate",
@@ -494,7 +660,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Mare Serenitatis",
         title: "Anti-Aircraft Frigate",
@@ -505,7 +672,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Mare Tranquillitatis",
         title: "Missile Frigate",
@@ -516,7 +684,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Mare Tranquillitatis",
         title: "Pulse Cannon Frigate",
@@ -527,7 +696,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Empty"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Mare Tranquillitatis",
         title: "Interceptor Frigate",
@@ -538,7 +708,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "NOMA M470",
         title: "Heavy Landing Ship",
@@ -549,7 +720,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "NOMA M470",
         title: "Support Frigate",
@@ -560,7 +732,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "NOMA M470",
         title: "Anti-Aircraft Frigate",
@@ -571,7 +744,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Reliat",
         title: "Rapid Torpedo Frigate",
@@ -582,7 +756,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Reliat",
         title: "Tactical Torpedo Frigate",
@@ -593,7 +768,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Reliat",
         title: "Stealth Frigate",
@@ -604,7 +780,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Ruby",
         title: "Heavy Railgun Frigate",
@@ -615,7 +792,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Ruby",
         title: "Experimental Ion Cannon Frigate",
@@ -626,7 +804,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Ruby",
         title: "Defensive Frigate",
@@ -637,7 +816,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "XenoStinger",
         title: "Tactical Frigate",
@@ -648,7 +828,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower"],
         scope: "Empty",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "XenoStinger",
         title: "Defensive Frigate",
@@ -659,7 +840,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "AC721",
         title: "Heavy Logistics Destroyer",
@@ -670,7 +852,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "AC721",
         title: "Heavy Missile Destroyer",
@@ -681,7 +864,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "AC721",
         title: "Heavy Dual-Purpose Assault Ship",
@@ -692,7 +876,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Aldabra",
         title: "Heavy Cannon Destroyer",
@@ -703,7 +888,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Aldabra",
         title: "Heavy Assault Destroyer",
@@ -714,7 +900,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Ceres",
         title: "Aircraft Destroyer",
@@ -725,7 +912,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Ceres",
         title: "Support Destroyer",
@@ -736,7 +924,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Ceres",
         title: "Tactical Destroyer",
@@ -747,7 +936,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Eris I",
         title: "Maneuver Assault Destroyer",
@@ -758,7 +948,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Eris I",
         title: "Heavy Cannon Destroyer",
@@ -769,7 +960,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Eris I",
         title: "Armored Destroyer",
@@ -780,7 +972,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "Guardian",
         title: "Support Destroyer",
@@ -791,7 +984,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Empty"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Guardian",
         title: "Dual-Purpose Assault Ship",
@@ -802,7 +996,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "Guardian",
         title: "Experimental Pulse Assault Ship",
@@ -813,7 +1008,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Quaoar",
         title: "Railgun Destroyer",
@@ -824,7 +1020,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Quaoar",
         title: "Torpedo Destroyer",
@@ -835,7 +1032,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Taurus",
         title: "Pulse Cannon Destroyer",
@@ -846,7 +1044,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Taurus",
         title: "Assault Destroyer",
@@ -857,7 +1056,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Taurus",
         title: "Defensive Destroyer",
@@ -868,7 +1068,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Sustained Combat", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Tundra",
         title: "Tactical Destroyer",
@@ -879,7 +1080,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Tundra",
         title: "Aircraft Destroyer",
@@ -890,7 +1092,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Winged Hussar",
         title: "Light Missile Destroyer",
@@ -901,7 +1104,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Winged Hussar",
         title: "Integrated Missile Destroyer",
@@ -912,7 +1116,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Winged Hussar",
         title: "Area-Denial Anti-Aircraft Destroyer",
@@ -923,7 +1128,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Sustained Combat", "Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "CAS066",
         title: "Generic Cruiser",
@@ -934,7 +1140,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Front",
     }, {
         name: "CAS066",
         title: "Artillery Cruiser",
@@ -945,7 +1152,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "CAS066",
         title: "Aircraft Cruiser",
@@ -956,7 +1164,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Empty"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "CAS066",
         title: "Auxiliary Cruiser",
@@ -967,7 +1176,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "Callisto",
         title: "Cluster Torpedo Raid Ship",
@@ -978,7 +1188,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Callisto",
         title: "Heavy Torpedo Raid Ship",
@@ -989,7 +1200,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Callisto",
         title: "Heavy UAV Cruiser",
@@ -1000,7 +1212,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Empty"],
         scope: "Projectile Weapon",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Chimera",
         title: "Heavy Cruiser",
@@ -1011,7 +1224,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Chimera",
         title: "Cannon Cruiser",
@@ -1022,7 +1236,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Chimera",
         title: "Defensive Cruiser",
@@ -1033,7 +1248,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Conamara Chaos",
         title: "Railgun Cruiser",
@@ -1044,7 +1260,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "Conamara Chaos",
         title: "High-Speed Plasma Cruiser",
@@ -1055,7 +1272,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "Io",
         title: "Assault Ion Cannon Cruiser",
@@ -1066,7 +1284,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Io",
         title: "High-Speed Ion Cannon Cruiser",
@@ -1077,7 +1296,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Io",
         title: "Siege Ion Cannon Cruiser",
@@ -1088,7 +1308,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Front",
     }, {
         name: "Jaeger",
         title: "Heavy Aircraft Cruiser",
@@ -1099,7 +1320,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "Jaeger",
         title: "Heavy Cannon Cruiser",
@@ -1110,7 +1332,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "KCCPV2.0",
         title: "Light Attack Cruiser",
@@ -1121,7 +1344,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower", "Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "KCCPV2.0",
         title: "Light Pulse Attack Cruiser",
@@ -1132,7 +1356,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "KCCPV2.0",
         title: "Light Railgun Cruiser",
@@ -1143,7 +1368,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Empty"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Middle",
     }, {
         name: "KCCPV2.0",
         title: "Light Aircraft Cruiser",
@@ -1154,7 +1380,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Empty"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Light Cone",
         title: "Multi-Role Missile Cruiser Cruiser",
@@ -1165,7 +1392,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Empty"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Light Cone",
         title: "Area-Denial Anti-Aircraft Cruiser",
@@ -1176,7 +1404,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Light Cone",
         title: "Offensive Missile Cruiser",
@@ -1187,7 +1416,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower"],
         scope: "Projectile Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Ranger",
         title: "Comprehensive Warfare Cruiser",
@@ -1198,7 +1428,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Ranger",
         title: "Heavy Ion Cannon Cruiser",
@@ -1209,7 +1440,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Predator",
         title: "Aircraft Cruiser",
@@ -1220,7 +1452,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Predator",
         title: "Tactical Aircraft Cruiser",
@@ -1231,7 +1464,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Predator",
         title: "Anti-Aircraft Cruiser",
@@ -1242,7 +1476,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 10
+        weight: 10,
+        row: "Back",
     }, {
         name: "Constantine the Great",
         title: "Multi-Role Battlecruiser",
@@ -1253,7 +1488,326 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Middle",
+        modules: [{
+            img: "/weapons/cannon.png",
+            system: "M1",
+            name: `"Gamma Storm" Ion Attack System`,
+            stats: {
+                type: "weapon",
+                antiship: 11917,
+                antiair: 0,
+                siege: 2502,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `CI-2x700T "Helium Flash"`,
+                name: `Dual-Gun Super-Heavy Ion Turret`,
+                damageType: "Energy",
+                target: "Large Ship",
+                lockonEfficiency: null,
+                alpha: 400,
+                attributes: null
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "M2",
+            name: `"Gamma Storm" Projectile Attack System`,
+            stats: {
+                type: "weapon",
+                antiship: 19885,
+                antiair: 0,
+                siege: 2784,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `CI-2x600T "Gamma Storm"`,
+                name: `Energy Torpedo Launching System`,
+                damageType: "Energy",
+                target: "Large Ship",
+                alpha: 1740,
+                lockonEfficiency: 10,
+                attributes: ["Crit"]
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "A1",
+            name: `"Gamma Storm" Projectile Weapon System`,
+            stats: {
+                type: "weapon",
+                antiship: 24917,
+                antiair: 0,
+                siege: 2016,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `CM-8x608A "Gamma Storm"`,
+                name: `Generic Missile Launching System`,
+                damageType: "Projectile",
+                target: "Large Ship",
+                lockonEfficiency: null,
+                alpha: 850,
+                attributes: null
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "A2",
+            name: `"Gamma Storm" Projectile Weapon System`,
+            stats: {
+                type: "weapon",
+                antiship: 40666,
+                antiair: 1643,
+                siege: 3138,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `CM-8x608 "Gamma Storm"`,
+                name: `Pulse Energy Missile Launching System`,
+                damageType: "Energy",
+                target: "Large Ship",
+                lockonEfficiency: null,
+                alpha: 945,
+                attributes: null
+            }, {
+                type: "weapon",
+                count: 2,
+                title: "CM-12x550",
+                name: `Dodeca-Fire Anti-Ship Missile System`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: 10,
+                alpha: 437,
+                attributes: ["Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "B1",
+            name: `Generic Battery System`,
+            stats: {
+                type: "weapon",
+                antiship: 10628,
+                antiair: 270,
+                siege: 1461,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 2,
+                title: `CG-1350`,
+                name: `350mm Dual-Cannon Anti-Ship Battery`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: null,
+                alpha: 250,
+                attributes: null
+            }, {
+                type: "weapon",
+                count: 4,
+                title: `CG-1160B`,
+                name: `Generic Cannon`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: null,
+                alpha: 50,
+                attributes: ["Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "B2",
+            name: `Pulse Anti-Aircraft System`,
+            stats: {
+                type: "weapon",
+                antiship: 5175,
+                antiair: 2040,
+                siege: 0,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 2,
+                title: `CP-3x220`,
+                name: `Triple-Fire Anti-Aircraft Pulse`,
+                damageType: "Energy",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 40,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }, {
+                type: "weapon",
+                count: 4,
+                title: `CP-120`,
+                name: `Anti-Missile Pulse Array`,
+                damageType: "Energy",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 40,
+                attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "B3",
+            name: `Anti-Aircraft Missile System`,
+            stats: {
+                type: "weapon",
+                antiship: 2400,
+                antiair: 1548,
+                siege: 0,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 2,
+                title: `MK2-CM-4x200B "Storm"`,
+                name: `Missile Launcher Nest`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 35,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Cycle", "Anti-Aircraft Support"]
+            }, {
+                type: "weapon",
+                count: 2,
+                title: `CM-2x188B`,
+                name: `Missile Launcher Array`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 25,
+                attributes: ["Interception Capability", "Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            img: "/weapons/jamming.png",
+            system: "C1",
+            name: `Additional Energy System`,
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 15750
+            },
+            subsystems: [{
+                type: "misc",
+                count: 1,
+                title: `RIT-650`,
+                name: `Energy Compression Device`,
+                attributes: ["Increase Energy Weapon Damage"]
+            }]
+        }, {
+            img: "/weapons/aircraft.png",
+            system: "C2",
+            name: `Aircraft Module`,
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 18000
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 2,
+                title: `CBF-200`,
+                name: `Medium Hanger`,
+                hanger: "Medium Fighter",
+                capacity: 1,
+                attributes: null
+            }, {
+                type: "misc",
+                count: 1,
+                title: `XAC-2000`,
+                name: `Aviation Bridge`,
+                attributes: null
+            }]
+        }, {
+            img: "/weapons/aircraft.png",
+            system: "C3",
+            name: `Recon UAV System`,
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 18000
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 3,
+                title: "CIT-1",
+                name: `Fire-Control Spotter UAV Hanger`,
+                hanger: "Spotter UAV",
+                capacity: 3,
+                attributes: ["Ship Calibration Support"]
+            }]
+        }, {
+            img: "/weapons/cannon.png",
+            system: "D1",
+            name: `Short-Range Anti-Aircraft System`,
+            stats: {
+                type: "weapon",
+                antiship: 0,
+                antiair: 1011,
+                siege: 0,
+                hp: 19800
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 4,
+                title: `CM-2x45B`,
+                name: `Short-Range Anti-Aircraft Missile`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 40,
+                attributes: ["Anti-Aircraft Critical Strike", "Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            img: "/weapons/armor.png",
+            system: "D2",
+            name: `Targeted Protection System`,
+            stats: {
+                type: "armor",
+                armor: 0,
+                extraHP: 0,
+                energyShield: 0,
+                hp: 18000
+            },
+            subsystems: [{
+                type: "misc",
+                count: 1,
+                title: "ASM-220",
+                name: `Critical-System Reinforced Armor`,
+                attributes: ["Reduce System Crit Damage Taken"]
+            }]
+        }, {
+            img: "/weapons/storage.png",
+            system: "D3",
+            name: `Damage Control System`,
+            stats: {
+                type: "armor",
+                armor: 0,
+                extraHP: 0,
+                energyShield: 0,
+                hpRecovery: 4800,
+                hp: 15750
+            },
+            subsystems: [{
+                type: "misc",
+                count: 4,
+                title: "AST-50",
+                name: `Damage Monitoring System`,
+                attributes: null
+            }]
+        }]
     }, {
         name: "Eternal Storm",
         title: "Attack Battlecruiser",
@@ -1264,7 +1818,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Middle",
     }, {
         name: "Spear of Uranus",
         title: "Heavy Battlecruiser",
@@ -1275,7 +1830,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Sustained Combat"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Front",
     }, {
         name: "ST59",
         title: "Defensive Battlecruiser",
@@ -1286,7 +1842,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 5
+        weight: 5,
+        row: "Middle",
     }, {
         name: "Thunderbolt Star",
         title: "Multi-Role Arsenal Ship",
@@ -1297,7 +1854,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Empty",
         direction: ["Outstanding Firepower", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Middle",
     }, {
         name: "Ediacaran",
         title: "Heavy Firepower Auxiliary Ship",
@@ -1308,7 +1866,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Outstanding Firepower", "Strategy & Support"],
         scope: "Empty",
-        weight: 2
+        weight: 2,
+        row: "Middle",
     }, {
         name: "FSV830",
         title: "Fast Tactical Auxiliary Ship",
@@ -1319,7 +1878,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Sustained Combat", "Strategy & Support"],
         scope: "Empty",
-        weight: 5
+        weight: 5,
+        row: "Back",
     }, {
         name: "CV3000",
         title: "High-Speed Carrier",
@@ -1330,7 +1890,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Dawn Accord",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Eternal Heavens",
         title: "UAV Carrier",
@@ -1341,7 +1902,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Jupiter Industry",
         direction: ["Outstanding Firepower"],
         scope: "Empty",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Marshal Crux",
         title: "Carrier",
@@ -1352,7 +1914,8 @@ export const shipData: Ship[] = [{
         manufacturer: "Antonios",
         direction: ["Outstanding Firepower", "Strategy & Support"],
         scope: "Direct-Fire Weapon",
-        weight: 2
+        weight: 2,
+        row: "Back",
     }, {
         name: "Solar Whale",
         title: "Armed Tactical Carrier",
@@ -1363,7 +1926,8 @@ export const shipData: Ship[] = [{
         manufacturer: "NOMA Shipping",
         direction: ["Strategy & Support"],
         scope: "Empty",
-        weight: 2
+        weight: 2,
+        row: "Middle",
     }
 ];
 
