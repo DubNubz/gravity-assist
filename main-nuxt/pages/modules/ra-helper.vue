@@ -1,11 +1,11 @@
 <template>
     <div class="holder">
         <div class="navButtonHolder">
-            <button @click="browse = true" :class="{ active: browse == true }">
+            <button @click="browse = !browse" :class="{ active: browse == true }">
                 <img src="/ui/openBook.svg" alt="Click to freely browse through all Research Agreement paths">
                 <h3>Browse</h3>
             </button>
-            <button @click="browse = false" :class="{ active: browse == false }">
+            <button @click="browse = !browse" :class="{ active: browse == false }">
                 <img src="/ui/search.svg" alt="Click to search for the Research Agreemeent path of a ship">
                 <h3>Search</h3>
             </button>
@@ -16,7 +16,7 @@
             <RaSearch v-else @done="browse = true" />
         </div>
 
-        <button class="boxButton" @click="copyShareLink" id="share">
+        <button class="boxButton" @click="copyShareLink">
             <img src="/ui/alt/whiteShare.svg" alt="Share this tool">
             <h3>Share</h3>
         </button>
@@ -116,9 +116,9 @@ async function copyShareLink () {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100em;
+    width: 85em;
     gap: 3%;
-    margin-top: 2em;
+    margin-top: 1.6em;
 
     button {
         background-color: transparent;
@@ -130,10 +130,10 @@ async function copyShareLink () {
         justify-content: center;
         gap: 5%;
         transition: all 0.25s;
-        border-radius: 2em;
+        border-radius: 1.6em;
         
         img {
-            width: 6em;
+            width: 4.8em;
         }
     }
 
@@ -144,24 +144,24 @@ async function copyShareLink () {
 
 .card {
     background-color: rgb(36, 36, 36);
-    width: 65em;
-    padding: 3em;
-    border-radius: 3em;
-    margin-top: 4em;
-    transition: all 0.25s;
+    width: 52em;
+    padding: 2.4em;
+    border-radius: 2.4em;
+    margin-top: 3.2em;
 }
 
 .search {
-    width: 120em;
+    background-color: transparent;
+    width: 96em;
 }
 
 .resultHolder {
-    width: 120em;
+    width: 96em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin-top: 7em;
+    margin-top: 5.6em;
 
     .result {
         width: 30%;
@@ -170,16 +170,16 @@ async function copyShareLink () {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 30em;
-        margin-bottom: 3em;
-        border-radius: 3em;
+        height: 24em;
+        margin-bottom: 2.4em;
+        border-radius: 2.4em;
 
         h3 {
-            margin: 0.5em;
+            margin: 0.4em;
 
             span {
                 color: var(--gold);
-                font-size: 1.25em;
+                font-size: 1em;
             }
         }
 
@@ -194,8 +194,8 @@ async function copyShareLink () {
 }
 
 .boxButton {
-    margin-top: 2em;
-    border-radius: 1.5em;
+    margin-top: 1.6em;
+    border-radius: 1.2em;
     transition: all 0.25s;
     display: flex;
     align-items: center;
@@ -205,9 +205,9 @@ async function copyShareLink () {
     background-color: rgb(40, 40, 40);
     color: white;
     border: 0;
-    padding: 1.5em;
-    padding-left: 8em;
-    padding-right: 8em;
+    padding: 1.2em;
+    padding-left: 6.4em;
+    padding-right: 6.4em;
           
     h3 {
         margin: 0;
@@ -218,8 +218,8 @@ async function copyShareLink () {
     }
           
     img {
-        width: 4.5em;
-        height: 4.5em;
+        width: 3.6em;
+        height: 3.6em;
         background-color: transparent;
     }
 }

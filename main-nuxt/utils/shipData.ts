@@ -12,7 +12,7 @@ export type Attribute = "Interception Capability" | "Crit" | "Anti-Aircraft Coun
 "Additional HP Auto-Repair" | "Reduce Evasion" | "Reduce Hit Rate" | "Oscillatory Excitation" | "Collaborative Calibration" | 
 "Self-holding Capability" | "Increase Production Speed" | "Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | 
 "Increase Back-Row Missile Hit Rate" | "Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | 
-"Increase Aircraft Damage" | "Increase Aircraft Hit Rate" | "Aircraft Recovery";
+"Increase Aircraft Damage" | "Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems";
 
 export type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette";
 
@@ -20,6 +20,7 @@ export type UAV = "Spotter UAV" | "Area-Denial Anti-Aircraft UAV" | "Shield UAV"
 "Cooperative Offensive UAV" | "Siege UAV";
 
 export type Module = {
+    type: "known";
     img: string;
     system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2";
     name: string;
@@ -28,6 +29,8 @@ export type Module = {
 }
 
 export type UnknownModule = {
+    type: "unknown";
+    img: string;
     system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2";
     unknown: true;
 }
@@ -42,9 +45,9 @@ export type WeaponStats = {
 
 export type ArmorStats = {
     type: "armor";
-    extraHP: number;
-    armor: number;
-    energyShield: number;
+    armor: null | number;
+    extraHP: null | number;
+    energyShield: null | number;
     hpRecovery?: number;
     storage?: number;
     hp: number;
@@ -56,7 +59,7 @@ export type WeaponSubsystem = {
     title: string;
     name: string;
     damageType: "Projectile" | "Energy";
-    target: "Aircraft" | "Small Ship" | "Large Ship";
+    target: "Building" | "Aircraft" | "Small Ship" | "Large Ship";
     lockonEfficiency: null | number;
     alpha: number;
     attributes: null | Attribute[];
@@ -81,7 +84,7 @@ export type UavHangerSubsystem = {
     capacity: number;
     attributes: null | Attribute[];
     damageType?: "Projectile" | "Energy";
-    target?: "Aircraft" | "Small Ship" | "Large Ship";
+    target?: "Building" | "Aircraft" | "Small Ship" | "Large Ship";
     lockonEfficiency?: null | number;
     alpha?: number;
     repair?: number;
@@ -144,7 +147,8 @@ export const attributes: Record<Attribute, string> = {
     "Increase Repair Speed": "When using the auxiliary ship to conduct repairs, increases the repair speed by 20%",
     "Increase Aircraft Damage": "Increases primary weapon Damage of carried Antonios aircraft by 15%",
     "Increase Aircraft Hit Rate": "Increases primary weapon Hit Rate of carried Antonios aircraft by 15%",
-    "Aircraft Recovery": "Aircraft returning to all hangers recover 10% HP"
+    "Aircraft Recovery": "Aircraft returning to all hangers recover 10% HP",
+    "Attack Against Systems": "Has a chance to deal damage to the target's systems (Primary Weapon System: Low efficiency)"
 }
 
 export const manufacturers: ShipManufacturer[] = ["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"];
@@ -1496,7 +1500,8 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Middle",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: `"Gamma Storm" Ion Attack System`,
             stats: {
@@ -1518,7 +1523,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `"Gamma Storm" Projectile Attack System`,
             stats: {
@@ -1540,7 +1546,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Crit"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A1",
             name: `"Gamma Storm" Projectile Weapon System`,
             stats: {
@@ -1562,7 +1569,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A2",
             name: `"Gamma Storm" Projectile Weapon System`,
             stats: {
@@ -1594,7 +1602,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B1",
             name: `Generic Battery System`,
             stats: {
@@ -1626,7 +1635,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B2",
             name: `Pulse Anti-Aircraft System`,
             stats: {
@@ -1658,7 +1668,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B3",
             name: `Anti-Aircraft Missile System`,
             stats: {
@@ -1690,7 +1701,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "C1",
             name: `Additional Energy System`,
             stats: {
@@ -1708,7 +1720,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Increase Energy Weapon Damage"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C2",
             name: `Aircraft Module`,
             stats: {
@@ -1734,7 +1747,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C3",
             name: `Recon UAV System`,
             stats: {
@@ -1754,7 +1768,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Ship Calibration Support"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "D1",
             name: `Short-Range Anti-Aircraft System`,
             stats: {
@@ -1776,14 +1791,15 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Critical Strike", "Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "D2",
             name: `Targeted Protection System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hp: 18000
             },
             subsystems: [{
@@ -1794,14 +1810,15 @@ export const shipData: Ship[] = [{
                 attributes: ["Reduce System Crit Damage Taken"]
             }]
         }, {
-            img: "/weapons/storage.png",
+            type: "known",
+            img: "/weapons/icons/storage.png",
             system: "D3",
             name: `Damage Control System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hpRecovery: 4800,
                 hp: 15750
             },
@@ -1826,7 +1843,8 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Middle",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: `"Viggen" Ion Generation System`,
             stats: {
@@ -1848,7 +1866,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `Experimental Plasma Caster`,
             stats: {
@@ -1870,7 +1889,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A1",
             name: `"Eternal Polaris" Mk II Projectile Launching System`,
             stats: {
@@ -1902,7 +1922,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A2",
             name: `"Eternal Polaris" Mk II Projectile Launching System`,
             stats: {
@@ -1924,7 +1945,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A3",
             name: `"Eternal Polaris" Mk II Projectile Launching System TEST`,
             stats: {
@@ -1956,7 +1978,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B1",
             name: `Generic Cannon Platform`,
             stats: {
@@ -1988,7 +2011,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B2",
             name: `Generic Close-In Weapon System`,
             stats: {
@@ -2010,7 +2034,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C1",
             name: `NT UAV Anti-Aircraft System`,
             stats: {
@@ -2034,14 +2059,15 @@ export const shipData: Ship[] = [{
                 alpha: 15,
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C2",
             name: `"Thunderstorm" UAV Shield System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hp: 20250
             },
             subsystems: [{
@@ -2054,14 +2080,15 @@ export const shipData: Ship[] = [{
                 attributes: [`Ship Shielding Support`]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "C3",
             name: `Energy Compensation Armor System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hp: 16200
             },
             subsystems: [{
@@ -2072,7 +2099,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Energy Damage Reduction", "Physical Damage Reduction", "Crit Damage Reduction"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "D1",
             name: `Ion Turret System`,
             stats: {
@@ -2094,7 +2122,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "D2",
             name: `Pulse Turret System`,
             stats: {
@@ -2129,7 +2158,8 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Front",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: `Bow Railgun System`,
             stats: {
@@ -2151,7 +2181,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `Ion Turret System`,
             stats: {
@@ -2173,7 +2204,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A1",
             name: `"Fortress" Battery System A`,
             stats: {
@@ -2215,7 +2247,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A2",
             name: `"Fortress" Battery System B`,
             stats: {
@@ -2247,7 +2280,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A3",
             name: `"Fortress" Battery System F`,
             stats: {
@@ -2279,7 +2313,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B1",
             name: `"Minecart" Projectile Launching Array`,
             stats: {
@@ -2301,7 +2336,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "B2",
             name: `Corvette Dock`,
             stats: {
@@ -2321,14 +2357,15 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/storage.png",
+            type: "known",
+            img: "/weapons/icons/storage.png",
             system: "B3",
             name: `Integrated Damage Control System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hpRecovery: 5454,
                 hp: 19800
             },
@@ -2342,7 +2379,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "C1",
             name: `Distributed Weapon Control System`,
             stats: {
@@ -2360,7 +2398,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Increase Hit Rate"]
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "C2",
             name: `Additional Armor System`,
             stats: {
@@ -2378,7 +2417,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Additional HP Auto-Repair"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "C3",
             name: `Anti-Missile System`,
             stats: {
@@ -2413,7 +2453,8 @@ export const shipData: Ship[] = [{
         weight: 5,
         row: "Middle",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: "Assault Railgun System",
             stats: {
@@ -2435,7 +2476,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `Bow Mounted Battery System`,
             stats: {
@@ -2457,7 +2499,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M3",
             name: `Assault Torpedo System`,
             stats: {
@@ -2479,7 +2522,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Crit"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A1",
             name: `Large Cannon Platform`,
             stats: {
@@ -2511,7 +2555,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A2",
             name: `Railgun Turret Array`,
             stats: {
@@ -2533,7 +2578,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A3",
             name: `Pulse Turret Array`,
             stats: {
@@ -2555,7 +2601,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B1",
             name: `Integrated Projectile Weapon Platform`,
             stats: {
@@ -2577,7 +2624,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "B2",
             name: `Aircraft System`,
             stats: {
@@ -2597,7 +2645,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "B3",
             name: `Area Fire-Control System`,
             stats: {
@@ -2617,7 +2666,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Ship Calibration Support"]
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "C1",
             name: `Additional Armor System`,
             stats: {
@@ -2635,7 +2685,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "C2",
             name: `EM Armor System`,
             stats: {
@@ -2653,7 +2704,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "C3",
             name: "Heavy Defensive Armor System",
             stats: {
@@ -2684,7 +2736,8 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Middle",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: `"Thunderbolt" Bow-Mounted Weapon System`,
             stats: {
@@ -2706,7 +2759,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `"Thunderbolt" Bow-Mounted Projectile Weapon System`,
             stats: {
@@ -2728,7 +2782,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Crit"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M3",
             name: `"Thunderbolt Star" Bow-Mounted High-Energy Weapon System`,
             stats: {
@@ -2750,7 +2805,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A1",
             name: `Rapid-Fire Anti-Ship Weapon System`,
             stats: {
@@ -2772,7 +2828,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "A2",
             name: `Medium Anti-Ship Weapon System`,
             stats: {
@@ -2794,7 +2851,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B1",
             name: "Active Anti-Aircraft System",
             stats: {
@@ -2816,7 +2874,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Support"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B2",
             name: "Range Interception System",
             stats: {
@@ -2838,7 +2897,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Support"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "C1",
             name: "Weapon Coordination Center",
             stats: {
@@ -2856,7 +2916,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Oscillatory Excitation"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "C2",
             name: "Fire-Control Calibration System",
             stats: {
@@ -2874,7 +2935,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Collaborative Calibration"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "D1",
             name: "Accurate Projectile Weapon System",
             stats: {
@@ -2896,7 +2958,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "D2",
             name: "Large Projectile Weapon System",
             stats: {
@@ -2918,7 +2981,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Crit"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "E1",
             name: "Multi-Target Weapon System",
             stats: {
@@ -2940,7 +3004,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "E2",
             name: "Multi-Target Anti-Aircraft System",
             stats: {
@@ -2975,7 +3040,8 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Middle",
         modules: [{
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M1",
             name: "Fortress Bow-Mounted Heavy Cannon System",
             stats: {
@@ -3007,7 +3073,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "M2",
             name: `Fortress Assault Railgun System`,
             stats: {
@@ -3039,7 +3106,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A1",
             name: "Frigates Production System",
             stats: {
@@ -3063,7 +3131,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Increase Production Speed"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A2",
             name: "Corvette Production System",
             stats: {
@@ -3087,7 +3156,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Increase Production Speed"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A3",
             name: "Destroyer Production System",
             stats: {
@@ -3111,7 +3181,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Increase Production Speed"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "B1",
             name: `"Tundra" Interceptor UAV System`,
             stats: {
@@ -3135,7 +3206,8 @@ export const shipData: Ship[] = [{
                 alpha: 15
             }]
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "B2",
             name: `Aircraft Loading System`,
             stats: {
@@ -3155,13 +3227,18 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
             system: "B3",
             unknown: true
         }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
             system: "C1",
             unknown: true
         }, {
-            img: "/weapons/aircraft.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C2",
             name: `Corvette Dock`,
             stats: {
@@ -3181,7 +3258,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/armor.png",
+            type: "known",
+            img: "/weapons/icons/armor.png",
             system: "D1",
             name: `Heavy Additional Armor System`,
             stats: {
@@ -3192,26 +3270,27 @@ export const shipData: Ship[] = [{
                 hp: 18000
             },
             subsystems: [{
-                type: "buff",
+                type: "misc",
                 count: 1,
                 title: `ASX-90`,
                 name: "Heavy Additional Armor",
                 attributes: null
             }]
         }, {
-            img: "/weapons/storage.png",
+            type: "known",
+            img: "/weapons/icons/storage.png",
             system: "D2",
             name: `Nano Automated Maintenance System`,
             stats: {
                 type: "armor",
-                armor: 0,
-                extraHP: 0,
-                energyShield: 0,
+                armor: null,
+                extraHP: null,
+                energyShield: null,
                 hpRecovery: 5169,
                 hp: 18000
             },
             subsystems: [{
-                type: "buff",
+                type: "misc",
                 count: 1,
                 title: `BST-300`,
                 name: `Nano Repair System`,
@@ -3231,7 +3310,8 @@ export const shipData: Ship[] = [{
         weight: 5,
         row: "Back",
         modules: [{
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A1",
             name: "Frigates Production System",
             stats: {
@@ -3249,7 +3329,8 @@ export const shipData: Ship[] = [{
                 attributes: ["Self-holding Capability"]
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A2",
             name: "Corvette Production System",
             stats: {
@@ -3260,14 +3341,15 @@ export const shipData: Ship[] = [{
                 hp: 21500
             },
             subsystems: [{
-                type: "buff",
+                type: "misc",
                 count: 1,
                 title: `XE-1250AG`,
                 name: "Corvette Independent Build Facility",
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "A3",
             name: "Fighter Production System",
             stats: {
@@ -3285,7 +3367,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "B1",
             name: "Warning and Control System",
             stats: {
@@ -3309,7 +3392,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "B2",
             name: "Coordinate Command System",
             stats: {
@@ -3333,7 +3417,8 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
             system: "B3",
             name: "Camoflage System",
             stats: {
@@ -3357,85 +3442,100 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
-            type: "misc",
-            identity: "C1",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
+            system: "C1",
             name: "Engineering Maintenance System",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 22000
             },
-            weapons: [{
-                type: "buff",
+            subsystems: [{
+                type: "misc",
                 count: 1,
                 title: `BSR-200`,
                 name: "Quick Repair Device",
-                attributes: ["Increase Repair Speed: When using the auxiliary ship to conduct repairs, increases the repair speed by 20%"]
+                attributes: ["Increase Repair Speed"]
             }]
         }, {
-            img: "/weapons/storage.png",
-            type: "misc",
-            identity: "C2",
+            type: "known",
+            img: "/weapons/icons/storage.png",
+            system: "C2",
             name: "Strategic Resource Storage System",
-            default: false,
             stats: {
+                type: "armor",
+                armor: null,
+                extraHP: null,
+                energyShield: null,
+                storage: 60000,
                 hp: 22000
             },
-            weapons: [{
-                type: "buff",
+            subsystems: [{
+                type: "misc",
                 count: 1,
                 title: `W-500`,
                 name: "Loading Platform",
-                attributes: ["Increases storage by 60,000"]
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "D1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "D1",
             name: "Aircraft System",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 21500
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBF-255`,
                 name: "Medium Hanger",
                 hanger: "Medium Fighter",
-                capacity: 2
+                capacity: 2,
+                attributes: null
             }]
         }, {
-            img: "/weapons/storage.png",
-            type: "misc",
-            identity: "D2",
+            type: "known",
+            img: "/weapons/icons/storage.png",
+            system: "D2",
             name: "Repair UAV System",
-            default: false,
             stats: {
+                type: "armor",
+                armor: null,
+                extraHP: null,
+                energyShield: null,
+                hpRecovery: 5454,
                 hp: 21500
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CRT-3`,
                 name: "Engineering UAV Maintenance Pod",
                 hanger: "Repair UAV",
                 capacity: 2,
-                attributes: ["5454/min HP recovery"]
+                attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "E1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "E1",
             name: "Area-Defense System",
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 0,
                 antiair: 882,
                 siege: 0,
                 hp: 22000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 3,
                 title: `SM-4x40B`,
@@ -3447,21 +3547,25 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Support"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "E2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "E2",
             name: "Corvette Dock",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 21500
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBC-2000`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }]
         }]
     }, {
@@ -3477,45 +3581,54 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Back",
         modules: [{
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M1",
             name: "Integrated Aircraft Hanger",
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 23850
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-605`,
                 name: "Large Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 5
+                capacity: 5,
+                attributes: null
             }, {
                 type: "hanger",
                 count: 1,
                 title: `CBC-2100`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M2",
             name: "Integrated Aircraft System",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 23850
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-605`,
                 name: "Large Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 5
+                capacity: 5,
+                attributes: null
             }, {
                 type: "hanger",
                 count: 1,
@@ -3523,45 +3636,54 @@ export const shipData: Ship[] = [{
                 name: "Field Support UAV Hanger",
                 hanger: "Tactical UAV",
                 capacity: 5,
-                attributes: ["Damage Type: Projectile", "Prioritized Target: Small Ship", "Damage per Hit: 27", "Attack Against Systems (01: Primary Weapon System, low)"]
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: null,
+                alpha: 27,
+                attributes: ["Attack Against Systems"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M3",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M3",
             name: "Large Aircraft System",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 23850
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-605`,
                 name: "Large Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 5
+                capacity: 5,
+                attributes: null
             }, {
                 type: "hanger",
                 count: 1,
                 title: `CFB-400`,
                 name: "Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A1",
             name: `"Dragoon" Battery System`,
-            default: true,
             stats: {
+                type: "weapon",
                 antiship: 6500,
                 antiair: 297,
                 siege: 619,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 1,
                 title: `MK4-C/SG-3480A "Dragoon"`,
@@ -3583,18 +3705,18 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A2",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A2",
             name: `Anti-Aircraft Missile Platform`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 2868,
                 antiair: 372,
                 siege: 0,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 3,
                 title: `Bm-12x180T`,
@@ -3606,18 +3728,18 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Support"]
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "B1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "B1",
             name: `Missile Defense System`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 1200,
                 antiair: 210,
                 siege: 70,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 1,
                 title: `MK3-SM-6x400B/C "Starfire"`,
@@ -3629,39 +3751,46 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "B2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "B2",
             name: `Corvette Loading System`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 23850
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBC-2100`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "B3",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "B3",
             name: `Info UAV Support Platform`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 23850
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CITA-2`,
                 name: "Field Support UAV Pod",
                 hanger: "Info UAV",
                 capacity: 3,
-                attributes: ["Ship Calibration Support: Increase the Hit Rate of the target ship by 20%"]
+                attributes: ["Ship Calibration Support"]
             }]
         }]
     }, {
@@ -3677,21 +3806,25 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Back",
         modules: [{
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M1",
             name: "Collaborative Hanger I",
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 24500
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBF-280`,
                 name: "Medium Fighter Hanger",
                 hanger: "Medium Fighter",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }, {
                 type: "hanger",
                 count: 3,
@@ -3699,27 +3832,35 @@ export const shipData: Ship[] = [{
                 name: "Cooperative Offensive UAV Platform",
                 hanger: "Cooperative Offensive UAV",
                 capacity: 3,
-                attributes: ["Damage Type: Energy", "Prioritized Target: Aircraft", "Damage per Hit: 140", "Anti-Aircraft Lightweight Ammo", "UAV Cooperation: Each set of aircrafts in the same system comes with a UAV to perform cooperative combat. If any aircraft survives, the UAV and the aircraft(s) will attack the same target together first."]
+                damageType: "Energy",
+                target: "Aircraft",
+                lockonEfficiency: null,
+                alpha: 140,
+                attributes: ["Anti-Aircraft Lightweight Ammo"]
             }]
         }, {
             type: "unknown",
-            identity: "M2"
+            img: "/weapons/icons/unknown.png",
+            system: "M2",
+            unknown: true
         }, {
             type: "unknown",
-            identity: "M3"
+            img: "/weapons/icons/unknown.png",
+            system: "M3",
+            unknown: true
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A1",
             name: `Integrated Battery System`,
-            default: true,
             stats: {
+                type: "weapon",
                 antiship: 10250,
                 antiair: 472,
                 siege: 3815,
                 hp: 26000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `AG-3400A`,
@@ -3741,18 +3882,18 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A2",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A2",
             name: `Experimental Ion Cannon System`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 8857,
                 antiair: 252,
                 siege: 828,
                 hp: 26000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `AI-450T`,
@@ -3775,20 +3916,22 @@ export const shipData: Ship[] = [{
             }]
         }, {
             type: "unknown",
-            identity: "A3"
+            img: "/weapons/icons/unknown.png",
+            system: "A3",
+            unknown: true
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "B1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "B1",
             name: `Anti-Ship Projectile Launching System`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 5640,
                 antiair: 0,
                 siege: 882,
                 hp: 26000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `AM-2x450`,
@@ -3811,19 +3954,29 @@ export const shipData: Ship[] = [{
             }]
         }, {
             type: "unknown",
-            identity: "B2"
+            img: "/weapons/icons/unknown.png",
+            system: "B2",
+            unknown: true
         }, {
             type: "unknown",
-            identity: "B3"
+            img: "/weapons/icons/unknown.png",
+            system: "B3",
+            unknown: true
         }, {
             type: "unknown",
-            identity: "C1"
+            img: "/weapons/icons/unknown.png",
+            system: "C1",
+            unknown: true
         }, {
             type: "unknown",
-            identity: "C2"
+            img: "/weapons/icons/unknown.png",
+            system: "C2",
+            unknown: true
         }, {
             type: "unknown",
-            identity: "C3"
+            img: "/weapons/icons/unknown.png",
+            system: "C3",
+            unknown: true
         }]
     }, {
         name: "Marshal Crux",
@@ -3838,18 +3991,18 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Back",
         modules: [{
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "M1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "M1",
             name: `"White Flashing" Integrated Armory`,
-            default: true,
             stats: {
+                type: "weapon",
                 antiship: 16080,
                 antiair: 691,
                 siege: 1908,
                 hp: 28800
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 1,
                 title: `CI-600T`,
@@ -3871,18 +4024,18 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "M2",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "M2",
             name: `"White Flashing" Integrated Armory`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 13628,
                 antiair: 162,
                 siege: 2275,
                 hp: 28800
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 1,
                 title: `CR-1650`,
@@ -3904,101 +4057,119 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "A1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "A1",
             name: `Integrated Aircraft Hanger`,
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-700`,
                 name: "Large Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 6
+                capacity: 6,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "A2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "A2",
             name: `Corvette Dock`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBC-3200`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 6
+                capacity: 6,
+                attributes: null
             }]
         }, {
-            img: "/weapons/jamming.png",
-            type: "misc",
-            identity: "B1",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
+            system: "B1",
             name: `Additional Energy System`,
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 27000
             },
-            weapons: [{
-                type: "buff",
+            subsystems: [{
+                type: "misc",
                 count: 1,
                 title: `RET-200`,
                 name: "Energy Amplification Device",
-                attributes: ["Increase Aircraft Damage: Increases primary weapon Damage of carried Antonios aircraft by 15%"]
+                attributes: ["Increase Aircraft Damage"]
             }]
         }, {
-            img: "/weapons/jamming.png",
-            type: "misc",
-            identity: "B2",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
+            system: "B2",
             name: `Fire-Control Auxiliary Calibration System`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 27000
             },
-            weapons: [{
-                type: "buff",
+            subsystems: [{
+                type: "misc",
                 count: 1,
                 title: `XGC-200`,
                 name: "Precision Guidance System",
-                attributes: ["Increase Aircraft Hit Rate: Increases primary weapon Hit Rate of carried Antonios aircraft by 15%"]
+                attributes: ["Increase Aircraft Hit Rate"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "C1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "C1",
             name: `Additional Aircraft System`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBF-200`,
                 name: "Medium Hanger",
                 hanger: "Medium Fighter",
-                capacity: 4
+                capacity: 4,
+                attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "C2",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "C2",
             name: `Missile Defense System`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 5200,
                 antiair: 504,
                 siege: 392,
                 hp: 28800
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 4,
                 title: `MK2-CM-4x250A "Storm"`,
@@ -4010,22 +4181,25 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Support"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "C3",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "C3",
             name: `Recon UAV System`,
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 25200
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: "CIT-3",
                 name: `Fire-Control Spotter UAV Hanger`,
                 hanger: "Spotter UAV",
                 capacity: 3,
-                attributes: ["Ship Calibration Support: Increase the Hit Rate of the target ship by 20%"]
+                attributes: ["Ship Calibration Support"]
             }]
         }]
     }, {
@@ -4041,52 +4215,60 @@ export const shipData: Ship[] = [{
         weight: 2,
         row: "Middle",
         modules: [{
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M1",
             name: "Corvette Dock",
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 24750
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBC-3200`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 6
+                capacity: 6,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "M2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "M2",
             name: "Large Aircraft System",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 24750
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-1200`,
                 name: "Large Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 8
+                capacity: 8,
+                attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A1",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A1",
             name: `Integrated Armory`,
-            default: true,
             stats: {
+                type: "weapon",
                 antiship: 9648,
                 antiair: 589,
                 siege: 959,
                 hp: 27000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `BG-2450A`,
@@ -4108,18 +4290,18 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A2",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A2",
             name: `Projectile Weapon Platform`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 8749,
                 antiair: 589,
                 siege: 648,
                 hp: 27000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `MK5-BM-16x180 "Lightning Field"`,
@@ -4141,18 +4323,18 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "A3",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A3",
             name: `Integrated Cannon Platform`,
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 8888,
                 antiair: 1021,
                 siege: 630,
                 hp: 27000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 2,
                 title: `MK3-BM-8x320 "Lightning Field"`,
@@ -4174,89 +4356,104 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            img: "/weapons/jamming.png",
-            type: "misc",
-            identity: "B1",
+            type: "known",
+            img: "/weapons/icons/jamming.png",
+            system: "B1",
             name: "Ship Maintenance System",
-            default: true,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 25200
             },
-            weapons: [{
-                type: "buff",
+            subsystems: [{
+                type: "misc",
                 count: 1,
                 title: `BSY-5000`,
                 name: "Large Docking Jetty",
-                attributes: ["Aircraft Recovery: Aircraft returning to all hangers recover 10% HP"]
+                attributes: ["Aircraft Recovery"]
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "B2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "B2",
             name: "Corvette Loading Platform",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 24750
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CBC-2000`,
                 name: "Corvette Dock",
                 hanger: "Corvette",
-                capacity: 3
+                capacity: 3,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "misc",
-            identity: "C1",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "C1",
             name: "Aircraft Hanger",
-            default: false,
             stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
                 hp: 24750
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CFB-600`,
                 name: "Aircraft Hanger",
                 hanger: "Large Fighter",
-                capacity: 5
+                capacity: 5,
+                attributes: null
             }]
         }, {
-            img: "/weapons/aircraft.png",
-            type: "weapon",
-            identity: "C2",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "C2",
             name: "Siege UAV System",
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 0,
                 antiair: 0,
                 siege: 6652,
                 hp: 24750
             },
-            weapons: [{
+            subsystems: [{
                 type: "hanger",
                 count: 1,
                 title: `CST-6`,
                 name: "Siege UAV Pod",
                 hanger: "Siege UAV",
                 capacity: 4,
-                attributes: ["Prioritized Target: Building", "Damage per Hit: 724"]
+                damageType: "Energy",
+                target: "Building",
+                lockonEfficiency: null,
+                alpha: 720,
+                attributes: null
             }]
         }, {
-            img: "/weapons/cannon.png",
-            type: "weapon",
-            identity: "C3",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "C3",
             name: "Anti-Aircraft Missile Platform",
-            default: false,
             stats: {
+                type: "weapon",
                 antiship: 2618,
                 antiair: 1178,
                 siege: 0,
                 hp: 27000
             },
-            weapons: [{
+            subsystems: [{
                 type: "weapon",
                 count: 1,
                 title: `BM-12x180T`,

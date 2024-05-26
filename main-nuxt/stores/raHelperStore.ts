@@ -1,4 +1,3 @@
-import type { ShipDirection, ShipScope, ShipManufacturer } from "~/utils/shipData";
 
 export const raHelperStore = defineStore("raHelper", () => {
     const manufacturer = ref<ShipManufacturer>("Jupiter Industry");

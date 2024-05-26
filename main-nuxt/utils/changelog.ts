@@ -179,6 +179,9 @@ export const changelog: Changelog[] = [{
     type: "release",
     version: "1.3.0",
     release: "May 20, 2024",
-    notes: ["You can now choose your own colors, intensity, and compression in Color Generator", "Completely overhauled the visuals",
-    "Loading speeds improved tremendously", "Even more major changes behind the scenes"]
+    notes: ["You can now choose your own colors, intensity, and compression in Color Generator", "Completely reworked the design of the website",
+    "Loading speeds improved tremendously", "You can now zoom out and in to your heart's content",
+    "Buttons for navigating between pages is no longer in the header and instead in a new side bar", "Added better route navigation",
+    "You can now freely select ships in Module Library without scrolling through the list", "Changelog and Contributors are now their own pages",
+    "Some more images are now high-quality SVGs", "Even more major changes behind the scenes"]
 }];

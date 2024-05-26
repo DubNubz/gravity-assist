@@ -126,7 +126,7 @@ function rgbToHex (r: number, g: number, b: number) {
         margin: 0;
         flex-wrap: wrap;
         justify-content: center;
-        font-size: 2em;
+        font-size: 1.8em;
     }
 }
 

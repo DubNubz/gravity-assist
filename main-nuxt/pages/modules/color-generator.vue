@@ -176,7 +176,7 @@ async function copyToClipboard () {
 
     let fromLocalStorage: Color[] | null = JSON.parse(localStorage.getItem("recent-colors") as string);
     if (fromLocalStorage) {
-        if (fromLocalStorage.some((obj) => compareObjects(obj, colorObject))) return;
+        if (fromLocalStorage.some((obj) => compareObjectsInArray(obj, colorObject))) return;
         if (fromLocalStorage.length >= 4) fromLocalStorage = fromLocalStorage.slice(1, 4);
 
         fromLocalStorage.push(colorObject);
@@ -229,8 +229,8 @@ async function copyShareLink () {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3em;
-    margin-bottom: 2em;
+    gap: 2.4em;
+    margin-bottom: 1.6em;
 
     .textBox {
       background-color: rgb(60, 60, 60);
@@ -242,15 +242,15 @@ async function copyShareLink () {
       color: white;
       resize: none;
       border-color: #48005e;
-      border-radius: 2em;
-      padding: 1em;
+      border-radius: 1.6em;
+      padding: 0.8em;
       outline-color: #48005e;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       img {
-        width: 5em;
+        width: 4em;
       }
     }
     .textBox::placeholder {
@@ -261,12 +261,12 @@ async function copyShareLink () {
         display: flex;
         width: 75%;
         justify-content: space-around;
-        margin-bottom: 1em;
+        margin-bottom: 0.8em;
 
         .boxButton {
             width: 45%;
-            height: 6em;
-            border-radius: 1.5em;
+            height: 4.8em;
+            border-radius: 1.2em;
             transition: all 0.25s;
             display: flex;
             align-items: center;
@@ -283,8 +283,8 @@ async function copyShareLink () {
             }
           
             img {
-              width: 4.5em;
-              height: 4.5em;
+              width: 3.6em;
+              height: 3.6em;
               background-color: transparent;
             }
         }
@@ -304,15 +304,15 @@ async function copyShareLink () {
 
 .colorPicker {
     background-color: rgb(50, 50, 50);
-    width: 100em;
-    height: 25em;
+    width: 85em;
+    height: 20em;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 3em;
-    border-radius: 4em;
-    padding-left: 7em;
-    padding-right: 7em;
+    margin-top: 2.4em;
+    border-radius: 3.2em;
+    padding-left: 5.6em;
+    padding-right: 5.6em;
     z-index: 5001;
     
     .colorPick {
@@ -328,8 +328,8 @@ async function copyShareLink () {
             align-items: center;
 
             h3 {
-                margin: 0.25em;
-                font-size: 2.5em;
+                margin: 0.2em;
+                font-size: 2em;
             }
         }
     }
@@ -343,7 +343,7 @@ async function copyShareLink () {
         height: 90%;
 
         h3 {
-            font-size: 2.75em;
+            font-size: 2.2em;
             text-align: center;
             margin: 0;
             width: 90%;
@@ -358,14 +358,14 @@ async function copyShareLink () {
 
         button {
             width: 60%;
-            height: 6em;
+            height: 4.8em;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--deepGreen);
             filter: grayscale(0.33);
             transition: all 0.25s;
-            border-radius: 1.5em;
+            border-radius: 1.2em;
         }
 
         .close {
@@ -375,18 +375,18 @@ async function copyShareLink () {
     }
 
     input {
-        width: 12.5em;
-        height: 12.5em;
+        width: 10em;
+        height: 10em;
         padding: 0;
         border: 0;
         background-color: transparent;
         transition: all 0.25s;
     }
     input::-webkit-color-swatch {
-        border-radius: 2em;
+        border-radius: 1.6em;
     }
     input::-moz-color-swatch {
-        border-radius: 2em;
+        border-radius: 1.6em;
     }
     
     img {
@@ -405,21 +405,21 @@ async function copyShareLink () {
 
 .recentColors {
     background-color: rgb(40, 40, 40);
-    width: 100em;
+    width: 85em;
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom-left-radius: 4em;
-    border-bottom-right-radius: 4em;
-    padding-top: 2em;
-    padding-bottom: 3em;
+    border-bottom-left-radius: 3.2em;
+    border-bottom-right-radius: 3.2em;
+    padding-top: 1.6em;
+    padding-bottom: 2.4em;
     z-index: 5000;
 
     h2 {
         margin-top: 0;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.4em;
     }
 
     .recentColorsButtons {
@@ -429,11 +429,11 @@ async function copyShareLink () {
         width: 100%;
 
         button {
-            width: 18em;
-            height: 6em;
+            width: 14.4em;
+            height: 4.8em;
             border-style: solid;
-            border-width: 0.15em;
-            border-radius: 1.5em;
+            border-width: 0.12em;
+            border-radius: 1.2em;
             transition: all 0.25s;
         }
     }
@@ -446,13 +446,13 @@ async function copyShareLink () {
         width: 90%;
 
         button {
-            width: 18em;
-            height: 6em;
+            width: 14.4em;
+            height: 4.8em;
             border-style: solid;
-            border-width: 0.15em;
-            border-radius: 1.5em;
+            border-width: 0.12em;
+            border-radius: 1.2em;
             transition: all 0.25s;
-            margin-bottom: 1em;
+            margin-bottom: 0.8em;
         }
     }
 }
@@ -462,7 +462,7 @@ async function copyShareLink () {
 }
 
 .characterCounter {
-    font-size: 0.85em;
+    font-size: 0.68em;
     margin: 0;
     margin-top: auto;
 }
@@ -471,7 +471,7 @@ async function copyShareLink () {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 7em;
+    margin-bottom: 5.6em;
 
     .sampleText {
         display: flex;
@@ -479,32 +479,32 @@ async function copyShareLink () {
         align-items: center;
         justify-content: center;
         background-color: rgb(35, 35, 35);
-        width: 100em;
-        padding: 2em;
-        border-radius: 4em;
-        height: 20em;
+        width: 85em;
+        padding: 1.6em;
+        border-radius: 3.2em;
+        height: 16em;
 
         h2 {
             margin: 0;
-            margin-bottom: 0.5em;
+            margin-bottom: 0.4em;
         }
     }
 
     .options {
-        margin-top: 3em;
+        margin-top: 2.4em;
         display: flex;
-        width: 100em;
+        width: 85em;
         align-items: center;
         justify-content: center;
-        gap: 5%;
+        gap: 2.5%;
 
         .option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 40%;
-            padding: 3em;
-            border-radius: 3em;
+            width: 50%;
+            padding: 2.4em;
+            border-radius: 2.4em;
             background-color: rgb(35, 35, 35);
 
             h2 {
@@ -520,11 +520,11 @@ async function copyShareLink () {
             }
 
             input[type="number"] {
-                margin-top: 0.75em;
-                font-size: 2em;
+                margin-top: 0.6em;
+                font-size: 1.6em;
                 text-align: center;
-                border-radius: 0.35em;
-                border-width: 0.1em;
+                border-radius: 0.28em;
+                border-width: 0.08em;
                 border-style: solid;
             }
         }
@@ -545,15 +545,15 @@ async function copyShareLink () {
     }
 
     .colorPick input:hover {
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
 
     .recentColors .recentColorsButtons button:hover {
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
 
     .recentColors .presetColorsButtons button:hover {
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
 }
 

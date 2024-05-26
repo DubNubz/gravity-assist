@@ -127,7 +127,7 @@ function getTimeColor (hours: number) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3em;
+    margin-bottom: 2.4em;
     width: 100%;
 
     h3 {
@@ -135,7 +135,7 @@ function getTimeColor (hours: number) {
     }
 
     .sortTitle {
-        font-size: 2.75em;
+        font-size: 2.2em;
     }
 
     .sortOption {
@@ -146,20 +146,20 @@ function getTimeColor (hours: number) {
 
         h3 {
             text-align: center;
-            width: 15em;
+            width: 12em;
             background-color: rgb(55, 55, 55);
-            padding: 0.75em;
-            border-radius: 0.75em;
+            padding: 0.6em;
+            border-radius: 0.6em;
         }
     
         button {
             background-color: rgb(55, 55, 55);
             border: 0;
-            border-radius: 1em;
+            border-radius: 0.8em;
             transition: all 0.25s;
             
             img {
-                width: 6em;
+                width: 4.8em;
                 padding: 0;
             }
         }
@@ -167,7 +167,7 @@ function getTimeColor (hours: number) {
 }
 
 .timeCounter {
-    font-size: 3em;
+    font-size: 2.4em;
     margin: 0;
 }
 

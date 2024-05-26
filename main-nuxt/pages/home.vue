@@ -91,7 +91,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
 .cardHolder {
     display: flex;
-    width: 95vw;
+    width: 120em;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 5em;
@@ -104,9 +104,9 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     align-items: center;
     text-align: center;
     background-color: rgb(45, 45, 45);
-    border-radius: 3em;
-    padding: 3em;
-    width: 50em;
+    border-radius: 2.4em;
+    padding: 2.4em;
+    width: 45em;
     min-height: 40em;
 
     h2 {

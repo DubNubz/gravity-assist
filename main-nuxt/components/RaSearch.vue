@@ -79,13 +79,13 @@ function translateShip (ship: Ship) {
         font-size: var(--h3);
         width: 40%;
         background-color: rgb(55, 55, 55);
-        border-radius: 0.5em;
+        border-radius: 0.4em;
         color: white;
         border-color: #48005e;
         border-style: solid;
-        border-width: 0.05em;
+        border-width: 0.04em;
         text-align: center;
-        height: 2.5em;
+        height: 2em;
     }
     input::placeholder {
         color: white;
@@ -100,7 +100,7 @@ function translateShip (ship: Ship) {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    margin-top: 5em;
+    margin-top: 4em;
     width: 95%;
     gap: 2%;
 
@@ -110,19 +110,20 @@ function translateShip (ship: Ship) {
         align-items: center;
         justify-content: center;
         width: 31%;
-        height: 30em;
-        margin-bottom: 2em;
-        background-color: rgb(55, 55, 55);
-        border-radius: 2em;
+        height: 24em;
+        margin-bottom: 1.6em;
+        background-color: rgb(45, 45, 45);
+        border-radius: 1.6em;
         transition: all 0.25s;
 
         h3 {
             text-align: center;
-            font-size: 3em;
+            font-size: 2.4em;
+            margin-top: 0;
 
             span {
                 color: var(--gold);
-                font-size: 1.25em;
+                font-size: 1em;
             }
         }
 
@@ -135,7 +136,7 @@ function translateShip (ship: Ship) {
 @media (hover: hover) and (pointer: fine) {
     .shipCardHolder {
         .shipCard:hover {
-            background-color: rgb(65, 65, 65);
+            background-color: rgb(70, 70, 70);
         }
     }
 }
