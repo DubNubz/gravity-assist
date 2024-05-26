@@ -112,9 +112,8 @@ watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.mod
 
 onMounted(() => {
     if (![...new Set(foundShip.value?.modules?.map((mod) => mod.system.slice(0, 1)))].includes(modLibraryStore().category)) {
-        modLibraryStore().category = "M";
+        modLibraryStore().category = "A";
     }
-    console.log(foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == modLibraryStore().category).map((mod) => mod.system.slice(1)))
     if (!foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == modLibraryStore().category).map((mod) => mod.system.slice(1)).includes(String(modLibraryStore().mod))) {        
         modLibraryStore().mod = 1;
     }

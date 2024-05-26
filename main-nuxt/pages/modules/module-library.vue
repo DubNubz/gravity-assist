@@ -1,7 +1,7 @@
 <template>
     <div class="holder">
         <div class="navButtonHolder">
-            <button @click="select = !select" :class="{ active: select == true }">
+            <button @click="switchToModules" :class="{ active: select == true }">
                 <img src="/ui/solarSystem.svg" alt="Click to freely browse through all Research Agreement paths">
                 <h3>Ships</h3>
             </button>
@@ -12,7 +12,7 @@
         </div>
 
         <div class="card" :class="{ search: !select }">
-            <ModBrowse v-if="select" @done="select = false" />
+            <ModBrowse v-if="select" @done="switchToModules" />
             <ModSelect v-else />
         </div>
 
@@ -58,6 +58,21 @@ onMounted(() => {
     if (category) modLibraryStore().category = category;
     if (mod) modLibraryStore().mod = Number(mod);
 });
+
+async function switchToModules () {
+    if (!modLibraryStore().ship) return;
+    select.value = !select.value;
+
+    const fromLocalStorage = localStorage.getItem("first-use-mod-library");
+    let counter: number = 0;
+    if (fromLocalStorage) counter = JSON.parse(fromLocalStorage);
+    if (!fromLocalStorage || counter < 5) {
+        await delay(50);
+        const scrollTo = document.querySelector(".boxButton");
+        if (scrollTo) scrollTo.scrollIntoView({ behavior: "smooth" });
+        localStorage.setItem("first-use-mod-library", JSON.stringify(fromLocalStorage ? counter += 1 : 1));
+    }
+}
 
 async function copyShareLink () {
     let link = "";
