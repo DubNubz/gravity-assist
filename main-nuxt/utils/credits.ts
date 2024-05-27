@@ -34,7 +34,7 @@ export const credits: Credit[] = [{
     specific: "Marshal Crux C3, Ediacaran B2"
 }, {
     title: "Feedback",
-    name: ["Black Rangers", "Bullet", "g3t", "HOSTILE"]
+    name: ["Black Rangers", "Bullet", "g3t", "HOSTILE", "Toir"]
 }, {
     title: "Data",
     name: ["NullPointer"]
