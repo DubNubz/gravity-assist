@@ -114,6 +114,43 @@ const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => shi
     }
 }
 
+@media screen and (max-width: 800px) {
+    .shipImg {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
+    .categoryButtons {
+        flex-wrap: wrap;
+        width: 95%;
+
+        button {
+            width: 25svw;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .divider {
+        margin-top: 1em;
+    }
+
+    .moduleButtons {
+        width: 95%;
+        margin-top: 1em;
+
+        button {
+            width: 25svw;
+
+            img {
+                width: 0;
+                height: 0;
+                display: none;
+            }
+        }
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .categoryButtons button:hover {
         background-color: rgb(75, 75, 75);

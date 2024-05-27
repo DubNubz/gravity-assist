@@ -162,6 +162,7 @@ function calculateWeaponFill (stat: number) {
         font-size: 2.2em;
         margin: 0;
         margin-bottom: 0.8em;
+        text-align: center;
 
         span {
             color: var(--darkGray);
@@ -188,7 +189,7 @@ function calculateWeaponFill (stat: number) {
             h3 {
                 margin-top: 0.6em;
                 margin-bottom: 0.6em;
-                width: 4em;
+                width: 3em;
                 text-align: center;
             }
         }
@@ -213,6 +214,16 @@ function calculateWeaponFill (stat: number) {
     h3 {
         margin: 0;
         margin-bottom: 0.2em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .stats {
+        .stat {
+            .statBarOutline {
+                height: 1.95em;
+            }
+        }
     }
 }
 

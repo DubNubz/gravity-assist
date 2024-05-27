@@ -30,6 +30,8 @@
             </div>
         </div>
 
+        <div class="title mobileDiv" style="margin-top: 0.25em; margin-bottom: 0.25em;"></div>
+
         <div class="colorPicker">
             <div class="colorPick">
                 <div class="colorPickTitle">
@@ -47,6 +49,7 @@
                 <button @click="openPresets = !openPresets" :class="{ close: openPresets }">
                     <h3 v-if="!openPresets">Open</h3>
                     <h3 v-else>Close</h3>
+                    <img src="/ui/downArrow.svg" alt="Open">
                 </button>
             </div>
         </div>
@@ -213,6 +216,7 @@ async function copyShareLink () {
 }
 
 .title {
+    text-align: center;
     display: flex;
     justify-content: center;
     width: 100vw;
@@ -366,11 +370,23 @@ async function copyShareLink () {
             filter: grayscale(0.33);
             transition: all 0.25s;
             border-radius: 1.2em;
+
+            h3 {
+                width: 40%;
+            }
+
+            img {
+                width: 25%;
+            }
         }
 
         .close {
             background-color: #ff5050;
             filter: grayscale(0.15);
+
+            img {
+                transform: rotate(180deg);
+            }
         }
     }
 
@@ -526,6 +542,184 @@ async function copyShareLink () {
                 border-radius: 0.28em;
                 border-width: 0.08em;
                 border-style: solid;
+            }
+        }
+    }
+}
+
+.characterCounter {
+    font-size: 0.9em;
+}
+
+.mobileDiv {
+    display: none;
+}
+
+@media screen and (max-width: 1600px) {
+    .boxes {
+        .textBox {
+            width: 21em;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .boxes {
+        flex-direction: column;
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+
+    .colorPicker {
+        width: 60em;
+        padding-left: 2em;
+        padding-right: 2em;
+        flex-direction: column;
+        height: 30em;
+
+        .colorPick {
+            width: 95%;
+            height: 15em;
+        }
+
+        .presetPick {
+            width: 95%;
+            height: 10em;
+        }
+    }
+
+    .recentColors {
+        width: 60em;
+
+        .presetColorsButtons {
+            button {
+                width: 23%;
+            }
+        }
+
+        .recentColorsButtons {
+            button {
+                width: 20%;
+            }
+        }
+    }
+
+    .advanced {
+        .sampleText {
+            width: 60em;
+        }
+
+        .options {
+            width: 60em;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .boxes {
+        .textBox {
+            width: 90svw;
+            padding: 1svw;
+            border-radius: 2svh;
+            min-height: 10em;
+        }
+
+        .buttonDiv {
+            width: 80%;
+            
+            .boxButton {
+                h3 {
+                    display: none;
+                    font-size: 0;
+                }
+            }
+        }
+    }
+
+    .characterCounter {
+        font-size: 0.75em;
+    }
+
+    .colorPicker {
+        width: 90svw;
+        padding-left: 0;
+        padding-right: 0;
+        height: 35em;
+        border-radius: 3svh;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        justify-content: center;
+
+        .colorPick {
+            img {
+                width: 5em;
+            }
+        }
+
+        input {
+            width: 33svw;
+            height: 8em;
+        }
+
+        .presetPick {
+            height: 20em;
+        }
+    }
+
+    .recentColors {
+        width: 90svw;
+
+        .recentColorsButtons {
+            flex-wrap: wrap;
+
+            button {
+                width: 35svw;
+                margin-bottom: 0.5em;
+            }
+        }
+
+        .presetColorsButtons {
+            flex-wrap: wrap;
+
+            button {
+                width: 35svw;
+                margin-bottom: 0.5em;
+            }
+        }
+    }
+
+    .title {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        display: none;
+    }
+
+    .mobileDiv {
+        display: block;
+        width: 100vw;
+        height: 2em;
+        font-size: var(--h2);
+    }
+
+    .advanced {
+        margin-top: 3em;
+
+        .sampleText {
+            display: none;
+            width: 0;
+        }
+
+        .options {
+            flex-direction: column;
+            width: 90svw;
+
+            .option {
+                width: 100%;
+                padding: 1svw;
+                margin-bottom: 2em;
             }
         }
     }

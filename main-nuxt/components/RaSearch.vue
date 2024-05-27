@@ -1,6 +1,6 @@
 <template>
     <div class="outer">
-        <input type="text" v-model="raHelperStore().search" placeholder="Click to start typing to narrow search">
+        <input type="text" v-model="raHelperStore().search" placeholder="Search">
         <div class="shipCardHolder">
             <div v-for="ship in filteredChoices" class="shipCard" @click="translateShip(ship)">
                 <h3>{{ ship.name }} <span>({{ ship.variant }})</span></h3>
@@ -129,6 +129,33 @@ function translateShip (ship: Ship) {
 
         img {
             width: 60%;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .outer {
+        input {
+            width: 70%;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .shipCardHolder {
+        width: 100%;
+
+        .shipCard {
+            width: 45%;
+            border-radius: 2svh;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .shipCardHolder {
+        .shipCard {
+            width: 100%;
         }
     }
 }

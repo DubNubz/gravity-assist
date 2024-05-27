@@ -7,7 +7,7 @@
 
         <div class="cardHolder">
             <LatestChange />
-            <div class="card">
+            <div class="card" id="contact">
                 <h2>Contact Me!</h2>
                 <h3 class="contact"><span>DubNubz</span> (ingame)</h3>
                 <h3 class="contact"><span>@micromidget</span> (Discord)</h3>
@@ -40,7 +40,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70vw;
+    width: 100em;
 
     h3 {
         color: white;
@@ -126,6 +126,54 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     .message {
         font-size: 1.85em;
         margin-bottom: 0;
+    }
+}
+
+#contact {
+    padding-bottom: 4em;
+}
+
+@media screen and (max-width: 1600px) {
+    .description {
+        width: 95em;
+    }
+
+    .cardHolder {
+        width: 95em;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .description {
+        width: 60em;
+    }
+
+    .cardHolder {
+        width: 60em;
+        flex-direction: column;
+
+        .card {
+            min-height: unset;
+            margin-bottom: 2em;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .description {
+        width: 90svw;
+    }
+
+    .cardHolder {
+        width: 95svw;
+
+        .card {
+            width: 85svw;
+            padding: 2svw;
+            max-height: 60svh;
+            overflow-y: scroll;
+            border-radius: 5svh;
+        }
     }
 }
 

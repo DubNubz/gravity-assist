@@ -13,7 +13,9 @@ export function compareObjectsInArray(obj1: Record<any, any>, obj2: Record<any, 
     return Object.keys(obj1).every(key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]);
 }
 
-export function compareObjectsSingle(obj1: Record<any, any>, obj2: Record<any, any>) {
+export function compareObjectsSingle(obj1: Record<any, any> | undefined, obj2: Record<any, any> | undefined) {
+    if (!obj1 || !obj2) return;
+
     if (obj1 === obj2) {
       return true;
     }

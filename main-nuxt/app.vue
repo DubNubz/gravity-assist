@@ -119,7 +119,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10%;
-    filter: grayscale(0.33);
+    background-color: rgb(220, 220, 220);
   
     h3 {
       margin: 0;
@@ -135,9 +135,6 @@ footer {
       background-color: transparent;
     }
   }
-  
-  .creditsButton {background-color: var(--deepYellow)}
-  .loadButton {background-color: #50dcff}
 }
 
 header {
@@ -255,9 +252,69 @@ header {
     }
 }
 
+@media screen and (max-width: 1200px) {
+  footer .footerButtons {
+    width: 60em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    .title {
+      padding-left: 0;
+      padding-right: 0;
+      border-radius: 5svw;
+      gap: 0;
+      height: 8svh;
+      padding: 3svw;
+
+      h1 {
+        display: none;
+        font-size: 0;
+      }
+
+      img {
+        width: 10svh;
+      }
+    }
+  }
+
+  .sideMenu {
+    width: 100svw;
+
+    .sideMenuButton {
+      gap: 3svw;
+
+      img {
+        width: 6svh;
+      }
+
+      h3 {
+        margin-top: 2.5svh;
+        margin-bottoM: 2.5svh;
+      }
+    }
+  }
+
+  footer {
+    .footerButtons {
+      width: 90svw;
+    }
+
+    .linkButton {
+      width: 40%;
+
+      h3 {
+        display: none;
+        font-size: 0;
+      }
+    }
+  } 
+}
+
 @media (hover: hover) and (pointer: fine) {
   .linkButton:hover {
-    filter: grayscale(0);
+    background-color: rgb(255, 255, 255);
   }
 
   .sideMenuButton:hover {

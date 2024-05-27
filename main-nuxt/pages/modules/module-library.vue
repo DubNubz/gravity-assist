@@ -197,6 +197,61 @@ async function copyShareLink () {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .card {
+        width: 60em;
+        padding: 2em;
+    }
+
+    .modStats {
+        width: 62em;
+        padding: 1em;
+    }
+
+    .modCards {
+        width: 60em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navButtonHolder {
+        width: 90svw;
+
+        button {
+            width: 45%;
+            height: 6em;
+            border-radius: 2svh;
+
+            h3 {
+                font-size: 0;
+                width: 0;
+                display: none;
+            }
+        }
+    }
+    
+    .card {
+        width: 90svw;
+        padding: 1svw;
+        border-radius: 2svh;
+    }
+
+    .search {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .modStats {
+        width: 90svw;
+        padding: 1svw;
+        border-radius: 2svh;
+    }
+
+    .modCards {
+        width: 90svw;
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .navButtonHolder button:hover {
         background-color: rgb(55, 55, 55);

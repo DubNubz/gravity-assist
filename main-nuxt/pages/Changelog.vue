@@ -58,4 +58,12 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .card {
+        width: 90svw;
+        padding: 2svw;
+        border-radius: 2svh;
+    }
+}
+
 </style>

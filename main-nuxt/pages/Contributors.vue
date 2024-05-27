@@ -46,6 +46,7 @@ h1 {
     border-radius: 3em;
     width: 50em;
     margin-bottom: 3em;
+    text-align: center;
 
     h3 {
         margin: 0.35em;
@@ -84,6 +85,24 @@ h1 {
     h3 {
         color: var(--cyan);
         margin: 0.35em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .crowdsourceCard {
+        width: 90svw;
+        padding: 2svw;
+        border-radius: 2.5svh;
+    }
+
+    .cardHolder {
+        gap: 3em;
+    }
+
+    .card {
+        width: 90svw;
+        padding: 2svw;
+        border-radius: 2.5svh;
     }
 }
 

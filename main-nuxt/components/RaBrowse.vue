@@ -157,9 +157,13 @@ function getTimeColor (hours: number) {
             border: 0;
             border-radius: 0.8em;
             transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             
             img {
                 width: 4.8em;
+                height: 4.8em;
                 padding: 0;
             }
         }
@@ -169,12 +173,36 @@ function getTimeColor (hours: number) {
 .timeCounter {
     font-size: 2.4em;
     margin: 0;
+    text-align: center;
 }
 
 .red { color: #ff0000; }
 .orange { color: #ffa600; }
 .yellow { color: #ffff00; }
 .green { color: #00ff00; }
+
+@media screen and (max-width: 800px) {
+    .sort {
+        .sortOption {
+            h3 {
+                width: 50svw;
+                padding: 1svw;
+                height: 3em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            button {
+                padding: 0.5svh;
+                img {
+                    width: 5svh;
+                    height: 5svh;
+                }
+            }
+        }
+    }
+}
 
 @media (hover: hover) and (pointer: fine) {
     .sort {

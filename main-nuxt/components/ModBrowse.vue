@@ -105,6 +105,23 @@ function handleClick (ship: Ship) {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .shipCardHolder {
+        .shipCard {
+            width: 49%;
+            height: 17.5em;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .shipCardHolder {
+        .shipCard {
+            width: 100%;
+        }
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .shipCardHolder {
         .shipCard:hover {

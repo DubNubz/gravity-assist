@@ -173,6 +173,7 @@ async function copyShareLink () {
         height: 24em;
         margin-bottom: 2.4em;
         border-radius: 2.4em;
+        text-align: center;
 
         h3 {
             margin: 0.4em;
@@ -221,6 +222,65 @@ async function copyShareLink () {
         width: 3.6em;
         height: 3.6em;
         background-color: transparent;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .resultHolder {
+        width: 60em;
+    }
+
+    .search {
+        width: 60em;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navButtonHolder {
+        width: 90svw;
+
+        button {
+            width: 45%;
+            height: 6em;
+            border-radius: 2svh;
+
+            h3 {
+                font-size: 0;
+                width: 0;
+                display: none;
+            }
+        }
+    }
+
+    .card {
+        width: 90svw;
+        padding: 1svw;
+        border-radius: 2svh;
+    }
+
+    .search {
+        width: 90svw;
+    }
+
+    .resultHolder {
+        width: 90svw;
+        flex-wrap: wrap;
+        gap: 1%;
+
+        .result {
+            width: 45%;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .resultHolder {
+        flex-wrap: nowrap;
+        flex-direction: column;
+
+        .result {
+            width: 100%;
+        }
     }
 }
 
