@@ -40,6 +40,10 @@
             <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
             <h3>Equipment Library</h3>
           </NuxtLink>
+          <NuxtLink to="/modules/fleet-builder" class="sideMenuButton" :class="{ active: route.path == '/modules/fleet-builder' }">
+            <img src="/ui/blueprint.svg" alt="Click to go to the Fleet Builder page">
+            <h3>Fleet Builder</h3>
+          </NuxtLink>
         </div>
       </button>
     </Transition>
@@ -215,6 +219,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-top-right-radius: 3em;
 
   .sideMenuButton {
     color: white;
@@ -281,6 +286,7 @@ header {
 
   .sideMenu {
     width: 100svw;
+    border-top-right-radius: 0;
 
     .sideMenuButton {
       gap: 3svw;

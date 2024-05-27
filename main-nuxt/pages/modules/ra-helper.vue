@@ -16,7 +16,7 @@
             <RaSearch v-else @done="browse = true" />
         </div>
 
-        <button class="boxButton" @click="copyShareLink">
+        <button class="boxButton" @click="copyShareLink" v-if="browse">
             <img src="/ui/alt/whiteShare.svg" alt="Share this tool">
             <h3>Share</h3>
         </button>
