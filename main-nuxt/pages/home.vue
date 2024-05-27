@@ -170,8 +170,6 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
         .card {
             width: 85svw;
             padding: 2svw;
-            max-height: 60svh;
-            overflow-y: scroll;
             border-radius: 5svh;
         }
     }
