@@ -28,7 +28,7 @@
             <img src="/ui/paint.svg" alt="Click to go to the Color Generator page">
             <h3>Color Generator</h3>
           </NuxtLink>
-          <NuxtLink to="/modules/ra-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/ra-helper' }">
+          <NuxtLink to="/modules/research-agreement-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/research-agreement-helper' }">
             <img src="/ui/atom.svg" alt="Click to go to the Research Agreement Helper page">
             <h3>RA Helper</h3>
           </NuxtLink>
@@ -36,7 +36,7 @@
             <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
             <h3>Module Library</h3>
           </NuxtLink>
-          <NuxtLink to="/modules/equipment" class="sideMenuButton" :class="{ active: route.path == '/modules/equipment' }">
+          <NuxtLink to="/modules/equipment-encyclopedia" class="sideMenuButton" :class="{ active: route.path == '/modules/equipment-encyclopedia' }">
             <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
             <h3>Equipment Library</h3>
           </NuxtLink>
