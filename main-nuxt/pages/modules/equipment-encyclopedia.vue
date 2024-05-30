@@ -38,7 +38,7 @@ onMounted(() => {
 
 async function copyShareLink () {
     const name = equipmentStore().current?.displayName.replaceAll(" ", "%20");
-    await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment?name=${name}`);
+    await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia?name=${name}`);
     alert("Link copied!")
 }
 

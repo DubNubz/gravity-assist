@@ -56,9 +56,12 @@ onMounted(() => {
     if (direction) raHelperStore().direction = directions.includes(direction.replaceAll("and", "&") as ShipDirection) ? direction.replaceAll("and", "&") as ShipDirection : "Outstanding Firepower";
     if (scope) raHelperStore().scope = scopes.includes(scope) ? scope : "Projectile Weapon";
     if (name) {
-        raHelperStore().ship = shipData.find((ship) => ship.name == name && ship.variant == variant);
-        browse.value = false;
+        const findShip = shipData.find((ship) => ship.name == name && ship.variant == variant);
         raHelperStore().search = search;
+        if (findShip) {
+            raHelperStore().ship = findShip;
+            translateShip(findShip);
+        }
     }
 });
 
@@ -81,6 +84,42 @@ function highlightSearched (array: Ship[]) {
     return array;
 }
 
+function translateShip (ship: Ship) {
+    raHelperStore().ship = ship;
+    raHelperStore().manufacturer = ship.manufacturer;
+    raHelperStore().scope = ship.scope;
+
+    if (ship.direction.length == 1) {
+        raHelperStore().direction = ship.direction[0];
+        return;
+    }
+
+    let trueDirection: ShipDirection = "Empty";
+    const allPaths: Ship[][] = [];
+    const allChances: number[] = [];
+
+    for (let i in ship.direction) {
+        const path = shipData.filter((shipObj) => [ship.manufacturer, "Empty"].includes(shipObj.manufacturer) &&
+        (ship.direction[i] == "Empty" || shipObj.direction.includes(ship.direction[i])) &&
+        [ship.scope, "Empty"].includes(shipObj.scope));
+
+        allPaths.push(path);
+
+        const shipInPath = path.find((ship2) => ship2.name + ship2.variant == ship.name + ship.variant);
+
+        if (shipInPath) {
+            const chance = Number(((shipInPath.weight / (Object.values(path).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2));
+            allChances.push(chance);
+        }
+    }
+
+    let array = allPaths[allChances.indexOf(Math.max(...allChances))];
+    const shipInArray = array.find((ship2) => ship2.name + ship2.variant == ship.name + ship.variant);
+    if (shipInArray) trueDirection = shipInArray.direction[allChances.indexOf(Math.max(...allChances))];
+
+    raHelperStore().direction = trueDirection;
+}
+
 async function copyShareLink () {
     const ship = raHelperStore().ship;
 
@@ -89,7 +128,7 @@ async function copyShareLink () {
         const variant = ship.variant.replaceAll(" ", "%20");
         const search = raHelperStore().search.replaceAll(" ", "%20");
 
-        await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/ra-helper?name=${name}&variant=${variant}&search=${search}`);
+        await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper?name=${name}&variant=${variant}&search=${search}`);
         alert("Link copied!")
         return;
     }
@@ -98,7 +137,7 @@ async function copyShareLink () {
     const direction = raHelperStore().direction.replaceAll(" ", "%20").replaceAll("&", "and");
     const scope = raHelperStore().scope.replaceAll(" ", "%20");
 
-    await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/ra-helper?manufacturer=${manufacturer}&direction=${direction}&scope=${scope}`);
+    await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper?manufacturer=${manufacturer}&direction=${direction}&scope=${scope}`);
     alert("Link copied!");
 }
 
