@@ -1,8 +1,9 @@
 <template>
   <div class="holder">
-    <head>
+    <Head>
       <link rel="icon" href="/ui/radiant.svg">
-    </head>
+      <Title>{{ (route.name as string).replace("modules-", "").replaceAll("-", " ").replace(/(^\w|\s\w)/g, (match) => match.toUpperCase()) }}</Title>
+    </Head>
 
     <header>
       <div class="menuBurger">
