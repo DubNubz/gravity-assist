@@ -42,6 +42,10 @@ const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == mod
 watch(() => modLibraryStore().ship, () => {
     foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name);
     currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod));
+    useHead({
+        title: `${foundShip.value?.name} - Module Library`,
+        meta: [{ name: "description", content: `Browse through all ${foundShip.value?.modules?.length} modules of ${foundShip.value?.name}!` }]
+    })
 });
 watch(() => modLibraryStore().category, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
 watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
@@ -52,6 +56,13 @@ useHead({
 })
 
 onMounted(() => {
+    if (modLibraryStore().ship) {
+        useHead({
+            title: `${modLibraryStore().ship?.name} - Module Library`,
+            meta: [{ name: "description", content: `Browse through all ${modLibraryStore().ship?.modules?.length} modules of ${modLibraryStore().ship?.name}!` }]
+        })
+    }
+
     const ship = route.query.ship as string;
     const category = route.query.system as string;
     const mod = route.query.module as string;
@@ -59,11 +70,7 @@ onMounted(() => {
     if (ship) {
         modLibraryStore().ship = shipData.find((ship2) => ship2.name == ship);
         select.value = false;
-        useHead({
-            title: `${modLibraryStore().ship?.name} - Module Library`,
-            meta: [{ name: "description", content: `Browse through all ${modLibraryStore().ship?.modules?.length} modules of ${modLibraryStore().ship?.name}!` }]
-        })
-    }
+    };
     if (category) modLibraryStore().category = category;
     if (mod) modLibraryStore().mod = Number(mod);
 });
