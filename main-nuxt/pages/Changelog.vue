@@ -12,6 +12,11 @@
 
 <script setup lang="ts">
 
+useHead({
+    title: "Changelog - Gravity Assist",
+    meta: [{ name: "description", content: "View all changes made to Gravity Assist." }]
+})
+
 </script>
 
 <style lang="scss" scoped>

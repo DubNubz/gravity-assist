@@ -42,9 +42,18 @@ const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == mod
 watch(() => modLibraryStore().ship, () => {
     foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name);
     currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod));
+    useHead({
+        title: `${foundShip.value?.name} - Module Library`,
+        meta: [{ name: "description", content: `Browse through all ${foundShip.value?.modules?.length} modules of ${foundShip.value?.name}!` }]
+    })
 });
 watch(() => modLibraryStore().category, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
 watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
+
+useHead({
+    title: "Module Library",
+    meta: [{ name: "description", content: "Browse through all modules available on all ships in Infinite Lagrange!" }]
+})
 
 onMounted(() => {
     const ship = route.query.ship as string;

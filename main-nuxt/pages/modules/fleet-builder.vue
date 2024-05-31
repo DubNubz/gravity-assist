@@ -6,6 +6,11 @@
 
 <script setup lang="ts">
 
+useHead({
+    title: "Fleet Builder",
+    meta: [{ name: "description", content: "Create and design the fleet of your dreams using preset archetypes, or from your own imagination!" }]
+})
+
 </script>
 
 <style scoped>

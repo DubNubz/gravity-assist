@@ -44,6 +44,11 @@ watch(() => raHelperStore().manufacturer, () => refilterData());
 watch(() => raHelperStore().direction, () => refilterData());
 watch(() => raHelperStore().scope, () => refilterData());
 
+useHead({
+    title: "Research Agreement Helper",
+    meta: [{ name: "description", content: "Browse through all possible paths available in Research Agreements to find the one that best suits your needs!" }]
+})
+
 onMounted(() => {
     const manufacturer = route.query.manufacturer as ShipManufacturer;
     const direction = route.query.direction as string;

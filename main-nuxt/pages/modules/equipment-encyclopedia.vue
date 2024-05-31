@@ -29,7 +29,18 @@
 const openSelect = ref(true);
 const route = useRoute();
 
-watch(() => equipmentStore().current, () => openSelect.value = false);
+watch(() => equipmentStore().current, () => {
+    openSelect.value = false;
+    useHead({
+        title: `${equipmentStore().current?.displayName} - Equipment Encyclopedia`,
+        meta: [{ name: "description", content: `View all stats and effects of ${equipmentStore().current?.displayName}!` }]
+    })
+});
+
+useHead({
+    title: "Equipment Encyclopedia",
+    meta: [{ name: "description", content: "Browse through all equipment and technical blueprints and their stats in Infinite Lagrange." }]
+})
 
 onMounted(() => {
     const name = route.query.name as string;

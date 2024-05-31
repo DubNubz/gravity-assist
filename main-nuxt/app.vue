@@ -1,10 +1,5 @@
 <template>
   <div class="holder">
-    <Head>
-      <link rel="icon" href="/ui/radiant.svg">
-      <Title>{{ (route.name as string).replace("modules-", "").replaceAll("-", " ").replace(/(^\w|\s\w)/g, (match) => match.toUpperCase()) }}</Title>
-    </Head>
-
     <header>
       <div class="menuBurger">
         <button @click="showSideMenu = !showSideMenu">

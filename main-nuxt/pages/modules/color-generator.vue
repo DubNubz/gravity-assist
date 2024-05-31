@@ -108,6 +108,11 @@ const route = useRoute();
 const openPresets = ref(false);
 const recentColors = ref<Color[]>([]);
 
+useHead({
+    title: "Color Generator",
+    meta: [{ name: "description", content: "Easily create, copy, and share cool gradients that can be used in Infinite Lagrange!" }]
+})
+
 onMounted(() => {
     const lastColors = localStorage.getItem("recent-colors");
     if (lastColors) recentColors.value = JSON.parse(lastColors);

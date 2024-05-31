@@ -23,6 +23,10 @@
 
 import { getRandomIntInclusive } from '#imports';
 
+useHead({
+    title: "Gravity Assist"
+})
+
 const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
 </script>

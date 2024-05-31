@@ -18,6 +18,11 @@
 
 <script setup lang="ts">
 
+useHead({
+    title: "Contributors - Gravity Assist",
+    meta: [{ name: "description", content: "View a list of all contributors that have helped shape Gravity Assist!" }]
+})
+
 </script>
 
 <style lang="scss" scoped>
