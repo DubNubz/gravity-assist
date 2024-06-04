@@ -3915,10 +3915,38 @@ export const shipData: Ship[] = [{
                 attributes: ["Anti-Aircraft Counterattack"]
             }]
         }, {
-            type: "unknown",
+            type: "known",
             img: "/weapons/icons/unknown.png",
             system: "A3",
-            unknown: true
+            name: `Pulse Anti-Aircraft System`,
+            stats: {
+                type: "weapon",
+                antiship: 3600,
+                antiair: 1370,
+                siege: 0,
+                hp: 26000
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 3,
+                title: `AP-2x180`,
+                name: "Dual-Fire Pulse Cannon",
+                damageType: "Energy",
+                target: "Aircraft",
+                lockonEfficiency: 45,
+                alpha: 40,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }, {
+                type: "weapon",
+                count: 3,
+                title: `AP-140B`,
+                name: "Rapid-Fire Anti-Aircraft Pulse Cannon",
+                damageType: "Energy",
+                target: "Aircraft",
+                lockonEfficiency: 45,
+                alpha: 20,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }]
         }, {
             type: "known",
             img: "/weapons/icons/cannon.png",

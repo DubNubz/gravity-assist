@@ -184,4 +184,9 @@ export const changelog: Changelog[] = [{
     "Buttons for navigating between pages is no longer in the header and instead in a new side bar", "Added better route navigation",
     "You can now freely select ships in Module Library without scrolling through the list", "Changelog and Contributors are now their own pages",
     "Some more images are now high-quality SVGs", "Even more major changes behind the scenes"]
+}, {
+    type: "release",
+    version: "1.3.0.1",
+    release: "June 3, 2024",
+    notes: ["Added Eternal Heavens A3"]
 }];
