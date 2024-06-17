@@ -282,7 +282,7 @@ async function copyShareLink () {
 
         .result {
             width: 45%;
-            height: 18em;
+            height: 20em;
         }
     }
 

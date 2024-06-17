@@ -116,6 +116,7 @@ function translateShip (ship: Ship) {
         margin-bottom: 2.4em;
         border-radius: 2.4em;
         text-align: center;
+        transition: all 0.25s;
 
         h3 {
             margin: 0;
