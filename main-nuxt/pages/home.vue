@@ -11,9 +11,9 @@
                 <h2>Contact Me!</h2>
                 <h3 class="contact"><span>DubNubz</span> (ingame)</h3>
                 <h3 class="contact"><span>@micromidget</span> (Discord)</h3>
-                <h3 class="message">All module information is crowdsourced.</h3>
-                <h3 class="message">If you'd like to contribute, PM/DM me!</h3>
-                <h3 class="message">All contributions, suggestions, and feedback are appreciated!</h3>
+                <p class="message">All module information is crowdsourced.</p>
+                <p class="message">If you'd like to contribute, PM/DM me!</p>
+                <p class="message">All contributions, suggestions, and feedback are appreciated!</p>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
         span {
             color: var(--gold);
-            font-size: 0.75em;
+            font-size: 0.9em;
         }
     }
 }

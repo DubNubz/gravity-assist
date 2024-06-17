@@ -3,11 +3,11 @@
         <h2 v-if="['bugifx', 'minor release'].includes(mostRecentVersion.type)">Version <span>{{ getLatestChanges() }} - {{ mostRecentVersion.version }}</span></h2>
         <h2 v-else>Version <span>{{ mostRecentVersion.version }}</span></h2>
 
-        <h3>Latest Release: <span>{{ mostRecentVersion.release }}</span></h3>
+        <h3 style="margin-top: 0.4em;">Latest Release: <span>{{ mostRecentVersion.release }}</span></h3>
 
         <div class="changeNotes">
-            <h3 v-for="change in getNotes().slice(0, 5)">► {{ change }}<span v-if="change != getNotes()[getNotes().length - 1]">,</span></h3>
-            <h3 v-if="getNotes().length > 5" style="color: var(--darkGray)">...and more!</h3>
+            <p v-for="change in getNotes().slice(0, 5)">► {{ change }}<span v-if="change != getNotes()[getNotes().length - 1]">,</span></p>
+            <p v-if="getNotes().length > 5" style="color: var(--darkGray)">...and more!</p>
         </div>
     </div>
 </template>
@@ -77,8 +77,10 @@ function getNotes () {
     }
 
     .changeNotes {
-        h3 {
+        h3, p {
             font-size: 1.85em;
+            margin-top: 0;
+            margin-bottom: 0.5em;
 
             span {
                 color: white;

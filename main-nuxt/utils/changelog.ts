@@ -185,7 +185,7 @@ export const changelog: Changelog[] = [{
     "You can now freely select ships in Module Library without scrolling through the list", "Changelog and Contributors are now their own pages",
     "Some more images are now high-quality SVGs", "Even more major changes behind the scenes"]
 }, {
-    type: "release",
+    type: "minor release",
     version: "1.3.0.1",
     release: "June 3, 2024",
     notes: ["Added Eternal Heavens A3"]
@@ -194,5 +194,6 @@ export const changelog: Changelog[] = [{
     version: "1.3.1",
     release: "June 17, 2024",
     notes: ["Changed the primary font used on mobile devices", "Edited attribute descriptions of recently reworked attributes", 
-    "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices"]
+    "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices",
+    "Fixed a bug where share links would not work in some cases", "Changed the contents of the root page", "Changed the display of the cards on the home page"]
 }];
