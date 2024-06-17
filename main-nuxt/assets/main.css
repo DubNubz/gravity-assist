@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
@@ -46,6 +47,7 @@ body {
 h1 {font-size: var(--h1)}
 h2 {font-size: var(--h2)}
 h3 {font-size: var(--h3)}
+h4 {font-size: var(--h4)}
 p {font-size: var(--p)}
 #text {font-size: var(--standard)}
 
@@ -68,22 +70,18 @@ button, a, input, textarea {
   text-decoration: none;
 }
 
-input {
-  font-family: 'Kanit', sans-serif;
-  color: black;
-}
-
 @media screen and (max-width: 1200px) {
   h1 {font-size: 4.15em}
   h2 {font-size: 2.65em}
   h3 {font-size: 1.65em}
+  h4 {font-size: 1.2em}
 }
 
 @media (pointer: coarse) {
   body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Rubik", sans-serif;
   }
   button, a, input, textarea {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Rubik", sans-serif;
   }
 }

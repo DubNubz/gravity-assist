@@ -24,6 +24,7 @@
         <div class="resultHolder" v-if="browse">
             <div class="result" v-for="ship in data" :class="{ searched: raHelperStore().ship && ship == raHelperStore().ship }">
                 <h3>{{ship.name}} <span>({{ ship.variant }})</span></h3>
+                <h4>{{ ship.variant_name }}</h4>
                 <img :src="ship.img" :alt="'Image of ' + ship.name">
                 <h3>{{ ((ship.weight / (Object.values(data).reduce((acc, item) => acc + item.weight, 0))) * 100).toFixed(2) }}%</h3>
             </div>
@@ -220,12 +221,18 @@ async function copyShareLink () {
         text-align: center;
 
         h3 {
-            margin: 0.4em;
+            margin: 0;
 
             span {
                 color: var(--gold);
                 font-size: 1em;
             }
+        }
+
+        h4 {
+            color: var(--normalText);
+            margin-top: 0;
+            margin-bottom: 0.4em;
         }
 
         img {
@@ -272,6 +279,11 @@ async function copyShareLink () {
 @media screen and (max-width: 1200px) {
     .resultHolder {
         width: 60em;
+
+        .result {
+            width: 45%;
+            height: 18em;
+        }
     }
 
     .search {
@@ -313,6 +325,7 @@ async function copyShareLink () {
 
         .result {
             width: 45%;
+            height: 18em;
         }
     }
 }
@@ -323,6 +336,7 @@ async function copyShareLink () {
         flex-direction: column;
 
         .result {
+            height: 20em;
             width: 100%;
         }
     }

@@ -4,6 +4,7 @@
         <div class="shipCardHolder">
             <div v-for="ship in filteredChoices" class="shipCard" @click="translateShip(ship)">
                 <h3>{{ ship.name }} <span>({{ ship.variant }})</span></h3>
+                <h4>{{ ship.variant_name }}</h4>
                 <img :src="ship.img" :alt="'An image of the ship ' + ship.name">
             </div>
         </div>
@@ -105,26 +106,30 @@ function translateShip (ship: Ship) {
     gap: 2%;
 
     .shipCard {
+        width: 30%;
+        background-color: rgb(45, 45, 45);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 31%;
         height: 24em;
-        margin-bottom: 1.6em;
-        background-color: rgb(45, 45, 45);
-        border-radius: 1.6em;
-        transition: all 0.25s;
+        margin-bottom: 2.4em;
+        border-radius: 2.4em;
+        text-align: center;
 
         h3 {
-            text-align: center;
-            font-size: 2.4em;
-            margin-top: 0;
+            margin: 0;
 
             span {
                 color: var(--gold);
                 font-size: 1em;
             }
+        }
+
+        h4 {
+            color: var(--normalText);
+            margin-top: 0;
+            margin-bottom: 0.4em;
         }
 
         img {
@@ -139,6 +144,13 @@ function translateShip (ship: Ship) {
             width: 70%;
         }
     }
+
+    .shipCardHolder {
+        .shipCard {
+            width: 45%;
+            height: 18em;
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -147,6 +159,7 @@ function translateShip (ship: Ship) {
 
         .shipCard {
             width: 45%;
+            height: 16em;
             border-radius: 2svh;
         }
     }
@@ -155,6 +168,7 @@ function translateShip (ship: Ship) {
 @media screen and (max-width: 550px) {
     .shipCardHolder {
         .shipCard {
+            height: 20em;
             width: 100%;
         }
     }

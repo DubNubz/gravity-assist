@@ -189,4 +189,10 @@ export const changelog: Changelog[] = [{
     version: "1.3.0.1",
     release: "June 3, 2024",
     notes: ["Added Eternal Heavens A3"]
+}, {
+    type: "release",
+    version: "1.3.1",
+    release: "June 17, 2024",
+    notes: ["Changed the primary font used on mobile devices", "Edited attribute descriptions of recently reworked attributes", 
+    "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices"]
 }];

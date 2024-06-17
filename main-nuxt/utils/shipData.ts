@@ -5,14 +5,15 @@ export type ShipDirection = "Outstanding Firepower" | "Sustained Combat" | "Stra
 
 export type ShipScope = "Direct-Fire Weapon" | "Projectile Weapon" | "Empty";
 
-export type Attribute = "Interception Capability" | "Crit" | "Anti-Aircraft Counterattack" | "Anti-Aircraft Support" | 
-"Anti-Aircraft Special Ammo" | "Anti-Aircraft Lightweight Ammo" | "Anti-Aircraft Cycle" | "Anti-Aircraft High-Speed Strike" | 
-"Anti-Aircraft Critical Strike" | "Increase Energy Weapon Damage" | "Ship Calibration Support" | "Reduce System Crit Damage Taken" | 
-"Ship Shielding Support" | "Energy Damage Reduction" | "Physical Damage Reduction" | "Crit Damage Reduction" | "Increase Hit Rate" | 
-"Additional HP Auto-Repair" | "Reduce Evasion" | "Reduce Hit Rate" | "Oscillatory Excitation" | "Collaborative Calibration" | 
-"Self-holding Capability" | "Increase Production Speed" | "Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | 
-"Increase Back-Row Missile Hit Rate" | "Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | 
-"Increase Aircraft Damage" | "Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems";
+export type Attribute = "Interception Capability" | "Interception Capability (Fleet)" | "Crit" | "Anti-Aircraft Counterattack" |
+"Anti-Aircraft Support" | "Anti-Aircraft Special Ammo" | "Anti-Aircraft Lightweight Ammo" | "Anti-Aircraft Cycle" |
+"Anti-Aircraft High-Speed Strike" |  "Anti-Aircraft Critical Strike" | "Increase Energy Weapon Damage" | "Ship Calibration Support" |
+"Reduce System Crit Damage Taken" | "Ship Shielding Support" | "Energy Damage Reduction" | "Physical Damage Reduction" |
+"Crit Damage Reduction" | "Increase Hit Rate" | "Additional HP Auto-Repair" | "Reduce Evasion" | "Reduce Hit Rate" |
+"Oscillatory Excitation" | "Collaborative Calibration" | "Self-holding Capability" | "Increase Production Speed" |
+"Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | "Increase Back-Row Missile Hit Rate" |
+"Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | "Increase Aircraft Damage" |
+"Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems";
 
 export type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette";
 
@@ -114,10 +115,11 @@ export type Ship = {
 }
 
 export const attributes: Record<Attribute, string> = {
-    "Interception Capability": "Has a chance to intercept missiles or torpedoes",
+    "Interception Capability": "Has a chance to intercept missiles or torpedoes that target friendly ship in the same row",
+    "Interception Capability (Fleet)": "Has a chance to intercept missiles or torpedoes that target any friendly ships in the fleet",
     "Crit": "Has a chance to deal additional Crit damage to the target",
-    "Anti-Aircraft Counterattack": "Can counterattack enemy aircraft that target this ship",
-    "Anti-Aircraft Support": "Can attack enemy aircraft that target allied ships in this ship's row",
+    "Anti-Aircraft Counterattack": "When not under attack by aerial targets, it can strike at opposing air targets targetting same-row friendly ships. Can quickly counterattack aerial targets that strike this ship. During the counterattack, increases Hit Rate by an additional amount.",
+    "Anti-Aircraft Support": "Can provide anti-aircraft support to all friendly ships",
     "Anti-Aircraft Special Ammo": "Switches to Special Ammo when striking an aircraft target, increasing the Damage Per Hit by an additional amount",
     "Anti-Aircraft Lightweight Ammo": "Switches to Lightweight Ammo to trade for mobility when striking an aircraft, reducing the Damage Per hit by an additional amount",
     "Anti-Aircraft Cycle": "The weapon's operating efficiency is increased when striking an aircraft target, reducing the CD by an additional amount",
@@ -2437,7 +2439,7 @@ export const shipData: Ship[] = [{
                 target: "Aircraft",
                 lockonEfficiency: null,
                 alpha: 10,
-                attributes: ["Interception Capability", "Anti-Aircraft Special Ammo", "Anti-Aircraft Support"]
+                attributes: ["Interception Capability (Fleet)", "Anti-Aircraft Special Ammo", "Anti-Aircraft Support"]
             }]
         }]
     }, {
