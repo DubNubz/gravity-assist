@@ -159,6 +159,7 @@ function determineBorder () {
 }
 
 function changeColor (color: Color) {
+    openPresets.value = false;
     colorGeneratorStore().color1 = color.color1;
     colorGeneratorStore().color2 = color.color2;
     colorGeneratorStore().intensity = color.intensity;

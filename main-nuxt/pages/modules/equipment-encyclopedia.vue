@@ -8,7 +8,7 @@
 
         <Transition name="selectMenu">
             <div class="select" v-if="openSelect">
-                <EquipmentBrowse />
+                <EquipmentBrowse @select="openSelect = false" />
             </div>
         </Transition>
 
@@ -30,7 +30,6 @@ const openSelect = ref(true);
 const route = useRoute();
 
 watch(() => equipmentStore().current, () => {
-    openSelect.value = false;
     useHead({
         title: `${equipmentStore().current?.displayName} - Equipment Encyclopedia`,
         meta: [{ name: "description", content: `View all stats and effects of ${equipmentStore().current?.displayName}!` }]

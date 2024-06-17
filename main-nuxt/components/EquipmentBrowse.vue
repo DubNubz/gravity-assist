@@ -17,7 +17,7 @@
     </div>
 
     <div class="outer">
-        <div class="equipmentCard" v-for="equipment in filteredData" @click="equipmentStore().current = equipment"
+        <div class="equipmentCard" v-for="equipment in filteredData" @click="selectItem(equipment)"
         :class="{ active: compareObjectsSingle(equipmentStore().current, equipment) }">
             <div class="content">
                 <img :src="equipment.displayImg" :alt="'Image of ' + equipment.displayName" :class="{ bpImg: equipment.type == 'Technical Blueprint' }">
@@ -37,6 +37,8 @@ const filterByBlueprint = ref(false);
 const filterButton = ref(equipmentData);
 const filteredData = ref(filterButton.value);
 
+const emit = defineEmits(["select"])
+
 watch(() => equipmentStore().search, () => autocomplete());
 
 onMounted(() => {
@@ -50,6 +52,11 @@ onMounted(() => {
 function autocomplete () {
     if (equipmentStore().search != "") filteredData.value = [...filterButton.value].filter((item) => item.displayName.toLowerCase().includes(equipmentStore().search.toLowerCase()));
     else filteredData.value = filterButton.value;
+}
+
+function selectItem (equipment: Equipment | TechnicalBlueprint) {
+    equipmentStore().current = equipment;
+    emit("select");
 }
 
 function switchFilter (type: 'Equipment' | 'Blueprint') {
