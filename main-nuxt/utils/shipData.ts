@@ -118,7 +118,7 @@ export const attributes: Record<Attribute, string> = {
     "Interception Capability": "Has a chance to intercept missiles or torpedoes that target friendly ship in the same row",
     "Interception Capability (Fleet)": "Has a chance to intercept missiles or torpedoes that target any friendly ships in the fleet",
     "Crit": "Has a chance to deal additional Crit damage to the target",
-    "Anti-Aircraft Counterattack": "When not under attack by aerial targets, it can strike at opposing air targets targetting same-row friendly ships. Can quickly counterattack aerial targets that strike this ship. During the counterattack, increases Hit Rate by an additional amount.",
+    "Anti-Aircraft Counterattack": "When not under attack by aerial targets, it can strike at opposing air targets targetting same-row friendly ships. Can quickly counterattack aerial targets that strike this ship. During the counterattack, increases Hit Rate by an additional amount",
     "Anti-Aircraft Support": "Can provide anti-aircraft support to all friendly ships",
     "Anti-Aircraft Special Ammo": "Switches to Special Ammo when striking an aircraft target, increasing the Damage Per Hit by an additional amount",
     "Anti-Aircraft Lightweight Ammo": "Switches to Lightweight Ammo to trade for mobility when striking an aircraft, reducing the Damage Per hit by an additional amount",
