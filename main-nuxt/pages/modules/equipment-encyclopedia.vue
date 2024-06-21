@@ -43,11 +43,11 @@ useHead({
 
 onMounted(() => {
     const name = route.query.name as string;
-    if (name) equipmentStore().current = equipmentData.find((equipment) => equipment.displayName == name.replaceAll("ヅ", "&"));
+    if (name) equipmentStore().current = equipmentData.find((equipment) => equipment.displayName == name.replaceAll("%26", "&"));
 });
 
 async function copyShareLink () {
-    const name = equipmentStore().current?.displayName.replaceAll(" ", "%20").replaceAll("&", "ヅ");
+    const name = equipmentStore().current?.displayName.replaceAll(" ", "%20").replaceAll("&", "%26");
     await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia?name=${name}`);
     alert("Link copied!")
 }
