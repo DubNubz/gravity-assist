@@ -3983,10 +3983,38 @@ export const shipData: Ship[] = [{
                 attributes: null
             }]
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B2",
-            unknown: true
+            name: `Anti-Missile Defense System`,
+            stats: {
+                type: "weapon",
+                antiship: 1104,
+                antiair: 257,
+                siege: 225,
+                hp: 26000
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `AM-3x250`,
+                name: `Triple-Fire Anti-Ship Missile Launcher`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: null,
+                alpha: 145,
+                attributes: null
+            }, {
+                type: "weapon",
+                count: 2,
+                title: `AM-12x100C`,
+                name: `Interception Missile Launcher Array`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 35,
+                attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
+            }]
         }, {
             type: "unknown",
             img: "/weapons/icons/unknown.png",

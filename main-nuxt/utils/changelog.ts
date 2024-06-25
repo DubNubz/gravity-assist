@@ -197,4 +197,9 @@ export const changelog: Changelog[] = [{
     "Added variant names to ship cards in RA Helper", "Changed the way RA Helper cards are displayed on mobile devices", 
     "Fixed a bug where share links would not work in some cases", "Changed the contents of the root page", "Changed the display of the cards on the home page", 
     "Selecting a preset gradient in Color Generator will now close the dropdown", "Selecting an already selected equipment will now close the dropdown"]
+}, {
+    type: "minor release",
+    version: "1.3.1.1",
+    release: "June 25, 2024",
+    notes: ["Added Eternal Heavens B2"]
 }];

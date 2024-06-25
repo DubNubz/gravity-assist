@@ -37,6 +37,10 @@ export const credits: Credit[] = [{
     name: "Ultix",
     specific: "Eternal Heavens A3"
 }, {
+    title: "Module Crowdsourcing",
+    name: "Somnambulist",
+    specific: "Eternal Heavens B2"
+}, {
     title: "Feedback",
     name: ["Black Rangers", "Bullet", "g3t", "HOSTILE", "Toir"]
 }, {
