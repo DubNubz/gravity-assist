@@ -128,7 +128,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     }
 
     .message {
-        font-size: 1.85em;
+        font-size: 1.65em;
         margin-bottom: 0;
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <h2 v-if="['bugifx', 'minor release'].includes(mostRecentVersion.type)">Version <span>{{ getLatestChanges() }} - {{ mostRecentVersion.version }}</span></h2>
+        <h2 v-if="['bugfix', 'minor release'].includes(mostRecentVersion.type)">Version <span>{{ getLatestChanges() }} - {{ mostRecentVersion.version }}</span></h2>
         <h2 v-else>Version <span>{{ mostRecentVersion.version }}</span></h2>
 
         <h3 style="margin-top: 0.4em;">Latest Release: <span>{{ mostRecentVersion.release }}</span></h3>
@@ -22,7 +22,7 @@ const latestVersionIndex = ref(0);
 function getLatestChanges () {
     let counter = 1;
 
-    while (changelog.length < counter) {
+    while (changelog.length > counter) {
         counter++;
         const increment = changelog.length - counter;
 
@@ -78,7 +78,7 @@ function getNotes () {
 
     .changeNotes {
         h3, p {
-            font-size: 1.85em;
+            font-size: 1.65em;
             margin-top: 0;
             margin-bottom: 0.5em;
 

@@ -202,4 +202,9 @@ export const changelog: Changelog[] = [{
     version: "1.3.1.1",
     release: "June 25, 2024",
     notes: ["Added Eternal Heavens B2"]
+}, {
+    type: "bugfix",
+    version: "1.3.1.2",
+    release: "June 29, 2024",
+    notes: ["Fixed the latest changes card not showing previous changes"]
 }];
