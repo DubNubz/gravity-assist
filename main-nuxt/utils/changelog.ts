@@ -207,4 +207,9 @@ export const changelog: Changelog[] = [{
     version: "1.3.1.2",
     release: "June 29, 2024",
     notes: ["Fixed the latest changes card not showing previous changes"]
+}, {
+    type: "minor release",
+    version: "1.3.1.3",
+    release: "July 1, 2024",
+    notes: ["Added preloading for images in Module Library"]
 }];

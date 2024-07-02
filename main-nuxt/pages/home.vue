@@ -21,11 +21,9 @@
 
 <script setup lang="ts">
 
-import { getRandomIntInclusive } from '#imports';
-
-useHead({
+useSeoMeta({
     title: "Gravity Assist"
-})
+});
 
 const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 

@@ -70,6 +70,63 @@
 const route = useRoute();
 const showSideMenu = ref(false);
 
+useSeoMeta({
+    colorScheme: "dark",
+    ogImage: "/ui/radiant.svg"
+});
+
+useHead({
+  link: [{
+    rel: "preload",
+    as: "image",
+    href: "/ships/constantineTheGreat.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/eternalStorm.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/spearOfUranus.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/st59.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/thunderboltStar.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/ediacaran.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/fsv830.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/cv3000.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/eternalHeavens.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/marshalCrux.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/solarWhale.png"
+  }, {
+    rel: "preload",
+    as: "image",
+    href: "/ships/eternalStorm.png"
+  }]
+});
+
 </script>
 
 <style lang="scss" scoped>

@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
 
-useHead({
+useSeoMeta({
     title: "Contributors - Gravity Assist",
-    meta: [{ name: "description", content: "View a list of all contributors that have helped shape Gravity Assist!" }]
+    description: "View a list of all contributors that have helped shape Gravity Assist!"
 })
 
 </script>

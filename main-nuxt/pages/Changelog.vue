@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 
-useHead({
+useSeoMeta({
     title: "Changelog - Gravity Assist",
-    meta: [{ name: "description", content: "View all changes made to Gravity Assist." }]
-})
+    description: "View all changes made to Gravity Assist."
+});
 
 </script>
 

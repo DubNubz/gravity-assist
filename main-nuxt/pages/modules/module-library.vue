@@ -52,17 +52,91 @@ watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.mod
 
 useHead({
     title: "Module Library",
-    meta: [{ name: "description", content: "Browse through all modules available on all ships in Infinite Lagrange!" }]
-})
+    meta: [{ name: "description", content: "Browse through all modules available on all ships in Infinite Lagrange!" }],
+    link: [{
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/aircraft.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/armor.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/cannon.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/command.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/jamming.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/speed.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/storage.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/icons/unknown.png"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/antiaircraft.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/antiship.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/armor.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/energyShield.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/hp.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/repair.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/siege.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/stats/storage.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/types/alpha.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/types/damageType.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/types/lockon.svg"
+    }, {
+        rel: "preload",
+        as: "image",
+        href: "/weapons/types/target.svg"
+    }]
+});
 
 onMounted(() => {
-    if (modLibraryStore().ship) {
-        useHead({
-            title: `${modLibraryStore().ship?.name} - Module Library`,
-            meta: [{ name: "description", content: `Browse through all ${modLibraryStore().ship?.modules?.length} modules of ${modLibraryStore().ship?.name}!` }]
-        })
-    }
-
     const ship = route.query.ship as string;
     const category = route.query.system as string;
     const mod = route.query.module as string;
