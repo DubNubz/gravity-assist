@@ -13,12 +13,12 @@ export type Attribute = "Interception Capability" | "Interception Capability (Fl
 "Oscillatory Excitation" | "Collaborative Calibration" | "Self-holding Capability" | "Increase Production Speed" |
 "Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | "Increase Back-Row Missile Hit Rate" |
 "Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | "Increase Aircraft Damage" |
-"Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems";
+"Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems" | "Firepower Recon Support";
 
 export type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette";
 
 export type UAV = "Spotter UAV" | "Area-Denial Anti-Aircraft UAV" | "Shield UAV" | "Repair UAV" | "Tactical UAV" | "Info UAV" | 
-"Cooperative Offensive UAV" | "Siege UAV";
+"Cooperative Offensive UAV" | "Siege UAV" | "Recon UAV";
 
 export type Module = {
     type: "known";
@@ -150,7 +150,8 @@ export const attributes: Record<Attribute, string> = {
     "Increase Aircraft Damage": "Increases primary weapon Damage of carried Antonios aircraft by 15%",
     "Increase Aircraft Hit Rate": "Increases primary weapon Hit Rate of carried Antonios aircraft by 15%",
     "Aircraft Recovery": "Aircraft returning to all hangers recover 10% HP",
-    "Attack Against Systems": "Has a chance to deal damage to the target's systems (Primary Weapon System: Low efficiency)"
+    "Attack Against Systems": "Has a chance to deal damage to the target's systems (Primary Weapon System: Low efficiency)",
+    "Firepower Recon Support": "Increases allies' primary weapon's Crit Chance by 30% and Crit Damage by 40%"
 }
 
 export const manufacturers: ShipManufacturer[] = ["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"];
@@ -3211,6 +3212,32 @@ export const shipData: Ship[] = [{
             type: "known",
             img: "/weapons/icons/aircraft.png",
             system: "B2",
+            name: `"Hummingbird" Firepower Recon UAV System`,
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 19350
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 1,
+                title: `CFT-6`,
+                name: "Firepower Recon UAV Pod",
+                hanger: "Recon UAV",
+                capacity: 4,
+                attributes: ["Firepower Recon Support"]
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "B3",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
+            system: "C1",
             name: `Aircraft Loading System`,
             stats: {
                 type: "weapon",
@@ -3228,16 +3255,6 @@ export const shipData: Ship[] = [{
                 capacity: 2,
                 attributes: null
             }]
-        }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
-            system: "B3",
-            unknown: true
-        }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
-            system: "C1",
-            unknown: true
         }, {
             type: "known",
             img: "/weapons/icons/aircraft.png",

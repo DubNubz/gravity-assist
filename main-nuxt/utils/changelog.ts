@@ -212,4 +212,9 @@ export const changelog: Changelog[] = [{
     version: "1.3.1.3",
     release: "July 1, 2024",
     notes: ["Added preloading for images in Module Library"]
+}, {
+    type: "minor release",
+    version: "1.3.1.4",
+    release: "July 6, 2024",
+    notes: ["Fixed Ediacaran C1 showing as B2", "Added Ediacaran B2"]
 }];
