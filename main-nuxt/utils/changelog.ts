@@ -217,4 +217,10 @@ export const changelog: Changelog[] = [{
     version: "1.3.1.4",
     release: "July 6, 2024",
     notes: ["Fixed Ediacaran C1 showing as B2", "Added Ediacaran B2"]
+}, {
+    type: "minor release",
+    version: "1.3.1.5",
+    release: "July 11, 2024",
+    notes: ["Added Eternal Heavens M2, M3, and C3", "Added UAV Cooperation attribute to Eternal Heavens M1",
+    "Fixed Eternal Heavens A3 displaying as an unknown module", "Clicking on ships in Module Library will now change the path"]
 }];

@@ -77,7 +77,7 @@
                     <h3>{{ currentMod.stats.hpRecovery.toLocaleString() }}/min</h3>
                 </div>
                 <div class="statBarOutline">
-                    <div class="statBarFill" :style="{ width: (Math.min(1, Math.max(0, (currentMod.stats.hpRecovery / 6500))) * 100) + '%' }"></div>
+                    <div class="statBarFill" :style="{ width: (Math.min(1, Math.max(0, (currentMod.stats.hpRecovery / 9000))) * 100) + '%' }"></div>
                 </div>
             </div>
             <div class="stat" v-if="currentMod.stats.storage">
@@ -120,22 +120,24 @@ onMounted(() => {
 });
 
 function calculateWeaponFill (stat: number) {
-    if (stat <= 2500) {
+    if (stat <= 2300) {
         return 2500;
-    } else if (stat <= 5000) {
+    } else if (stat <= 4500) {
         return 5000;
-    } else if (stat <= 10000) {
+    } else if (stat <= 9000) {
         return 10000;
-    } else if (stat <= 15000) {
+    } else if (stat <= 14000) {
         return 15000;
-    } else if (stat <= 22500) {
+    } else if (stat <= 21500) {
         return 22500;
-    } else if (stat <= 30000) {
+    } else if (stat <= 28000) {
         return 30000;
-    } else if (stat <= 50000) {
+    } else if (stat <= 47000) {
         return 50000;
-    } else {
+    } else if (stat <= 96000) {
         return 100000;
+    } else {
+        return 200000;
     }
 }
 

@@ -13,7 +13,8 @@ export type Attribute = "Interception Capability" | "Interception Capability (Fl
 "Oscillatory Excitation" | "Collaborative Calibration" | "Self-holding Capability" | "Increase Production Speed" |
 "Back-Row Torpedo Hit Evasion" | "Back-Row Missile Hit Evasion" | "Increase Back-Row Missile Hit Rate" |
 "Increase Back-Row Torpedo Hit Rate" | "Ship Disguise" | "Increase Repair Speed" | "Increase Aircraft Damage" |
-"Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems" | "Firepower Recon Support";
+"Increase Aircraft Hit Rate" | "Aircraft Recovery" | "Attack Against Systems" | "Firepower Recon Support" | 
+"UAV Cooperation" | "UAV Aerial Cover Support";
 
 export type Aircraft = "Small Fighter" | "Medium Fighter" | "Large Fighter" | "Corvette";
 
@@ -151,7 +152,9 @@ export const attributes: Record<Attribute, string> = {
     "Increase Aircraft Hit Rate": "Increases primary weapon Hit Rate of carried Antonios aircraft by 15%",
     "Aircraft Recovery": "Aircraft returning to all hangers recover 10% HP",
     "Attack Against Systems": "Has a chance to deal damage to the target's systems (Primary Weapon System: Low efficiency)",
-    "Firepower Recon Support": "Increases allies' primary weapon's Crit Chance by 30% and Crit Damage by 40%"
+    "Firepower Recon Support": "Increases allies' primary weapon's Crit Chance by 30% and Crit Damage by 40%",
+    "UAV Cooperation": "Each aircraft in the same hanger comes with a UAV. Tthe UAV and the aircraft will attack the same target together.",
+    "UAV Aerial Cover Support": "Each aircraft in the same hanger comes with a UAV. The UAV provides anti-aircraft support and strikes back at enemy aircraft that attack the supporting aircraft."
 }
 
 export const manufacturers: ShipManufacturer[] = ["Jupiter Industry", "NOMA Shipping", "Antonios", "Dawn Accord", "Empty"];
@@ -3855,18 +3858,74 @@ export const shipData: Ship[] = [{
                 target: "Aircraft",
                 lockonEfficiency: null,
                 alpha: 140,
-                attributes: ["Anti-Aircraft Lightweight Ammo"]
+                attributes: ["UAV Cooperation", "Anti-Aircraft Lightweight Ammo"]
             }]
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "M2",
-            unknown: true
+            name: "Collaborative Hanger II",
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 24500
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 1,
+                title: `CBF-280`,
+                name: "Medium Fighter Hanger",
+                hanger: "Medium Fighter",
+                capacity: 3,
+                attributes: null
+            }, {
+                type: "hanger",
+                count: 3,
+                title: `"Laminar"`,
+                name: "Cooperative Offensive UAV Platform",
+                hanger: "Cooperative Offensive UAV",
+                capacity: 3,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: null,
+                alpha: 40,
+                attributes: ["UAV Cooperation", "Anti-Aircraft Special Ammo"]
+            }]
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "M3",
-            unknown: true
+            name: "Collaborative Hanger III",
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 24500
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 1,
+                title: `CBF-280`,
+                name: "Medium Fighter Hanger",
+                hanger: "Medium Fighter",
+                capacity: 3,
+                attributes: null
+            }, {
+                type: "hanger",
+                count: 3,
+                title: `"Vortex"`,
+                name: "Cooperative Offensive UAV Platform",
+                hanger: "Cooperative Offensive UAV",
+                capacity: 3,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: null,
+                alpha: 20,
+                attributes: ["UAV Aerial Cover Support", "Anti-Aircraft Counterattack"]
+            }]
         }, {
             type: "known",
             img: "/weapons/icons/cannon.png",
@@ -3935,7 +3994,7 @@ export const shipData: Ship[] = [{
             }]
         }, {
             type: "known",
-            img: "/weapons/icons/unknown.png",
+            img: "/weapons/icons/cannon.png",
             system: "A3",
             name: `Pulse Anti-Aircraft System`,
             stats: {
@@ -4048,10 +4107,27 @@ export const shipData: Ship[] = [{
             system: "C2",
             unknown: true
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/storage.png",
             system: "C3",
-            unknown: true
+            name: "Support Repair UAV System",
+            stats: {
+                type: "armor",
+                armor: null,
+                extraHP: null,
+                energyShield: null,
+                hpRecovery: 8181,
+                hp: 24500
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 1,
+                title: `CRT-6`,
+                name: "Engineering UAV Maintenance Platform",
+                hanger: "Repair UAV",
+                capacity: 3,
+                attributes: null
+            }]
         }]
     }, {
         name: "Marshal Crux",

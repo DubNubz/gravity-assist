@@ -5,7 +5,7 @@
                 <img src="/ui/solarSystem.svg" alt="Click to freely browse through all Research Agreement paths">
                 <h3>Ships</h3>
             </button>
-            <button @click="select = !select" :class="{ active: select == false, disabled: !modLibraryStore().ship }">
+            <button @click="switchToModules" :class="{ active: select == false, disabled: !modLibraryStore().ship }">
                 <img src="/ui/wrench.svg" alt="Click to search for the Research Agreemeent path of a ship">
                 <h3>Modules</h3>
             </button>
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 
 const route = useRoute();
+const router = useRouter();
 const select = ref(modLibraryStore().ship ? false : true);
 
 const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
@@ -144,14 +145,23 @@ onMounted(() => {
     if (ship) {
         modLibraryStore().ship = shipData.find((ship2) => ship2.name == ship);
         select.value = false;
-    };
+    } else {
+        modLibraryStore().ship = undefined;
+        select.value = true;
+    }
     if (category) modLibraryStore().category = category;
     if (mod) modLibraryStore().mod = Number(mod);
 });
 
 async function switchToModules () {
     if (!modLibraryStore().ship) return;
+
+    if (select.value) router.push(`?ship=${modLibraryStore().ship?.name.replaceAll(" ", "%20")}`);
+    else router.push("");
+
     select.value = !select.value;
+
+    if (select.value) return;
 
     const fromLocalStorage = localStorage.getItem("first-use-mod-library");
     let counter: number = 0;
