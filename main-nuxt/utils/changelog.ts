@@ -228,6 +228,7 @@ export const changelog: Changelog[] = [{
     version: "1.3.1.6",
     release: "July 19, 2024",
     notes: ["Decreased the default compression value from 3 to 2 in Color Generator",
-        "Selecting a color from the preset gradients or previous colors menu will no longer change your advanced settings",
-        "Changelog cards in the full changelog now match the changelog card on the home page for parity"]
+    "Selecting a color from the preset gradients or previous colors menu will no longer change your advanced settings",
+    "Changelog cards in the full changelog now match the changelog card on the home page for parity",
+    "Fixed numbers being not visible in Color Generator advanced option inputs"]
 }];

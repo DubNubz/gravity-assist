@@ -537,6 +537,7 @@ async function copyShareLink () {
 
             input[type="range"] {
                 width: 90%;
+                color: white;
             }
 
             input[type="number"] {
@@ -546,6 +547,7 @@ async function copyShareLink () {
                 border-radius: 0.28em;
                 border-width: 0.08em;
                 border-style: solid;
+                color: white;
             }
         }
     }
