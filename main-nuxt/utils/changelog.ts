@@ -218,14 +218,14 @@ export const changelog: Changelog[] = [{
     release: "July 6, 2024",
     notes: ["Fixed Ediacaran C1 showing as B2", "Added Ediacaran B2"]
 }, {
-    type: "minor release",
-    version: "1.3.1.5",
+    type: "release",
+    version: "1.3.2",
     release: "July 11, 2024",
     notes: ["Added Eternal Heavens M2, M3, and C3", "Added UAV Cooperation attribute to Eternal Heavens M1",
     "Fixed Eternal Heavens A3 displaying as an unknown module", "Clicking on ships in Module Library will now change the path"]
 }, {
-    type: "minor release",
-    version: "1.3.1.6",
+    type: "release",
+    version: "1.3.3",
     release: "July 19, 2024",
     notes: ["Decreased the default compression value from 3 to 2 in Color Generator",
     "Selecting a color from the preset gradients or previous colors menu will no longer change your advanced settings",
