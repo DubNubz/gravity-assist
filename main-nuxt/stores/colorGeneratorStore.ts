@@ -6,7 +6,7 @@ export const colorGeneratorStore = defineStore("colorGenerator", () => {
     const color1 = ref("#f957ff");
     const color2 = ref("#ffc94d");
     const intensity = ref(15);
-    const compression = ref(3);
+    const compression = ref(2);
 
     return { inputText, outputText, color1, color2, intensity, compression }
 });

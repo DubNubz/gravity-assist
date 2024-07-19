@@ -223,4 +223,11 @@ export const changelog: Changelog[] = [{
     release: "July 11, 2024",
     notes: ["Added Eternal Heavens M2, M3, and C3", "Added UAV Cooperation attribute to Eternal Heavens M1",
     "Fixed Eternal Heavens A3 displaying as an unknown module", "Clicking on ships in Module Library will now change the path"]
+}, {
+    type: "minor release",
+    version: "1.3.1.6",
+    release: "July 19, 2024",
+    notes: ["Decreased the default compression value from 3 to 2 in Color Generator",
+        "Selecting a color from the preset gradients or previous colors menu will no longer change your advanced settings",
+        "Changelog cards in the full changelog now match the changelog card on the home page for parity"]
 }];

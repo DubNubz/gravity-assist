@@ -4,7 +4,7 @@
             <h2>Version <span>{{ change.version }}</span> ({{ change.type }})</h2>
             <h3>Date: <span>{{ change.release }}</span></h3>
             <div class="changeNotes">
-                <h3 v-for="note in change.notes">► {{ note }}<span v-if="note != change.notes[change.notes.length - 1]">,</span></h3>
+                <p v-for="note in change.notes">► {{ note }}<span v-if="note != change.notes[change.notes.length - 1]">,</span></p>
             </div>
         </div>
     </div>
@@ -53,8 +53,10 @@ useSeoMeta({
     }
 
     .changeNotes {
-        h3 {
-            font-size: 1.85em;
+        h3, p {
+            font-size: 1.65em;
+            margin-top: 0;
+            margin-bottom: 0.5em;
 
             span {
                 color: white;
