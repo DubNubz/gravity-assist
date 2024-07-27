@@ -65,7 +65,6 @@ h1 {
 .cardHolder {
     display: flex;
     flex-wrap: wrap;
-    width: 90vw;
     align-items: center;
     justify-content: center;
     align-items: stretch;
@@ -90,6 +89,16 @@ h1 {
     h3 {
         color: var(--cyan);
         margin: 0.35em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card, .crowdsourceCard {
+        padding: 1em;
+    }
+
+    .crowdsourceCard {
+        width: 40em;
     }
 }
 

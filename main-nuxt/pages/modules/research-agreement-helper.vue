@@ -276,7 +276,7 @@ async function copyShareLink () {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .resultHolder {
         width: 60em;
 
@@ -288,6 +288,29 @@ async function copyShareLink () {
 
     .search {
         width: 60em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .navButtonHolder {
+        width: 40em;
+
+        button {
+            width: 80%;
+        }
+    }
+
+    .card {
+        padding: 1em;
+        width: 40em;
+    }   
+
+    .resultHolder {
+        width: 44em;
+
+        .result {
+            width: 48%;
+        }
     }
 }
 

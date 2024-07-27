@@ -1,5 +1,6 @@
 <template>
     <div class="holder">
+        <h1 style="margin-bottom: 0;">Changelog</h1>
         <div v-for="change in [...changelog].reverse()" class="card">
             <h2>Version <span>{{ change.version }}</span> ({{ change.type }})</h2>
             <h3>Date: <span>{{ change.release }}</span></h3>
@@ -26,7 +27,6 @@ useSeoMeta({
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
 }
 
 .card {
@@ -54,7 +54,6 @@ useSeoMeta({
 
     .changeNotes {
         h3, p {
-            font-size: 1.65em;
             margin-top: 0;
             margin-bottom: 0.5em;
 
@@ -62,6 +61,13 @@ useSeoMeta({
                 color: white;
             }
         }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 40em;
+        padding: 1em;
     }
 }
 

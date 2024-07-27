@@ -144,10 +144,17 @@ async function copyShareLink () {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
     .card {
         width: 60em;
         padding: 2em;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .card {
+        width: 44em;
+        padding: 1em;
     }
 }
 

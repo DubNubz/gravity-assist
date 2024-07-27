@@ -210,7 +210,7 @@ function switchFilter (type: 'Equipment' | 'Blueprint') {
     background-color: rgb(55, 55, 55);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .titleHolder {
         width: 60em;
     }
@@ -230,6 +230,20 @@ function switchFilter (type: 'Equipment' | 'Blueprint') {
                 width: 28em;
             }
         }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .titleHolder {
+        width: 42em;
+
+        .navigation {
+            flex-wrap: wrap;
+        }
+    }
+
+    .outer {
+        width: 44em;
     }
 }
 

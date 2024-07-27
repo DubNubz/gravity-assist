@@ -231,4 +231,10 @@ export const changelog: Changelog[] = [{
     "Selecting a color from the preset gradients or previous colors menu will no longer change your advanced settings",
     "Changelog cards in the full changelog now match the changelog card on the home page for parity",
     "Fixed numbers being not visible in Color Generator advanced option inputs"]
+}, {
+    type: "release",
+    version: "1.3.4",
+    release: "July 27, 2024",
+    notes: ["Made the side menu visible at all times for bigger screens", "Adjusted font size for all devices", "Added Warspite to Module Library",
+    "Removed the Contributors and Changelog button from the footer and moved them to the side menu"]
 }];

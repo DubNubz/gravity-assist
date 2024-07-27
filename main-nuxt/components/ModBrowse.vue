@@ -30,6 +30,16 @@
                 </div>
             </div>
         </div>
+        <div class="divider">
+            <h3>Battleships</h3>
+            <div class="shipCardDiv">
+                <div v-for="ship in shipData.filter((ship2) => ship2.type == 'Battleship')" class="shipCard"
+                @click="handleClick(ship)" :class="{ active: compareObjectsSingle(ship, (modLibraryStore().ship as Ship)) }">
+                    <h3>{{ ship.name }}</h3>
+                    <img :src="ship.img" :alt="'An image of the ship ' + ship.name">
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -105,7 +115,7 @@ function handleClick (ship: Ship) {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .shipCardHolder {
         .shipCard {
             width: 49%;
@@ -118,6 +128,19 @@ function handleClick (ship: Ship) {
     .shipCardHolder {
         .shipCard {
             width: 100%;
+            height: 22.5em;
+
+            img {
+                width: 40%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .shipCardHolder {
+        .shipCard {
+            height: 17.5em;
         }
     }
 }

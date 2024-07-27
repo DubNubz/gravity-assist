@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1 style="margin-bottom: 6em;">Coming soon!</h1>
+    <div class="outer">
+        <h1 style="margin-bottom: 10em;">Coming soon!</h1>
     </div>
 </template>
 
@@ -14,5 +14,12 @@ useHead({
 </script>
 
 <style scoped>
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 </style>

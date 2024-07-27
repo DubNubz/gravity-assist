@@ -6,68 +6,43 @@
           <img src="/ui/burger.svg" alt="Click to open the navigation menu">
         </button>
       </div>
+
+      <SideMenu class="hideMobile" />
+      <div style="width: 0; height: 0;" class="hideMobile"></div>
   
-      <div class="title">
-        <img src="/ui/radiant.svg" alt="Gravity Assist Icon">
-        <h1>Gravity Assist</h1>
+      <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+        <div class="title">
+          <img src="/ui/radiant.svg" alt="Gravity Assist Icon">
+          <h1>Gravity Assist</h1>
+        </div>
       </div>
     </header>
 
     <Transition name="sideMenuTransition">
       <button v-if="showSideMenu" @click="showSideMenu = false" class="sideMenuBackground">
-        <div class="sideMenu">
-          <NuxtLink to="/home" class="sideMenuButton" :class="{ active: route.path == '/home' }" style="margin-top: 3em;">
-            <img src="/ui/home.svg" alt="Click to go back to the original landing page">
-            <h3>Home</h3>
-          </NuxtLink>
-          <NuxtLink to="/modules/color-generator" class="sideMenuButton" :class="{ active: route.path == '/modules/color-generator' }">
-            <img src="/ui/paint.svg" alt="Click to go to the Color Generator page">
-            <h3>Color Generator</h3>
-          </NuxtLink>
-          <NuxtLink to="/modules/research-agreement-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/research-agreement-helper' }">
-            <img src="/ui/atom.svg" alt="Click to go to the Research Agreement Helper page">
-            <h3>RA Helper</h3>
-          </NuxtLink>
-          <NuxtLink to="/modules/module-library" class="sideMenuButton" :class="{ active: route.path == '/modules/module-library' }">
-            <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
-            <h3>Module Library</h3>
-          </NuxtLink>
-          <NuxtLink to="/modules/equipment-encyclopedia" class="sideMenuButton" :class="{ active: route.path == '/modules/equipment-encyclopedia' }">
-            <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
-            <h3>Equipment Library</h3>
-          </NuxtLink>
-          <NuxtLink to="/modules/fleet-builder" class="sideMenuButton" :class="{ active: route.path == '/modules/fleet-builder' }">
-            <img src="/ui/blueprint.svg" alt="Click to go to the Fleet Builder page">
-            <h3>Fleet Builder</h3>
-          </NuxtLink>
-        </div>
+        <SideMenu />
       </button>
     </Transition>
   
-    <NuxtPage />
+    <div class="pageHolder">
+      <div style="width: 0; height: 0;" class="hideMobile"></div>
+      <NuxtPage />
+    </div>
   
     <footer>
-      <div class="footerButtons">
-        <NuxtLink to="/contributors" class="linkButton creditsButton">
-          <img src="/ui/credits.svg" alt="View a list of all contributors to this project">
-          <h3>Contributors</h3>
-        </NuxtLink>
-        <NuxtLink to="/changelog" class="linkButton loadButton">
-          <img src="/ui/changes.svg" alt="View a list of all changes made to this project">
-          <h3>Changelog</h3>
-        </NuxtLink>
+      <div style="width: 0; height: 0;" class="hideMobile"></div>
+      <div class="footer">
+        <h3>Gravity Assist v{{ changelog[changelog.length - 1].version }} by DubNubz</h3>
+        <a href="https://discord.com/invite/9mJ9b2Bbzx" target="_blank">
+          <img src="/ui/discord_icon.png" alt="Link to the Radiant Gravity Discord server">
+        </a>
       </div>
-      <h3>Gravity Assist v{{ changelog[changelog.length - 1].version }} by DubNubz</h3>
-      <a href="https://discord.com/invite/9mJ9b2Bbzx" target="_blank">
-        <img src="/ui/discord_icon.png" alt="Link to the Radiant Gravity Discord server">
-      </a>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
 
-const route = useRoute();
 const showSideMenu = ref(false);
 
 useSeoMeta({
@@ -131,6 +106,13 @@ useHead({
 
 <style lang="scss" scoped>
 
+.pageHolder {
+  height: 100%;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 32em calc(100svw - 32em);
+}
+
 .holder {
   min-height: 100vh;
   position: relative;
@@ -143,17 +125,22 @@ footer {
   background-color: rgb(36, 36, 36);
   text-align: center;
   position: relative;
+  display: grid;
+  grid-template-columns: 32em calc(100vw - 32em);
   bottom: 0;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 25em;
+  height: 10em;
   margin-top: 5em;
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+  }
   
   img {
-    width: 6em;
+    width: 5em;
     margin-bottom: 0;
     background-color: transparent;
   }
@@ -195,7 +182,8 @@ footer {
 }
 
 header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 32em calc(100svw - 32em);
   text-align: center;
   position: relative;
   top: 0;
@@ -262,37 +250,6 @@ header {
   z-index: 50000;
 }
 
-.sideMenu {
-  background-color: rgb(36, 36, 36);
-  width: 35em;
-  height: calc(100% - 7em);
-  position: fixed;
-  top: 7em;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-top-right-radius: 3em;
-
-  .sideMenuButton {
-    color: white;
-    display: flex;
-    width: 90%;
-    gap: 3em;
-    border-radius: 2em;
-    padding-left: 1em;
-    transition: all 0.15s ease-in-out;
-
-    img {
-      width: 6em;
-    }
-  }
-
-  .active {
-    background-color: rgba(100, 100, 100, 0.25);
-  }
-}
-
 .sideMenuTransition-enter-active, .sideMenuTransition-leave-active {
     transition: all 0.5s ease-in-out;
     
@@ -310,14 +267,40 @@ header {
     }
 }
 
-@media screen and (max-width: 1200px) {
-  footer .footerButtons {
-    width: 60em;
+@media screen and (min-width: 801px) {
+  .menuBurger {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .pageHolder {
+    grid-template-columns: 27em calc(100svw - 27em);
+  }
+
+  header {
+    grid-template-columns: 27em calc(100svw - 27em);
+  }
+
+  footer {
+    grid-template-columns: 27em calc(100svw - 27em);
   }
 }
 
 @media screen and (max-width: 800px) {
+  .pageHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hideMobile {
+    display: none;
+  }
+
   header {
+    display: flex;
+
     .title {
       padding-left: 0;
       padding-right: 0;
@@ -356,6 +339,10 @@ header {
   }
 
   footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .footerButtons {
       width: 90svw;
     }

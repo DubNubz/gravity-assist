@@ -21,10 +21,10 @@
 
   --h1: 4.5em;
   --h2: 3em;
-  --h3: 2em;
-  --h4: 1.5em;
-  --p: 1em;
-  --standard: 0.75em;
+  --h3: 1.95em;
+  --h4: 1.75em;
+  --p: 1.5em;
+  --standard: 0.7em;
 
   --godly: linear-gradient(to bottom right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00c3ff, #ff00ff);
   --godlyText: linear-gradient(to right, #ff0000, #ffbb00, #bbff00, #00ff4c, #00c3ff, #ff00ff);
@@ -70,11 +70,13 @@ button, a, input, textarea {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1200px) {
-  h1 {font-size: 4.15em}
-  h2 {font-size: 2.65em}
-  h3 {font-size: 1.65em}
-  h4 {font-size: 1.2em}
+@media screen and (max-width: 1000px) {
+  h1 {font-size: 3.5em}
+  h2 {font-size: 2.5em}
+  h3 {font-size: 1.5em}
+  h4 {font-size: 1.35em}
+  p {font-size: 1.25em}
+  #text {font-size: 0.5em}
 }
 
 @media (pointer: coarse) {

@@ -42,7 +42,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100em;
+    width: 100%;
 
     h3 {
         color: white;
@@ -93,11 +93,12 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
 .cardHolder {
     display: flex;
-    width: 120em;
     align-items: center;
     justify-content: space-evenly;
+    width: 100%;
     margin-top: 5em;
-    gap: 1%;
+    gap: 1em;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -109,7 +110,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     border-radius: 2.4em;
     padding: 2.4em;
     width: 45em;
-    min-height: 40em;
+    min-height: 35em;
 
     h2 {
         margin-bottom: 0;
@@ -126,7 +127,6 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     }
 
     .message {
-        font-size: 1.65em;
         margin-bottom: 0;
     }
 }
@@ -135,28 +135,22 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
     padding-bottom: 4em;
 }
 
-@media screen and (max-width: 1600px) {
-    .description {
-        width: 95em;
-    }
-
-    .cardHolder {
-        width: 95em;
-    }
-}
-
 @media screen and (max-width: 1200px) {
-    .description {
-        width: 60em;
-    }
-
     .cardHolder {
-        width: 60em;
         flex-direction: column;
 
         .card {
             min-height: unset;
             margin-bottom: 2em;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .cardHolder {
+        .card {
+            padding: 1em;
+            width: 35em;
         }
     }
 }
@@ -172,7 +166,7 @@ const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
         .card {
             width: 85svw;
             padding: 2svw;
-            border-radius: 5svh;
+            border-radius: 2svh;
         }
     }
 }

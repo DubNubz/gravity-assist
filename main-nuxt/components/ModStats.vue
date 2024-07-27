@@ -93,6 +93,32 @@
                 <h3>System HP: {{ currentMod.stats.hp.toLocaleString() }}</h3>
             </div>
         </div>
+
+        <div class="stats" v-if="currentMod.stats.type == 'propulsion'">
+            <h3 class="modName"><span>{{ currentMod.system }} |</span> {{ currentMod.name }}</h3>
+            <div class="stat">
+                <div class="statNumbers">
+                    <img src="/weapons/stats/cruise.svg" alt="Cruise speed">
+                    <h3>{{ currentMod.stats.cruise.toLocaleString() }}</h3>
+                </div>
+                <div class="statBarOutline">
+                    <div class="statBarFill" :style="{ width: (Math.min(1, Math.max(0, (currentMod.stats.cruise / calculateWeaponFill(currentMod.stats.cruise)))) * 100) + '%' }"></div>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="statNumbers">
+                    <img src="/weapons/stats/cruise.svg" alt="Warp speed">
+                    <h3>{{ currentMod.stats.warp.toLocaleString() }}</h3>
+                </div>
+                <div class="statBarOutline">
+                    <div class="statBarFill" :style="{ width: (Math.min(1, Math.max(0, (currentMod.stats.warp / calculateWeaponFill(currentMod.stats.warp)))) * 100) + '%' }"></div>
+                </div>
+            </div>
+            <div class="systemHP">
+                <h3>System HP: {{ currentMod.stats.hp.toLocaleString() }}</h3>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -120,7 +146,9 @@ onMounted(() => {
 });
 
 function calculateWeaponFill (stat: number) {
-    if (stat <= 2300) {
+    if (stat <= 900) {
+        return 1000;
+    } else if (stat <= 2300) {
         return 2500;
     } else if (stat <= 4500) {
         return 5000;
@@ -136,8 +164,10 @@ function calculateWeaponFill (stat: number) {
         return 50000;
     } else if (stat <= 96000) {
         return 100000;
-    } else {
+    } else if (stat <= 190000) {
         return 200000;
+    } else {
+        return 400000;
     }
 }
 

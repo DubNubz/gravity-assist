@@ -297,7 +297,7 @@ async function copyShareLink () {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .card {
         width: 60em;
         padding: 2em;
@@ -310,6 +310,29 @@ async function copyShareLink () {
 
     .modCards {
         width: 60em;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .navButtonHolder {
+        width: 43em;
+        
+        button {
+            width: 80%;
+        }
+    }
+
+    .card {
+        padding: 0;
+        width: 43em;
+    }
+
+    .modStats {
+        width: 40em;
+    }
+
+    .modCards {
+        width: 40em;
     }
 }
 

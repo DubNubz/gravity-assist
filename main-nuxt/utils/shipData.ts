@@ -24,16 +24,16 @@ export type UAV = "Spotter UAV" | "Area-Denial Anti-Aircraft UAV" | "Shield UAV"
 export type Module = {
     type: "known";
     img: string;
-    system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2";
+    system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2" | "F1" | "F2" | "G1" | "G2" | "H1" | "H2";
     name: string;
-    stats: WeaponStats | ArmorStats;
+    stats: WeaponStats | ArmorStats | PropulsionStats;
     subsystems: (WeaponSubsystem | AircraftHangerSubsystem | UavHangerSubsystem | MiscSubsystem)[];
 }
 
 export type UnknownModule = {
     type: "unknown";
     img: string;
-    system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2";
+    system: "M1" | "M2" | "M3" | "A1" | "A2" | "A3" | "B1" | "B2" | "B3" | "C1" | "C2" | "C3" | "D1" | "D2" | "D3" | "E1" | "E2" | "F1" | "F2" | "G1" | "G2" | "H1" | "H2";
     unknown: true;
 }
 
@@ -52,6 +52,13 @@ export type ArmorStats = {
     energyShield: null | number;
     hpRecovery?: number;
     storage?: number;
+    hp: number;
+}
+
+export type PropulsionStats = {
+    type: "propulsion",
+    cruise: number;
+    warp: number;
     hp: number;
 }
 
@@ -104,7 +111,7 @@ export type Ship = {
     name: string;
     title: string;
     img: string;
-    type: "Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier";
+    type: "Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier" | "Battleship";
     variant: "A" | "B" | "C" | "D";
     variant_name: string;
     manufacturer: ShipManufacturer;
@@ -4092,15 +4099,59 @@ export const shipData: Ship[] = [{
                 attributes: ["Interception Capability", "Anti-Aircraft Counterattack"]
             }]
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/cannon.png",
             system: "B3",
-            unknown: true
+            name: `Anti-Aircraft Missile Platform`,
+            stats: {
+                type: "weapon",
+                antiship: 1527,
+                antiair: 811,
+                siege: 0,
+                hp: 26000
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 2,
+                title: `AM-4x180`,
+                name: `Quadruple-Fire Multi-Role Missile Launcher`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: 60,
+                alpha: 45,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }, {
+                type: "weapon",
+                count: 2,
+                title: `AM-2x100B`,
+                name: `Dual-Fire Light Anti-Aircraft Missile Launcher`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 75,
+                alpha: 80,
+                attributes: ["Anti-Aircraft Counterattack"]
+            }]
         }, {
-            type: "unknown",
-            img: "/weapons/icons/unknown.png",
+            type: "known",
+            img: "/weapons/icons/aircraft.png",
             system: "C1",
-            unknown: true
+            name: "Auxiliary Corvette Dockyard",
+            stats: {
+                type: "weapon",
+                antiship: null,
+                antiair: null,
+                siege: null,
+                hp: 24500
+            },
+            subsystems: [{
+                type: "hanger",
+                count: 1,
+                title: `CBC-3000`,
+                name: "Corvette Dock",
+                hanger: "Corvette",
+                capacity: 4,
+                attributes: null
+            }]
         }, {
             type: "unknown",
             img: "/weapons/icons/unknown.png",
@@ -4615,6 +4666,256 @@ export const shipData: Ship[] = [{
                 alpha: 50,
                 attributes: ["Interception Capability", "Anti-Aircraft Special Ammo", "Anti-Aircraft Support"]
             }]
+        }]
+    }, {
+        name: "Warspite",
+        title: "Assault Battleship",
+        img: "/ships/warspite.png",
+        type: "Battleship",
+        variant: "A",
+        variant_name: "Super",
+        manufacturer: "Empty",
+        direction: ["Empty"],
+        scope: "Empty",
+        weight: 0,
+        row: "Middle",
+        modules: [{
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "M1",
+            name: `Bow-Mounted Ion Cannon System`,
+            stats: {
+                type: "weapon",
+                antiship: 21000,
+                antiair: 0,
+                siege: 7350,
+                hp: 27900
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FI-800`,
+                name: `Heavy Ion Cannon`,
+                damageType: "Energy",
+                target: "Large Ship",
+                lockonEfficiency: null,
+                alpha: 1050,
+                attributes: null
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "M2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "A1",
+            name: `Projectile Weapon System`,
+            stats: {
+                type: "weapon",
+                antiship: 10000,
+                antiair: 2775,
+                siege: 3850,
+                hp: 27900
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FM-1x205`,
+                name: `Missile Silo`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: 60,
+                alpha: 110,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "A2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "B1",
+            name: `Experimental Ion Cannon System`,
+            stats: {
+                type: "weapon",
+                antiship: 9176,
+                antiair: 0,
+                siege: 3211,
+                hp: 27900
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FI-400T`,
+                name: `Experimental Ion Turret`,
+                damageType: "Energy",
+                target: "Small Ship",
+                lockonEfficiency: null,
+                alpha: 260,
+                attributes: null
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "B2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "C1",
+            name: `Siege Armed Torpedo`,
+            stats: {
+                type: "weapon",
+                antiship: 6200,
+                antiair: 0,
+                siege: 4480,
+                hp: 27900
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FT-1-365C`,
+                name: `Siege Torpedo`,
+                damageType: "Projectile",
+                target: "Building",
+                lockonEfficiency: null,
+                alpha: 320,
+                attributes: ["Crit"]
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "C2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "D1",
+            name: `Projectile Weapon System`,
+            stats: {
+                type: "weapon",
+                antiship: 9000,
+                antiair: 1530,
+                siege: 3569,
+                hp: 27900
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FM-3x180`,
+                name: `Missile Vertical Launcher`,
+                damageType: "Projectile",
+                target: "Small Ship",
+                lockonEfficiency: 10,
+                alpha: 85,
+                attributes: ["Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "D2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/armor.png",
+            system: "E1",
+            name: `Standard Sacrum Chu Imperium Armor System`,
+            stats: {
+                type: "armor",
+                extraHP: 284970,
+                armor: 270,
+                energyShield: 5,
+                hp: 30650
+            },
+            subsystems: [{
+                type: "misc",
+                count: 1,
+                title: `SC-100`,
+                name: `Ship Core`,
+                attributes: null
+            }, {
+                type: "misc",
+                count: 1,
+                title: "AC-111",
+                name: "Sacrum Chu Imperium Super-Heavy Armor",
+                attributes: null
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "E2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/speed.png",
+            system: "F1",
+            name: `Standard Sacrum Chu Imperium Propulsion System`,
+            stats: {
+                type: "propulsion",
+                cruise: 220,
+                warp: 1100,
+                hp: 30650
+            },
+            subsystems: [{
+                type: "misc",
+                count: 1,
+                title: `EN-111`,
+                name: `Sacrum Chu Imperium Vector Engine`,
+                attributes: null
+            }, {
+                type: "misc",
+                count: 1,
+                title: "EC-111",
+                name: "Sacrum Chu Imperium Warp Drive",
+                attributes: null
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "F2",
+            unknown: true
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "G1",
+            unknown: true
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "G2",
+            unknown: true
+        }, {
+            type: "known",
+            img: "/weapons/icons/cannon.png",
+            system: "H1",
+            name: `Short-Range Anti-Aircraft System`,
+            stats: {
+                type: "weapon",
+                antiship: 0,
+                antiair: 5717,
+                siege: 0,
+                hp: 28400
+            },
+            subsystems: [{
+                type: "weapon",
+                count: 1,
+                title: `FM-2x90B`,
+                name: `Missile Vertical Launcher`,
+                damageType: "Projectile",
+                target: "Aircraft",
+                lockonEfficiency: 60,
+                alpha: 50,
+                attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft High-Speed Strike", "Anti-Aircraft Counterattack"]
+            }]
+        }, {
+            type: "unknown",
+            img: "/weapons/icons/unknown.png",
+            system: "H2",
+            unknown: true
         }]
     }
 ];

@@ -181,6 +181,12 @@ function getTimeColor (hours: number) {
 .yellow { color: #ffff00; }
 .green { color: #00ff00; }
 
+@media screen and (max-width: 1000px) {
+    .timeCounter {
+        font-size: 1.75em;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .sort {
         .sortOption {

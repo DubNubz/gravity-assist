@@ -78,7 +78,6 @@ function getNotes () {
 
     .changeNotes {
         h3, p {
-            font-size: 1.65em;
             margin-top: 0;
             margin-bottom: 0.5em;
 

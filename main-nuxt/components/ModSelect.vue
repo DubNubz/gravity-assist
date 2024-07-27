@@ -1,6 +1,7 @@
 <template>
     <div class="outer">
         <img class="shipImg" :src="foundShip?.img" :alt="'Image of' + foundShip?.name">
+        <h2 class="shipName">{{ foundShip?.name }}</h2>
 
         <div class="categoryButtons">
             <button v-for="category in [...new Set(foundShip?.modules?.map((mod) => mod.system.slice(0, 1)))]" @click="modLibraryStore().category = category" :class="{ active: modLibraryStore().category == category }">
@@ -111,6 +112,21 @@ const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => shi
 
     .active {
         background-color: rgb(70, 70, 70);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .categoryButtons {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    .shipName {
+        width: 0;
+        height: 0;
+        font-size: 0;
+        display: none;
     }
 }
 

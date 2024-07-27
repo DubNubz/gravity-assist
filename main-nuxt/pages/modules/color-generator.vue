@@ -237,6 +237,7 @@ async function copyShareLink () {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2.4em;
     margin-bottom: 1.6em;
 
@@ -312,22 +313,21 @@ async function copyShareLink () {
 
 .colorPicker {
     background-color: rgb(50, 50, 50);
-    width: 85em;
+    width: 90em;
     height: 20em;
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-top: 2.4em;
-    border-radius: 3.2em;
-    padding-left: 5.6em;
-    padding-right: 5.6em;
-    z-index: 5001;
+    border-radius: 2em;
+    z-index: 6;
+    flex-wrap: wrap;
     
     .colorPick {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45%;
+        width: 50%;
         height: 90%;
 
         .colorPickTitle {
@@ -347,7 +347,7 @@ async function copyShareLink () {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        width: 45%;
+        width: 50%;
         height: 90%;
 
         h3 {
@@ -395,8 +395,8 @@ async function copyShareLink () {
     }
 
     input {
-        width: 10em;
-        height: 10em;
+        width: 9em;
+        height: 9em;
         padding: 0;
         border: 0;
         background-color: transparent;
@@ -435,7 +435,7 @@ async function copyShareLink () {
     border-bottom-right-radius: 3.2em;
     padding-top: 1.6em;
     padding-bottom: 2.4em;
-    z-index: 5000;
+    z-index: 5;
 
     h2 {
         margin-top: 0;
@@ -478,7 +478,7 @@ async function copyShareLink () {
 }
 
 .preset {
-    z-index: 4999;
+    z-index: 4;
 }
 
 .characterCounter {
@@ -569,7 +569,7 @@ async function copyShareLink () {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .boxes {
         flex-direction: column;
 
@@ -619,6 +619,28 @@ async function copyShareLink () {
 
         .options {
             width: 60em;
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .colorPicker {
+        width: 40em;
+        justify-content: center;
+    }
+
+    .recentColors {
+        width: 40em;
+    }
+
+    .advanced {
+        .sampleText {
+            width: 40em;
+        }
+
+        .options {
+            flex-wrap: wrap;
+            gap: 1em;
         }
     }
 }

@@ -139,7 +139,7 @@ function translateShip (ship: Ship) {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .outer {
         input {
             width: 70%;
@@ -150,6 +150,16 @@ function translateShip (ship: Ship) {
         .shipCard {
             width: 45%;
             height: 18em;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .shipCardHolder {
+        width: 44em;
+
+        .shipCard {
+            width: 48%;
         }
     }
 }
