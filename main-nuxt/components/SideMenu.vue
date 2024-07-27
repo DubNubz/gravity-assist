@@ -84,7 +84,7 @@ const route = useRoute();
     .sideMenu {
         position: fixed;
         top: 0;
-        height: 100svh;
+        height: 100vh;
         border-top-right-radius: 0;
     }
 }
