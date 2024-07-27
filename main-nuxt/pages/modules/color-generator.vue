@@ -223,7 +223,7 @@ async function copyShareLink () {
     text-align: center;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(to bottom, transparent, rgb(36, 36, 36), transparent);
 }
 

@@ -277,6 +277,14 @@ async function copyShareLink () {
 }
 
 @media screen and (max-width: 1400px) {
+    .navButtonHolder {
+        width: 55em;
+
+        button {
+            width: 60%;
+        }
+    }
+
     .resultHolder {
         width: 60em;
 
