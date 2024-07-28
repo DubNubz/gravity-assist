@@ -15,7 +15,215 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 15
+        maxInFleet: 15,
+        aircraftPerSquadron: 3,
+        production: {
+            metal: 5600,
+            crystal: 450,
+            deuterium: 240,
+            timeSeconds: 810,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Pulse Cannon System`,
+            maxUpgradeSlots: 5,
+            baseAntiship: 494,
+            baseAntiair: 296,
+            baseSiege: 14,
+            hitrates: {
+                fighter: 0.25,
+                corvette: 0.65,
+                frigate: 0.85,
+                destroyer: 0.85,
+                cruiser: 0.85,
+                battlecruiser: 1,
+                carrier: 1,
+                base: 1
+            },
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Delayed Attack",
+                strategy: true,
+                description: ["After the battle begins, extend the lock-on time of the first 2 rounds of attacks by ", "40%", " and increases the Hit Rate of the main weapon by ", "40%", "."],
+                flavorText: "Increases the strike accuracy using a more accurate detection and recognition lock-on to the target.",
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Enhance Recharge Power",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                flavorText: "Improves the energy output and storage capacity of the pulse cannon's charging system, allowing for greater firing power.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Enhance Recharge Power",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                flavorText: "Improves the pulse cannon's focusing mechanism to increase the energy density of the pulse beam, allowing for greater Damage to ship armor.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Firing Assistance Enhancement",
+                description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
+                flavorText: "Improves the monitoring and prediction of small-ship movements. The results are linked to and synced up with the weapon's aiming system.",
+                maxTiers: 5,
+                affectedStat: "smallHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Large Target Correction",
+                description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
+                flavorText: "Improves the monitoring and prediction of large-ship movements. The results are linked to and synced up with the weapon's aiming system.",
+                maxTiers: 5,
+                affectedStat: "bigHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Charging Device Enhancement",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                flavorText: "Improves the capacity and recharging efficiency of the charging system for energy weapons, allowing for shorter charging time.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Pipeline Cooling Enhancement",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                flavorText: "Improves the heat-dissipation system for energy pipelines, allowing for larger energy transfers.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "energy",
+            name: `Airborne Energy System`,
+            maxUpgradeSlots: 2,
+            baseDmgBuff: 1.15,
+            systemAdjustment: null,
+            img: "/weapons/icons/jamming.png",
+            upgrades: [{
+                name: "Energy Core Output Increase",
+                description: ["Increases main pulse cannon Damage by ", "2%"],
+                flavorText: "Raises the working temperature of high-energy cores, greatly increasing the power output of pulse weapons.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Energy Core Output Increase",
+                description: ["Increases main pulse cannon Damage by ", "2%"],
+                flavorText: "Raises the working temperature of high-energy cores, greatly increasing the power output of pulse weapons.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Energy Storage",
+                description: ["Increases the main pulse cannon's Duration by ", "40%", " and Rounds Per Cycle by ", "1", "."],
+                flavorText: "Increases energy weapons' storage capacity to improve their sustained damage output and frequency.",
+                maxTiers: 2,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.188259,
+                tpPerTier: 10
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: "hp",
+            baseHp: 4920,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                description: ["Increases ship HP by ", "2%"],
+                flavorText: "Increases the aircraft's armor to improve Damage Resistance without compromising the light-weight design.",
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                description: ["Increases ship HP by ", "2%"],
+                flavorText: "Reinforces the fuselage of Fighters to increase Damage Resistance",
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                flavorText: "Treats the ship's armor with a reflective coating, which jams the guidance signals of missiles and torpedoes at close range, reducing their ability to profile the ship.",
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                flavorText: "Improves the thruster control of aircraft engines to allow for more responsive thrust-adjustments, increasing the aircraft's control over flight speed.",
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Flight Maneuver Improvement",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                flavorText: "Optimize the rotational structure and power system of the aircraft, allowing it to adapt to the complicated battle situation to reduce the time spent during the outbound and inbound.",
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                flavorText: "Increases the responsiveness of the emergency Repair Dock to eliminate system malfunctions more quickly.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "AT021",
         title: "Tactical Attacker",
@@ -30,7 +238,274 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 15
+        maxInFleet: 15,
+        aircraftPerSquadron: 3,
+        production: {
+            metal: 5520,
+            crystal: 430,
+            deuterium: 230,
+            timeSeconds: 770,
+            storage: 0
+        },
+        systems: [{
+            type: "jamming",
+            name: "Electronic Jamming System",
+            main: true,
+            maxUpgradeSlots: 7,
+            systemAdjustment: "jamming",
+            img: "/weapons/icons/jamming.png",
+            hitrates: {
+                fighter: 0.75,
+                corvette: 0.9,
+                frigate: 0.85,
+                destroyer: 0.85,
+                cruiser: 0.95,
+                battlecruiser: 1,
+                carrier: 0.7,
+                base: 1
+            },
+            upgrades: [{
+                name: "Failure Adjustment",
+                strategy: true,
+                description: ["Interferes again and increases the inbound time by ", "35%", " when failing to interfere."],
+                flavorText: "Adjusts energy strategy to transfer part of the power system's energy to the jamming system.",
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Jamming Enhancement",
+                description: ["Increases jamming duration by ", "6%", "."],
+                flavorText: "Optimizes the jamming signal's encoding to interfere with enemy communications more discretely and more effectively. It is also harder to detect and decode.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Jamming Equipment Enhancement",
+                description: ["Increases jamming duration by ", "6%", "."],
+                flavorText: "Improves the jamming system's power and cooling equipment, allowing it to be used for a longer duration.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Quick Repair",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                flavorText: "Adds a quick-repair equipment to correct deviations during the weapon's operations, increasing weapon accuracy during rapid firing.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Weapon Heatsink Efficiency",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                flavorText: "Improves the weapon's heat dissipation system's efficiency to prevent the weapon from overheating during rapid firing.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Fast Target Lock",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                flavorText: "Accelerates the internal process for switching targets by optimizing data transmission, fire control calculations, signal anchoring, etc.",
+                maxTiers: 9,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Interference Cover",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "30%", " but reduces the interference effect duration by ", "50%", "."],
+                flavorText: "Amplifies the signal of the interference module covering you, making it more difficult for the direct-fire weapons to target you.",
+                maxTiers: 1,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.3,
+                tpPerTier: 9
+            }, {
+                name: "Disperse Interference",
+                description: ["Prioritizes unjammed targets"],
+                flavorText: "Activate the coordinated response system of the interference module, allowing different formations to spread out and interfere.",
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 9
+            }, {
+                name: "Electronic Cover",
+                description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you and the aircraft within the same carrier by ", "10%", " (effects of the same type cannot stack)"],
+                flavorText: "Adding an extra Warning and Confrontation module in the jamming system, allowing it to interfere with the enemy anti-aircraft weapon's lock-on operation.",
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }]
+        }, {
+            type: "weapon",
+            name: "Airborne Weapon System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            baseAntiship: 281,
+            baseAntiair: 225,
+            baseSiege: 32,
+            hitrates: {
+                fighter: 0.2,
+                corvette: 0.55,
+                frigate: 0.85,
+                destroyer: 0.85,
+                cruiser: 0.95,
+                battlecruiser: 1,
+                carrier: 0.7,
+                base: 1
+            },
+            upgrades: [{
+                name: "Barrel Enhancement",
+                description: ["Increases all cannon Damage by ", "10%"],
+                flavorText: "Reinforces cannon barrels to reduce the deformation caused by the firing process, improves shells' exit velocity, and stabilizes trajectory.",
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Ammo Enhancement",
+                description: ["Increases all cannon Damage by ", "10%"],
+                flavorText: "Uses enhanced warheads to improve thrust during the firing process.",
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Ammo-Loader Enhancement",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                flavorText: "Improves the ammo-loading mechanism to increase the transporting and auto-loading speed.",
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                flavorText: "Adds an auxiliary heat-dissipation system to the barrels to improve the weapon's heat dissipation capacity, allowing the weapon to be fired more rapidly.",
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Firing Assistance Enhancement",
+                description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "15%"],
+                flavorText: "Improves the monitoring and prediction and small-ship movements, The results are linked to and synced up with the weapon's aiming system.",
+                maxTiers: 1,
+                affectedStat: "smallHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                flavorText: "Accelerates the data-processing speed for interpreting and predicting aerial targets. Signal relay latency has also been reduced. The results are linked to and synced up with the weapon's aiming system.",
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 2,
+            img: "/weapons/icons/armor.png",
+            systemAdjustment: "hp",
+            baseHp: 4920,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                description: ["Increases ship HP by ", "2%"],
+                flavorText: "Increases the aircraft's armor the improve Damage Resistance without compromising the light-weight design.",
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement Enhancement",
+                description: ["Increases ship HP by ", "2%"],
+                flavorText: "Reinforces the fuselage of Fighters to increase Damage Resistance.",
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                flavorText: "Treats the ship's armor with a reflective coating, which jams the guidance signals of missiles and torpedoes at close range, reducing their ability to profile the ship.",
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            img: "/weapons/icons/speed.png",
+            baseCruise: 3000,
+            baseWarp: 0,
+            evasion: 1.1,
+            upgrades: [{
+                name: "Aerial Mobility Enhancement",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                flavorText: "Improves the vector control of aircraft engines to increase aircraft agility.",
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Dynamic Thrust Enhancement",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                flavorText: "Improves the thruster control of aircraft engines to allow for more responsive thrust-adjustments, increasing the aircraft's control over flight speed.",
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Missile Evasion Enhancement",
+                description: ["Reduces the chance of being hit by missiles by ", "3%"],
+                flavorText: "Improves the detection and path-prediction capabilities of incoming missiles, allowing for more effective evasive maneuvers.",
+                maxTiers: 5,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Flight Maneuver Improvement",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                flavorText: "Optimize the rotational structure and power system of the aircraft, allowing it to adapt to the complicated battle situation to reduce the time spent during the outbound and inbound.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            img: "/weapons/icons/command.png",
+            systemAdjustment: null,
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                description: ["Increase the automated maintenance efficiency of the system by ", "5%", "."],
+                flavorText: "Increases the responsiveness of the emergency Repair Dock to eliminate system malfunctions more quickly.",
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "AT021",
         title: "Heavy Attacker",
@@ -45,7 +520,15 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 15
+        maxInFleet: 15,
+        aircraftPerSquadron: 3,
+        production: {
+            metal: 6100,
+            crystal: 480,
+            deuterium: 170,
+            timeSeconds: 710,
+            storage: 0
+        },
     }, {
         name: "B192 Newland",
         title: "Heavy Attacker",
@@ -60,7 +543,15 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 3,
+        production: {
+            metal: 7300,
+            crystal: 660,
+            deuterium: 290,
+            timeSeconds: 1060,
+            storage: 0
+        },
     }, {
         name: "BR050",
         title: "Standard Bomber",
@@ -75,7 +566,15 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
+        production: {
+            metal: 6640,
+            crystal: 620,
+            deuterium: 190,
+            timeSeconds: 830,
+            storage: 0
+        },
     }, {
         name: "BR050",
         title: "Multi-Role Bomber",
@@ -90,7 +589,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
     }, {
         name: "BR050",
         title: "Torpedo Bomber",
@@ -105,7 +605,8 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
     }, {
         name: "Balancer Anderson SC020",
         title: "Scout",
@@ -120,7 +621,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 5,
     }, {
         name: "Bullfrog",
         title: "Dual-Purpose Bomber",
@@ -135,7 +637,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
     }, {
         name: "Hayreddin's Loyal",
         title: "Pulsar Fighter",
@@ -150,7 +653,8 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 1,
-        maxInFleet: 8
+        maxInFleet: 8,
+        aircraftPerSquadron: 3,
     }, {
         name: "Janbiya Aer410",
         title: "Assault Attacker",
@@ -165,7 +669,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 3,
     }, {
         name: "Mistral",
         title: "Combat Attacker",
@@ -180,7 +685,8 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 4,
     }, {
         name: "SC002",
         title: "Quantum Scout",
@@ -195,7 +701,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 15
+        maxInFleet: 15,
+        aircraftPerSquadron: 5,
     }, {
         name: "Sandrake",
         title: "Atmospheric Interceptor",
@@ -210,7 +717,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 5,
     }, {
         name: "Spore A404",
         title: "Light Fighter",
@@ -225,7 +733,8 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 5,
     }, {
         name: "Stingray",
         title: "Torpedo Bomber",
@@ -240,7 +749,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
     }, {
         name: "Strix A100",
         title: "Joint Attacker",
@@ -255,7 +765,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 3,
     }, {
         name: "Vitas A021",
         title: "Heavy Attacker",
@@ -270,7 +781,8 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 3,
     }, {
         name: "Vitas-B010",
         title: "Bomber",
@@ -285,7 +797,8 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 1,
-        maxInFleet: 10
+        maxInFleet: 10,
+        aircraftPerSquadron: 2,
     }, {
         name: "CV-II003",
         title: "Light Corvette",

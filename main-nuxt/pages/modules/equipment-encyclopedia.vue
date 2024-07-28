@@ -1,5 +1,5 @@
 <template>
-    <div class="holder">
+    <div class="holder" v-if="equipmentData">
         <button class="openSelect" @click="openSelect = !openSelect" v-if="equipmentStore().current">
             <h3 v-if="openSelect">Close Dropdown</h3>
             <h3 v-if="!openSelect">Open Dropdown</h3>
@@ -28,6 +28,8 @@
 
 const openSelect = ref(true);
 const route = useRoute();
+
+const equipmentData = useFetch("/api/equipment").data.value as (Equipment | TechnicalBlueprint)[] ?? shipDataStore().equipmentData;
 
 watch(() => equipmentStore().current, () => {
     useHead({

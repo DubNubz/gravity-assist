@@ -46,9 +46,11 @@
 const showSideMenu = ref(false);
 
 onMounted(async () => {
-  await useFetch('/api/data');
-  const data = await useFetch('/api/data');
+  await useFetch('/api/ships');
+  const data = await useFetch('/api/ships');
+  const equipments = await $fetch("/api/equipment");
   shipDataStore().shipData = data.data.value as Ship[];
+  shipDataStore().equipmentData = equipments as (Equipment | TechnicalBlueprint)[];
 })
 
 useSeoMeta({

@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
+const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
 const emit = defineEmits(["done"]);
 
 function handleClick (ship: Ship) {

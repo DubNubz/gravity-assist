@@ -237,4 +237,9 @@ export const changelog: Changelog[] = [{
     release: "July 27, 2024",
     notes: ["Made the side menu visible at all times for bigger screens", "Adjusted font size for all devices", "Added Warspite to Module Library",
     "Removed the Contributors and Changelog button from the footer and moved them to the side menu"]
+}, {
+    type: "release",
+    version: "aaaaaaaaaaa",
+    release: "aaaaaaaaaaaaaaaaa",
+    notes: ["Added Ship Comparisons"]
 }];

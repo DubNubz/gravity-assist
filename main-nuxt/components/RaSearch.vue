@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
+const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
 const filteredChoices = ref<Ship[]> ([]);
 const emit = defineEmits(["done"]);
 

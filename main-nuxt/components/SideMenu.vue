@@ -1,37 +1,43 @@
 <template>
     <div class="sideMenu">
         <NuxtLink to="/home" class="sideMenuButton" :class="{ active: route.path == '/home' }" style="margin-top: 3em;">
-        <img :src="'/ui/home.svg'" alt="Click to go back to the original landing page">
-        <h3>Home</h3>
-        </NuxtLink>
-        <NuxtLink to="/modules/color-generator" class="sideMenuButton" :class="{ active: route.path == '/modules/color-generator' }">
-        <img :src="'/ui/paint.svg'" alt="Click to go to the Color Generator page">
-        <h3>Color Generator</h3>
+          <img :src="'/ui/home.svg'" alt="Click to go back to the original landing page">
+          <h3>Home</h3>
         </NuxtLink>
         <NuxtLink to="/modules/research-agreement-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/research-agreement-helper' }">
-        <img :src="'/ui/atom.svg'" alt="Click to go to the Research Agreement Helper page">
-        <h3>RA Helper</h3>
+          <img :src="'/ui/atom.svg'" alt="Click to go to the Research Agreement Helper page">
+          <h3>RA Helper</h3>
         </NuxtLink>
         <NuxtLink to="/modules/module-library" class="sideMenuButton" :class="{ active: route.path == '/modules/module-library' }">
-        <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
-        <h3>Module Library</h3>
+          <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
+          <h3>Module Library</h3>
+        </NuxtLink>
+        <NuxtLink to="/modules/ship-comparison" class="sideMenuButton new" :class="{ activeNew: route.path == '/modules/ship-comparison' }">
+          <img :src="'/ui/scale.svg'" alt="Click to go to the Ship Comparisons page">
+          <h3>Ship Comparisons</h3>
+        </NuxtLink>
+        <NuxtLink to="/modules/color-generator" class="sideMenuButton" :class="{ active: route.path == '/modules/color-generator' }">
+          <img :src="'/ui/paint.svg'" alt="Click to go to the Color Generator page">
+          <h3>Color Generator</h3>
         </NuxtLink>
         <NuxtLink to="/modules/equipment-encyclopedia" class="sideMenuButton" :class="{ active: route.path == '/modules/equipment-encyclopedia' }">
-        <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
-        <h3>Equipment Library</h3>
+          <img src="/ui/wrench.svg" alt="Click to go to the Equipment Encyclopedia page">
+          <h3>Equipment Library</h3>
         </NuxtLink>
-        <NuxtLink to="/modules/fleet-builder" class="sideMenuButton" :class="{ active: route.path == '/modules/fleet-builder' }">
-        <img :src="'/ui/blueprint.svg'" alt="Click to go to the Fleet Builder page">
-        <h3>Fleet Builder</h3>
+        <NuxtLink to="" class="sideMenuButton wip noHover" :class="{ active: route.path == '/modules/fleet-builder' }">
+          <img :src="'/ui/blueprint.svg'" alt="Click to go to the Fleet Builder page">
+          <h3>Coming soon...</h3>
         </NuxtLink>
+
         <div style="margin-top: auto; margin-bottom: auto;"></div>
+
         <NuxtLink to="/contributors" class="sideMenuButton" :class="{ active: route.path == '/modules/contributors' }">
-        <img :src="'/ui/alt/whiteCredits.svg'" alt="Click to go to the Contributors page">
-        <h3>Contributors</h3>
+          <img :src="'/ui/alt/whiteCredits.svg'" alt="Click to go to the Contributors page">
+          <h3>Contributors</h3>
         </NuxtLink>
         <NuxtLink to="/changelog" class="sideMenuButton" :class="{ active: route.path == '/modules/changelog' }" style="margin-bottom: 3em;">
-        <img :src="'/ui/alt/whiteChanges.svg'" alt="Click to go to the Changelog page">
-        <h3>Changelog</h3>
+          <img :src="'/ui/alt/whiteChanges.svg'" alt="Click to go to the Changelog page">
+          <h3>Changelog</h3>
         </NuxtLink>
     </div>
 </template>
@@ -75,8 +81,20 @@ const route = useRoute();
     }
   }
 
+  .new {
+    background-color: rgba(255, 217, 0, 0.15);
+  }
+
+  .wip {
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+
   .active {
     background-color: rgba(100, 100, 100, 0.25);
+  }
+
+  .activeNew {
+    background-color: rgba(255, 217, 0, 0.25);
   }
 }
 
@@ -118,6 +136,14 @@ const route = useRoute();
 @media (hover: hover) and (pointer: fine) {
   .sideMenuButton:hover {
     background-color: rgba(100, 100, 100, 0.35);
+  }
+
+  .new:hover {
+    background-color: rgba(255, 217, 0, 0.2);
+  }
+
+  .noHover:hover {
+    background-color: rgba(0, 0, 0, 0.35);
   }
 }
 

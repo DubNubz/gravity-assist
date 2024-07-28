@@ -23,7 +23,8 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
+const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+
 const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
 
 </script>

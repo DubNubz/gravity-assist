@@ -36,56 +36,110 @@ export type Ship = {
     row: "Front" | "Middle" | "Back";
     cp: number;
     maxInFleet: number;
+    aircraftPerSquadron?: number;
     medium_fighters_held?: number;
     large_fighters_held?: number;
     corvettes_held?: number;
-    systems?: (WeaponSystem | AircraftSystem | ArmorSystem | PropulsionSystem | EnergySystem | MiscSystem)[];
+    production: {
+        metal: number;
+        crystal: number;
+        deuterium: number;
+        timeSeconds: number;
+        storage: number;
+    }
+    systems?: (WeaponSystem | AircraftSystem | ArmorSystem | PropulsionSystem | EnergySystem | CommandSystem | JammingSystem | MiscSystem)[];
     modules?: (Module | UnknownModule)[];
 }
 
-export interface ShipSystem {
-    name: string;
-    upgrades: SystemUpgrade[];
-    maxUpgradeSlots: number;
-    baseAntiship: number;
-    baseAntiair: number;
-    baseSiege: number;
-    baseHp: number;
-    baseArmor: number;
-    baseEnergyShield: number;
-    baseCruise: number;
-    baseWarp: number;
-}
+type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion";
 
 export type SystemUpgrade = {
     name: string;
-    description: string;
+    strategy?: boolean;
+    description: string[];
     flavorText: string;
     maxTiers: number;
+    affectedStat: AffectedStats | AffectedStats[] | null;
+    percentBuffPerTier: number | number[] | null;
+    tpPerTier: number | number[];
+}
+
+interface ShipSystem {
+    name: string;
+    main?: boolean;
+    maxUpgradeSlots: number;
+    systemAdjustment: "weaponDamage" | "hp" | "aircraftDamage" | "uavEffectiveness" | "jamming" | null;
+    upgrades: SystemUpgrade[];
 }
 
 export interface WeaponSystem extends ShipSystem {
-    
+    type: "weapon";
+    img: "/weapons/icons/cannon.png";
+    baseAntiship: number;
+    baseAntiair: number;
+    baseSiege: number;
+    hitrates: {
+        fighter: number | null;
+        corvette: number | null;
+        frigate: number;
+        destroyer: number;
+        cruiser: number;
+        battlecruiser: number;
+        carrier: number;
+        base: number;
+    }
 }
 
 export interface AircraftSystem extends ShipSystem {
-    
+    type: "aircraft";
+    img: "/weapons/icons/aircraft.png";
 }
 
 export interface ArmorSystem extends ShipSystem {
-    
+    type: "armor";
+    img: "/weapons/icons/armor.png";
+    baseHp: number;
+    baseArmor: number;
+    baseEnergyShield: number;
 }
 
 export interface PropulsionSystem extends ShipSystem {
-    
+    type: "propulsion";
+    img: "/weapons/icons/speed.png";
+    baseCruise: number;
+    baseWarp: number;
+    evasion?: number;
 }
 
 export interface EnergySystem extends ShipSystem {
+    type: "energy";
+    img: "/weapons/icons/jamming.png";
+    baseDmgBuff?: number;
+}
 
+export interface CommandSystem extends ShipSystem {
+    type: "command";
+    img: "/weapons/icons/command.png";
+}
+
+export interface JammingSystem extends ShipSystem {
+    type: "jamming";
+    img: "/weapons/icons/jamming.png";
+    hitrates: {
+        fighter: number | null;
+        corvette: number | null;
+        frigate: number;
+        destroyer: number;
+        cruiser: number;
+        battlecruiser: number;
+        carrier: number;
+        base: number;
+    }
 }
 
 export interface MiscSystem extends ShipSystem {
-
+    type: "misc";
+    img: string;
 }
 
 export type Module = {

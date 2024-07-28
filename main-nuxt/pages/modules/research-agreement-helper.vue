@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
+const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
 
 const browse = ref(true);
 const data = ref(highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(raHelperStore().manufacturer) &&

@@ -29,6 +29,8 @@
 
 <script setup lang="ts">
 
+const equipmentData = useFetch("/api/equipment").data.value as (Equipment | TechnicalBlueprint)[] ?? shipDataStore().equipmentData;
+
 const blueprint = "/ui/blueprint.svg";
 
 const filterByEquipment = ref(false);
