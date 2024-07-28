@@ -1,5 +1,5 @@
 <template>
-    <div class="holder">
+    <div class="holder" v-if="shipData">
         <div class="navButtonHolder">
             <button @click="browse = !browse" :class="{ active: browse == true }">
                 <img src="/ui/openBook.svg" alt="Click to freely browse through all Research Agreement paths">
@@ -33,7 +33,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Ship, ShipDirection, ShipManufacturer, ShipScope } from '~/utils/shipData';
+
+const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
 
 const browse = ref(true);
 const data = ref(highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(raHelperStore().manufacturer) &&

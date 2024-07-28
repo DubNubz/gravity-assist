@@ -1,5 +1,5 @@
 <template>
-    <div class="holder">
+    <div class="holder" v-if="shipData">
         <div class="navButtonHolder">
             <button @click="switchToModules" :class="{ active: select == true }">
                 <img src="/ui/solarSystem.svg" alt="Click to freely browse through all Research Agreement paths">
@@ -36,6 +36,8 @@
 const route = useRoute();
 const router = useRouter();
 const select = ref(modLibraryStore().ship ? false : true);
+
+const shipData = shipDataStore().shipData;
 
 const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
 const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));

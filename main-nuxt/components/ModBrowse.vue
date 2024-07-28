@@ -44,8 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Ship } from '~/utils/shipData';
 
+const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
 const emit = defineEmits(["done"]);
 
 function handleClick (ship: Ship) {

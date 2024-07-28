@@ -32,7 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import type { ShipDirection, ShipManufacturer, ShipScope } from '~/utils/shipData';
 
 const timeReqiredHours = ref(getTime(raHelperStore().manufacturer, raHelperStore().direction, raHelperStore().scope));
 

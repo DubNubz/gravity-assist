@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Ship } from '~/utils/shipData';
 
+const shipData = useFetch("/api/data").data.value ?? shipDataStore().shipData;
 const filteredChoices = ref<Ship[]> ([]);
 const emit = defineEmits(["done"]);
 

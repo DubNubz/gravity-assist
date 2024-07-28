@@ -45,6 +45,12 @@
 
 const showSideMenu = ref(false);
 
+onMounted(async () => {
+  await useFetch('/api/data');
+  const data = await useFetch('/api/data');
+  shipDataStore().shipData = data.data.value as Ship[];
+})
+
 useSeoMeta({
     colorScheme: "dark",
     ogImage: "/ui/radiant.svg"
