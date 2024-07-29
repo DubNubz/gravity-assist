@@ -47,14 +47,15 @@ export type Ship = {
         timeSeconds: number;
         storage: number;
     }
-    systems?: (WeaponSystem | AircraftSystem | ArmorSystem | PropulsionSystem | EnergySystem | CommandSystem | JammingSystem | MiscSystem)[];
+    systems?: ShipSystemAll[];
     modules?: (Module | UnknownModule)[];
 }
 
-type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion";
+export type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion";
 
 export type SystemUpgrade = {
     name: string;
+    img: string;
     strategy?: boolean;
     description: string[];
     flavorText: string;
@@ -62,7 +63,11 @@ export type SystemUpgrade = {
     affectedStat: AffectedStats | AffectedStats[] | null;
     percentBuffPerTier: number | number[] | null;
     tpPerTier: number | number[];
+    tiersUpgraded?: number;
+    tpAllocated?: number;
 }
+
+export type ShipSystemAll = WeaponSystem | AircraftSystem | ArmorSystem | PropulsionSystem | EnergySystem | CommandSystem | JammingSystem | MiscSystem;
 
 interface ShipSystem {
     name: string;
@@ -70,6 +75,7 @@ interface ShipSystem {
     maxUpgradeSlots: number;
     systemAdjustment: "weaponDamage" | "hp" | "aircraftDamage" | "uavEffectiveness" | "jamming" | null;
     upgrades: SystemUpgrade[];
+    tpAllocated?: number;
 }
 
 export interface WeaponSystem extends ShipSystem {
@@ -78,16 +84,6 @@ export interface WeaponSystem extends ShipSystem {
     baseAntiship: number;
     baseAntiair: number;
     baseSiege: number;
-    hitrates: {
-        fighter: number | null;
-        corvette: number | null;
-        frigate: number;
-        destroyer: number;
-        cruiser: number;
-        battlecruiser: number;
-        carrier: number;
-        base: number;
-    }
 }
 
 export interface AircraftSystem extends ShipSystem {
@@ -125,16 +121,6 @@ export interface CommandSystem extends ShipSystem {
 export interface JammingSystem extends ShipSystem {
     type: "jamming";
     img: "/weapons/icons/jamming.png";
-    hitrates: {
-        fighter: number | null;
-        corvette: number | null;
-        frigate: number;
-        destroyer: number;
-        cruiser: number;
-        battlecruiser: number;
-        carrier: number;
-        base: number;
-    }
 }
 
 export interface MiscSystem extends ShipSystem {

@@ -4,13 +4,13 @@
           <img :src="'/ui/home.svg'" alt="Click to go back to the original landing page">
           <h3>Home</h3>
         </NuxtLink>
-        <NuxtLink to="/modules/research-agreement-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/research-agreement-helper' }">
-          <img :src="'/ui/atom.svg'" alt="Click to go to the Research Agreement Helper page">
-          <h3>RA Helper</h3>
-        </NuxtLink>
         <NuxtLink to="/modules/module-library" class="sideMenuButton" :class="{ active: route.path == '/modules/module-library' }">
           <img src="/ui/openBook.svg" alt="Click to go to the Module Library page">
           <h3>Module Library</h3>
+        </NuxtLink>
+        <NuxtLink to="/modules/research-agreement-helper" class="sideMenuButton" :class="{ active: route.path == '/modules/research-agreement-helper' }">
+          <img :src="'/ui/atom.svg'" alt="Click to go to the Research Agreement Helper page">
+          <h3>RA Helper</h3>
         </NuxtLink>
         <NuxtLink to="/modules/ship-comparison" class="sideMenuButton new" :class="{ activeNew: route.path == '/modules/ship-comparison' }">
           <img :src="'/ui/scale.svg'" alt="Click to go to the Ship Comparisons page">

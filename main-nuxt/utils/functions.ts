@@ -9,15 +9,17 @@ export function getRandomIntInclusive (min: number, max: number) {
   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
-export function getRandomItemFromArray (arr: any[]) {
+export function getRandomItemFromArray <T> (arr: T[]) {
   return arr[getRandomIntInclusive(0, arr.length - 1)];
 }
 
-export function compareObjectsInArray(obj1: Record<any, any>, obj2: Record<any, any>) {
-  return Object.keys(obj1).every(key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]);
+export function findObjectInArray <T extends Record<any, any>> (array: T[], target: T) {
+  const find = array.find((obj) => Object.keys(obj).every((key) => target.hasOwnProperty(key) && obj[key] === target[key]));
+  if (find) return find;
+  else return false;
 }
 
-export function compareObjectsSingle(obj1: Record<any, any> | undefined, obj2: Record<any, any> | undefined) {
+export function compareObjectsSingle <T extends Record<any, any>> (obj1: T | undefined, obj2: T | undefined) {
   if (!obj1 || !obj2) return;
 
   if (obj1 === obj2) {
@@ -44,18 +46,30 @@ export function compareObjectsSingle(obj1: Record<any, any> | undefined, obj2: R
   return true;
 }
 
-export async function loopUntil <T> (stopCondition: boolean, returnValue: T) {
-let done = false;
-let failsafe = 0;
-while (!done || failsafe < 20) {
-  if (stopCondition) {
-    done = true;
-    console.log(returnValue)
-    return returnValue;
-  } else {
-    await delay(5);
-    failsafe++;
+export function objectToArray <T extends Record<string, any>> (obj: T) {
+  const entries: [keyof T, T[keyof T]][] = [];
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      entries.push([key, obj[key]]);
+    }
   }
+
+  return entries;
 }
-return returnValue;
+
+export async function loopUntil <T> (stopCondition: boolean, returnValue: T) {
+  let done = false;
+  let failsafe = 0;
+  while (!done || failsafe < 20) {
+    if (stopCondition) {
+      done = true;
+      console.log(returnValue)
+      return returnValue;
+    } else {
+      await delay(5);
+      failsafe++;
+    }
+  }
+  return returnValue;
 }

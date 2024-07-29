@@ -27,24 +27,16 @@ export default defineEventHandler((event) => {
         systems: [{
             type: "weapon",
             name: `Pulse Cannon System`,
+            main: true,
             maxUpgradeSlots: 5,
             baseAntiship: 494,
             baseAntiair: 296,
             baseSiege: 14,
-            hitrates: {
-                fighter: 0.25,
-                corvette: 0.65,
-                frigate: 0.85,
-                destroyer: 0.85,
-                cruiser: 0.85,
-                battlecruiser: 1,
-                carrier: 1,
-                base: 1
-            },
             systemAdjustment: "weaponDamage",
             img: "/weapons/icons/cannon.png",
             upgrades: [{
                 name: "Delayed Attack",
+                img: "/weapons/upgrades/strategies/at021a_1.svg",
                 strategy: true,
                 description: ["After the battle begins, extend the lock-on time of the first 2 rounds of attacks by ", "40%", " and increases the Hit Rate of the main weapon by ", "40%", "."],
                 flavorText: "Increases the strike accuracy using a more accurate detection and recognition lock-on to the target.",
@@ -54,6 +46,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 15
             }, {
                 name: "Enhance Recharge Power",
+                img: "/weapons/upgrades/energyDamage.svg",
                 description: ["Increases all pulse cannon Damage by ", "2%"],
                 flavorText: "Improves the energy output and storage capacity of the pulse cannon's charging system, allowing for greater firing power.",
                 maxTiers: 5,
@@ -61,7 +54,8 @@ export default defineEventHandler((event) => {
                 percentBuffPerTier: 1.02,
                 tpPerTier: 2
             }, {
-                name: "Enhance Recharge Power",
+                name: "Enhance Pulse Focus",
+                img: "/weapons/upgrades/energyDamage.svg",
                 description: ["Increases all pulse cannon Damage by ", "2%"],
                 flavorText: "Improves the pulse cannon's focusing mechanism to increase the energy density of the pulse beam, allowing for greater Damage to ship armor.",
                 maxTiers: 5,
@@ -70,6 +64,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 2
             }, {
                 name: "Firing Assistance Enhancement",
+                img: "/weapons/upgrades/smallHitrate.svg",
                 description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
                 flavorText: "Improves the monitoring and prediction of small-ship movements. The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 5,
@@ -78,6 +73,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 2
             }, {
                 name: "Large Target Correction",
+                img: "/weapons/upgrades/bigHitrate.svg",
                 description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
                 flavorText: "Improves the monitoring and prediction of large-ship movements. The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 5,
@@ -86,6 +82,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 2
             }, {
                 name: "Charging Device Enhancement",
+                img: "/weapons/upgrades/energyCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
                 flavorText: "Improves the capacity and recharging efficiency of the charging system for energy weapons, allowing for shorter charging time.",
                 maxTiers: 5,
@@ -94,6 +91,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 1
             }, {
                 name: "Pipeline Cooling Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
                 flavorText: "Improves the heat-dissipation system for energy pipelines, allowing for larger energy transfers.",
                 maxTiers: 5,
@@ -254,16 +252,6 @@ export default defineEventHandler((event) => {
             maxUpgradeSlots: 7,
             systemAdjustment: "jamming",
             img: "/weapons/icons/jamming.png",
-            hitrates: {
-                fighter: 0.75,
-                corvette: 0.9,
-                frigate: 0.85,
-                destroyer: 0.85,
-                cruiser: 0.95,
-                battlecruiser: 1,
-                carrier: 0.7,
-                base: 1
-            },
             upgrades: [{
                 name: "Failure Adjustment",
                 strategy: true,
@@ -347,16 +335,6 @@ export default defineEventHandler((event) => {
             baseAntiship: 281,
             baseAntiair: 225,
             baseSiege: 32,
-            hitrates: {
-                fighter: 0.2,
-                corvette: 0.55,
-                frigate: 0.85,
-                destroyer: 0.85,
-                cruiser: 0.95,
-                battlecruiser: 1,
-                carrier: 0.7,
-                base: 1
-            },
             upgrades: [{
                 name: "Barrel Enhancement",
                 description: ["Increases all cannon Damage by ", "10%"],

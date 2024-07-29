@@ -183,7 +183,7 @@ async function copyToClipboard () {
 
     let fromLocalStorage: Color[] | null = JSON.parse(localStorage.getItem("recent-colors") as string);
     if (fromLocalStorage) {
-        if (fromLocalStorage.some((obj) => compareObjectsInArray(obj, colorObject))) return;
+        if (findObjectInArray(fromLocalStorage, colorObject)) return;
         if (fromLocalStorage.length >= 4) fromLocalStorage = fromLocalStorage.slice(1, 4);
 
         fromLocalStorage.push(colorObject);
