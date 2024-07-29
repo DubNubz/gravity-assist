@@ -22,67 +22,203 @@ export type UAV = "Spotter UAV" | "Area-Denial Anti-Aircraft UAV" | "Shield UAV"
 "Cooperative Offensive UAV" | "Siege UAV" | "Recon UAV";
 
 export type Ship = {
+    /** Name of the ship, as shown ingame.
+     * @example "Conamara Chaos"
+     */
     name: string;
+
+    /** Title of the ship, shown next to the name.
+     * @example "High-Speed Plasma Cruiser"
+     */
     title: string;
+
+    /** Image of the ship, found in `/public/ships`.
+     * 
+     * Format: `shipName_variant.png`
+     * @example "/ships/conamaraChaos_b.png"
+     */
     img: string;
+
+    /** Class of the ship. */
     type: "Fighter" | "Corvette" | "Frigate" | "Destroyer" | "Cruiser" | "Battlecruiser" | "Auxiliary Ship" | "Carrier" | "Battleship";
+
+    /** If this ship is a fighter, the type of fighter. */
     fighter_type?: "Small" | "Medium" | "Large";
+
+    /** Variant of the ship. */
     variant: "A" | "B" | "C" | "D";
+
+    /** Name of the variant, shown next to the variant letter.
+     * @example "Plasma Type"
+     */
     variant_name: string;
+
     manufacturer: ShipManufacturer;
     direction: ShipDirection[];
     scope: ShipScope;
     weight: number;
     row: "Front" | "Middle" | "Back";
+
+    /** Command Points. */
     cp: number;
+
+    /** Active Service limit. */
     maxInFleet: number;
+
+    /** If this ship is a fighter, the number of fighters per unit. */
     aircraftPerSquadron?: number;
+
+    /** If this ship is a medium fighter carrier, the number of medium fighters held. */
     medium_fighters_held?: number;
+
+    /** If this ship is a large fighter carrier, the number of large fighters held. */
     large_fighters_held?: number;
+
+    /** If this ship is a corvette carrier, the number of corvettes held. */
     corvettes_held?: number;
+
+    /** Production Info, shown after clicking the button at the top right of the Basic Stats box. */
     production: {
         metal: number;
         crystal: number;
         deuterium: number;
+        /** Time to produce this ship, in seconds. */
         timeSeconds: number;
         storage: number;
     }
+
+    /** Only found if this ship is a capital ship or aircraft. */
     systems?: ShipSystemAll[];
+
+    /** Only found if this ship is a super capital ship. */
     modules?: (Module | UnknownModule)[];
 }
 
 export type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion";
 
 export type SystemUpgrade = {
+    /** Name of the upgrade.
+     * @example "Overdrive"
+     */
     name: string;
+
+    /** Image of the upgrade's icon, found in `/public/weapons/upgrades`.
+     * 
+     * If upgrade is a strategy, the iamge is found in `/public/weapons/upgrades/strategies`.
+     * @example "/weapons/upgrades/genericCooldown.png"
+     */
     img: string;
-    strategy?: boolean;
+
+    /** Only found if this upgrade is a strategy. */
+    strategy?: true;
+
+    /** Description of the upgrade, separated into strings.
+     * 
+     * - The first string of the array is the first section of the description, up until the first instance of a yellow character. This includes the space before the yellow character.
+     * - The second string of the array is/are the first yellow character(s). It should not contain any spaces and should only contain the yellow character(s).
+     * - The third string is the next section of the description, including the space after the previous yellow character(s).
+     * - And so on.
+     * 
+     * @example ["Increases damage by ", "40%", " and Hit Rate by ", "25%", "."]
+     */
     description: string[];
-    flavorText: string;
+
+    /** The maximum number of tiers this upgrade has. */
     maxTiers: number;
+
+    /** - If only one stat is affected by this upgrade, this property should be a string of the stat affected.
+     * - If more than one stat is affected by this upgrade, this property should be an array of strings of the stats affected.
+     * @example affectedStat: "damage"
+     * @example affectedStat: ["damage", "generalHitrate"]
+     */
     affectedStat: AffectedStats | AffectedStats[] | null;
+
+    /** - If only one stat is affected by this upgrade. this property should be a number of the stat affected.
+     * - If more than one stat is affected by this upgrade, this property should be an array of numbers of the stats affected.
+     * 
+     * If `affectedStat === "armor"`, this property should be a flat value.
+     * @example percentBuffPerTier: 1.02
+     * @example percentBuffPerTier: [1.02, 1.15]
+     * @example affectedStat: "armor"; percentBuffPerTier: 6
+     */
     percentBuffPerTier: number | number[] | null;
+
+    /** - If the required number of tech points stays the same throughout all tiers of the upgrade, this property should be that number.
+     * - If the required number of tech points increases throughout the tiers of the upgrade, this property should be an array of numbers representing the number of tech points for each tier.
+     * 
+     * The number of tech points for each tier can be inferred; if `maxTiers === 3` and the number of tech points to upgrade all tiers is `5`, the only possible arrangement of tech points is `[1, 2, 2]`.
+     * @example tpPerTier: 2
+     * @example tpPerTier: [1, 1, 1, 1, 2]
+     */
     tpPerTier: number | number[];
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the number of tiers upgraded by the user.
+     */
     tiersUpgraded?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the total number of tech points allocated to this upgrade by the user.
+     */
     tpAllocated?: number;
 }
 
 export type ShipSystemAll = WeaponSystem | AircraftSystem | ArmorSystem | PropulsionSystem | EnergySystem | CommandSystem | JammingSystem | MiscSystem;
 
 interface ShipSystem {
+    /** Name of the system.
+     * @example "Bow-Mounted Plasma Caster"
+     */
     name: string;
-    main?: boolean;
+
+    /** Only found if this system is the main system. */
+    main?: true;
+
+    /** The maximum number of upgrades this system has. */
     maxUpgradeSlots: number;
+
+    /** The type of system adjustment available for this system. */
     systemAdjustment: "weaponDamage" | "hp" | "aircraftDamage" | "uavEffectiveness" | "jamming" | null;
+
+    /** Array of all upgrades located in this system. */
     upgrades: SystemUpgrade[];
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the total number of tech points allocated to this system by the user.
+     */
     tpAllocated?: number;
 }
 
 export interface WeaponSystem extends ShipSystem {
     type: "weapon";
+
+    /** Image of the system's icon, found in `/public/weapons/icons`.
+     * @example "/weapons/icons/cannon.png"
+     */
     img: "/weapons/icons/cannon.png";
+
+    /** Default Anti-Ship Fire value, found after clicking the system.
+     * 
+     * - If the ship is a figher or corvette, the Anti-Ship Fire value is different if you click the system and if you don't click the system.
+     * - Use the value found after clicking the system.
+     */
     baseAntiship: number;
+
+    /** Default Air Defense value, found after clicking the system.
+     * 
+     * - If the ship is a figher or corvette, the Air Defense value is different if you click the system and if you don't click the system.
+     * - Use the value found after clicking the system.
+     */
     baseAntiair: number;
+
+    /** Default Siege Fire value, found after clicking the system.
+     * 
+     * - If the ship is a figher or corvette, the Siege Fire value is different if you click the system and if you don't click the system.
+     * - Use the value found after clicking the system.
+     */
     baseSiege: number;
 }
 
@@ -94,22 +230,37 @@ export interface AircraftSystem extends ShipSystem {
 export interface ArmorSystem extends ShipSystem {
     type: "armor";
     img: "/weapons/icons/armor.png";
+
+    /** Default HP value. */
     baseHp: number;
+
+    /** Default Armor value. */
     baseArmor: number;
+    
+    /** Default Energy Shield value. */
     baseEnergyShield: number;
 }
 
 export interface PropulsionSystem extends ShipSystem {
     type: "propulsion";
     img: "/weapons/icons/speed.png";
+
+    /** Default Cruise Speed value. */
     baseCruise: number;
+
+    /** Default Warp Speed value. */
     baseWarp: number;
+
+    /** Only found if this system provides an evasion bonus. Represents the default Evasion value. */
     evasion?: number;
 }
 
 export interface EnergySystem extends ShipSystem {
     type: "energy";
     img: "/weapons/icons/jamming.png";
+    /** Only found if this system provides a damage bonus. Represents the default damage bonus.
+     * @example 1.15
+     */
     baseDmgBuff?: number;
 }
 

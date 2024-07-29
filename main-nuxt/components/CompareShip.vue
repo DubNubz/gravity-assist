@@ -21,14 +21,21 @@
                     <span class="tooltip" v-if="stat.tooltip">{{ stat.tooltip }}</span>
                 </h4>
                 <div class="stat">
-                    <h3>{{ Math.round(stat.stat).toLocaleString() }}</h3>
+                    <h3 v-if="!stat.time">{{ (stat.raw ? stat.stat : Math.round(stat.stat)).toLocaleString() }}</h3>
+                    <h3 v-else>{{ addZeroToTime(Math.floor(stat.stat / 60 / 60)) }}:{{ addZeroToTime(Math.floor(stat.stat / 60)) }}:{{ addZeroToTime(Math.floor(stat.stat % 60)) }}</h3>
                     <img :src="stat.img" :alt="stat.name">
                 </div>
-                <div class="comparisonImgs">
+                <div class="comparisonImgs" v-if="!['Command Points', 'Metal', 'Crystal', 'Deuterium', 'Build Time'].includes(stat.name)">
                     <img class="comparison" v-if="stat.stat > stat.comparisonStat" src="/ui/greenUp.svg" alt="This ship's stat is better than the comparison.">
-                    <span class="statTooltip" v-if="stat.stat > stat.comparisonStat">This ship has a <span v-if="stat.comparisonStat != 0">{{ Math.round(((stat.stat / stat.comparisonStat) - 1) * 100) + '%' }}</span> higher <span>{{ stat.name }}</span> value than the comparison</span>
+                    <span class="statTooltip" v-if="stat.stat > stat.comparisonStat">This ship has a <span v-if="stat.comparisonStat != 0 && !stat.raw">{{ Math.abs(Math.round(((stat.stat / stat.comparisonStat) - 1) * 100)) + '%' }}</span> higher <span>{{ stat.name }}</span> value than the comparison</span>
                     <img class="comparison" v-if="stat.stat < stat.comparisonStat" src="/ui/redDown.svg" alt="This ship's stat is worse than the comparison.">
-                    <span class="statTooltip" v-if="stat.stat < stat.comparisonStat">This ship has a <span v-if="stat.stat != 0">{{ Math.round(((stat.comparisonStat / stat.stat) - 1) * 100) + '%' }}</span> lower <span>{{ stat.name }}</span> value than the comparison</span>
+                    <span class="statTooltip" v-if="stat.stat < stat.comparisonStat">This ship has a <span v-if="stat.stat != 0 && !stat.raw">{{ Math.abs(Math.round(((stat.comparisonStat / stat.stat) - 1) * 100)) + '%' }}</span> lower <span>{{ stat.name }}</span> value than the comparison</span>
+                </div>
+                <div class="comparisonImgs" v-else>
+                    <img class="comparison" v-if="stat.stat < stat.comparisonStat" src="/ui/greenUp.svg" alt="This ship's stat is better than the comparison.">
+                    <span class="statTooltip" v-if="stat.stat < stat.comparisonStat">This ship has a <span v-if="stat.comparisonStat != 0 && !stat.raw">{{ Math.abs(Math.round(((stat.stat / stat.comparisonStat) - 1) * 100)) + '%' }}</span> lower <span>{{ stat.name }}</span> value than the comparison</span>
+                    <img class="comparison" v-if="stat.stat > stat.comparisonStat" src="/ui/redDown.svg" alt="This ship's stat is worse than the comparison.">
+                    <span class="statTooltip" v-if="stat.stat > stat.comparisonStat">This ship has a <span v-if="stat.stat != 0 && !stat.raw">{{ Math.abs(Math.round(((stat.comparisonStat / stat.stat) - 1) * 100)) + '%' }}</span> higher <span>{{ stat.name }}</span> value than the comparison</span>
                 </div>
             </div>
         </div>
@@ -43,6 +50,8 @@ type Stat = {
     stat: any;
     comparisonStat: any;
     tooltip?: string;
+    raw?: true;
+    time?: true;
 }
 
 type Props = {
@@ -59,35 +68,98 @@ function handleClose () {
     showTpMenu.value = false;
 }
 
+function addZeroToTime (num: number) {
+    if (String(num).length == 1) return num + "0";
+    else return num;
+}
+
 function updateStats (ship: Ship) {
-    console.log((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
-    console.log((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
-    console.log(Math.round((((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1) / (props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) - 1) * 100))
+    console.log((props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%")
     stats.value = [{
-        name: "Command Points (CP)",
+        name: "Command Points",
         img: "/fleet/command_point.svg",
         stat: props.ship1.cp,
         comparisonStat: props.ship2?.cp
+    }, {
+        name: "Metal",
+        img: "/weapons/stats/metal.svg",
+        stat: props.ship1.production.metal,
+        comparisonStat: props.ship2?.production.metal,
+        tooltip: "Amount of metal required to build this ship"
+    }, {
+        name: "Crystal",
+        img: "/weapons/stats/crystal.svg",
+        stat: props.ship1.production.crystal,
+        comparisonStat: props.ship2?.production.crystal,
+        tooltip: "Amount of crystals required to build this ship"
+    }, {
+        name: "Deuterium",
+        img: "/weapons/stats/deuterium.svg",
+        stat: props.ship1.production.deuterium,
+        comparisonStat: props.ship2?.production.deuterium,
+        tooltip: "Amount of deuterium required to build this ship"
+    }, {
+        name: "Build Time",
+        img: "/weapons/stats/time.svg",
+        stat: props.ship1.production.timeSeconds,
+        comparisonStat: props.ship2?.production.timeSeconds,
+        time: true,
+        tooltip: "Amount of time required to build this ship"
+    }, {
+        name: "Storage",
+        img: "/weapons/stats/storage.svg",
+        stat: props.ship1.production.storage,
+        comparisonStat: props.ship2?.production.storage
+    }, {
+        name: "Storage per CP",
+        img: "/weapons/stats/storage.svg",
+        stat: props.ship1.production.storage / props.ship1.cp,
+        comparisonStat: (props.ship2?.production.storage ?? 0) / (props.ship2?.cp ?? 1),
+        tooltip: "Calculated by dividing the Storage / Command Point values"
     }, {
         name: "Anti-Ship Fire",
         img: "/weapons/stats/antiship.svg",
         stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
         comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
     }, {
+        name: "Anti-Ship Fire per CP",
+        img: "/weapons/stats/antiship.svg",
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        tooltip: "Calculated by dividing the Anti-Ship Fire / Command Point values"
+    }, {
         name: "Air Defense",
         img: "/weapons/stats/antiaircraft.svg",
         stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
         comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
+    }, {
+        name: "Air Defense per CP",
+        img: "/weapons/stats/antiaircraft.svg",
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        tooltip: "Calculated by dividing the Air Defense / Command Point values"
     }, {
         name: "Siege Fire",
         img: "/weapons/stats/siege.svg",
         stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
         comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
     }, {
+        name: "Siege Fire per CP",
+        img: "/weapons/stats/siege.svg",
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        tooltip: "Calculated by dividing the Siege Fire / Command Point values"
+    }, {
         name: "Hitpoints",
         img: "/weapons/stats/hp.svg",
         stat: props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0),
         comparisonStat: props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0)
+    }, {
+        name: "Hitpoints per CP",
+        img: "/weapons/stats/hp.svg",
+        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / props.ship1.cp),
+        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / (props.ship2?.cp ?? 1)),
+        tooltip: "Calculated by dividing the Hitpoints / Command Point values"
     }, {
         name: "Armor",
         img: "/weapons/stats/armor.svg",
@@ -96,32 +168,9 @@ function updateStats (ship: Ship) {
     }, {
         name: "Energy Shield",
         img: "/weapons/stats/energyShield.svg",
-        stat: Math.round((props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100)) + "%",
-        comparisonStat: Math.round((props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100)) + "%"
-    }, {
-        name: "Anti-Ship Fire per CP",
-        img: "/weapons/stats/antiship.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
-        tooltip: "Calculated by dividing the Anti-Ship Fire / Command Point values"
-    }, {
-        name: "Air Defense per CP",
-        img: "/weapons/stats/antiaircraft.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
-        tooltip: "Calculated by dividing the Air Defense / Command Point values"
-    }, {
-        name: "Siege Fire per CP",
-        img: "/weapons/stats/siege.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
-        tooltip: "Calculated by dividing the Siege Fire / Command Point values"
-    }, {
-        name: "Hitpoints per CP",
-        img: "/weapons/stats/hp.svg",
-        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / props.ship1.cp),
-        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / (props.ship2?.cp ?? 1)),
-        tooltip: "Calculated by dividing the Hitpoints / Command Point values"
+        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
+        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
+        raw: true
     }, {
         name: "Cruise Speed",
         img: "/weapons/stats/cruise.svg",
@@ -222,7 +271,7 @@ function updateStats (ship: Ship) {
 .statHolder {
     width: 100%;
     display: grid;
-    grid-template-columns: 55% 30% 15%;
+    grid-template-columns: 50% 35% 15%;
     align-items: center;
     position: relative;
     cursor: pointer;
@@ -256,18 +305,18 @@ function updateStats (ship: Ship) {
     .stat {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         gap: 1em;
 
         img {
-            width: 5em;
+            width: 4.5em;
         }
     }
 
     .comparisonImgs {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .comparison {

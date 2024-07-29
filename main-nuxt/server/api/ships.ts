@@ -39,7 +39,6 @@ export default defineEventHandler((event) => {
                 img: "/weapons/upgrades/strategies/at021a_1.svg",
                 strategy: true,
                 description: ["After the battle begins, extend the lock-on time of the first 2 rounds of attacks by ", "40%", " and increases the Hit Rate of the main weapon by ", "40%", "."],
-                flavorText: "Increases the strike accuracy using a more accurate detection and recognition lock-on to the target.",
                 maxTiers: 1,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -48,7 +47,6 @@ export default defineEventHandler((event) => {
                 name: "Enhance Recharge Power",
                 img: "/weapons/upgrades/energyDamage.svg",
                 description: ["Increases all pulse cannon Damage by ", "2%"],
-                flavorText: "Improves the energy output and storage capacity of the pulse cannon's charging system, allowing for greater firing power.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.02,
@@ -57,7 +55,6 @@ export default defineEventHandler((event) => {
                 name: "Enhance Pulse Focus",
                 img: "/weapons/upgrades/energyDamage.svg",
                 description: ["Increases all pulse cannon Damage by ", "2%"],
-                flavorText: "Improves the pulse cannon's focusing mechanism to increase the energy density of the pulse beam, allowing for greater Damage to ship armor.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.02,
@@ -66,7 +63,6 @@ export default defineEventHandler((event) => {
                 name: "Firing Assistance Enhancement",
                 img: "/weapons/upgrades/smallHitrate.svg",
                 description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
-                flavorText: "Improves the monitoring and prediction of small-ship movements. The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 5,
                 affectedStat: "smallHitrate",
                 percentBuffPerTier: 1.03,
@@ -75,7 +71,6 @@ export default defineEventHandler((event) => {
                 name: "Large Target Correction",
                 img: "/weapons/upgrades/bigHitrate.svg",
                 description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
-                flavorText: "Improves the monitoring and prediction of large-ship movements. The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 5,
                 affectedStat: "bigHitrate",
                 percentBuffPerTier: 1.03,
@@ -84,7 +79,6 @@ export default defineEventHandler((event) => {
                 name: "Charging Device Enhancement",
                 img: "/weapons/upgrades/energyCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
-                flavorText: "Improves the capacity and recharging efficiency of the charging system for energy weapons, allowing for shorter charging time.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.03,
@@ -93,7 +87,6 @@ export default defineEventHandler((event) => {
                 name: "Pipeline Cooling Enhancement",
                 img: "/weapons/upgrades/genericCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
-                flavorText: "Improves the heat-dissipation system for energy pipelines, allowing for larger energy transfers.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.03,
@@ -109,7 +102,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Energy Core Output Increase",
                 description: ["Increases main pulse cannon Damage by ", "2%"],
-                flavorText: "Raises the working temperature of high-energy cores, greatly increasing the power output of pulse weapons.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.02,
@@ -117,7 +109,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Energy Core Output Increase",
                 description: ["Increases main pulse cannon Damage by ", "2%"],
-                flavorText: "Raises the working temperature of high-energy cores, greatly increasing the power output of pulse weapons.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.02,
@@ -125,7 +116,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Energy Storage",
                 description: ["Increases the main pulse cannon's Duration by ", "40%", " and Rounds Per Cycle by ", "1", "."],
-                flavorText: "Increases energy weapons' storage capacity to improve their sustained damage output and frequency.",
                 maxTiers: 2,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.188259,
@@ -143,7 +133,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Aircraft Armor Enhancement",
                 description: ["Increases ship HP by ", "2%"],
-                flavorText: "Increases the aircraft's armor to improve Damage Resistance without compromising the light-weight design.",
                 maxTiers: 5,
                 affectedStat: "hp",
                 percentBuffPerTier: 1.02,
@@ -151,7 +140,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Aero Reinforcement",
                 description: ["Increases ship HP by ", "2%"],
-                flavorText: "Reinforces the fuselage of Fighters to increase Damage Resistance",
                 maxTiers: 5,
                 affectedStat: "hp",
                 percentBuffPerTier: 1.02,
@@ -159,7 +147,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Short-range Stealth Coating",
                 description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
-                flavorText: "Treats the ship's armor with a reflective coating, which jams the guidance signals of missiles and torpedoes at close range, reducing their ability to profile the ship.",
                 maxTiers: 5,
                 affectedStat: ["missileEvasion", "torpedoEvasion"],
                 percentBuffPerTier: [1.03, 1.05],
@@ -176,7 +163,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Dynamic Thrust Adjustment",
                 description: ["Increases ship Evasion by ", "1.6%"],
-                flavorText: "Improves the thruster control of aircraft engines to allow for more responsive thrust-adjustments, increasing the aircraft's control over flight speed.",
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
                 percentBuffPerTier: 1.016,
@@ -184,7 +170,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Intensified Combustion Enhancement",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
-                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -192,7 +177,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Intensified Combustion Enhancement",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
-                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -200,7 +184,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Flight Maneuver Improvement",
                 description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
-                flavorText: "Optimize the rotational structure and power system of the aircraft, allowing it to adapt to the complicated battle situation to reduce the time spent during the outbound and inbound.",
                 maxTiers: 5,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.01417,
@@ -215,7 +198,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "System Automated Maintenance Enhancement",
                 description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
-                flavorText: "Increases the responsiveness of the emergency Repair Dock to eliminate system malfunctions more quickly.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -256,7 +238,6 @@ export default defineEventHandler((event) => {
                 name: "Failure Adjustment",
                 strategy: true,
                 description: ["Interferes again and increases the inbound time by ", "35%", " when failing to interfere."],
-                flavorText: "Adjusts energy strategy to transfer part of the power system's energy to the jamming system.",
                 maxTiers: 1,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -264,7 +245,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Jamming Enhancement",
                 description: ["Increases jamming duration by ", "6%", "."],
-                flavorText: "Optimizes the jamming signal's encoding to interfere with enemy communications more discretely and more effectively. It is also harder to detect and decode.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -272,7 +252,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Jamming Equipment Enhancement",
                 description: ["Increases jamming duration by ", "6%", "."],
-                flavorText: "Improves the jamming system's power and cooling equipment, allowing it to be used for a longer duration.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -280,7 +259,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Quick Repair",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
-                flavorText: "Adds a quick-repair equipment to correct deviations during the weapon's operations, increasing weapon accuracy during rapid firing.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -288,7 +266,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Weapon Heatsink Efficiency",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
-                flavorText: "Improves the weapon's heat dissipation system's efficiency to prevent the weapon from overheating during rapid firing.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -296,7 +273,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Fast Target Lock",
                 description: ["Reduces the target-selection time of the weapon system by ", "6%"],
-                flavorText: "Accelerates the internal process for switching targets by optimizing data transmission, fire control calculations, signal anchoring, etc.",
                 maxTiers: 9,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -304,7 +280,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Interference Cover",
                 description: ["Reduces the chances of being hit by direct-fire weapons by ", "30%", " but reduces the interference effect duration by ", "50%", "."],
-                flavorText: "Amplifies the signal of the interference module covering you, making it more difficult for the direct-fire weapons to target you.",
                 maxTiers: 1,
                 affectedStat: "directEvasion",
                 percentBuffPerTier: 1.3,
@@ -312,7 +287,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Disperse Interference",
                 description: ["Prioritizes unjammed targets"],
-                flavorText: "Activate the coordinated response system of the interference module, allowing different formations to spread out and interfere.",
                 maxTiers: 1,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -320,7 +294,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Electronic Cover",
                 description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you and the aircraft within the same carrier by ", "10%", " (effects of the same type cannot stack)"],
-                flavorText: "Adding an extra Warning and Confrontation module in the jamming system, allowing it to interfere with the enemy anti-aircraft weapon's lock-on operation.",
                 maxTiers: 1,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -338,7 +311,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Barrel Enhancement",
                 description: ["Increases all cannon Damage by ", "10%"],
-                flavorText: "Reinforces cannon barrels to reduce the deformation caused by the firing process, improves shells' exit velocity, and stabilizes trajectory.",
                 maxTiers: 1,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.1,
@@ -346,7 +318,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Ammo Enhancement",
                 description: ["Increases all cannon Damage by ", "10%"],
-                flavorText: "Uses enhanced warheads to improve thrust during the firing process.",
                 maxTiers: 1,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.1,
@@ -354,7 +325,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Ammo-Loader Enhancement",
                 description: ["Decreases weapon system Cooldown by ", "15%"],
-                flavorText: "Improves the ammo-loading mechanism to increase the transporting and auto-loading speed.",
                 maxTiers: 1,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.15,
@@ -362,7 +332,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Barrel Heatsink Enhancement",
                 description: ["Decreases weapon system Cooldown by ", "15%"],
-                flavorText: "Adds an auxiliary heat-dissipation system to the barrels to improve the weapon's heat dissipation capacity, allowing the weapon to be fired more rapidly.",
                 maxTiers: 1,
                 affectedStat: "damage",
                 percentBuffPerTier: 1.15,
@@ -370,7 +339,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Firing Assistance Enhancement",
                 description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "15%"],
-                flavorText: "Improves the monitoring and prediction and small-ship movements, The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 1,
                 affectedStat: "smallHitrate",
                 percentBuffPerTier: 1.15,
@@ -378,7 +346,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Fast Target Analysis Enhancement",
                 description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
-                flavorText: "Accelerates the data-processing speed for interpreting and predicting aerial targets. Signal relay latency has also been reduced. The results are linked to and synced up with the weapon's aiming system.",
                 maxTiers: 1,
                 affectedStat: "aircraftHitrate",
                 percentBuffPerTier: 1.15,
@@ -396,7 +363,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Aircraft Armor Enhancement",
                 description: ["Increases ship HP by ", "2%"],
-                flavorText: "Increases the aircraft's armor the improve Damage Resistance without compromising the light-weight design.",
                 maxTiers: 5,
                 affectedStat: "hp",
                 percentBuffPerTier: 1.02,
@@ -404,7 +370,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Aero Reinforcement Enhancement",
                 description: ["Increases ship HP by ", "2%"],
-                flavorText: "Reinforces the fuselage of Fighters to increase Damage Resistance.",
                 maxTiers: 5,
                 affectedStat: "hp",
                 percentBuffPerTier: 1.02,
@@ -412,7 +377,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Short-range Stealth Coating",
                 description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
-                flavorText: "Treats the ship's armor with a reflective coating, which jams the guidance signals of missiles and torpedoes at close range, reducing their ability to profile the ship.",
                 maxTiers: 5,
                 affectedStat: ["missileEvasion", "torpedoEvasion"],
                 percentBuffPerTier: [1.03, 1.05],
@@ -430,7 +394,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Aerial Mobility Enhancement",
                 description: ["Increases ship Evasion by ", "1.6%"],
-                flavorText: "Improves the vector control of aircraft engines to increase aircraft agility.",
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
                 percentBuffPerTier: 1.016,
@@ -438,7 +401,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Dynamic Thrust Enhancement",
                 description: ["Increases ship Evasion by ", "1.6%"],
-                flavorText: "Improves the thruster control of aircraft engines to allow for more responsive thrust-adjustments, increasing the aircraft's control over flight speed.",
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
                 percentBuffPerTier: 1.016,
@@ -446,7 +408,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Intensified Combustion Enhancement",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
-                flavorText: "Increases the aircraft engine's afterburner power output, allowing for a greater speed boost in flight.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -454,7 +415,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Missile Evasion Enhancement",
                 description: ["Reduces the chance of being hit by missiles by ", "3%"],
-                flavorText: "Improves the detection and path-prediction capabilities of incoming missiles, allowing for more effective evasive maneuvers.",
                 maxTiers: 5,
                 affectedStat: "missileEvasion",
                 percentBuffPerTier: 1.03,
@@ -462,7 +422,6 @@ export default defineEventHandler((event) => {
             }, {
                 name: "Flight Maneuver Improvement",
                 description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
-                flavorText: "Optimize the rotational structure and power system of the aircraft, allowing it to adapt to the complicated battle situation to reduce the time spent during the outbound and inbound.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
@@ -477,7 +436,6 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "System Automated Maintenance Enhancement",
                 description: ["Increase the automated maintenance efficiency of the system by ", "5%", "."],
-                flavorText: "Increases the responsiveness of the emergency Repair Dock to eliminate system malfunctions more quickly.",
                 maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
