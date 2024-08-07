@@ -6,6 +6,25 @@
         </div>
 
         <div class="cardHolder">
+            <div class="card">
+                <h2 style="color: white;">Summer Roadmap</h2>
+                <div style="position: relative; width: 100%; height: 3em; background-color: rgb(70, 70, 70); border-radius: 2em; margin-top: 1.5em;">
+                    <h3 style="position: absolute; top: 0; right: 50%; margin: 0; color: black;">0%</h3>
+                    <div style="width: 10%; height: 100%; background-color: var(--cyan); border-radius: 2em; border-top-right-radius: 1.25em; border-bottom-right-radius: 1.25em;"></div>
+                </div>
+                <div style="display: flex; width: 100%; align-items: flex-start; justify-content: center;">
+                    <div style="width: 50%; display: flex; flex-direction: column;">
+                        <h2>August</h2>
+                        <p style="margin: 0; margin-top: 1em;">► Add Ship Comparisons</p>
+                        <p style="margin: 0; margin-top: 1em;">► Add system/module editing</p>
+                        <p style="margin: 0; margin-top: 1em;">► Add Fleet Builder</p>
+                    </div>
+                    <div style="width: 50%; display: flex; flex-direction: column;">
+                        <h2>September</h2>
+                        <p style="margin: 0; margin-top: 1em;">► Add prototype Ship Battler</p>
+                    </div>
+                </div>
+            </div>
             <LatestChange />
             <div class="card" id="contact">
                 <h2>Contact Me!</h2>
