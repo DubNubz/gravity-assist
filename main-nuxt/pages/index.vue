@@ -25,9 +25,7 @@ useSeoMeta({
     title: "Gravity Assist"
 });
 
-onMounted(() => {
-    useRouter().push("/home");
-});
+navigateTo('https://www.youtube.com/watch?v=dQw4w9WgXcQ', { external: true })
 
 const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
 
