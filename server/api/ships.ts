@@ -11570,14 +11570,55 @@ export default defineEventHandler((event) => {
                     attributes: null
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
+                type: "known",
+                img: "/weapons/icons/cannon.png",
                 system: "M2",
-                unknown: true
+                name: `Bow-Mounted High-Energy Bombardment System`,
+                stats: {
+                    type: "weapon",
+                    antiship: 21272,
+                    antiair: 0,
+                    siege: 2127,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "weapon",
+                    count: 1,
+                    title: `FM-1x575`,
+                    name: `Heavy High-Energy Bomber`,
+                    damageType: "Energy",
+                    target: "Large Ship",
+                    lockonEfficiency: null,
+                    alpha: 780,
+                    attributes: null
+                }]
             }, {
                 type: "known",
                 img: "/weapons/icons/cannon.png",
                 system: "A1",
+                name: `Anti-Ship Torpedo System`,
+                stats: {
+                    type: "weapon",
+                    antiship: 8280,
+                    antiair: 0,
+                    siege: 3150,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "weapon",
+                    count: 4,
+                    title: `FT-4x160`,
+                    name: `Missile Silo`,
+                    damageType: "Projectile",
+                    target: "Small Ship",
+                    lockonEfficiency: null,
+                    alpha: 125,
+                    attributes: ["Crit"]
+                }]
+            }, {
+                type: "known",
+                img: "/weapons/icons/cannon.png",
+                system: "A2",
                 name: `Projectile Weapon System`,
                 stats: {
                     type: "weapon",
@@ -11588,7 +11629,7 @@ export default defineEventHandler((event) => {
                 },
                 subsystems: [{
                     type: "weapon",
-                    count: 1,
+                    count: 6,
                     title: `FM-1x205`,
                     name: `Missile Silo`,
                     damageType: "Projectile",
@@ -11598,14 +11639,57 @@ export default defineEventHandler((event) => {
                     attributes: ["Anti-Aircraft Special Ammo", "Anti-Aircraft Counterattack"]
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
-                system: "A2",
-                unknown: true
-            }, {
                 type: "known",
                 img: "/weapons/icons/cannon.png",
                 system: "B1",
+                name: `Siege Armed System`,
+                stats: {
+                    type: "weapon",
+                    antiship: 6200,
+                    antiair: 0,
+                    siege: 4480,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "weapon",
+                    count: 4,
+                    title: `FT-1-365C`,
+                    name: `Siege Torpedo`,
+                    damageType: "Projectile",
+                    target: "Building",
+                    lockonEfficiency: null,
+                    alpha: 320,
+                    attributes: ["Crit"]
+                }]
+            }, {
+                type: "known",
+                img: "/weapons/icons/aircraft.png",
+                system: "B2",
+                name: "Siege UAV System",
+                stats: {
+                    type: "weapon",
+                    antiship: 0,
+                    antiair: 0,
+                    siege: 6048,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "hanger",
+                    count: 1,
+                    title: `CST-6`,
+                    name: "Siege UAV Pod",
+                    hanger: "Siege UAV",
+                    capacity: 4,
+                    damageType: "Energy",
+                    target: "Building",
+                    lockonEfficiency: null,
+                    alpha: 630,
+                    attributes: null
+                }]
+            }, {
+                type: "known",
+                img: "/weapons/icons/cannon.png",
+                system: "C1",
                 name: `Experimental Ion Cannon System`,
                 stats: {
                     type: "weapon",
@@ -11616,7 +11700,7 @@ export default defineEventHandler((event) => {
                 },
                 subsystems: [{
                     type: "weapon",
-                    count: 1,
+                    count: 4,
                     title: `FI-400T`,
                     name: `Experimental Ion Turret`,
                     damageType: "Energy",
@@ -11626,43 +11710,33 @@ export default defineEventHandler((event) => {
                     attributes: null
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
-                system: "B2",
-                unknown: true
-            }, {
                 type: "known",
                 img: "/weapons/icons/cannon.png",
-                system: "C1",
-                name: `Siege Armed Torpedo`,
+                system: "C2",
+                name: `Ion Turret System`,
                 stats: {
                     type: "weapon",
-                    antiship: 6200,
+                    antiship: 10400,
                     antiair: 0,
-                    siege: 4480,
+                    siege: 7280,
                     hp: 27900
                 },
                 subsystems: [{
                     type: "weapon",
-                    count: 1,
-                    title: `FT-1-365C`,
-                    name: `Siege Torpedo`,
-                    damageType: "Projectile",
-                    target: "Building",
+                    count: 2,
+                    title: `FI-550`,
+                    name: `Siege Ion Turret`,
+                    damageType: "Energy",
+                    target: "Large Ship",
                     lockonEfficiency: null,
-                    alpha: 320,
-                    attributes: ["Crit"]
+                    alpha: 520,
+                    attributes: null
                 }]
-            }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
-                system: "C2",
-                unknown: true
             }, {
                 type: "known",
                 img: "/weapons/icons/cannon.png",
                 system: "D1",
-                name: `Projectile Weapon System`,
+                name: `Medium Anti-Ship Missile`,
                 stats: {
                     type: "weapon",
                     antiship: 9000,
@@ -11672,7 +11746,7 @@ export default defineEventHandler((event) => {
                 },
                 subsystems: [{
                     type: "weapon",
-                    count: 1,
+                    count: 4,
                     title: `FM-3x180`,
                     name: `Missile Vertical Launcher`,
                     damageType: "Projectile",
@@ -11682,10 +11756,28 @@ export default defineEventHandler((event) => {
                     attributes: ["Anti-Aircraft Counterattack"]
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
+                type: "known",
+                img: "/weapons/icons/cannon.png",
                 system: "D2",
-                unknown: true
+                name: `Large Anti-Ship Missile`,
+                stats: {
+                    type: "weapon",
+                    antiship: 11100,
+                    antiair: 0,
+                    siege: 3990,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "weapon",
+                    count: 2,
+                    title: `FM-1x450`,
+                    name: `Missile Launcher`,
+                    damageType: "Projectile",
+                    target: "Large Ship",
+                    lockonEfficiency: null,
+                    alpha: 380,
+                    attributes: null
+                }]
             }, {
                 type: "known",
                 img: "/weapons/icons/armor.png",
@@ -11696,7 +11788,7 @@ export default defineEventHandler((event) => {
                     extraHP: 284970,
                     armor: 270,
                     energyShield: 5,
-                    hp: 30650
+                    hp: 27900
                 },
                 subsystems: [{
                     type: "misc",
@@ -11712,10 +11804,30 @@ export default defineEventHandler((event) => {
                     attributes: null
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
+                type: "known",
+                img: "/weapons/icons/armor.png",
                 system: "E2",
-                unknown: true
+                name: `Armor System`,
+                stats: {
+                    type: "armor",
+                    extraHP: 284970,
+                    armor: 300,
+                    energyShield: 10,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "misc",
+                    count: 1,
+                    title: `SC-100`,
+                    name: `Ship Core`,
+                    attributes: null
+                }, {
+                    type: "misc",
+                    count: 1,
+                    title: "AC-150",
+                    name: "Generic Super-Heavy Armor",
+                    attributes: null
+                }]
             }, {
                 type: "known",
                 img: "/weapons/icons/speed.png",
@@ -11741,15 +11853,48 @@ export default defineEventHandler((event) => {
                     attributes: null
                 }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
+                type: "known",
+                img: "/weapons/icons/speed.png",
                 system: "F2",
-                unknown: true
+                name: `Propulsion System`,
+                stats: {
+                    type: "propulsion",
+                    cruise: 250,
+                    warp: 1250,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "misc",
+                    count: 1,
+                    title: `EN-600`,
+                    name: `Generic Vector Engine`,
+                    attributes: null
+                }, {
+                    type: "misc",
+                    count: 1,
+                    title: "EC-600",
+                    name: "Generic Warp Drive",
+                    attributes: null
+                }]
             }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
+                type: "known",
+                img: "/weapons/icons/jamming.png",
                 system: "G1",
-                unknown: true
+                name: `Ion Enhancement Device`,
+                stats: {
+                    type: "weapon",
+                    antiship: null,
+                    antiair: null,
+                    siege: null,
+                    hp: 27900
+                },
+                subsystems: [{
+                    type: "misc",
+                    count: 1,
+                    title: `RII-600`,
+                    name: "Ion Energy Acceleration Device",
+                    attributes: ["Increase Ion Damage"] // increases ion cannon damage by 25%
+                }]
             }, {
                 type: "unknown",
                 img: "/weapons/icons/unknown.png",
@@ -11769,7 +11914,7 @@ export default defineEventHandler((event) => {
                 },
                 subsystems: [{
                     type: "weapon",
-                    count: 1,
+                    count: 6,
                     title: `FM-2x90B`,
                     name: `Missile Vertical Launcher`,
                     damageType: "Projectile",
