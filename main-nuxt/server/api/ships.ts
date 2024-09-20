@@ -101,6 +101,7 @@ export default defineEventHandler((event) => {
             img: "/weapons/icons/jamming.png",
             upgrades: [{
                 name: "Energy Core Output Increase",
+                img: "/weapons/upgrades/energyHitrate.svg",
                 description: ["Increases main pulse cannon Damage by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "damage",
@@ -108,6 +109,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 2
             }, {
                 name: "Energy Core Output Increase",
+                img: "/weapons/upgrades/energyHitrate.svg",
                 description: ["Increases main pulse cannon Damage by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "damage",
@@ -115,6 +117,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 2
             }, {
                 name: "Energy Storage",
+                img: "/weapons/upgrades/energyCooldown.svg",
                 description: ["Increases the main pulse cannon's Duration by ", "40%", " and Rounds Per Cycle by ", "1", "."],
                 maxTiers: 2,
                 affectedStat: "damage",
@@ -132,6 +135,7 @@ export default defineEventHandler((event) => {
             img: "/weapons/icons/armor.png",
             upgrades: [{
                 name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
                 description: ["Increases ship HP by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "hp",
@@ -139,6 +143,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
                 description: ["Increases ship HP by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "hp",
@@ -146,6 +151,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
                 description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
                 maxTiers: 5,
                 affectedStat: ["missileEvasion", "torpedoEvasion"],
@@ -162,6 +168,7 @@ export default defineEventHandler((event) => {
             img: "/weapons/icons/speed.png",
             upgrades: [{
                 name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
                 description: ["Increases ship Evasion by ", "1.6%"],
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
@@ -169,6 +176,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -176,6 +184,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -183,6 +192,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
                 description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
                 maxTiers: 5,
                 affectedStat: "damage",
@@ -197,6 +207,7 @@ export default defineEventHandler((event) => {
             img: "/weapons/icons/command.png",
             upgrades: [{
                 name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
                 description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
                 maxTiers: 5,
                 affectedStat: null,
@@ -237,6 +248,7 @@ export default defineEventHandler((event) => {
             upgrades: [{
                 name: "Failure Adjustment",
                 strategy: true,
+                img: "/weapons/upgrades/strategies/at021b_1.svg",
                 description: ["Interferes again and increases the inbound time by ", "35%", " when failing to interfere."],
                 maxTiers: 1,
                 affectedStat: null,
@@ -244,6 +256,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 14
             }, {
                 name: "Jamming Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
                 description: ["Increases jamming duration by ", "6%", "."],
                 maxTiers: 5,
                 affectedStat: null,
@@ -251,6 +264,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 2, 2, 2, 2]
             }, {
                 name: "Jamming Equipment Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
                 description: ["Increases jamming duration by ", "6%", "."],
                 maxTiers: 5,
                 affectedStat: null,
@@ -258,6 +272,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 2, 2, 2, 2]
             }, {
                 name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -265,6 +280,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 1
             }, {
                 name: "Weapon Heatsink Efficiency",
+                img: "/weapons/upgrades/genericCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "3%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -272,13 +288,15 @@ export default defineEventHandler((event) => {
                 tpPerTier: 1
             }, {
                 name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
                 description: ["Reduces the target-selection time of the weapon system by ", "6%"],
-                maxTiers: 9,
+                maxTiers: 5,
                 affectedStat: null,
                 percentBuffPerTier: null,
                 tpPerTier: [1, 2, 2, 2, 2]
             }, {
                 name: "Interference Cover",
+                img: "/weapons/upgrades/missileDamage.svg",
                 description: ["Reduces the chances of being hit by direct-fire weapons by ", "30%", " but reduces the interference effect duration by ", "50%", "."],
                 maxTiers: 1,
                 affectedStat: "directEvasion",
@@ -286,6 +304,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 9
             }, {
                 name: "Disperse Interference",
+                img: "/weapons/upgrades/railgunHitrate.svg",
                 description: ["Prioritizes unjammed targets"],
                 maxTiers: 1,
                 affectedStat: null,
@@ -293,6 +312,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 9
             }, {
                 name: "Electronic Cover",
+                img: "/weapons/upgrades/generalEvasion.svg",
                 description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you and the aircraft within the same carrier by ", "10%", " (effects of the same type cannot stack)"],
                 maxTiers: 1,
                 affectedStat: null,
@@ -310,6 +330,7 @@ export default defineEventHandler((event) => {
             baseSiege: 32,
             upgrades: [{
                 name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
                 description: ["Increases all cannon Damage by ", "10%"],
                 maxTiers: 1,
                 affectedStat: "damage",
@@ -317,6 +338,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 3
             }, {
                 name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
                 description: ["Increases all cannon Damage by ", "10%"],
                 maxTiers: 1,
                 affectedStat: "damage",
@@ -324,6 +346,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 3
             }, {
                 name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "15%"],
                 maxTiers: 1,
                 affectedStat: "damage",
@@ -331,6 +354,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 3
             }, {
                 name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
                 description: ["Decreases weapon system Cooldown by ", "15%"],
                 maxTiers: 1,
                 affectedStat: "damage",
@@ -338,6 +362,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 3
             }, {
                 name: "Firing Assistance Enhancement",
+                img: "/weapons/upgrades/smallHitrate.svg",
                 description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "15%"],
                 maxTiers: 1,
                 affectedStat: "smallHitrate",
@@ -345,6 +370,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: 3
             }, {
                 name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
                 description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
                 maxTiers: 1,
                 affectedStat: "aircraftHitrate",
@@ -362,13 +388,15 @@ export default defineEventHandler((event) => {
             baseEnergyShield: 0,
             upgrades: [{
                 name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
                 description: ["Increases ship HP by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "hp",
                 percentBuffPerTier: 1.02,
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
-                name: "Aero Reinforcement Enhancement",
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
                 description: ["Increases ship HP by ", "2%"],
                 maxTiers: 5,
                 affectedStat: "hp",
@@ -376,6 +404,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
                 description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
                 maxTiers: 5,
                 affectedStat: ["missileEvasion", "torpedoEvasion"],
@@ -390,9 +419,10 @@ export default defineEventHandler((event) => {
             img: "/weapons/icons/speed.png",
             baseCruise: 3000,
             baseWarp: 0,
-            evasion: 1.1,
+            baseEvasion: 1.1,
             upgrades: [{
                 name: "Aerial Mobility Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
                 description: ["Increases ship Evasion by ", "1.6%"],
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
@@ -400,6 +430,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Dynamic Thrust Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
                 description: ["Increases ship Evasion by ", "1.6%"],
                 maxTiers: 5,
                 affectedStat: "generalEvasion",
@@ -407,6 +438,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
                 description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -414,6 +446,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
                 description: ["Reduces the chance of being hit by missiles by ", "3%"],
                 maxTiers: 5,
                 affectedStat: "missileEvasion",
@@ -421,6 +454,7 @@ export default defineEventHandler((event) => {
                 tpPerTier: [1, 1, 2, 2, 2]
             }, {
                 name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
                 description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
                 maxTiers: 5,
                 affectedStat: null,
@@ -435,6 +469,7 @@ export default defineEventHandler((event) => {
             systemAdjustment: null,
             upgrades: [{
                 name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
                 description: ["Increase the automated maintenance efficiency of the system by ", "5%", "."],
                 maxTiers: 5,
                 affectedStat: null,
@@ -465,6 +500,240 @@ export default defineEventHandler((event) => {
             timeSeconds: 710,
             storage: 0
         },
+        systems: [{
+            type: "weapon",
+            name: "Precision Strike System",
+            img: "/weapons/icons/cannon.png",
+            main: true,
+            maxUpgradeSlots: 5,
+            systemAdjustment: "weaponDamage",
+            baseAntiship: 540,
+            baseAntiair: 0,
+            baseSiege: 57,
+            upgrades: [{
+                name: "Multi-Target Strategy",
+                img: "/weapons/upgrades/strategies/prioritizeTargets.svg",
+                strategy: true,
+                description: ["Attacks every 2 rounds, with the main weapon now attacking ", "2", " targets. Increases weapon damage by ", "75%", " and reduces Hit Rate against the target's loading system by ", "10%", "."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Sustained Output Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Increases the weapon system's Duration by ", "50%", " and Rounds Per Cycle by ", "3", "."],
+                maxTiers: 2,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 10
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "weapon",
+            name: "Airborne Guiding System",
+            img: "/weapons/icons/cannon.png",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "weaponDamage",
+            baseAntiship: 582,
+            baseAntiair: 0,
+            baseSiege: 72,
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Large Target Correction",
+                img: "/weapons/upgrades/bigHitrate.svg",
+                description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "bigHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Large Target Correction",
+                img: "/weapons/upgrades/bigHitrate.svg",
+                description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "bigHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 2,
+            img: "/weapons/icons/armor.png",
+            systemAdjustment: "hp",
+            baseHp: 4920,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            img: "/weapons/icons/speed.png",
+            baseCruise: 3000,
+            baseWarp: 0,
+            baseEvasion: 1.1,
+            upgrades: [{
+                name: "Dynamic Thrust Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            img: "/weapons/icons/command.png",
+            systemAdjustment: null,
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increase the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "B192 Newland",
         title: "Heavy Attacker",
@@ -488,6 +757,255 @@ export default defineEventHandler((event) => {
             timeSeconds: 1060,
             storage: 0
         },
+        systems: [{
+            type: 'weapon',
+            name: "Assault Cannon System",
+            img: "/weapons/icons/cannon.png",
+            main: true,
+            maxUpgradeSlots: 6,
+            systemAdjustment: "weaponDamage",
+            baseAntiship: 428,
+            baseAntiair: 0,
+            baseSiege: 90,
+            upgrades: [{
+                name: "Precision Strike",
+                img: "/weapons/upgrades/strategies/heavyAmmo.svg",
+                description: ["Prioritizes attacks on super capital ships and increases the Extra Damage against the target's systems by ", "60%", " every ", "40", "s for ", "40", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Firing Assistance Enhancement",
+                img: "/weapons/upgrades/smallHitrate.svg",
+                description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "smallHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }]
+        }, {
+            type: 'weapon',
+            name: "Anti-Aircraft Missile System",
+            img: "/weapons/icons/cannon.png",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "weaponDamage",
+            baseAntiship: 0,
+            baseAntiair: 360,
+            baseSiege: 0,
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Aircraft Weakpoint Detection",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Damage against aerial targets by ", "20%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 3
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "10%", " and torpedo Hit Rate by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            img: "/weapons/icons/armor.png",
+            systemAdjustment: "hp",
+            baseHp: 4680,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            img: "/weapons/icons/speed.png",
+            baseCruise: 3000,
+            baseWarp: 0,
+            baseEvasion: 1.1,
+            upgrades: [{
+                name: "Dynamic Thrust Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            img: "/weapons/icons/command.png",
+            systemAdjustment: null,
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on super capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increase the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "BR050",
         title: "Standard Bomber",
@@ -511,6 +1029,221 @@ export default defineEventHandler((event) => {
             timeSeconds: 830,
             storage: 0
         },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Bombardment System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 1885,
+            baseAntiair: 0,
+            baseSiege: 675,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "High-Speed Torpedo",
+                img: "/weapons/upgrades/strategies/br050a_1.svg",
+                strategy: true,
+                description: ["Every ", "3", " round(s), the system's torpedo launchers are reloaded with high-speed torpedoes, reducing the chance of being intercepted by ", "40%", " and increasing the damage against systems by ", "35%", " upon hitting."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 5040,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Rigidity Enhancement",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }, {
+                name: "Armor Hardening Process",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "Target Tracing Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of all aircraft's weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "BR050",
         title: "Multi-Role Bomber",
@@ -527,6 +1260,237 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 2,
+        production: {
+            metal: 6180,
+            crystal: 590,
+            deuterium: 230,
+            timeSeconds: 890,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Bombardment System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 1257,
+            baseAntiair: 0,
+            baseSiege: 450,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "misc",
+            name: "Electronic Defense System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/jamming.png",
+            baseEvasion: 1.25,
+            upgrades: [{
+                name: "Enhanced Interference",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/br050b_1.svg",
+                description: ["For the first ", "60", "s of battle, further reduces the hit rate of attacks from enemy aircraft against you by ", "50%", "."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 5040,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Rigidity Enhancement",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }, {
+                name: "Armor Hardening Process",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            baseEvasion: 1.1,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "Target Tracing Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of all aircraft's weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "BR050",
         title: "Torpedo Bomber",
@@ -543,6 +1507,228 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 2,
+        production: {
+            metal: 7200,
+            crystal: 800,
+            deuterium: 280,
+            timeSeconds: 1120,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Experimental Special Torpedo Launching System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 321,
+            baseAntiair: 0,
+            baseSiege: 127,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Redues Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Special Torpedo Launching",
+                img: "/weapons/upgrades/br050c_1.svg",
+                description: ["Load the torpedo launcher with armor-melting torpedoes, granting ", "15%", "chance to inflict the ", "Armor Melting", " status on the target upon hitting. ", "Armor Melting", ": Suffer ", "80", " point(s) of special damage for ", "60", "s. This effect can exist up to ", "10", " layer(s). If the target is a building, then the damage is reduced by 75%."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 10
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 5040,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Rigidity Enhancement",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }, {
+                name: "Armor Hardening Process",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            baseEvasion: 1.1,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "Target Tracing Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of all aircraft's weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Balancer Anderson SC020",
         title: "Scout",
@@ -559,6 +1745,259 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 5,
+        production: {
+            metal: 6030,
+            crystal: 400,
+            deuterium: 160,
+            timeSeconds: 630,
+            storage: 0
+        },
+        systems: [{
+            type: "jamming",
+            name: "Airborne Jamming System",
+            main: true,
+            maxUpgradeSlots: 7,
+            systemAdjustment: "jamming",
+            img: "/weapons/icons/jamming.png",
+            upgrades: [{
+                name: "Dodge Damage",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/sc020_1.svg",
+                description: ["When attacked by enemy aircraft, it gives up its target and retreats to its carrier for ", "40", "s. Cooldown: ", "20", "s"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Jamming Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
+                description: ["Increases jamming duration by ", "6%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Jamming Equipment Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
+                description: ["Increases jamming duration by ", "6%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Weapon Cooling Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Weapon Heatsink Efficiency",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Guidance Detection Jamming",
+                img: "/weapons/upgrades/missileEvasion.svg",
+                description: ["Reduces the chance of being hit by guided weapons by ", "4%"],
+                maxTiers: 5,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.04,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Counter-Attack Info Gathering",
+                img: "/weapons/upgrades/directEvasion.svg",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Electronic Cover",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you and the aircraft within the same carrier by ", "10%", " (effects of the same type cannot stack)"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }]
+        }, {
+            type: "weapon",
+            name: `Airborne Cannon System`,
+            maxUpgradeSlots: 4,
+            baseAntiship: 30,
+            baseAntiair: 172,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 3450,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Energy Coating",
+                img: "/weapons/upgrades/energyShield.svg",
+                description: ["Increases Energy Resistance by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "energyShield",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Low-Reflective Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Aerial Mobility Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Dynamic Thrust Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Emergency Evasion System Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Nozzle Masking Process",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Bullfrog",
         title: "Dual-Purpose Bomber",
@@ -575,6 +2014,220 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 2,
+        production: {
+            metal: 7130,
+            crystal: 500,
+            deuterium: 190,
+            timeSeconds: 770,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Bombardment System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 960,
+            baseAntiair: 0,
+            baseSiege: 440,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Concentrated Attacks",
+                img: "/weapons/upgrades/strategies/bullfrog_1.svg",
+                strategy: true,
+                description: ["Prioritizes attacks on super capital ships, increases Rounds Per Cycle by ", "2", ", Attack Duration by ", "30%", ", and Cooldown by ", "30%", " every ", "30", "s for ", "40", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 4740,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Rigidity Enhancement",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }, {
+                name: "Armor Hardening Process",
+                img: "/weapons/upgrades/armor.svg",
+                description: ["Increases Physical Resistance by ", "1"],
+                maxTiers: 3,
+                affectedStat: "armor",
+                percentBuffPerTier: 1,
+                tpPerTier: [1, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Hayreddin's Loyal",
         title: "Pulsar Fighter",
@@ -591,6 +2244,197 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 8,
         aircraftPerSquadron: 3,
+        production: {
+            metal: 9760,
+            crystal: 900,
+            deuterium: 490,
+            timeSeconds: 1590,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `"Starchaser" Charged Pulse Cannon System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 1538,
+            baseAntiair: 738,
+            baseSiege: 507,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Charged Phase Strike",
+                img: "/weapons/upgrades/strategies/hayreddin_1.svg",
+                strategy: true,
+                description: ["The Charged Pulse weapon's damage increases by 12% for every 2 consecutive rounds it attacks the same target, up to 24%. THis bonus is reset after switching targets."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 18
+            }, {
+                name: "Enhance Recharge Power",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Enhance Pulse Focus",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Enhance Pulse Focus",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Energy Control System Enhancement",
+                img: "/weapons/upgrades/energyHitrate.svg",
+                description: ["Increases all pulse cannon Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Weapon Heatsink Efficiency",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Rapid Firing",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces the weapon system's Firing Duration by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rapid Firing",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces the weapon system's Firing Duration by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 6480,
+            baseArmor: 3,
+            baseEnergyShield: 1.05,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Low-Reflection Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Aircraft Stealth Coating",
+                img: "/weapons/upgrades/reduceCritDamage.svg",
+                description: ["Increases enemy weapon lock-on time by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            baseEvasion: 1.25,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Aerial Mobility Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "1.6%"],
+                maxTiers: 5,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.016,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Janbiya Aer410",
         title: "Assault Attacker",
@@ -607,6 +2451,212 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 3,
+        production: {
+            metal: 6070,
+            crystal: 480,
+            deuterium: 200,
+            timeSeconds: 770,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Gun/Missile Attack System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 472,
+            baseAntiair: 396,
+            baseSiege: 82,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Precision Strike",
+                img: "/weapons/upgrades/strategies/janbiya_1.svg",
+                strategy: true,
+                description: ["The system's primary weapon has a ", "15%", " chance to deal an additional ", "170%", " Crit Damage to the enemy target every ", "35", "s for ", "35", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Reactive Explosive Warhead",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Flexibility",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Reduces the chance of all missiles being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: "hp",
+            baseHp: 4050,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: null,
+            baseCruise: 3500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Aircraft Charging Stance",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases the Hit Rate of the aircraft's weapons by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on super capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Mistral",
         title: "Combat Attacker",
@@ -623,6 +2673,212 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 4,
+        production: {
+            metal: 7520,
+            crystal: 650,
+            deuterium: 220,
+            timeSeconds: 930,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Weapon System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 58,
+            baseAntiair: 558,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Pursue Targets",
+                img: "/weapons/upgrades/strategies/prioritizeTargets.svg",
+                strategy: true,
+                description: ["When the target's HP falls below ", "20%", ", it increases attack chances in a single round by ", "1", " and reduces Attack Interval by ", "40%", "."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Fire Control Computer Enhancement",
+                img: "/weapons/upgrades/energyHitrate.svg",
+                description: ["Increases all cannon Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Weak Point Detection Enhancement",
+                img: "/weapons/upgrades/critDamage2.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Aiming Speed Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Focus on Aerial Targets",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["Prioritizes fighters and interceptors"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 10
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: "hp",
+            baseHp: 5400,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: null,
+            baseCruise: 3100,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Aircraft Charging Stance",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases the Hit Rate of the aircraft's weapons by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's prmary weapon prioritizes its attack on super capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "SC002",
         title: "Quantum Scout",
@@ -639,6 +2895,259 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 15,
         aircraftPerSquadron: 5,
+        production: {
+            metal: 4160,
+            crystal: 300,
+            deuterium: 140,
+            timeSeconds: 510,
+            storage: 0
+        },
+        systems: [{
+            type: "jamming",
+            name: "Electronic Recon System",
+            main: true,
+            maxUpgradeSlots: 7,
+            systemAdjustment: "jamming",
+            img: "/weapons/icons/jamming.png",
+            upgrades: [{
+                name: "Dodge Damage",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/sc020_1.svg",
+                description: ["When attacked by enemy aircraft, it gives up its target and retreats to its carrier for ", "40", "s. Cooldown: ", "20", "s"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Jamming Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
+                description: ["Increases jamming duration by ", "6%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Jamming Equipment Enhancement",
+                img: "/weapons/upgrades/jammingCooldown.svg",
+                description: ["Increases jamming duration by ", "6%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Weapon Cooling Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Weapon Heatsink Efficiency",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Guidance Detection Jamming",
+                img: "/weapons/upgrades/missileEvasion.svg",
+                description: ["Reduces the chance of being hit by guided weapons by ", "4%"],
+                maxTiers: 5,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.04,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Counter-Attack Info Gathering",
+                img: "/weapons/upgrades/directEvasion.svg",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Electronic Cover",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you and the aircraft within the same carrier by ", "15%", " (effects of the same type cannot stack)"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }]
+        }, {
+            type: "weapon",
+            name: `Airborne Cannon System`,
+            maxUpgradeSlots: 4,
+            baseAntiship: 140,
+            baseAntiair: 140,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 2850,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Energy Coating",
+                img: "/weapons/upgrades/energyShield.svg",
+                description: ["Increases Energy Resistance by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "energyShield",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Low-Reflective Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by direct-fire weapons by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "directEvasion",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Aerial Mobility Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Dynamic Thrust Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Emergency Evasion System Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Nozzle Masking Process",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Sandrake",
         title: "Atmospheric Interceptor",
@@ -655,6 +3164,220 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 5,
+        production: {
+            metal: 4990,
+            crystal: 440,
+            deuterium: 140,
+            timeSeconds: 610,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Offensive AA Cannon System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 24,
+            baseAntiair: 537,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Pursue Targets",
+                img: "/weapons/upgrades/strategies/prioritizeTargets.svg",
+                strategy: true,
+                description: ["When the target's HP falls below ", "20%", ", it increases attack chances in a single round by ", "1", " and reduces Attack Interval by ", "40%", "."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 13
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Anti-Aircraft Ammo Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Damage against aerial targets by ", "4%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.04,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 4200,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Anti-Detection Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }, {
+                name: "Critical-system Armor Enhancement",
+                img: "/weapons/upgrades/systemHp.svg",
+                description: ["RIncreases main system HP by ", "4%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Aerial Mobility Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Spore A404",
         title: "Light Fighter",
@@ -671,6 +3394,228 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 5,
+        production: {
+            metal: 4640,
+            crystal: 310,
+            deuterium: 120,
+            timeSeconds: 480,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Combat System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 27,
+            baseAntiair: 398,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Pursue Targets",
+                img: "/weapons/upgrades/strategies/prioritizeTargets.svg",
+                strategy: true,
+                description: ["When the target's HP falls below ", "20%", ", it increases attack chances in a single round by ", "1", " and reduces Attack Interval by ", "40%", "."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Focus on Aerial Targets",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["Prioritizes fighters and interceptors"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 9
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 5400,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: null,
+            baseCruise: 3100,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Aerial Mobility Enhancement",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Stealth Maneuvers",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["When the aircraft is returning to the carrier, there is a 30% chance of ignoring the enemy anti-aircraft weapon's pre-targeting effect"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 12
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's prmary weapon prioritizes its attack on super capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Stingray",
         title: "Torpedo Bomber",
@@ -687,6 +3632,220 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 2,
+        production: {
+            metal: 5360,
+            crystal: 730,
+            deuterium: 260,
+            timeSeconds: 990,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Bombardment System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 1560,
+            baseAntiair: 0,
+            baseSiege: 496,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Stealth Attacks",
+                img: "/weapons/upgrades/strategies/stingray_1.svg",
+                strategy: true,
+                description: ["Triggers Camouflage, increasing Evasion by ", "90%", " and increasing Hit Rate by ", "30%", " every ", "90", "s for ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 14
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 4,
+            systemAdjustment: "hp",
+            baseHp: 5200,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Armor Energy Coating",
+                img: "/weapons/upgrades/energyShield.svg",
+                description: ["Increases Energy Resistance by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "energyShield",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Identify Interference Coating",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you by ", "20%", " (Becomes ineffective after getting hit by the enemy)"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 6
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 3200,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 5
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Strix A100",
         title: "Joint Attacker",
@@ -703,6 +3862,221 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 3,
+        production: {
+            metal: 7460,
+            crystal: 480,
+            deuterium: 200,
+            timeSeconds: 780,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Charged Pulse Cannon System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 663,
+            baseAntiair: 459,
+            baseSiege: 132,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/heavyAmmo.svg",
+                strategy: true,
+                description: ["Prioritizes attacks on frigates and destroyers, reduces Attack Duration by ", "50%", ", and increases Cooldown by ", "70%", " every ", "45", "s for ", "35", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Enhance Recharge Power",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Enhance Pulse Focus",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Energy Control System Enhancement",
+                img: "/weapons/upgrades/energyHitrate.svg",
+                description: ["Increases all pulse cannon Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Charging Device Enhancement",
+                img: "/weapons/upgrades/energyCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Weapon Heatsink Efficiency",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 4920,
+            baseArmor: 0,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 5,
+            systemAdjustment: null,
+            baseCruise: 2800,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Close Combat Assault",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/strix_1.svg",
+                description: ["When flying to attack the front-row target, there is a 30% chance of ignoring the enemy anti-aircraft weapon's pre-targeting effect"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Aircraft Charging Stance",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases the Hit Rate of the aircraft's weapons by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on super capital ships."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Vitas A021",
         title: "Heavy Attacker",
@@ -719,6 +4093,263 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 3,
+        production: {
+            metal: 8960,
+            crystal: 890,
+            deuterium: 320,
+            timeSeconds: 1290,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Precision Strike System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 851,
+            baseAntiair: 0,
+            baseSiege: 190,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Precision Strike",
+                img: "/weapons/upgrades/strategies/heavyAmmo.svg",
+                strategy: true,
+                description: ["Prioritizes attacks on super capital ships and increases the Extra Damage against the target's suste,s by ", "60%", " every ", "30", "s for ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Weak Point Detection Enhancement",
+                img: "/weapons/upgrades/critDamage2.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Flexibility",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "weapon",
+            name: `Counter Cannon System`,
+            main: true,
+            maxUpgradeSlots: 4,
+            baseAntiship: 20,
+            baseAntiair: 180,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/strategies/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/strategies/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/strategies/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Composite Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 5370,
+            baseArmor: 3,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 3300,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "Target Reset",
+                img: "/weapons/upgrades/targetReset.svg",
+                description: ["This ship's primary weapon prioritizes its attack on small capital ships."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }, {
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Vitas-B010",
         title: "Bomber",
@@ -735,6 +4366,220 @@ export default defineEventHandler((event) => {
         cp: 1,
         maxInFleet: 10,
         aircraftPerSquadron: 2,
+        production: {
+            metal: 9260,
+            crystal: 880,
+            deuterium: 270,
+            timeSeconds: 1180,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Plasma Bombardment System`,
+            main: true,
+            maxUpgradeSlots: 7,
+            baseAntiship: 2294,
+            baseAntiair: 0,
+            baseSiege: 848,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Active Maneuvers",
+                img: "/weapons/upgrades/strategies/strix_1.svg",
+                strategy: true,
+                description: ["When attacked by enemy aircraft, increases Evasion by ", "30%", ". Cooldown: ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Plasma Generation Enhancement",
+                img: "/weapons/upgrades/plasmaDamage.svg",
+                description: ["Increases all plasma weapon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Plasma Capacity Enhancement",
+                img: "/weapons/upgrades/plasmaDamage.svg",
+                description: ["Increases all plasma weapon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Siege Ammo Enhancement",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "City Weak Point Identification",
+                img: "/weapons/upgrades/siegeDamage.svg",
+                description: ["Increases weapon system Siege Damage by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "siegeDamage",
+                percentBuffPerTier: 1.06,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 1
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }, {
+                name: "Large Target Correction",
+                img: "/weapons/upgrades/bigHitrate.svg",
+                description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "bigHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 2, 2, 2, 2]
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 5,
+            systemAdjustment: "hp",
+            baseHp: 5860,
+            baseArmor: 10,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Thruster Masking",
+                img: "/weapons/upgrades/reduceCritDamage.svg",
+                description: ["Increases enemy weapon lock-on time by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Aircraft Stealth Coating",
+                img: "/weapons/upgrades/reduceCritDamage.svg",
+                description: ["Increases enemy weapon lock-on time by ", "8%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Identify Interference Coating",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Reduces the effect Lock-On Efficiency of anti-aircraft weapons has on you by ", "20%", " (Becomes ineffective after getting hit by the enemy)"],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 6
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "CV-II003",
         title: "Light Corvette",
@@ -748,7 +4593,189 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 15
+        maxInFleet: 15,
+        production: {
+            metal: 4270,
+            crystal: 270,
+            deuterium: 60,
+            timeSeconds: 440,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Rapid-Fire Battery System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 1880,
+            baseAntiair: 144,
+            baseSiege: 418,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Prioritize Firepower",
+                img: "/weapons/upgrades/strategies/prioritizeFirepower.svg",
+                strategy: true,
+                description: ["Reduces the primary weapon's Cooldown by ", "80%", " and turns off other weapons in the system every ", "90", "s for ", "15", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Fast Targeet Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Quick Repair",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Fast Rearmament",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 4900,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Welding Tech Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Additional Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Aerial Mobility Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Missile Evasion Enhancement",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chance of being hit by missiles by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "missileEvasion",
+                percentBuffPerTier: 1.037,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "CV-M011",
         title: "Heavy Missile Corvette",
@@ -762,7 +4789,248 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 15
+        maxInFleet: 15,
+        production: {
+            metal: 5320,
+            crystal: 410,
+            deuterium: 70,
+            timeSeconds: 600,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Assault Missile System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 2100,
+            baseAntiair: 0,
+            baseSiege: 240,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Reactive Explosive Warhead",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Explosive Ammo Enhancement",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Weak Point Detection Enhancement",
+                img: "/weapons/upgrades/critDamage2.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Ammo Flexibility",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases weapon system Crit Damage by ", "8%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "weapon",
+            name: `Anti-Aircraft Battery System`,
+            main: true,
+            maxUpgradeSlots: 5,
+            baseAntiship: 87,
+            baseAntiair: 837,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Anti-Aircraft Measures",
+                img: "/weapons/upgrades/heavyAmmo.svg",
+                strategy: true,
+                description: ["When attacked by enemy aircraft, it decreases weapon system Cooldown by ", "80%", " for ", "15", "s. Cooldown: ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 6
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Anti-Aircraft Ammo Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Damage against aerial targets by ", "20%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 3
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 7500,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "CV-M011",
         title: "Heavy Cannon Corvette",
@@ -776,7 +5044,224 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 15
+        maxInFleet: 15,
+        production: {
+            metal: 4590,
+            crystal: 320,
+            deuterium: 60,
+            timeSeconds: 490,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Cannon Attack System`,
+            main: true,
+            maxUpgradeSlots: 4,
+            baseAntiship: 2228,
+            baseAntiair: 0,
+            baseSiege: 282,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Firing Assistance Enhancement",
+                img: "/weapons/upgrades/smallHitrate.svg",
+                description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "smallHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Aiming Mechanism Enhancement",
+                img: "/weapons/upgrades/smallHitrate.svg",
+                description: ["Increases weapon system Hit Rate against frigates/destroyers by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "smallHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "weapon",
+            name: `Anti-Aircraft Battery System`,
+            main: true,
+            maxUpgradeSlots: 5,
+            baseAntiship: 87,
+            baseAntiair: 837,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Anti-Aircraft Measures",
+                img: "/weapons/upgrades/heavyAmmo.svg",
+                strategy: true,
+                description: ["When attacked by enemy aircraft, it decreases weapon system Cooldown by ", "80%", " for ", "15", "s. Cooldown: ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 6
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "10%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.1,
+                tpPerTier: 3
+            }, {
+                name: "Anti-Aircraft Ammo Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Damage against aerial targets by ", "20%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.2,
+                tpPerTier: 3
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 1,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.15,
+                tpPerTier: 3
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 7500,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "CV-M011",
         title: "High-Speed Missile Corvette",
@@ -790,7 +5275,248 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 2,
-        maxInFleet: 15
+        maxInFleet: 15,
+        production: {
+            metal: 5260,
+            crystal: 410,
+            deuterium: 70,
+            timeSeconds: 600,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Precision Guidance System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 1100,
+            baseAntiair: 624,
+            baseSiege: 130,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Steady Firing",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/concentrateFire.svg",
+                description: ["After every ", "4", " round(s) of attacks of the main weapon in the system, increases the Rounds Per Cycle by ", "1", " for the next round of attack."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 15
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Armor-Penetration Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "15%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "15%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: 2
+            }, {
+                name: "High-Explosive Warhead",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["The system's weapons have a ", "6%", " chance to deal an additional ", "10%", " Crit Damage when attacking an aircraft"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Reactive Explosive Warhead",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The weapon system will cause an additional ", "8%", " Crit Damage when attacking aircraft"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "weapon",
+            name: `Counter Cannon System`,
+            main: true,
+            maxUpgradeSlots: 5,
+            baseAntiship: 106,
+            baseAntiair: 384,
+            baseSiege: 0,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Reduces Attack Interval by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 7500,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "CV-T800",
         title: "Pulsar Corvette",
@@ -804,7 +5530,173 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 2,
-        maxInFleet: 15
+        maxInFleet: 15,
+        production: {
+            metal: 4800,
+            crystal: 280,
+            deuterium: 60,
+            timeSeconds: 310,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Weapon System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 2400,
+            baseAntiair: 1920,
+            baseSiege: 48,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Rapid-Fire",
+                img: "/weapons/upgrades/strategies/prioritizeFirepower.svg",
+                strategy: true,
+                description: ["Reduces the primary weapon's Firing Duration and Cooldown by ", "80%", " every ", "60", "s for ", "15", "s. Cooldown: ", "10", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 18
+            }, {
+                name: "Enhance Recharge Power",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Enhance Pulse Focus",
+                img: "/weapons/upgrades/energyDamage.svg",
+                description: ["Increases all pulse cannon Damage by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Charging Device Enhancement",
+                img: "/weapons/upgrades/energyCooldown.svg",
+                description: ["Decreases weapon ssytem Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Pipeline Cooling Enhancement",
+                img: "/weapons/upgrades/energyCooldown.svg",
+                description: ["Decreases weapon ssytem Cooldown by ", "3%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.03,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Energy Control System Enhancement",
+                img: "/weapons/upgrades/energyHitrate.svg",
+                description: ["Increases all pulse cannon Hit Rate by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "generalHitrate",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Aiming Spped Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }, {
+                name: "Fast Target Lock",
+                img: "/weapons/upgrades/targetSelectionTime2.svg",
+                description: ["Reduces the target-selection time of the weapon system by ", "6%"],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [2, 2, 2, 3, 3]
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 7500,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "Cellular Defender",
         title: "Heavy Torpedo Corvette",
@@ -818,7 +5710,247 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 7910,
+            crystal: 560,
+            deuterium: 110,
+            timeSeconds: 890,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Torpedo Attack System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 4080,
+            baseAntiair: 0,
+            baseSiege: 1469,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Warhead Modification",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2.5%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.025,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Rearmament Enhancement",
+                img: "/weapons/upgrades/missileDamage.svg",
+                description: ["Increases all missile/torpedo damage by ", "2.5%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.025,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Guidance Signal Enhancement",
+                img: "/weapons/upgrades/missileHitrate.svg",
+                description: ["Increases all missile Hit Rate by ", "2%", " and torpedo Hit Rate by ", "2%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Loading Mechanism Upgrade",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Ammo-Transport Acceleration",
+                img: "/weapons/upgrades/genericCooldown2.svg",
+                description: ["Decreases weapon system Cooldown by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Sympathetic Detonation",
+                img: "/weapons/upgrades/critDamage.svg",
+                description: ["The system's weapons have a ", "7.5%", " chance to deal an additional ", "12.5%", " Crit Damage"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Weak Point Detection Enhancement",
+                img: "/weapons/upgrades/critDamage2.svg",
+                description: ["Increases weapon system Crit Damage by ", "10%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Large Target Correction",
+                img: "/weapons/upgrades/bigHitrate.svg",
+                description: ["Increases weapon system Hit Rate against cruisers and higher-class ships by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "bigHitrate",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Ammo Stealth Processing",
+                img: "/weapons/upgrades/torpedoIntercept.svg",
+                description: ["Reduces the chance of all torpedoes being intercepted by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: [1, 2, 2, 2]
+            }]
+        }, {
+            type: "weapon",
+            name: "Rapid-Fire Battery System",
+            maxUpgradeSlots: 5,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            baseAntiship: 660,
+            baseAntiair: 1159,
+            baseSiege: 187,
+            upgrades: [{
+                name: "Anti-Aircraft Measures",
+                strategy: true,
+                img: "/weapons/upgrades/strategies/heavyAmmo.svg",
+                description: ["When attacked by enemy aircraft, it decreases weapon system Cooldown by ", "80%", " for ", "15", "s. Cooldown: ", "30", "s."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 10
+            }, {
+                name: "Barrel Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2.5%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.025,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Ammo Enhancement",
+                img: "/weapons/upgrades/genericDamage.svg",
+                description: ["Increases all cannon Damage by ", "2.5%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.025,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Ammo-Loader Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Barrel Heatsink Enhancement",
+                img: "/weapons/upgrades/genericCooldown.svg",
+                description: ["Decreases weapon system Cooldown by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Anti-Aircraft Radar Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }, {
+                name: "Fast Target Analysis Enhancement",
+                img: "/weapons/upgrades/aircraftHitrate.svg",
+                description: ["Increases weapon system Hit Rate against fighters/corvettes by ", "3.7%"],
+                maxTiers: 4,
+                affectedStat: "aircraftHitrate",
+                percentBuffPerTier: 1.037,
+                tpPerTier: [1, 2, 2, 2]
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 3,
+            systemAdjustment: "hp",
+            baseHp: 6650,
+            baseArmor: 2,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Welding Tech Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Additional Armor Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 1, 1, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: 1
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 2,
+            systemAdjustment: null,
+            baseCruise: 2500,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 0,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: []
+        }]
     }, {
         name: "Nebula Chaser",
         title: "Heavy Corvette",
@@ -832,7 +5964,173 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 6470,
+            crystal: 530,
+            deuterium: 90,
+            timeSeconds: 710,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `Airborne Weapon System`,
+            main: true,
+            maxUpgradeSlots: 6,
+            baseAntiship: 1920,
+            baseAntiair: 115,
+            baseSiege: 336,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "Prioritize Targets",
+                img: "/weapons/upgrades/strategies/prioritizeTargets.svg",
+                strategy: true,
+                description: ["When the enemy fleet includes carriers, it prioritizes attacks on these targets."],
+                maxTiers: 1,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 12
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Nebula Chaser",
         title: "Pulsar Corvette",
@@ -846,7 +6144,173 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "RedBeast 7-13",
         title: "Missile Corvette",
@@ -860,7 +6324,173 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "S-Levy 9",
         title: "Heavy Torpedo Escort Corvette",
@@ -874,7 +6504,173 @@ export default defineEventHandler((event) => {
         weight: 5,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Silent Assassin",
         title: "Armored Corvette",
@@ -888,7 +6684,173 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Void Elfin",
         title: "Stealth Missile Corvette",
@@ -902,7 +6864,173 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 2,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Carilion",
         title: "Recon Frigate",
@@ -916,7 +7044,173 @@ export default defineEventHandler((event) => {
         weight: 10,
         row: "Front",
         cp: 4,
-        maxInFleet: 10
+        maxInFleet: 10,
+        production: {
+            metal: 50000,
+            crystal: 50000,
+            deuterium: 50000,
+            timeSeconds: 50000,
+            storage: 0
+        },
+        systems: [{
+            type: "weapon",
+            name: `PlaceholderPlaceholder`,
+            main: true,
+            maxUpgradeSlots: 50000,
+            baseAntiship: 50000,
+            baseAntiair: 50000,
+            baseSiege: 50000,
+            systemAdjustment: "weaponDamage",
+            img: "/weapons/icons/cannon.png",
+            upgrades: [{
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/strategies/PlaceholderPlaceholder.svg",
+                strategy: true,
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }, {
+                name: "PlaceholderPlaceholder",
+                img: "/weapons/upgrades/PlaceholderPlaceholder.svg",
+                description: ["PlaceholderPlaceholder"],
+                maxTiers: 50000,
+                affectedStat: "PlaceholderPlaceholder",
+                percentBuffPerTier: 50000,
+                tpPerTier: 50000
+            }]
+        }, {
+            type: "armor",
+            name: "Armor System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: "hp",
+            baseHp: 50000,
+            baseArmor: 50000,
+            baseEnergyShield: 0,
+            img: "/weapons/icons/armor.png",
+            upgrades: [{
+                name: "Aircraft Armor Enhancement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Aero Reinforcement",
+                img: "/weapons/upgrades/hp.svg",
+                description: ["Increases ship HP by ", "2%"],
+                maxTiers: 5,
+                affectedStat: "hp",
+                percentBuffPerTier: 1.02,
+                tpPerTier: [1, 1, 2, 2, 2]
+            }, {
+                name: "Short-range Stealth Coating",
+                img: "/weapons/upgrades/missileTorpedoEvasion.svg",
+                description: ["Reduces the chances of being hit by missiles and torpedoes by ", "3%", " and ", "5%", " respectively"],
+                maxTiers: 5,
+                affectedStat: ["missileEvasion", "torpedoEvasion"],
+                percentBuffPerTier: [1.03, 1.05],
+                tpPerTier: [1, 1, 1, 1, 2]
+            }]
+        }, {
+            type: "propulsion",
+            name: "Propulsion System",
+            maxUpgradeSlots: 50000,
+            systemAdjustment: null,
+            baseCruise: 3000,
+            baseWarp: 0,
+            img: "/weapons/icons/speed.png",
+            upgrades: [{
+                name: "Dynamic Thrust Adjustment",
+                img: "/weapons/upgrades/generalEvasion.svg",
+                description: ["Increases ship Evasion by ", "2%"],
+                maxTiers: 4,
+                affectedStat: "generalEvasion",
+                percentBuffPerTier: 1.02,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Intensified Combustion Enhancement",
+                img: "/weapons/upgrades/targetSelectionTime.svg",
+                description: ["Reduces the target-selection time of the aircraft's primary weapon by ", "7.5%"],
+                maxTiers: 4,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 2
+            }, {
+                name: "Flight Maneuver Improvement",
+                img: "/weapons/upgrades/reciprocal.svg",
+                description: ["Reduces the flight time of reciprocal aircraft by ", "6%"],
+                maxTiers: 5,
+                affectedStat: "damage",
+                percentBuffPerTier: 1.01417,
+                tpPerTier: 2
+            }]
+        }, {
+            type: "command",
+            name: "Command System",
+            maxUpgradeSlots: 1,
+            systemAdjustment: null,
+            img: "/weapons/icons/command.png",
+            upgrades: [{
+                name: "System Automated Maintenance Enhancement",
+                img: "/weapons/upgrades/commandRepair.svg",
+                description: ["Increases the automated maintenance efficiency of the system by ", "5%", "."],
+                maxTiers: 5,
+                affectedStat: null,
+                percentBuffPerTier: null,
+                tpPerTier: 1
+            }]
+        }]
     }, {
         name: "Carilion",
         title: "Heavy Cannon Frigate",
@@ -1732,7 +8026,7 @@ export default defineEventHandler((event) => {
         scope: "Direct-Fire Weapon",
         weight: 5,
         row: "Front",
-        cp: 20,
+        cp: 18,
         maxInFleet: 8
     }, {
         name: "Chimera",
@@ -4686,6 +10980,27 @@ export default defineEventHandler((event) => {
                 type: "known",
                 img: "/weapons/icons/aircraft.png",
                 system: "C1",
+                name: "Auxiliary Aircraft Hanger",
+                stats: {
+                    type: "weapon",
+                    antiship: null,
+                    antiair: null,
+                    siege: null,
+                    hp: 24500
+                },
+                subsystems: [{
+                    type: "hanger",
+                    count: 1,
+                    title: `asiofghsaioghisaogoh`,
+                    name: "asiofghsaioghisaogoh",
+                    hanger: "Large Fighter",
+                    capacity: 4,
+                    attributes: null
+                }]
+            }, {
+                type: "known",
+                img: "/weapons/icons/aircraft.png",
+                system: "C2",
                 name: "Auxiliary Corvette Dockyard",
                 stats: {
                     type: "weapon",
@@ -4703,11 +11018,6 @@ export default defineEventHandler((event) => {
                     capacity: 4,
                     attributes: null
                 }]
-            }, {
-                type: "unknown",
-                img: "/weapons/icons/unknown.png",
-                system: "C2",
-                unknown: true
             }, {
                 type: "known",
                 img: "/weapons/icons/storage.png",

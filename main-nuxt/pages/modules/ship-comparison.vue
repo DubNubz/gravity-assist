@@ -53,6 +53,7 @@
 </template>
 
 <script setup lang="ts">
+import _ from 'lodash';
 
 const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
 const filteredChoices = ref<Ship[]> ([]);
@@ -85,11 +86,11 @@ function autocomplete () {
 
 function selectShip (ship: Ship) {
     if (currentSelection.value == "ship1") {
-        ship1.value = ship;
-        shipComparisonStore().ship1 = ship;
+        ship1.value = _.cloneDeep(ship);
+        shipComparisonStore().ship1 = _.cloneDeep(ship);
     } else {
-        ship2.value = ship;
-        shipComparisonStore().ship2 = ship;
+        ship2.value = _.cloneDeep(ship);
+        shipComparisonStore().ship2 = _.cloneDeep(ship);
     }
     showShipSelection.value = false;
 }

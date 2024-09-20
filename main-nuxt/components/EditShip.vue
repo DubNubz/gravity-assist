@@ -19,49 +19,49 @@
                         <h4>{{ systemTechPoints }}</h4>
                         <img :src="'/fleet/techPoint.svg'" alt="Amount of Tech Points allocated">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'weapon'">
+                    <div class="stat" v-if="currentSystem.type == 'weapon' && currentSystem.modifiedAntiship">
                         <span class="tooltip">Anti-Ship Fire</span>
-                        <h4>{{ Math.round(currentSystem.baseAntiship).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedAntiship).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/antiship.svg'" alt="Amount of anti-ship damage">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'weapon'">
+                    <div class="stat" v-if="currentSystem.type == 'weapon' && currentSystem.modifiedAntiair">
                         <span class="tooltip">Air Defense</span>
-                        <h4>{{ Math.round(currentSystem.baseAntiair).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedAntiair).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/antiaircraft.svg'" alt="Amount of anti-air damage">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'weapon'">
+                    <div class="stat" v-if="currentSystem.type == 'weapon' && currentSystem.modifiedSiege">
                         <span class="tooltip">Siege Fire</span>
-                        <h4>{{ Math.round(currentSystem.baseSiege).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedSiege).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/siege.svg'" alt="Amount of siege damage">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'armor'">
+                    <div class="stat" v-if="currentSystem.type == 'armor' && currentSystem.modifiedHp">
                         <span class="tooltip">Hitpoints</span>
-                        <h4>{{ Math.round(currentSystem.baseHp).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedHp).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/hp.svg'" alt="Amount of hitpoints">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'armor'">
+                    <div class="stat" v-if="currentSystem.type == 'armor' && currentSystem.modifiedArmor">
                         <span class="tooltip">Armor</span>
-                        <h4>{{ Math.round(currentSystem.baseArmor).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedArmor).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/armor.svg'" alt="Amount of armor">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'armor'">
+                    <div class="stat" v-if="currentSystem.type == 'armor' && currentSystem.modifiedEnergyShield">
                         <span class="tooltip">Energy Shield</span>
-                        <h4>{{ Math.round(currentSystem.baseEnergyShield * 100) + '%' }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedEnergyShield * 100) + '%' }}</h4>
                         <img :src="'/weapons/stats/energyShield.svg'" alt="Energy Shield">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'propulsion'">
+                    <div class="stat" v-if="currentSystem.type == 'propulsion' && currentSystem.modifiedCruise">
                         <span class="tooltip">Cruise Speed</span>
-                        <h4>{{ Math.round(currentSystem.baseCruise).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedCruise).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/cruise.svg'" alt="Cruise speed">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'propulsion'">
+                    <div class="stat" v-if="currentSystem.type == 'propulsion' && currentSystem.modifiedWarp">
                         <span class="tooltip">Warp Speed</span>
-                        <h4>{{ Math.round(currentSystem.baseWarp).toLocaleString() }}</h4>
+                        <h4>{{ Math.round(currentSystem.modifiedWarp).toLocaleString() }}</h4>
                         <img :src="'/weapons/stats/cruise.svg'" alt="Warp speed">
                     </div>
-                    <div class="stat" v-if="currentSystem.type == 'propulsion' && currentSystem.evasion">
+                    <div class="stat" v-if="currentSystem.type == 'propulsion' && currentSystem.modifiedEvasion">
                         <span class="tooltip">Evasion</span>
-                        <h4>{{ Math.round((currentSystem.evasion - 1) * 100) + '%' }}</h4>
+                        <h4>{{ Math.round((currentSystem.modifiedEvasion - 1) * 100) + '%' }}</h4>
                         <img :src="'/weapons/stats/cruise.svg'" alt="Evasion">
                     </div>
                     <div class="stat" v-if="currentSystem.type == 'energy' && currentSystem.baseDmgBuff">
@@ -76,6 +76,12 @@
                         <img v-if="!upgrade" src="/weapons/icons/plus.svg">
                         <img v-else :src="upgrade.img">
                     </div>
+                    <button class="closeButton" @click="resetSystem">
+                        <svg style="width: 3.5em; height: 3.5em;" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.00386 9.41816C7.61333 9.02763 7.61334 8.39447 8.00386 8.00395C8.39438 7.61342 9.02755 7.61342 9.41807 8.00395L12.0057 10.5916L14.5907 8.00657C14.9813 7.61605 15.6144 7.61605 16.0049 8.00657C16.3955 8.3971 16.3955 9.03026 16.0049 9.42079L13.4199 12.0058L16.0039 14.5897C16.3944 14.9803 16.3944 15.6134 16.0039 16.0039C15.6133 16.3945 14.9802 16.3945 14.5896 16.0039L12.0057 13.42L9.42097 16.0048C9.03045 16.3953 8.39728 16.3953 8.00676 16.0048C7.61624 15.6142 7.61624 14.9811 8.00676 14.5905L10.5915 12.0058L8.00386 9.41816Z"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM3.00683 12C3.00683 16.9668 7.03321 20.9932 12 20.9932C16.9668 20.9932 20.9932 16.9668 20.9932 12C20.9932 7.03321 16.9668 3.00683 12 3.00683C7.03321 3.00683 3.00683 7.03321 3.00683 12Z"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="systemsHolder">
                     <div class="system upgradeCard" :class="{ gold: upgrade.maxTiers == upgrade.tiersUpgraded }" v-for="upgrade in currentSystem.upgrades" @click="handleUpgrade(upgrade)">
@@ -127,7 +133,7 @@
                 <img :src="'/weapons/stats/deuterium.svg'" alt="Amount of deuterium required to build this ship">
             </div>
             <div class="tp">
-                <h4>{{ addZeroToTime(Math.floor(currentShip.production.timeSeconds / 60 / 60)) }}:{{ addZeroToTime(Math.floor(currentShip.production.timeSeconds / 60)) }}:{{ addZeroToTime(currentShip.production.timeSeconds % 60) }}</h4>
+                <h4>{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60 / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds)) % 60) }}</h4>
                 <img :src="'/weapons/stats/time.svg'" alt="Amount of time required to build this ship">
             </div>
             <div class="tp">
@@ -141,7 +147,7 @@
                 <img class="systemImg" :src="system.img" alt="">
                 <h3>{{ system.name }}</h3>
                 <div class="upgrades">
-                    <div class="upgradeSlot" v-for="upgrade in system.maxUpgradeSlots"></div>
+                    <div class="upgradeSlot" :class="{ upgraded: system.upgrades.map((upgrade) => upgrade.tiersUpgraded == upgrade.maxTiers ? 1 : 0).filter((value) => value != 0)[index] != undefined }" v-for="(upgrade, index) in system.maxUpgradeSlots"></div>
                 </div>
             </div>
         </div>
@@ -165,9 +171,46 @@ const currentUpgrades = ref<(SystemUpgrade | 0)[]> ([]);
 const systemTechPoints = ref(0);
 const techPoints = ref(0);
 
+function resetSystem () {
+    if (!currentSystem.value) return;
+
+    if (currentSystem.value.type == "weapon") {
+        currentSystem.value.modifiedAntiship = currentSystem.value.baseAntiship;
+        currentSystem.value.modifiedAntiair = currentSystem.value.baseAntiair;
+        currentSystem.value.modifiedSiege = currentSystem.value.baseSiege;
+
+    } else if (currentSystem.value.type == "armor") {
+        currentSystem.value.modifiedHp = currentSystem.value.baseHp;
+        currentSystem.value.modifiedArmor = currentSystem.value.baseArmor;
+        currentSystem.value.modifiedEnergyShield = currentSystem.value.baseEnergyShield;
+
+    } else if (currentSystem.value.type == "propulsion") {
+        currentSystem.value.modifiedCruise = currentSystem.value.baseCruise;
+        currentSystem.value.modifiedWarp = currentSystem.value.baseWarp;
+        currentSystem.value.modifiedEvasion = currentSystem.value.baseEvasion;
+    }
+
+    systemTechPoints.value = 0;
+    currentUpgrades.value = [];
+
+    for (let upgrade of currentSystem.value.upgrades) {
+        upgrade.tpAllocated = 0;
+        upgrade.tiersUpgraded = 0;
+    }
+}
+
+function calculateTime (time: number) {
+    if (!["Battlecruiser", "Carrier", "Auxiliary Ship", "Battleship"].includes(currentShip.value.type)) {
+        return time * (1 + (techPoints.value * 0.005));
+    } else {
+        return time
+    }
+}
+
 function openSystem (system: ShipSystemAll) {
     showSystem.value = true;
     currentSystem.value = system;
+    systemTechPoints.value = system.upgrades.map((upgrade) => upgrade.tpAllocated ?? 0).reduce((acc, curr) => acc + curr, 0);
     if (!currentSystem.value.tpAllocated) currentSystem.value.tpAllocated = 0;
     for (let upgrade of currentSystem.value.upgrades) {
         if (!upgrade.tiersUpgraded) upgrade.tiersUpgraded = 0;
@@ -177,11 +220,15 @@ function openSystem (system: ShipSystemAll) {
 
 function getUsedUpgrades () {
     if (!currentSystem.value) return [];
-    return currentSystem.value.upgrades.map((upgrade) => upgrade.tiersUpgraded != undefined && upgrade.tiersUpgraded != 0 ? upgrade : 0);
+    const upgrades = currentSystem.value.upgrades.map((upgrade) => upgrade.tiersUpgraded != undefined && upgrade.tiersUpgraded != 0 ? upgrade : 0);
+    currentUpgrades.value = upgrades.filter((value) => value != 0);
+    return upgrades;
 }
 
 function closeSystem () {
+    techPoints.value = currentShip.value.systems?.map((system) => system.upgrades.map((upgrade) => upgrade.tpAllocated ?? 0)).flat().reduce((acc, curr) => acc + curr, 0) ?? 0;
     showSystem.value = false;
+    console.log(props.ship)
 }
 
 function handleStatChange (upgrade: SystemUpgrade) {
@@ -197,31 +244,51 @@ function handleStatChange (upgrade: SystemUpgrade) {
 
     if (stat == "damage") {
         if (system.type == "weapon") {
-            system.baseAntiship = system.baseAntiship * buff;
-            system.baseAntiair = system.baseAntiair * buff;
-            system.baseSiege = system.baseSiege * buff;
+            system.modifiedAntiship = (system.modifiedAntiship ?? system.baseAntiship) * buff;
+            system.modifiedAntiair = (system.modifiedAntiair ?? system.baseAntiair) * buff;
+            system.modifiedSiege = (system.modifiedSiege ?? system.baseSiege) * buff;
 
         } else if (system.type == "energy") {
 
         }
 
+    } else if (stat == "siegeDamage") {
+        if (system.type == "weapon") {
+            system.modifiedSiege = (system.modifiedSiege ?? system.baseSiege) * buff;
+        }
+
     } else if (stat == "hp") {
-        if (system.type == "armor") system.baseHp = system.baseHp * buff;
+        if (system.type == "armor") {
+            system.modifiedHp = (system.modifiedHp ?? system.baseHp) * buff;
+        }
 
     } else if (stat == "armor") {
-        if (system.type == "armor") system.baseArmor += buff;
+        if (system.type == "armor") {
+            if (!system.modifiedArmor) system.modifiedArmor = system.baseArmor;
+            system.modifiedArmor += buff;
+        }
 
     } else if (stat == "energyShield") {
-        if (system.type == "armor") system.baseEnergyShield += buff - 1;
+        if (system.type == "armor") {
+            if (!system.modifiedEnergyShield) system.modifiedEnergyShield = system.baseArmor;
+            system.modifiedEnergyShield += buff - 1;
+        }
 
     } else if (stat == "cruise") {
-        if (system.type == "propulsion") system.baseCruise = system.baseCruise * buff;
+        if (system.type == "propulsion") {
+            system.modifiedCruise = (system.modifiedCruise ?? system.baseCruise) * buff;
+        }
 
     } else if (stat == "warp") {
-        if (system.type == "propulsion") system.baseWarp = system.baseWarp * buff;
+        if (system.type == "propulsion") {
+            system.modifiedWarp = (system.modifiedWarp ?? system.baseWarp) * buff;
+        }
 
     } else if (stat == "generalEvasion") {
-        if (system.type == "propulsion" && system.evasion) system.evasion += buff - 1;
+        if (system.type == "propulsion" && system.baseEvasion) {
+            if (!system.modifiedEvasion) system.modifiedEvasion = system.baseEvasion;
+            system.modifiedEvasion += buff - 1;
+        }
     }
 }
 

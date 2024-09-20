@@ -42,6 +42,7 @@ body {
   display: flex;
   justify-content: center;
   color: white;
+  transition: all 0.5s;
 }
 
 h1 {font-size: var(--h1)}
@@ -77,6 +78,24 @@ button, a, input, textarea {
   h4 {font-size: 1.35em}
   p {font-size: 1.25em}
   #text {font-size: 0.5em}
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body:has(.contributorCard[color="red"]:hover) {
+    background-color: rgb(94, 39, 39);
+  }
+  body:has(.contributorCard[color="yellow"]:hover) {
+    background-color: rgb(60, 54, 25);
+  }
+  body:has(.contributorCard[color="green"]:hover) {
+    background-color: rgb(25, 60, 38);
+  }
+  body:has(.contributorCard[color="cyan"]:hover) {
+    background-color: rgb(25, 55, 60);
+  }
+  body:has(.contributorCard[color="pink"]:hover) {
+    background-color: rgb(75, 32, 75);
+  }
 }
 
 @media (pointer: coarse) {

@@ -94,7 +94,7 @@ export type Ship = {
     modules?: (Module | UnknownModule)[];
 }
 
-export type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion";
+export type AffectedStats = "damage" | "hp" | "armor" | "energyShield" | "cruise" | "warp" | "aircraftHitrate" | "smallHitrate" | "bigHitrate" | "generalHitrate" | "missileEvasion" | "torpedoEvasion" | "directEvasion" | "generalEvasion" | "siegeDamage";
 
 export type SystemUpgrade = {
     /** Name of the upgrade.
@@ -104,7 +104,7 @@ export type SystemUpgrade = {
 
     /** Image of the upgrade's icon, found in `/public/weapons/upgrades`.
      * 
-     * If upgrade is a strategy, the iamge is found in `/public/weapons/upgrades/strategies`.
+     * If upgrade is a strategy, the image is found in `/public/weapons/upgrades/strategies`.
      * @example "/weapons/upgrades/genericCooldown.png"
      */
     img: string;
@@ -204,22 +204,43 @@ export interface WeaponSystem extends ShipSystem {
      * 
      * - If the ship is a figher or corvette, the Anti-Ship Fire value is different if you click the system and if you don't click the system.
      * - Use the value found after clicking the system.
+     * @readonly This property should not be modified.
      */
-    baseAntiship: number;
+    readonly baseAntiship: number;
 
     /** Default Air Defense value, found after clicking the system.
      * 
      * - If the ship is a figher or corvette, the Air Defense value is different if you click the system and if you don't click the system.
      * - Use the value found after clicking the system.
+     * @readonly This property should not be modified.
      */
-    baseAntiair: number;
+    readonly baseAntiair: number;
 
     /** Default Siege Fire value, found after clicking the system.
      * 
      * - If the ship is a figher or corvette, the Siege Fire value is different if you click the system and if you don't click the system.
      * - Use the value found after clicking the system.
+     * @readonly This property should not be modified.
      */
-    baseSiege: number;
+    readonly baseSiege: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Anti-Ship Fire value, after system upgrades.
+     */
+    modifiedAntiship?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Air Defense value, after system upgrades.
+     */
+    modifiedAntiair?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Siege Fire value, after system upgrades.
+     */
+    modifiedSiege?: number;
 }
 
 export interface AircraftSystem extends ShipSystem {
@@ -231,34 +252,86 @@ export interface ArmorSystem extends ShipSystem {
     type: "armor";
     img: "/weapons/icons/armor.png";
 
-    /** Default HP value. */
-    baseHp: number;
+    /** Default HP value.
+     * @readonly This property should not be modified.
+     */
+    readonly baseHp: number;
 
-    /** Default Armor value. */
-    baseArmor: number;
+    /** Default Armor value.
+     * @readonly This property should not be modified.
+     */
+    readonly baseArmor: number;
     
-    /** Default Energy Shield value. */
-    baseEnergyShield: number;
+    /** Default Energy Shield value.
+     * @readonly This property should not be modified.
+     */
+    readonly baseEnergyShield: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified HP value, after system upgrades.
+     */
+    modifiedHp?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Armor value, after system upgrades.
+     */
+    modifiedArmor?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Energy Shield value, after system upgrades.
+     */
+    modifiedEnergyShield?: number;
 }
 
 export interface PropulsionSystem extends ShipSystem {
     type: "propulsion";
     img: "/weapons/icons/speed.png";
 
-    /** Default Cruise Speed value. */
-    baseCruise: number;
+    /** Default Cruise Speed value.
+     * @readonly This property should not be modified.
+     */
+    readonly baseCruise: number;
 
-    /** Default Warp Speed value. */
-    baseWarp: number;
+    /** Default Warp Speed value.
+     * @readonly This property should not be modified.
+     */
+    readonly baseWarp: number;
 
-    /** Only found if this system provides an evasion bonus. Represents the default Evasion value. */
-    evasion?: number;
+    /** Only found if this system provides an evasion bonus.
+     * 
+     * Represents the default Evasion value.
+     * @readonly This property should not be modified. */
+    readonly baseEvasion?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Crise Speed value, after system upgrades.
+     */
+    modifiedCruise?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Warp Speed value, after system upgrades.
+     */
+    modifiedWarp?: number;
+
+    /** This property should not be present in the default ship data.
+     * 
+     * Represents the modified Evasion value, after system upgrades.
+     */
+    modifiedEvasion?: number;
 }
 
 export interface EnergySystem extends ShipSystem {
     type: "energy";
     img: "/weapons/icons/jamming.png";
-    /** Only found if this system provides a damage bonus. Represents the default damage bonus.
+
+    /** Only found if this system provides a damage bonus.
+     * 
+     * Represents the default damage bonus.
      * @example 1.15
      */
     baseDmgBuff?: number;
@@ -277,6 +350,8 @@ export interface JammingSystem extends ShipSystem {
 export interface MiscSystem extends ShipSystem {
     type: "misc";
     img: string;
+    readonly baseEvasion?: number;
+    modifiedEvasion?: number;
 }
 
 export type Module = {

@@ -65,7 +65,9 @@ const showTpMenu = ref(false);
 const stats = ref<Stat[]> ([]);
 
 function handleClose () {
+    console.log(props.ship1)
     showTpMenu.value = false;
+    updateStats(props.ship1)
 }
 
 function addZeroToTime (num: number) {
@@ -74,7 +76,6 @@ function addZeroToTime (num: number) {
 }
 
 function updateStats (ship: Ship) {
-    console.log((props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%")
     stats.value = [{
         name: "Command Points",
         img: "/fleet/command_point.svg",
@@ -101,8 +102,8 @@ function updateStats (ship: Ship) {
     }, {
         name: "Build Time",
         img: "/weapons/stats/time.svg",
-        stat: props.ship1.production.timeSeconds,
-        comparisonStat: props.ship2?.production.timeSeconds,
+        stat: !["Battlecruiser", "Carrier", "Auxiliary Ship", "Battleship"].includes(props.ship1.type) ? props.ship1.production.timeSeconds * (1 + ((props.ship1.systems?.map((system) => system.upgrades.map((upgrade) => upgrade.tpAllocated ?? 0)).flat().reduce((acc, curr) => acc + curr, 0) ?? 0) * 0.005)) : props.ship1.production.timeSeconds,
+        comparisonStat: !["Battlecruiser", "Carrier", "Auxiliary Ship", "Battleship"].includes(props.ship2?.type ?? "") ? (props.ship2?.production.timeSeconds ?? 1) * (1 + ((props.ship2?.systems?.map((system) => system.upgrades.map((upgrade) => upgrade.tpAllocated ?? 0)).flat().reduce((acc, curr) => acc + curr, 0) ?? 0) * 0.005)) : props.ship2?.production.timeSeconds,
         time: true,
         tooltip: "Amount of time required to build this ship"
     }, {
@@ -119,68 +120,68 @@ function updateStats (ship: Ship) {
     }, {
         name: "Anti-Ship Fire",
         img: "/weapons/stats/antiship.svg",
-        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
-        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
+        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiship ?? system.baseAntiship) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
+        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiship ?? system.baseAntiship) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
     }, {
         name: "Anti-Ship Fire per CP",
         img: "/weapons/stats/antiship.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiship : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiship ?? system.baseAntiship) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiship ?? system.baseAntiship) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
         tooltip: "Calculated by dividing the Anti-Ship Fire / Command Point values"
     }, {
         name: "Air Defense",
         img: "/weapons/stats/antiaircraft.svg",
-        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
-        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
+        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiair ?? system.baseAntiair) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
+        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiair ?? system.baseAntiair) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
     }, {
         name: "Air Defense per CP",
         img: "/weapons/stats/antiaircraft.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseAntiair : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiair ?? system.baseAntiair) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedAntiair ?? system.baseAntiair) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
         tooltip: "Calculated by dividing the Air Defense / Command Point values"
     }, {
         name: "Siege Fire",
         img: "/weapons/stats/siege.svg",
-        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
-        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
+        stat: ((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedSiege ?? system.baseSiege) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)),
+        comparisonStat: ((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedSiege ?? system.baseSiege) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1))
     }, {
         name: "Siege Fire per CP",
         img: "/weapons/stats/siege.svg",
-        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
-        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? system.baseSiege : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
+        stat: (((props.ship1.systems?.map((system) => system.type == 'weapon' ? (system.modifiedSiege ?? system.baseSiege) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship1.aircraftPerSquadron ?? 1)) / props.ship1.cp),
+        comparisonStat: (((props.ship2?.systems?.map((system) => system.type == 'weapon' ? (system.modifiedSiege ?? system.baseSiege) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0) * (props.ship2?.aircraftPerSquadron ?? 1)) / (props.ship2?.cp ?? 1)),
         tooltip: "Calculated by dividing the Siege Fire / Command Point values"
     }, {
         name: "Hitpoints",
         img: "/weapons/stats/hp.svg",
-        stat: props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0),
-        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0)
+        stat: props.ship1.systems?.map((system) => system.type == 'armor' ? (system.modifiedHp ?? system.baseHp) : 0).reduce((acc, curr) => acc + curr, 0),
+        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'armor' ? (system.modifiedHp ?? system.baseHp) : 0).reduce((acc, curr) => acc + curr, 0)
     }, {
         name: "Hitpoints per CP",
         img: "/weapons/stats/hp.svg",
-        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / props.ship1.cp),
-        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseHp : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / (props.ship2?.cp ?? 1)),
+        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? (system.modifiedHp ?? system.baseHp) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / props.ship1.cp),
+        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? (system.modifiedHp ?? system.baseHp) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 / (props.ship2?.cp ?? 1)),
         tooltip: "Calculated by dividing the Hitpoints / Command Point values"
     }, {
         name: "Armor",
         img: "/weapons/stats/armor.svg",
-        stat: props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseArmor : 0).reduce((acc, curr) => acc + curr, 0),
-        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseArmor : 0).reduce((acc, curr) => acc + curr, 0)
+        stat: props.ship1.systems?.map((system) => system.type == 'armor' ? (system.modifiedArmor ?? system.baseArmor) : 0).reduce((acc, curr) => acc + curr, 0),
+        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'armor' ? (system.modifiedArmor ?? system.baseArmor) : 0).reduce((acc, curr) => acc + curr, 0)
     }, {
         name: "Energy Shield",
         img: "/weapons/stats/energyShield.svg",
-        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
-        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? system.baseEnergyShield : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
+        stat: (props.ship1.systems?.map((system) => system.type == 'armor' ? (system.modifiedEnergyShield ?? system.baseEnergyShield) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
+        comparisonStat: (props.ship2?.systems?.map((system) => system.type == 'armor' ? (system.modifiedEnergyShield ?? system.baseEnergyShield) : 0).reduce((acc, curr) => acc + curr, 0) ?? 0 * 100) + "%",
         raw: true
     }, {
         name: "Cruise Speed",
         img: "/weapons/stats/cruise.svg",
-        stat: props.ship1.systems?.map((system) => system.type == 'propulsion' ? system.baseCruise : 0).reduce((acc, curr) => acc + curr, 0),
-        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'propulsion' ? system.baseCruise : 0).reduce((acc, curr) => acc + curr, 0)
+        stat: props.ship1.systems?.map((system) => system.type == 'propulsion' ? (system.modifiedCruise ?? system.baseCruise) : 0).reduce((acc, curr) => acc + curr, 0),
+        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'propulsion' ? (system.modifiedCruise ?? system.baseCruise) : 0).reduce((acc, curr) => acc + curr, 0)
     }, {
         name: "Warp Speed",
         img: "/weapons/stats/cruise.svg",
-        stat: props.ship1.systems?.map((system) => system.type == 'propulsion' ? system.baseWarp : 0).reduce((acc, curr) => acc + curr, 0),
-        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'propulsion' ? system.baseWarp : 0).reduce((acc, curr) => acc + curr, 0)
+        stat: props.ship1.systems?.map((system) => system.type == 'propulsion' ? (system.modifiedWarp ?? system.baseWarp) : 0).reduce((acc, curr) => acc + curr, 0),
+        comparisonStat: props.ship2?.systems?.map((system) => system.type == 'propulsion' ? (system.modifiedWarp ?? system.baseWarp) : 0).reduce((acc, curr) => acc + curr, 0)
     }]
 }
 

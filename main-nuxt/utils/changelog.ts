@@ -239,7 +239,7 @@ export const changelog: Changelog[] = [{
     "Removed the Contributors and Changelog button from the footer and moved them to the side menu"]
 }, {
     type: "release",
-    version: "aaaaaaaaaaa",
-    release: "aaaaaaaaaaaaaaaaa",
-    notes: ["Added Ship Comparisons"]
+    version: "1.4.0",
+    release: "August XX, 2024",
+    notes: ["Added Ship Comparisons", "Changed the design of the Contributors page", "Added Summer Roadmap card"]
 }];

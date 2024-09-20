@@ -1,16 +1,13 @@
 <template>
     <div class="holder">
-        <h1>Contributors</h1>
+        <h1 class="title">Contributors</h1>
         
-        <div class="crowdsourceCard">
-            <h2 style="color: var(--gold);">Module Crowdsourcing</h2>
-            <h3 v-for="credit in credits.filter((credit) => credit.title == 'Module Crowdsourcing')"><span>{{ credit.name }}</span>: {{ credit.specific }}</h3>
-        </div>
-
         <div class="cardHolder">
-            <div class="card" v-for="credit in credits.filter((credit) => credit.title != 'Module Crowdsourcing')">
-                <h2>{{ credit.title }}</h2>
-                <h3 v-for="name in credit.name">{{ name }}</h3>
+            <div class="contributorCard" :color="getRandomItemFromArray(colors)" v-for="contributor in credits">
+                <h2>{{ contributor.name }}</h2>
+                <p class="date">First contribution: {{ contributor.dateAdded }}</p>
+                <div class="divider"></div>
+                <p style="margin-bottom: 0.75em;" v-for="contribution in contributor.specific">► {{ contribution }}</p>
             </div>
         </div>
     </div>
@@ -23,6 +20,8 @@ useSeoMeta({
     description: "View a list of all contributors that have helped shape Gravity Assist!"
 })
 
+const colors = ["red", "yellow", "green", "cyan", "pink"];
+
 </script>
 
 <style lang="scss" scoped>
@@ -34,90 +33,131 @@ useSeoMeta({
     justify-content: center;
 }
 
-h1 {
+.title {
     color: transparent;
     background: var(--godlyText);
     background-clip: text;
     width: fit-content;
 }
 
-.crowdsourceCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(100, 100, 100, 0.35);
-    padding: 3em;
-    border-radius: 3em;
-    width: 50em;
-    margin-bottom: 3em;
-    text-align: center;
-
-    h3 {
-        margin: 0.35em;
-
-        span {
-            color: var(--cyan);
-        }
-    }
-}
-
 .cardHolder {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     align-items: stretch;
-    gap: 5em;
+    justify-content: center;
+    gap: 2em;
+    width: 95em;
 }
 
-.card {
+.contributorCard {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: rgb(36, 36, 36);
-    padding: 3em;
-    border-radius: 3em;
-    width: 30em;
-    filter: grayscale(0.2);
+    width: 40%;
+    padding: 2em;
+    border-radius: 2em;
+    transition: all 0.15s;
+    background-color: rgb(45, 45, 45);
 
     h2 {
-        color: var(--gold);
+        margin: 0;
+        text-align: center;
     }
 
-    h3 {
-        color: var(--cyan);
-        margin: 0.35em;
+    p {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.contributorCard[color="red"] {
+    h2 {
+        color: rgb(255, 20, 20);
+    }
+    .date {
+        color: rgb(255, 87, 87);
+    }
+}
+.contributorCard[color="yellow"] {
+    h2 {
+        color: rgb(255, 187, 0);
+    }
+    .date {
+        color: rgb(255, 211, 92);
+    }
+}
+.contributorCard[color="green"] {
+    h2 {
+        color: rgb(0, 255, 115);
+    }
+    .date {
+        color: rgb(96, 255, 168);
+    }
+}
+.contributorCard[color="cyan"] {
+    h2 {
+        color: rgb(0, 204, 255);
+    }
+    .date {
+        color: rgb(90, 222, 255);
+    }
+}
+.contributorCard[color="pink"] {
+    h2 {
+        color: rgb(255, 0, 221);
+    }
+    .date {
+        color: rgb(255, 91, 233);
+    }
+}
+
+.divider {
+    width: 100%;
+    height: 0.5em;
+    background-color: rgba(100, 100, 100, 0.5);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+@media screen and (max-width: 1400px) {
+    .contributorCardHolder {
+        width: 80em;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .contributorCardHolder {
+        width: 50em;
+    }
+
+    .contributorCard {
+        width: 45em;
     }
 }
 
 @media screen and (max-width: 1000px) {
-    .card, .crowdsourceCard {
-        padding: 1em;
+    .contributorCardHolder {
+        width: 43em;
     }
 
-    .crowdsourceCard {
+    .contributorCard {
         width: 40em;
     }
 }
 
 @media screen and (max-width: 800px) {
-    .crowdsourceCard {
+    .contributorCardHolder {
         width: 90svw;
-        padding: 2svw;
-        border-radius: 2.5svh;
     }
 
-    .cardHolder {
-        gap: 3em;
+    .contributorCard {
+        width: 100%;
     }
+}
 
-    .card {
-        width: 90svw;
-        padding: 2svw;
-        border-radius: 2.5svh;
-    }
+@media (hover: hover) and (pointer: fine) {
+    .contributorCard:hover {background-color: rgb(33, 33, 33)}
 }
 
 </style>
