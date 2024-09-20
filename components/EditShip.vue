@@ -133,7 +133,7 @@
                 <img :src="'/weapons/stats/deuterium.svg'" alt="Amount of deuterium required to build this ship">
             </div>
             <div class="tp">
-                <h4>{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60 / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds)) % 60) }}</h4>
+                <h4>{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60 / 60)) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds) / 60) % 60) }}:{{ addZeroToTime(Math.floor(calculateTime(currentShip.production.timeSeconds)) % 60) }}</h4>
                 <img :src="'/weapons/stats/time.svg'" alt="Amount of time required to build this ship">
             </div>
             <div class="tp">
@@ -199,6 +199,9 @@ function resetSystem () {
     }
 }
 
+/* This section needs to be updated according to https://www.infinitelagrange.com/news/preview/upgrade/20240816/37809_1174787.html
+Ship type and version number affects production cost and production time.
+*/
 function calculateTime (time: number) {
     if (!["Battlecruiser", "Carrier", "Auxiliary Ship", "Battleship"].includes(currentShip.value.type)) {
         return time * (1 + (techPoints.value * 0.005));
