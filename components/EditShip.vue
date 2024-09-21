@@ -334,7 +334,7 @@ function handleUpgrade (upgrade: SystemUpgrade) {
 }
 
 function addZeroToTime (num: number) {
-    if (String(num).length == 1) return num + "0";
+    if (String(num).length == 1) return "0" + num;
     else return num;
 }
 
