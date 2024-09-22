@@ -12,16 +12,12 @@ export const credits: Credit[] = [{
     dateAdded: "November 28, 2023"
 }, {
     name: "WarpPrime",
-    specific: ["Most Warspite modules", "Feature additions", "Bugfixes"],
+    specific: ["Most Warspite modules", "Feature additions", "Bug fixes", "Maintenance"],
     dateAdded: "September 19, 2024"
 }, {
     name: "Toir",
-    specific: ["Ediacaran D2", "Ediacaran C1", "Module Library redesign feedback"],
+    specific: ["Ediacaran D2", "Ediacaran C1", "Module Library redesign feedback", "Bug reporting"],
     dateAdded: "April 24, 2024"
-}, {
-    name: "New Halcyon",
-    specific: ["Data entry and feedback"],
-    dateAdded: "August 3, 2024"
 }, {
     name: "Somnambulist",
     specific: ["Eternal Heavens B2", "Ediacaran B2"],
@@ -55,12 +51,3 @@ export const credits: Credit[] = [{
     specific: ["Ship data"],
     dateAdded: "January 14, 2024"
 }];
-
-/* {
-    title: "Feedback",
-    name: ["Black Rangers", "Bullet", "g3t", "HOSTILE", "Toir"]
-}, {
-    title: "Data",
-    name: ["NullPointer"]
-}
-    */
