@@ -12,10 +12,15 @@
           <img :src="'/ui/atom.svg'" alt="Click to go to the Research Agreement Helper page">
           <h3>RA Helper</h3>
         </NuxtLink>
-        <NuxtLink to="/modules/ship-comparison" class="sideMenuButton new" :class="{ activeNew: route.path == '/modules/ship-comparison' }">
+        <!--<NuxtLink to="/modules/ship-comparison" class="sideMenuButton new" :class="{ activeNew: route.path == '/modules/ship-comparison' }">
           <img :src="'/ui/scale.svg'" alt="Click to go to the Ship Comparisons page">
           <h3>Ship Comparisons</h3>
+        </NuxtLink>-->
+        <NuxtLink to="" class="sideMenuButton wip noHover" :class="{ active: route.path == '/modules/fleet-builder' }">
+          <img :src="'/ui/scale.svg'" alt="Click to go to the Fleet Builder page">
+          <h3>Coming soon...</h3>
         </NuxtLink>
+
         <NuxtLink to="/modules/color-generator" class="sideMenuButton" :class="{ active: route.path == '/modules/color-generator' }">
           <img :src="'/ui/paint.svg'" alt="Click to go to the Color Generator page">
           <h3>Color Generator</h3>
