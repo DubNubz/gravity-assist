@@ -22,7 +22,7 @@
                 </h4>
                 <div class="stat">
                     <h3 v-if="!stat.time">{{ (stat.raw ? stat.stat : Math.round(stat.stat)).toLocaleString() }}</h3>
-                    <h3 v-else>{{ addZeroToTime(Math.floor(stat.stat / 60 / 60)) }}:{{ addZeroToTime(Math.floor(stat.stat / 60)) }}:{{ addZeroToTime(Math.floor(stat.stat % 60)) }}</h3>
+                    <h3 v-else>{{ addZeroToTime(Math.floor(stat.stat / 60 / 60)) }}:{{ addZeroToTime(Math.floor(stat.stat / 60) % 60) }}:{{ addZeroToTime(Math.floor(stat.stat % 60)) }}</h3>
                     <img :src="stat.img" :alt="stat.name">
                 </div>
                 <div class="comparisonImgs" v-if="!['Command Points', 'Metal', 'Crystal', 'Deuterium', 'Build Time'].includes(stat.name)">
@@ -71,7 +71,7 @@ function handleClose () {
 }
 
 function addZeroToTime (num: number) {
-    if (String(num).length == 1) return num + "0";
+    if (String(num).length == 1) return "0" + num;
     else return num;
 }
 

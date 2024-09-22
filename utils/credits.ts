@@ -11,6 +11,10 @@ export const credits: Credit[] = [{
     "All FSV830 modules", "All CV3000 modules", "Most Marshal Crux modules", "All Solar Whale Modules"],
     dateAdded: "November 28, 2023"
 }, {
+    name: "WarpPrime",
+    specific: ["Most Warspite modules", "Feature additions", "Bugfixes"],
+    dateAdded: "September 19, 2024"
+}, {
     name: "Toir",
     specific: ["Ediacaran D2", "Ediacaran C1", "Module Library redesign feedback"],
     dateAdded: "April 24, 2024"
