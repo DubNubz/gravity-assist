@@ -1,5 +1,5 @@
 <template>
-    <div class="sideMenu">
+    <div class="sideMenu" @click="emit('clicked')">
         <NuxtLink to="/home" class="sideMenuButton" :class="{ active: route.path == '/home' }" style="margin-top: 3em;">
           <img :src="'/ui/home.svg'" alt="Click to go back to the original landing page">
           <h3>Home</h3>
@@ -50,6 +50,7 @@
 <script setup lang="ts">
 
 const route = useRoute();
+const emit = defineEmits(["clicked"]);
 
 </script>
 

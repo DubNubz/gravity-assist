@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "generate-image-paths": "npx tsx getImagePaths.ts",
+    "build": "npm run generate-image-paths && nuxt build",
+    "dev": "npm run generate-image-paths && nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",
-    "@types/tinycolor2": "^1.4.6"
+    "@types/tinycolor2": "^1.4.6",
+    "typescript": "^5.6.2"
   }
 }

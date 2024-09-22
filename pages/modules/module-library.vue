@@ -2,7 +2,7 @@
     <div class="holder">
         <div class="navButtonHolder">
             <button @click="switchToModules" :class="{ active: select == true }">
-                <img src="/ui/solarSystem.svg" alt="Click to freely browse through all Research Agreement paths">
+                <img :src="'/ui/solarSystem.svg'" alt="Click to freely browse through all Research Agreement paths">
                 <h3>Ships</h3>
             </button>
             <button @click="switchToModules" :class="{ active: select == false, disabled: !store.ship }">
@@ -41,10 +41,11 @@ const select = ref(store.ship ? false : true);
 
 const shipData = await $fetch("/api/ships");
 
-const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name));
-const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
+const foundShip = ref<Ship> ();
+const currentMod = ref<Module | UnknownModule> ();
 
 watch(() => store.ship, () => {
+    if (!shipData) return;
     foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name);
     currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod));
     useHead({
@@ -55,93 +56,7 @@ watch(() => store.ship, () => {
 watch(() => store.category, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
 watch(() => store.mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
 
-useHead({
-    title: "Module Library",
-    meta: [{ name: "description", content: "Browse through all modules available on all ships in Infinite Lagrange!" }],
-    link: [{
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/aircraft.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/armor.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/cannon.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/command.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/jamming.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/speed.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/storage.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/unknown.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/antiaircraft.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/antiship.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/armor.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/energyShield.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/hp.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/repair.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/siege.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/storage.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/alpha.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/damageType.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/lockon.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/target.svg"
-    }]
-});
-
-onMounted(() => {
+onMounted(async () => {
     const ship = route.query.ship;
     const category = route.query.system;
     const mod = route.query.module;
@@ -155,6 +70,9 @@ onMounted(() => {
     store.category = (category as string) ?? (store.ship?.modules?.map((mod) => mod.system.slice(0, 1)).includes("M") ? "M" : "A");
     store.mod = mod ? Number(mod) : 1;
     select.value = false;
+
+    foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name);
+    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod));
 });
 
 async function switchToModules () {

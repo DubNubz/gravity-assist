@@ -1,4 +1,5 @@
 <template>
+  <img style="width: 0; height: 0; position: absolute;" v-for="image in images" :src="image" aria-hidden="true">
   <div class="holder">
     <header>
       <div class="menuBurger">
@@ -20,7 +21,7 @@
 
     <Transition name="sideMenuTransition">
       <button v-if="showSideMenu" @click="showSideMenu = false" class="sideMenuBackground">
-        <SideMenu />
+        <SideMenu @click="stopPropagation($event)" @clicked="showSideMenu = false" />
       </button>
     </Transition>
   
@@ -43,14 +44,18 @@
 
 <script setup lang="ts">
 
+import imagePaths from '~/imagePaths.json';
+
+const store = shipDataStore();
 const showSideMenu = ref(false);
+const images = ref<string[]> (imagePaths);
 
 onMounted(async () => {
-  await useFetch('/api/ships');
-  const data = await useFetch('/api/ships');
+  images.value.length = 0;
+  const data = await $fetch('/api/ships');
   const equipments = await $fetch("/api/equipment");
-  shipDataStore().shipData = data.data.value as Ship[];
-  shipDataStore().equipmentData = equipments as (Equipment | TechnicalBlueprint)[];
+  store.shipData = data;
+  store.equipmentData = equipments;
 })
 
 useSeoMeta({
@@ -59,56 +64,16 @@ useSeoMeta({
 });
 
 useHead({
-  link: [{
+  link: imagePaths.map((image) => ({
     rel: "preload",
     as: "image",
-    href: "/ships/constantineTheGreat.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/eternalStorm.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/spearOfUranus.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/st59.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/thunderboltStar.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/ediacaran.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/fsv830.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/cv3000.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/eternalHeavens.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/marshalCrux.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/solarWhale.png"
-  }, {
-    rel: "preload",
-    as: "image",
-    href: "/ships/eternalStorm.png"
-  }]
+    href: image
+  }))
 });
+
+function stopPropagation(event: Event) {
+  event.stopPropagation();
+}
 
 </script>
 

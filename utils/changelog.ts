@@ -237,4 +237,11 @@ export const changelog: Changelog[] = [{
     release: "July 27, 2024",
     notes: ["Made the side menu visible at all times for bigger screens", "Adjusted font size for all devices", "Added Warspite to Module Library",
     "Removed the Contributors and Changelog button from the footer and moved them to the side menu"]
+}, {
+    type: "release",
+    version: "1.3.5",
+    release: "September 22, 2024",
+    notes: ["Added Hale-Bopp to RA Helper", "Added most Warspite modules to Module Library", "Added pre-loading for all images",
+    "Added an error page when trying to load a page that doesn't exist", "Fixed Module Library links not working", "Fixed share links not working",
+    "Fixed invalid url encoding on refresh", "Fixed the navigation menu closing even when not pressing on a button on mobile devices"]
 }];

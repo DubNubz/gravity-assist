@@ -6674,7 +6674,7 @@ export default defineEventHandler((event) => {
     }, {
         name: "Hale-Bopp",
         title: "System Support Corvette",
-        img: "/ships/halebopp_a.png",
+        img: "/ships/haleBopp_a.png",
         type: "Corvette",
         variant: "A",
         variant_name: "Multi-Role Type",
@@ -6854,7 +6854,7 @@ export default defineEventHandler((event) => {
     }, {
         name: "Hale-Bopp",
         title: "Repair Support Corvette",
-        img: "/ships/halebopp_b.png",
+        img: "/ships/haleBopp_b.png",
         type: "Corvette",
         variant: "B",
         variant_name: "Dock Type",
