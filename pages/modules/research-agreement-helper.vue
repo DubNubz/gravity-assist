@@ -22,7 +22,7 @@
         </button>
 
         <div class="resultHolder" v-if="browse">
-            <div class="result" v-for="ship in data" :class="{ searched: raHelperStore().ship && ship == raHelperStore().ship }">
+            <div class="result" v-for="ship in data" :class="{ searched: store.ship && ship == store.ship }">
                 <h3>{{ship.name}} <span>({{ ship.variant }})</span></h3>
                 <h4>{{ ship.variant_name }}</h4>
                 <img :src="ship.img" :alt="'Image of ' + ship.name">
@@ -34,17 +34,18 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const store = raHelperStore();
+const shipData = await $fetch("/api/ships");
 
 const browse = ref(true);
-const data = ref(highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(raHelperStore().manufacturer) &&
-    [...shipObj.direction, "Empty"].includes(raHelperStore().direction) &&
-    [shipObj.scope, "Empty"].includes(raHelperStore().scope))));
+const data = ref(highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(store.manufacturer) &&
+    [...shipObj.direction, "Empty"].includes(store.direction) &&
+    [shipObj.scope, "Empty"].includes(store.scope))));
 const route = useRoute();
 
-watch(() => raHelperStore().manufacturer, () => refilterData());
-watch(() => raHelperStore().direction, () => refilterData());
-watch(() => raHelperStore().scope, () => refilterData());
+watch(() => store.manufacturer, () => refilterData());
+watch(() => store.direction, () => refilterData());
+watch(() => store.scope, () => refilterData());
 
 useHead({
     title: "Research Agreement Helper",
@@ -59,27 +60,27 @@ onMounted(() => {
     const variant = route.query.variant as string;
     const search = route.query.search as string;
 
-    if (manufacturer) raHelperStore().manufacturer = manufacturers.includes(manufacturer) ? manufacturer : "Jupiter Industry";
-    if (direction) raHelperStore().direction = directions.includes(direction.replaceAll("and", "&") as ShipDirection) ? direction.replaceAll("and", "&") as ShipDirection : "Outstanding Firepower";
-    if (scope) raHelperStore().scope = scopes.includes(scope) ? scope : "Projectile Weapon";
+    if (manufacturer) store.manufacturer = manufacturers.includes(manufacturer) ? manufacturer : "Jupiter Industry";
+    if (direction) store.direction = directions.includes(direction.replaceAll("and", "&") as ShipDirection) ? direction.replaceAll("and", "&") as ShipDirection : "Outstanding Firepower";
+    if (scope) store.scope = scopes.includes(scope) ? scope : "Projectile Weapon";
     if (name) {
         const findShip = shipData.find((ship) => ship.name == name && ship.variant == variant);
-        raHelperStore().search = search;
+        store.search = search;
         if (findShip) {
-            raHelperStore().ship = findShip;
+            store.ship = findShip;
             translateShip(findShip);
         }
     }
 });
 
 function refilterData () {
-    data.value = highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(raHelperStore().manufacturer) &&
-    [...shipObj.direction, "Empty"].includes(raHelperStore().direction) &&
-    [shipObj.scope, "Empty"].includes(raHelperStore().scope)));
+    data.value = highlightSearched(shipData.filter((shipObj) => [shipObj.manufacturer, "Empty"].includes(store.manufacturer) &&
+    [...shipObj.direction, "Empty"].includes(store.direction) &&
+    [shipObj.scope, "Empty"].includes(store.scope)));
 }
 
 function highlightSearched (array: Ship[]) {
-    const searchedShip = raHelperStore().ship;
+    const searchedShip = store.ship;
     if (searchedShip) {
         const newArray = [...array];
         const findInArrayIndex = newArray.findIndex((ship) => ship.name + ship.variant == searchedShip.name + searchedShip.variant);
@@ -92,12 +93,12 @@ function highlightSearched (array: Ship[]) {
 }
 
 function translateShip (ship: Ship) {
-    raHelperStore().ship = ship;
-    raHelperStore().manufacturer = ship.manufacturer;
-    raHelperStore().scope = ship.scope;
+    store.ship = ship;
+    store.manufacturer = ship.manufacturer;
+    store.scope = ship.scope;
 
     if (ship.direction.length == 1) {
-        raHelperStore().direction = ship.direction[0];
+        store.direction = ship.direction[0];
         return;
     }
 
@@ -124,25 +125,25 @@ function translateShip (ship: Ship) {
     const shipInArray = array.find((ship2) => ship2.name + ship2.variant == ship.name + ship.variant);
     if (shipInArray) trueDirection = shipInArray.direction[allChances.indexOf(Math.max(...allChances))];
 
-    raHelperStore().direction = trueDirection;
+    store.direction = trueDirection;
 }
 
 async function copyShareLink () {
-    const ship = raHelperStore().ship;
+    const ship = store.ship;
 
     if (ship) {
-        const name = ship.name.replaceAll(" ", "%20");
-        const variant = ship.variant.replaceAll(" ", "%20");
-        const search = raHelperStore().search.replaceAll(" ", "%20");
+        const name = ship.name.replaceAll(" ", "+");
+        const variant = ship.variant.replaceAll(" ", "+");
+        const search = store.search.replaceAll(" ", "+");
 
         await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper?name=${name}&variant=${variant}&search=${search}`);
         alert("Link copied!")
         return;
     }
 
-    const manufacturer = raHelperStore().manufacturer.replaceAll(" ", "%20");
-    const direction = raHelperStore().direction.replaceAll(" ", "%20").replaceAll("&", "and");
-    const scope = raHelperStore().scope.replaceAll(" ", "%20");
+    const manufacturer = store.manufacturer.replaceAll(" ", "+");
+    const direction = store.direction.replaceAll(" ", "+").replaceAll("&", "and");
+    const scope = store.scope.replaceAll(" ", "+");
 
     await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/research-agreement-helper?manufacturer=${manufacturer}&direction=${direction}&scope=${scope}`);
     alert("Link copied!");
