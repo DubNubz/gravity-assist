@@ -4,7 +4,7 @@
             <div class="boxArea">
                 <h2>Input</h2>
                 <textarea class="textBox"
-                v-model="colorGeneratorStore().inputText"
+                v-model="store.inputText"
                 @keydown.enter.prevent="addNewLine"
                 placeholder="Click here to start typing!"></textarea>
             </div>
@@ -12,7 +12,7 @@
                 <h2>Output</h2>
                 <div class="textBox">
                     <div class="buttonDiv">
-                        <button class="boxButton" @click="copyToClipboard" id="copy" :class="{ disabledButton: colorGeneratorStore().outputText.length == 0 }">
+                        <button class="boxButton" @click="copyToClipboard" id="copy" :class="{ disabledButton: store.outputText.length == 0 }">
                             <img src="/ui/copy.svg" alt="Copy text to clipboard">
                             <h3>Copy</h3>
                         </button>
@@ -22,8 +22,8 @@
                         </button>
                     </div>
                     <ColorCalculator/>
-                    <h3 class="characterCounter"><span :style="determineCounterColor()">{{ colorGeneratorStore().outputText.join('').length }}</span> /
-                        <span v-if="colorGeneratorStore().outputText.join('').length <= 280">280 characters (chat message)</span>
+                    <h3 class="characterCounter"><span :style="determineCounterColor()">{{ store.outputText.join('').length }}</span> /
+                        <span v-if="store.outputText.join('').length <= 280">280 characters (chat message)</span>
                         <span v-else>1000 characters (mail)</span>
                     </h3>
                 </div>
@@ -36,12 +36,12 @@
             <div class="colorPick">
                 <div class="colorPickTitle">
                     <h3>Start</h3>
-                    <input type="color" v-model="colorGeneratorStore().color1">
+                    <input type="color" v-model="store.color1">
                 </div>
                 <img src="/ui/rightArrow.svg" alt="The color on the left will be the start of the color gradient, and the color on the right will be the end.">
                 <div class="colorPickTitle">
                     <h3>End</h3>
-                    <input type="color" v-model="colorGeneratorStore().color2">
+                    <input type="color" v-model="store.color2">
                 </div>
             </div>
             <div class="presetPick">
@@ -88,14 +88,14 @@
                 <div class="option">
                     <h2>Intensity</h2>
                     <h3>Number of colors between start and end</h3>
-                    <input type="range" min="1" max="29" v-model="colorGeneratorStore().intensity">
-                    <input type="number" min="1" max="29" v-model="colorGeneratorStore().intensity">
+                    <input type="range" min="1" max="29" v-model="store.intensity">
+                    <input type="number" min="1" max="29" v-model="store.intensity">
                 </div>
                 <div class="option">
                     <h2>Compression</h2>
                     <h3>Number of characters per color</h3>
-                    <input type="range" min="1" max="5" v-model="colorGeneratorStore().compression">
-                    <input type="number" min="1" max="5" v-model="colorGeneratorStore().compression">
+                    <input type="range" min="1" max="5" v-model="store.compression">
+                    <input type="number" min="1" max="5" v-model="store.compression">
                 </div>
             </div>
         </div>
@@ -104,6 +104,7 @@
 
 <script setup lang="ts">
 
+const store = colorGeneratorStore();
 const route = useRoute();
 const openPresets = ref(false);
 const recentColors = ref<Color[]>([]);
@@ -122,15 +123,15 @@ onMounted(() => {
     const intensity = route.query.intensity as string;
     const compression = route.query.compression as string;
     const text = route.query.text as string;
-    if (color1) colorGeneratorStore().color1 = color1.length == 6 ? "#" + color1 : "#f957ff";
-    if (color2) colorGeneratorStore().color2 = color2.length == 6 ? "#" + color2 : "#ffc94d";
-    if (intensity) colorGeneratorStore().intensity = Number(intensity) >= 1 && Number(intensity) <= 29 ? Number(intensity) : 15;
-    if (compression) colorGeneratorStore().compression = Number(compression) >= 1 && Number(compression) <= 5 ? Number(compression) : 3;
-    if (text) colorGeneratorStore().inputText = text;
+    if (color1) store.color1 = color1.length == 6 ? "#" + color1 : "#f957ff";
+    if (color2) store.color2 = color2.length == 6 ? "#" + color2 : "#ffc94d";
+    if (intensity) store.intensity = Number(intensity) >= 1 && Number(intensity) <= 29 ? Number(intensity) : 15;
+    if (compression) store.compression = Number(compression) >= 1 && Number(compression) <= 5 ? Number(compression) : 3;
+    if (text) store.inputText = text;
 });
 
 function determineCounterColor () {
-    const outputLength = colorGeneratorStore().outputText.join("").length;
+    const outputLength = store.outputText.join("").length;
 
     const green = { color: "#00ff00" };
     const yellow = { color: "#ffff00" };
@@ -160,25 +161,25 @@ function determineBorder () {
 
 function changeColor (color: Color) {
     openPresets.value = false;
-    colorGeneratorStore().color1 = color.color1;
-    colorGeneratorStore().color2 = color.color2;
+    store.color1 = color.color1;
+    store.color2 = color.color2;
 }
 
 function addNewLine (event: KeyboardEvent) {
-    if (event.key == "Enter") colorGeneratorStore().inputText += "\n";
+    if (event.key == "Enter") store.inputText += "\n";
 }
 
 async function copyToClipboard () {
-    const text = colorGeneratorStore().outputText.join("");
+    const text = store.outputText.join("");
     if (text == "") return;
     await navigator.clipboard.writeText(text);
     alert("Text copied!")
 
     const colorObject: Color = {
-        color1: colorGeneratorStore().color1,
-        color2: colorGeneratorStore().color2,
-        intensity: colorGeneratorStore().intensity,
-        compression: colorGeneratorStore().compression
+        color1: store.color1,
+        color2: store.color2,
+        intensity: store.intensity,
+        compression: store.compression
     }
 
     let fromLocalStorage: Color[] | null = JSON.parse(localStorage.getItem("recent-colors") as string);
@@ -199,11 +200,11 @@ async function copyToClipboard () {
 }
 
 async function copyShareLink () {
-    const color1 = colorGeneratorStore().color1.slice(1);
-    const color2 = colorGeneratorStore().color2.slice(1);
-    const intensity = colorGeneratorStore().intensity;
-    const compression = colorGeneratorStore().compression;
-    const text = colorGeneratorStore().inputText.replaceAll(" ", "%20");
+    const color1 = store.color1.slice(1);
+    const color2 = store.color2.slice(1);
+    const intensity = store.intensity;
+    const compression = store.compression;
+    const text = store.inputText.replaceAll(" ", "+");
     await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/color-generator?start=${color1}&end=${color2}&intensity=${intensity}&compression=${compression}&text=${text}`);
     alert("Link copied!");
 }

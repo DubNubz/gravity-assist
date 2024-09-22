@@ -124,26 +124,27 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const shipData = await $fetch("/api/ships");
+const store = modLibraryStore();
 
-const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
-const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
+const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name));
+const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
 
-watch(() => modLibraryStore().ship, () => foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
-watch(() => modLibraryStore().category, () => {
-    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod));
-    if (!foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == modLibraryStore().category).map((mod) => mod.system.slice(1)).includes(String(modLibraryStore().mod))) {        
-        modLibraryStore().mod = 1;
+watch(() => store.ship, () => foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name));
+watch(() => store.category, () => {
+    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod));
+    if (!foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == store.category).map((mod) => mod.system.slice(1)).includes(String(store.mod))) {        
+        store.mod = 1;
     }
 });
-watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
+watch(() => store.mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
 
-onMounted(() => {
-    if (![...new Set(foundShip.value?.modules?.map((mod) => mod.system.slice(0, 1)))].includes(modLibraryStore().category)) {
-        modLibraryStore().category = "A";
+onBeforeMount(() => {
+    if (![...new Set(foundShip.value?.modules?.map((mod) => mod.system.slice(0, 1)))].includes(store.category)) {
+        store.category = "A";
     }
-    if (!foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == modLibraryStore().category).map((mod) => mod.system.slice(1)).includes(String(modLibraryStore().mod))) {        
-        modLibraryStore().mod = 1;
+    if (!foundShip.value?.modules?.filter((mod) => mod.system.slice(0, 1) == store.category).map((mod) => mod.system.slice(1)).includes(String(store.mod))) {        
+        store.mod = 1;
     }
 });
 

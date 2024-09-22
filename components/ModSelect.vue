@@ -1,10 +1,10 @@
 <template>
-    <div class="outer">
+    <div class="outer" v-if="shipData">
         <img class="shipImg" :src="foundShip?.img" :alt="'Image of' + foundShip?.name">
         <h2 class="shipName">{{ foundShip?.name }}</h2>
 
         <div class="categoryButtons">
-            <button v-for="category in [...new Set(foundShip?.modules?.map((mod) => mod.system.slice(0, 1)))]" @click="modLibraryStore().category = category" :class="{ active: modLibraryStore().category == category }">
+            <button v-for="category in [...new Set(foundShip?.modules?.map((mod) => mod.system.slice(0, 1)))]" @click="switchCategory(category)" :class="{ active: store.category == category }">
                 <p>{{ category }}</p>
             </button>
         </div>
@@ -12,8 +12,8 @@
         <div class="divider"></div>
 
         <div class="moduleButtons">
-            <button v-for="mod in foundShip?.modules?.filter((mod) => mod.system.slice(0, 1)[0] == modLibraryStore().category)"
-            @click="modLibraryStore().mod = Number(mod.system.slice(1))" :class="{ active: modLibraryStore().mod == Number(mod.system.slice(1)) }">
+            <button v-for="mod in foundShip?.modules?.filter((mod) => mod.system.slice(0, 1)[0] == store.category)"
+            @click="switchMod(mod)" :class="{ active: store.mod == Number(mod.system.slice(1)) }">
                 <img v-if="mod.img" :src="mod.img" :alt="'Image of' + mod.system">
                 <p>{{ mod.system }}</p>
             </button>
@@ -23,9 +23,25 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const store = modLibraryStore();
+const router = useRouter();
 
-const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
+const shipData = await $fetch("/api/ships");
+const foundShip = ref<Ship> ();
+
+onBeforeMount(() => {
+    foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name);
+});
+
+function switchCategory (category: string) {
+    store.category = category;
+    router.push(`?ship=${store.ship?.name}&system=${store.category}&module=${store.mod}`);
+}
+
+function switchMod (mod: Module | UnknownModule) {
+    store.mod = Number(mod.system.slice(1));
+    router.push(`?ship=${store.ship?.name}&system=${store.category}&module=${store.mod}`);
+}
 
 </script>
 

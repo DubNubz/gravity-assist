@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const shipData = await $fetch("/api/ships");
 const emit = defineEmits(["done"]);
 
 function handleClick (ship: Ship) {

@@ -1,6 +1,6 @@
 <template>
     <div class="holder" v-if="equipmentData">
-        <button class="openSelect" @click="openSelect = !openSelect" v-if="equipmentStore().current">
+        <button class="openSelect" @click="openSelect = !openSelect" v-if="store.current">
             <h3 v-if="openSelect">Close Dropdown</h3>
             <h3 v-if="!openSelect">Open Dropdown</h3>
             <img src="/ui/alt/whiteDownArrow.svg" alt="Click to open dropdown menu" :class="{ invert: openSelect }">
@@ -26,15 +26,16 @@
 
 <script setup lang="ts">
 
+const store = equipmentStore();
 const openSelect = ref(true);
 const route = useRoute();
 
-const equipmentData = useFetch("/api/equipment").data.value as (Equipment | TechnicalBlueprint)[] ?? shipDataStore().equipmentData;
+const equipmentData = await $fetch("/api/equipment");
 
-watch(() => equipmentStore().current, () => {
+watch(() => store.current, () => {
     useHead({
-        title: `${equipmentStore().current?.displayName} - Equipment Encyclopedia`,
-        meta: [{ name: "description", content: `View all stats and effects of ${equipmentStore().current?.displayName}!` }]
+        title: `${store.current?.displayName} - Equipment Encyclopedia`,
+        meta: [{ name: "description", content: `View all stats and effects of ${store.current?.displayName}!` }]
     })
 });
 
@@ -45,11 +46,11 @@ useHead({
 
 onMounted(() => {
     const name = route.query.name as string;
-    if (name) equipmentStore().current = equipmentData.find((equipment) => equipment.displayName == name.replaceAll("%26", "&"));
+    if (name) store.current = equipmentData.find((equipment) => equipment.displayName == name.replaceAll("%26", "&"));
 });
 
 async function copyShareLink () {
-    const name = equipmentStore().current?.displayName.replaceAll(" ", "%20").replaceAll("&", "%26");
+    const name = store.current?.displayName.replaceAll(" ", "+").replaceAll("&", "%26");
     await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/equipment-encyclopedia?name=${name}`);
     alert("Link copied!")
 }

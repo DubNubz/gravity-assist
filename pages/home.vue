@@ -25,12 +25,10 @@ useSeoMeta({
     title: "Gravity Assist"
 });
 
-const barProgress = ref(5);
-
-const fact = ref(facts[getRandomIntInclusive(0, facts.length - 1)]);
+const fact = ref("");
 
 onMounted(() => {
-    barProgress.value = 55;
+    fact.value = facts[getRandomIntInclusive(0, facts.length - 1)];
 });
 
 </script>

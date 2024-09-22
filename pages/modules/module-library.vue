@@ -1,11 +1,11 @@
 <template>
-    <div class="holder" v-if="shipData">
+    <div class="holder">
         <div class="navButtonHolder">
             <button @click="switchToModules" :class="{ active: select == true }">
-                <img src="/ui/solarSystem.svg" alt="Click to freely browse through all Research Agreement paths">
+                <img :src="'/ui/solarSystem.svg'" alt="Click to freely browse through all Research Agreement paths">
                 <h3>Ships</h3>
             </button>
-            <button @click="switchToModules" :class="{ active: select == false, disabled: !modLibraryStore().ship }">
+            <button @click="switchToModules" :class="{ active: select == false, disabled: !store.ship }">
                 <img src="/ui/wrench.svg" alt="Click to search for the Research Agreemeent path of a ship">
                 <h3>Modules</h3>
             </button>
@@ -33,132 +33,52 @@
 
 <script setup lang="ts">
 
+const store = modLibraryStore();
+
 const route = useRoute();
 const router = useRouter();
-const select = ref(modLibraryStore().ship ? false : true);
+const select = ref(store.ship ? false : true);
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const shipData = await $fetch("/api/ships");
 
-const foundShip = ref(shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name));
-const currentMod = ref(foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
+const foundShip = ref<Ship> ();
+const currentMod = ref<Module | UnknownModule> ();
 
-watch(() => modLibraryStore().ship, () => {
-    foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == modLibraryStore().ship?.name);
-    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod));
+watch(() => store.ship, () => {
+    if (!shipData) return;
+    foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name);
+    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod));
     useHead({
         title: `${foundShip.value?.name} - Module Library`,
         meta: [{ name: "description", content: `Browse through all ${foundShip.value?.modules?.length} modules of ${foundShip.value?.name}!` }]
     })
 });
-watch(() => modLibraryStore().category, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
-watch(() => modLibraryStore().mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == modLibraryStore().category + String(modLibraryStore().mod)));
+watch(() => store.category, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
+watch(() => store.mod, () => currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod)));
 
-useHead({
-    title: "Module Library",
-    meta: [{ name: "description", content: "Browse through all modules available on all ships in Infinite Lagrange!" }],
-    link: [{
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/aircraft.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/armor.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/cannon.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/command.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/jamming.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/speed.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/storage.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/icons/unknown.png"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/antiaircraft.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/antiship.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/armor.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/energyShield.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/hp.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/repair.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/siege.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/stats/storage.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/alpha.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/damageType.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/lockon.svg"
-    }, {
-        rel: "preload",
-        as: "image",
-        href: "/weapons/types/target.svg"
-    }]
-});
+onMounted(async () => {
+    const ship = route.query.ship;
+    const category = route.query.system;
+    const mod = route.query.module;
 
-onMounted(() => {
-    const ship = route.query.ship as string;
-    const category = route.query.system as string;
-    const mod = route.query.module as string;
-    
-    if (ship) {
-        modLibraryStore().ship = shipData.find((ship2) => ship2.name == ship);
-        select.value = false;
-    } else {
-        modLibraryStore().ship = undefined;
+    if (!ship) {
         select.value = true;
+        return;
     }
-    if (category) modLibraryStore().category = category;
-    if (mod) modLibraryStore().mod = Number(mod);
+    
+    store.ship = shipData.find((ship2) => ship2.name == ship);
+    store.category = (category as string) ?? (store.ship?.modules?.map((mod) => mod.system.slice(0, 1)).includes("M") ? "M" : "A");
+    store.mod = mod ? Number(mod) : 1;
+    select.value = false;
+
+    foundShip.value = shipData.filter((ship) => ship.modules).find((ship) => ship.name == store.ship?.name);
+    currentMod.value = foundShip.value?.modules?.find((mod) => mod.system == store.category + String(store.mod));
 });
 
 async function switchToModules () {
-    if (!modLibraryStore().ship) return;
+    if (!store.ship) return;
 
-    if (select.value) router.push(`?ship=${modLibraryStore().ship?.name.replaceAll(" ", "%20")}`);
+    if (select.value) router.push(`?ship=${store.ship?.name}&system=${store.category}&module=${store.mod}`);
     else router.push("");
 
     select.value = !select.value;
@@ -166,7 +86,7 @@ async function switchToModules () {
     if (select.value) return;
 
     const fromLocalStorage = localStorage.getItem("first-use-mod-library");
-    let counter: number = 0;
+    let counter = 0;
     if (fromLocalStorage) counter = JSON.parse(fromLocalStorage);
     if (!fromLocalStorage || counter < 5) {
         await delay(50);
@@ -179,11 +99,11 @@ async function switchToModules () {
 async function copyShareLink () {
     let link = "";
 
-    const ship = modLibraryStore().ship;
-    if (ship) link += `ship=${ship.name.replaceAll(" ", "%20")}&`;
+    const ship = store.ship;
+    if (ship) link += `ship=${ship.name.replaceAll(" ", "+")}&`;
 
-    link += `system=${modLibraryStore().category}&`;
-    link += `module=${modLibraryStore().mod}`;
+    link += `system=${store.category}&`;
+    link += `module=${store.mod}`;
 
     await navigator.clipboard.writeText(`https://gravityassist.xyz/modules/module-library?${link}`);
     alert("Link copied!");
