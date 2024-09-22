@@ -55,7 +55,9 @@
 <script setup lang="ts">
 import _ from 'lodash';
 
-const shipData = useFetch("/api/ships").data.value ?? shipDataStore().shipData;
+const store = shipComparisonStore();
+
+const shipData = await $fetch("/api/ships");
 const filteredChoices = ref<Ship[]> ([]);
 
 const showShipSelection = ref(false);
@@ -68,8 +70,8 @@ watch(() => search.value, () => autocomplete());
 const currentSelection = ref<"ship1" | "ship2"> ("ship1");
 
 onMounted(() => {
-    if (shipComparisonStore().ship1) ship1.value = shipComparisonStore().ship1;
-    if (shipComparisonStore().ship2) ship2.value = shipComparisonStore().ship2;
+    if (store.ship1) ship1.value = store.ship1;
+    if (store.ship2) ship2.value = store.ship2;
     autocomplete();
 });
 
@@ -87,10 +89,10 @@ function autocomplete () {
 function selectShip (ship: Ship) {
     if (currentSelection.value == "ship1") {
         ship1.value = _.cloneDeep(ship);
-        shipComparisonStore().ship1 = _.cloneDeep(ship);
+        store.ship1 = _.cloneDeep(ship);
     } else {
         ship2.value = _.cloneDeep(ship);
-        shipComparisonStore().ship2 = _.cloneDeep(ship);
+        store.ship2 = _.cloneDeep(ship);
     }
     showShipSelection.value = false;
 }
