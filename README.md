@@ -4,7 +4,7 @@
 >
 > You can freely use my [data](https://github.com/kennething/gravity-assist?tab=readme-ov-file#ship-data) for your own projects if you wish, although the data is also outdated.
 >
-> The live site will continue to live on at a [new domain](https://gravityassist.kennethng.dev), but you can also host the site yourself with the [setup instructions](https://github.com/kennething/gravity-assist?tab=readme-ov-file#project-setup) below.
+> You can also host the site yourself with the [setup instructions](https://github.com/kennething/gravity-assist?tab=readme-ov-file#project-setup) below.
 
 <p align="center">
   <a href="https://gravityassist.kennethng.dev">
