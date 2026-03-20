@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --port 3030",
     "test": "vitest",
     "lint": "eslint",
     "typecheck": "vue-tsc --noEmit",
@@ -16,7 +16,6 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
     "@pinia/nuxt": "^0.7.0",
-    "firebase-admin": "^13.0.1",
     "flowbite": "^2.5.2",
     "flyonui": "^1.1.0",
     "nuxt": "^3.16.2",

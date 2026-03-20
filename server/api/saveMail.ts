@@ -1,6 +1,6 @@
 import { getRandomCharacters, truncateOps, untruncateOps } from "~/utils/functions";
-import { SaveTemplate, TruncatedOp, UserData } from "~/utils/types";
-import admin from "firebase-admin";
+import type { SaveTemplate, TruncatedOp } from "~/utils/types";
+import { readDb, writeDb } from "~/server/utils/localDb";
 
 interface Body {
   uid: string;
@@ -9,15 +9,10 @@ interface Body {
 }
 
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as Body;
-  const db = admin.firestore();
-
-  let newMail: SaveTemplate | null = null;
-  let outcomeMails: SaveTemplate[] | null = null;
-
   try {
-    const docData = await db.collection("users").doc(body.uid).get();
-    const userData = docData.data() as UserData | undefined;
+    const body = (await readBody(event)) as Body;
+    const db = readDb();
+    const userData = db.users[body.uid];
 
     if (!userData) throw new Error("User not found.");
     if (userData.uid !== body.uid || userData.accessToken !== body.accessToken) throw new Error("Invalid credentials.");
@@ -39,21 +34,23 @@ export default defineEventHandler(async (event) => {
 
     if (isSame) savedMails.splice(namespaceCollision, 1);
 
+    // Build the untruncated copy to return
     const savedMailsCopy = JSON.parse(JSON.stringify(savedMails)) as SaveTemplate[];
     savedMailsCopy.forEach((mail) => (mail.ops = untruncateOps(mail.ops as TruncatedOp[])));
-    newMail = JSON.parse(JSON.stringify(template)) as SaveTemplate;
+    const newMail = JSON.parse(JSON.stringify(template)) as SaveTemplate;
     savedMailsCopy.unshift(newMail);
-    outcomeMails = savedMailsCopy;
 
-    // Condense for storage saving
+    // Condense for storage
     template.ops = truncateOps(template.ops);
     savedMails.unshift(template);
 
-    await db.collection("users").doc(body.uid).update({ savedMails });
+    userData.savedMails = savedMails;
+    db.users[body.uid] = userData;
+    writeDb(db);
+
+    return { success: true, error: null, content: newMail, outcomeMails: savedMailsCopy };
   } catch (error) {
     console.error(error);
-    return { success: false, error: error instanceof Error ? error.message : "Something went wrong. Try again later.", content: null, outcomeMails: null };
+    return { success: false, error: error instanceof Error ? error.message : "Something went wrong.", content: null, outcomeMails: null };
   }
-
-  return { success: true, error: null, content: newMail, outcomeMails };
 });

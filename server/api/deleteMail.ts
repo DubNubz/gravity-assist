@@ -1,5 +1,6 @@
-import { SaveTemplate, UserData } from "~/utils/types";
-import admin from "firebase-admin";
+import { untruncateOps } from "~/utils/functions";
+import type { SaveTemplate, TruncatedOp } from "~/utils/types";
+import { readDb, writeDb } from "~/server/utils/localDb";
 
 interface Body {
   uid: string;
@@ -8,14 +9,10 @@ interface Body {
 }
 
 export default defineEventHandler(async (event) => {
-  const body = (await readBody(event)) as Body;
-  const db = admin.firestore();
-
-  let outcomeMails: SaveTemplate[] | null = null;
-
   try {
-    const docData = await db.collection("users").doc(body.uid).get();
-    const userData = docData.data() as UserData | undefined;
+    const body = (await readBody(event)) as Body;
+    const db = readDb();
+    const userData = db.users[body.uid];
 
     if (!userData) throw new Error("User not found.");
     if (userData.uid !== body.uid || userData.accessToken !== body.accessToken) throw new Error("Invalid credentials.");
@@ -25,12 +22,17 @@ export default defineEventHandler(async (event) => {
     if (mailIndex === -1) throw new Error("Mail not found.");
 
     savedMails.splice(mailIndex, 1);
-    outcomeMails = savedMails;
-    await db.collection("users").doc(body.uid).update({ savedMails });
+    userData.savedMails = savedMails;
+    db.users[body.uid] = userData;
+    writeDb(db);
+
+    // Return untruncated copy
+    const outcomeMails = JSON.parse(JSON.stringify(savedMails)) as SaveTemplate[];
+    outcomeMails.forEach((mail) => (mail.ops = untruncateOps(mail.ops as TruncatedOp[])));
+
+    return { success: true, error: null, content: outcomeMails };
   } catch (error) {
     console.error(error);
-    return { success: false, error: error instanceof Error ? error.message : "Something went wrong. Try again later.", content: null };
+    return { success: false, error: error instanceof Error ? error.message : "Something went wrong.", content: null };
   }
-
-  return { success: true, error: null, content: outcomeMails };
 });

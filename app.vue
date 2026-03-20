@@ -1,7 +1,7 @@
 <template>
   <HomeHeader @toggle="showSidebar = !showSidebar" />
 
-  <div class="flex h-full min-h-[calc(100dvh-4rem)] w-full items-start justify-between">
+  <div class="flex h-full min-h-[calc(100dvh-2.5rem)] w-full items-start justify-between">
     <Transition name="sidebar">
       <HomeSideBar v-show="showSidebar" @contributors="showContributors = true" @changelog="showChangelog = true" @contact="showContact = true" @close="closeSidebarMobile" />
     </Transition>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="fo-navbar sticky top-0 z-10 w-screen justify-between gap-4 bg-body shadow transition duration-500 dark:shadow-neutral-700">
+  <nav class="fo-navbar sticky top-0 z-10 w-screen justify-between gap-4 bg-body shadow transition duration-500 dark:shadow-neutral-700" style="min-height: 2.5rem; padding-top: 0.25rem; padding-bottom: 0.25rem;">
     <div class="fo-navbar-start">
       <button type="button" class="fo-btn fo-btn-circle fo-btn-text" @click="emit('toggle')">
         <img class="size-8 select-none transition duration-500 dark:invert" src="/ui/menu.svg" alt="Toggle side menu" />
@@ -7,7 +7,7 @@
     </div>
     <div class="fo-navbar-center flex items-center">
       <NuxtLink to="/home">
-        <img class="h-10 select-none transition duration-500 dark:invert" src="/logo/gravityAssist.svg" aria-hidden="true" />
+        <img class="h-6 select-none transition duration-500 dark:invert" src="/logo/gravityAssist.svg" aria-hidden="true" />
       </NuxtLink>
     </div>
     <div class="fo-navbar-end items-center gap-4">

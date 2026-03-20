@@ -1,20 +1,6 @@
-import { Alert } from "~/utils/types";
-import admin from "firebase-admin";
+import type { Alert } from "~/utils/types";
 
-export default defineEventHandler(async () => {
-  const db = admin.firestore();
-
-  let returnData: Alert | null = null;
-
-  try {
-    const querySnapshot = await db.collection("alerts").orderBy("date", "desc").limit(1).get();
-    if (querySnapshot.empty) throw new Error("No alerts found.");
-
-    returnData = querySnapshot.docs[0].data() as Alert;
-  } catch (error) {
-    console.error(error);
-    return { success: false, error: error instanceof Error ? error.message : "Something went wrong. Try again later.", content: null };
-  }
-
-  return { success: true, error: null, content: returnData };
+// Local-only mode: no alerts from database.
+export default defineEventHandler((): { success: boolean; error: string | null; content: Alert | null } => {
+  return { success: false, error: "No alerts in local mode.", content: null };
 });

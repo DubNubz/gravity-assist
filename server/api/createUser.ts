@@ -1,45 +1,34 @@
 import { getRandomCharacters } from "~/utils/functions";
-import { origins } from "~/utils/general";
-import { UserData } from "~/utils/types";
-import admin from "firebase-admin";
-
-// probably dont need crypto or hashing for uid and access token, whos tryna hack someones blueprints 💀💀
-async function generateUid() {
-  const db = admin.firestore();
-  const uid = getRandomCharacters(12, "numeric");
-
-  const docData = await db.collection("users").doc(uid).get();
-  if (docData.exists) return await generateUid();
-
-  return uid;
-}
+import { readDb, writeDb } from "~/server/utils/localDb";
 
 export default defineEventHandler(async () => {
-  const config = useRuntimeConfig();
-  const db = admin.firestore();
-
-  let data: UserData | null = null;
-
   try {
-    const uid = await generateUid();
-    const accessToken = getRandomCharacters(50);
+    const db = readDb();
 
-    data = {
+    // Generate a unique uid
+    let uid = getRandomCharacters(12, "numeric");
+    while (db.users[uid]) uid = getRandomCharacters(12, "numeric");
+
+    const accessToken = getRandomCharacters(50);
+    const now = new Date().toISOString().slice(0, 10);
+
+    const data = {
       uid,
       accessToken,
-      createdAt: new Date().toISOString().slice(0, 10),
-      lastLoggedIn: new Date().toISOString().slice(0, 10),
+      createdAt: now,
+      lastLoggedIn: now,
       savedMails: [],
       blueprints: [],
       bpLastSaved: null,
-      origin: origins[config.public.baseUrl] ?? "U"
+      origin: "L"
     };
 
-    await db.collection("users").doc(uid).create(data);
+    db.users[uid] = data;
+    writeDb(db);
+
+    return { success: true, error: null, content: data };
   } catch (error) {
     console.error(error);
-    return { success: false, error: error instanceof Error ? error.message : "Something went wrong. Try again later.", content: null };
+    return { success: false, error: error instanceof Error ? error.message : "Something went wrong.", content: null };
   }
-
-  return { success: true, error: null, content: data };
 });

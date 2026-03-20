@@ -4,6 +4,7 @@
 .nuxt
 .nitro
 .cache
+.vscode
 dist
 
 # Node dependencies
@@ -19,6 +20,7 @@ logs
 .idea
 
 # Local env files
+.local-data
 .env
 .env.*
 !.env.example

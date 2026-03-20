@@ -1,7 +1,6 @@
-import { TruncatedOp, UserData } from "~/utils/types";
 import { untruncateOps } from "~/utils/functions";
-import { origins } from "~/utils/general";
-import admin from "firebase-admin";
+import type { TruncatedOp, UserData } from "~/utils/types";
+import { readDb, writeDb } from "~/server/utils/localDb";
 
 interface Body {
   uid: string;
@@ -9,30 +8,26 @@ interface Body {
   updateOrigin: boolean;
 }
 
-export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
-  const body = (await readBody(event)) as Body;
-  const db = admin.firestore();
-
-  let returnData: UserData | null = null;
-
+export default defineEventHandler(async (event): Promise<{ success: boolean; error: string | null; content: UserData | null }> => {
   try {
-    const docData = await db.collection("users").doc(body.uid).get();
-    const userData = docData.data() as UserData | undefined;
+    const body = (await readBody(event)) as Body;
+    const db = readDb();
+    const userData = db.users[body.uid];
 
     if (!userData) throw new Error("User not found.");
     if (userData.uid !== body.uid || userData.accessToken !== body.accessToken) throw new Error("Invalid credentials.");
 
     userData.lastLoggedIn = new Date().toISOString().slice(0, 10);
-    if (body.updateOrigin) userData.origin = origins[config.public.baseUrl] ?? "U";
-    await db.collection("users").doc(body.uid).update(userData);
+    db.users[body.uid] = userData;
+    writeDb(db);
 
-    userData.savedMails.forEach((mail) => (mail.ops = untruncateOps(mail.ops as TruncatedOp[])));
-    returnData = userData;
+    // Return a copy with untruncated mail ops
+    const returnData = JSON.parse(JSON.stringify(userData));
+    returnData.savedMails.forEach((mail: any) => (mail.ops = untruncateOps(mail.ops as TruncatedOp[])));
+
+    return { success: true, error: null, content: returnData };
   } catch (error) {
     console.error(error);
-    return { success: false, error: error instanceof Error ? error.message : "Something went wrong. Try again later.", content: null };
+    return { success: false, error: error instanceof Error ? error.message : "Something went wrong.", content: null };
   }
-
-  return { success: true, error: null, content: returnData };
 });

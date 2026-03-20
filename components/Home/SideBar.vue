@@ -1,5 +1,5 @@
 <template>
-  <aside id="default-sidebar" class="fixed left-0 z-20 h-[calc(100dvh-4rem)] w-72" aria-label="Sidebar" @click.stop>
+  <aside id="default-sidebar" class="fixed left-0 z-20 h-[calc(100dvh-2.5rem)] w-72" aria-label="Sidebar" @click.stop>
     <div class="flex h-full w-full flex-col items-center justify-between overflow-y-auto bg-neutral-50 px-3 py-4 transition duration-500 dark:bg-neutral-900">
       <ul class="w-full space-y-2 font-medium">
         <li v-for="button in navButtons" :key="button.displayName">
@@ -149,7 +149,7 @@ const navButtons: NavButton[] = [
       name: "Deprecated",
       color: "bg-red-100"
     }
-  }
+  },
   // {
   //   displayName: "Color Generator",
   //   src: "/ui/colorGenerator.svg",
@@ -160,16 +160,11 @@ const navButtons: NavButton[] = [
   //     color: "bg-neutral-100"
   //   }
   // }
-  // {
-  //   displayName: "Fleet Builder",
-  //   src: "/ui/fleetBuilder.svg",
-  //   route: "/",
-  //   disabled: true,
-  //   tag: {
-  //     name: '"Soon"',
-  //     color: "bg-neutral-100"
-  //   }
-  // }
+  {
+    displayName: "Fleet Builder",
+    src: "/ui/fleetBuilder.svg",
+    route: "/modules/fleet-builder"
+  }
 ];
 </script>
 
